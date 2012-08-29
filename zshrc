@@ -33,6 +33,18 @@ plugins=(rvm git github)
 
 # Aliases
 
+# [www]
+alias fp='www_fix_permissions'
+alias sitedown='www_sitedown'
+alias siteup='www_siteup'
+
+# [wrap]
+alias android_watch='wrap_android_watch'
+alias pocket='wrap_pocket'
+alias s='wrap_sublime'
+alias tomboy_new='wrap_tomboy_new'
+alias tomboy_search='wrap_tomboy_search'
+
 # Git
 alias gl='git pull --prune'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
@@ -58,6 +70,7 @@ alias gollum='rvm gemset use gollum; gollum >/dev/null 2>/dev/null &'
 
 # T
 alias t='python /home/karelian/Dev/t/t.py --task-dir /home/karelian/Dropbox/AppSync/Tasks --list tasks'
+
 
 source $ZSH/oh-my-zsh.sh
 
