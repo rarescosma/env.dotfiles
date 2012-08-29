@@ -1,0 +1,7 @@
+[user]
+	name = Rares Cosma
+	email = office@rarescosma.com
+[push]
+	default = tracking
+[merge]
+	tool = meld
