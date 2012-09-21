@@ -67,6 +67,7 @@ alias vps='ssh -L 1080:localhost:1080 getbetter.ro -p 1918'
 # Ruby & RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
 alias gollum='rvm gemset use gollum; gollum >/dev/null 2>/dev/null &'
+alias splendid='rvm gemset use bacon; foreman start >/dev/null 2>/dev/null &'
 
 # T
 alias t='python /home/karelian/Dev/t/t.py --task-dir /home/karelian/Dropbox/AppSync/Tasks --list tasks'
