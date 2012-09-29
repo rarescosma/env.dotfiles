@@ -74,5 +74,5 @@ alias t='python /home/karelian/Dev/t/t.py --task-dir /home/karelian/Dropbox/AppS
 
 
 source $ZSH/oh-my-zsh.sh
-
+PATH="/usr/local/bin:$PATH"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
