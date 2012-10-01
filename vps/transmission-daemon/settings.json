@@ -47,7 +47,7 @@
     "rpc-whitelist": "127.0.0.1,10.9.0.*", 
     "rpc-whitelist-enabled": true, 
     "script-torrent-done-enabled": true, 
-    "script-torrent-done-filename": "/home/karelian/completed.sh", 
+    "script-torrent-done-filename": "/usr/local/bin/completed.sh", 
     "speed-limit-down": 100, 
     "speed-limit-down-enabled": false, 
     "speed-limit-up": 100, 
@@ -56,6 +56,7 @@
     "trash-original-torrent-files": false, 
     "umask": 0, 
     "upload-slots-per-torrent": 25, 
+    "utp-enabled": false, 
     "watch-dir": "/var/www/virtual/getbetter.ro/htdocs/candy", 
     "watch-dir-enabled": true
 }
