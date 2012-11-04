@@ -62,7 +62,7 @@ alias gg="gitg &"
 cdp() { cd $1; cd `pwd -P`; }
 
 # Networking
-alias vps='ssh -L 1080:localhost:1080 getbetter.ro -p 1918'
+alias vps='ssh getbetter.ro -p 1918'
 
 # Ruby & RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
