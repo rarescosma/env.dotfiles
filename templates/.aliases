@@ -1,0 +1,35 @@
+# -- Navigation ----------------------------------------------------------------
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+# -- APT -----------------------------------------------------------------------
+alias sa='sudo apt-get'
+alias sai='sudo apt-get install'
+alias sau='sudo apt-get update'
+alias saug='sudo apt-get upgrade'
+alias sar='sudo apt-get remove'
+alias sap='sudo apt-get --purge autoremove'
+alias sac='sudo apt-get autoclean'
+alias ac='apt-cache'
+
+# -- Node ----------------------------------------------------------------------
+alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
+alias npm.cleanhome='rm -rf ~/.npm-packages'
+
+# -- Python --------------------------------------------------------------------
+alias v='workon'
+alias v.deactivate='deactivate'
+alias v.mk='mkvirtualenv --no-site-packages'
+alias v.mk_withsitepackages='mkvirtualenv'
+alias v.rm='rmvirtualenv'
+alias v.switch='workon'
+alias v.add2virtualenv='add2virtualenv'
+alias v.cdsitepackages='cdsitepackages'
+alias v.cd='cdvirtualenv'
+alias v.lssitepackages='lssitepackages'
+
+# -- Ruby ----------------------------------------------------------------------
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+	alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
+	. "$HOME/.rvm/scripts/rvm"
+fi
