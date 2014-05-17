@@ -20,4 +20,5 @@ git checkout grunt
 sudo rm -rf ~/tmp
 npm install
 
+clear
 grunt
