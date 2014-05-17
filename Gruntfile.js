@@ -251,7 +251,7 @@ module.exports = function(grunt) {
             },
 
             provision: {
-                command: 'chmod +x <%= config.provision.script_path %> && ./<%= config.provision.script_path %>',
+                command: 'chmod +x <%= config.provision.script_path %> && .<%= config.provision.script_path %>',
                 options: {
                     stdout: true
                 }
