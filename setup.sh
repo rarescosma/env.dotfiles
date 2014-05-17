@@ -9,7 +9,7 @@ sudo apt-get update
 sudo apt-get install --yes nodejs
 
 # Add git
-sudo apt-get install git-core
+sudo apt-get install git-core --yes
 
 # Clone the repo
 git clone https://github.com/rarescosma/dotfiles.git .dotfiles
