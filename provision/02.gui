@@ -13,7 +13,7 @@ if [ <%- provision.gui %> = true ] ; then
 		# TODO - lightdm config
 	fi
 
-	PKGS+=' ligthdm lightdm-gtk-greeter ubuntu-artwork fonts-droid fonts-inconsolata'
+	PKGS+=' lightdm lightdm-gtk-greeter ubuntu-artwork fonts-droid fonts-inconsolata'
 
 	# Broswer
 	if ! grep -q "http://dl.google.com/linux/chrome" /etc/apt/sources.list; then
