@@ -2,3 +2,4 @@
 
 PKGS='zsh build-essential software-properties-common'
 UBI_RELEASE=$(lsb_release -cs)
+POSTFIX=''
