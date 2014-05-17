@@ -41,7 +41,7 @@
     },
     {
         "checked": true,
-        "name": "memcache",
+        "name": "xdebug",
         "value": "php5-xdebug"
     }
 ]
