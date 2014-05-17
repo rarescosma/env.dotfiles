@@ -1,0 +1,35 @@
+[user]
+    name = <%- git.name %>
+    email = <%- git.email %>
+    editor = <%- editor %>
+[alias]
+    # Undo / Ammend
+    undo = reset --soft HEAD^
+    ammend = commit --amend -C HEAD
+
+    # Push all / Pull all
+    pushall = push --recurse-submodules=on-demand
+    pullall = !git pull && git submodule update --init --recursive
+[color]
+  diff = auto
+  status = auto
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added     = cyan bold
+    branch    = cyan bold
+    changed   = magenta bold
+    deleted   = red bold
+    untracked = yellow bold
+[push]
+    default = tracking
+[core]
+    excludesfile = ~/.gitignore_global
+    filemode = false
+[merge]
+    tool = meld
+[mergetool "meld"]
+    keepBackup = false
