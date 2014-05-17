@@ -16,7 +16,9 @@ function copyConfigChoicesAsBooleans(config, choices, from, to) {
 function copyConfigChoicesAsString(config, choices, from, to) {
     var values = [];
     choices.forEach(function(choice) {
-        values.push(choice.value);
+        if(config.choices[from].indexOf(choice.value) > -1) {
+            values.push(choice.value);
+        }
     });
     config[to] = config[to] || {};
     config[to][from] = values.join(' ');
