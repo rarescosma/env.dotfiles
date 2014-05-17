@@ -1,3 +1,3 @@
 # Setup
 
-`\curl -sSL https://raw.githubusercontent.com/rarescosma/dotfiles/grunt/setup.sh | bash -s stable`
+`curl -sSL goo.gl/D0uccC -o setup.sh && chmod +x setup.sh && ./setup.sh; rm -f setup.sh`

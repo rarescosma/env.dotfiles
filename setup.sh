@@ -19,3 +19,5 @@ git checkout grunt
 # For some reason the local tmp folder gets mangled up
 sudo rm -rf ~/tmp
 npm install
+
+grunt
