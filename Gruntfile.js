@@ -120,26 +120,26 @@ module.exports = function(grunt) {
                             type: 'checkbox'
                         },
                         {
-                            choices: [
-                                { name: 'Mate', value: 'mate' },
-                                { name: 'Xfce4', value: 'xfce' }
-                            ],
-                            config: 'config.wm',
-                            message: 'Which window manager would you like to install?',
-                            type: 'list',
-                            when: function(answers) {
-                                return answers['config.choices.provision'].indexOf('wm') > -1;
-                            }
-                        },
-                        {
                             choices: choicesPhpExtensions,
                             config: 'config.choices.php_extensions',
-                            message: 'Which PHP extensions would you like to provision?',
+                            message: 'Which PHP extensions would you like to install?',
                             type: 'checkbox',
                             when: function(answers) {
                                 return answers['config.choices.provision'].indexOf('lemp') > -1;
                             }
-                        }
+                        },
+                        {
+                            choices: [
+                                { name: 'Xfce4', value: 'xfce' },
+                                { name: 'Mate', value: 'mate' }
+                            ],
+                            config: 'config.gui',
+                            message: 'Which window manager would you like to install?',
+                            type: 'list',
+                            when: function(answers) {
+                                return answers['config.choices.provision'].indexOf('gui') > -1;
+                            }
+                        },
                     ]
                 }
             }
@@ -198,9 +198,10 @@ module.exports = function(grunt) {
                     }
                 },
                 files: { '<%= config.provision.script_path %>': [
-                    'provision/00.bang',
-                    'provision/01.gui',
-                    'provision/02.lemp'
+                    'provision/00.alpha',
+                    'provision/01.lemp',
+                    'provision/02.gui',
+                    'provision/99.omega'
                 ] }
             }
         },
@@ -249,12 +250,8 @@ module.exports = function(grunt) {
                 command: 'touch <%= config.z.path_z_system %>'
             },
 
-            zsh: {
-                command: 'sudo apt-get --yes install zsh; chsh -s /bin/zsh'
-            },
-
             provision: {
-                command: 'cat <%= config.provision.script_path %> | bash -s stable',
+                command: '. <%= config.provision.script_path %>',
                 options: {
                     stdout: true
                 }

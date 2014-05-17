@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-sudo -v
-alias sai='sudo apt-get --yes install'
-alias sau='sudo apt-get update'
-
-sai software-properties-common

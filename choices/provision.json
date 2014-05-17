@@ -1,12 +1,12 @@
 [
     {
         "checked": true,
-        "name": "Window Manager",
-        "value": "wm"
+        "name": "LEMP Stack",
+        "value": "lemp"
     },
     {
         "checked": true,
-        "name": "LEMP Stack",
-        "value": "lemp"
+        "name": "Graphical User Interface",
+        "value": "gui"
     }
 ]
