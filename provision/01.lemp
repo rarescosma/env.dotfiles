@@ -1,8 +1,8 @@
 if [ <%- provision.lemp %> = true ] ; then
 	# Disable root password prompt
 	export DEBIAN_FRONTEND=noninteractive
-	sudo debconf-set-selections <<< 'mariadb-server-5.5 mysql-server/root_password password'
-	sudo debconf-set-selections <<< 'mariadb-server-5.5 mysql-server/root_password_again password'
+	sudo debconf-set-selections <<< 'mariadb-server-10 mysql-server/root_password password'
+	sudo debconf-set-selections <<< 'mariadb-server-10 mysql-server/root_password_again password'
 
 	# Setup MariaDB repo
 	if ! grep -q "http://mirrors.linsrv.net/mariadb" /etc/apt/sources.list; then
