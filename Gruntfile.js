@@ -18,6 +18,7 @@ function copyConfigChoicesAsString(config, choices, from, to) {
     choices.forEach(function(choice) {
         values.push(choice.value);
     });
+    config[to] = config[to] || {};
     config[to][from] = values.join(' ');
 }
 
@@ -119,13 +120,25 @@ module.exports = function(grunt) {
                             type: 'checkbox'
                         },
                         {
+                            choices: [
+                                { name: 'Mate', value: 'mate' },
+                                { name: 'Xfce4', value: 'xfce' }
+                            ],
+                            config: 'config.wm',
+                            message: 'Which window manager would you like to install?',
+                            type: 'list',
+                            when: function(answers) {
+                                return answers['config.choices.provision'].indexOf('wm') > -1;
+                            }
+                        },
+                        {
                             choices: choicesPhpExtensions,
                             config: 'config.choices.php_extensions',
                             message: 'Which PHP extensions would you like to provision?',
+                            type: 'checkbox',
                             when: function(answers) {
-                                return answers['config.choices.provision'].indexOf('php') > -1;
-                            },
-                            type: 'checkbox'
+                                return answers['config.choices.provision'].indexOf('lemp') > -1;
+                            }
                         }
                     ]
                 }
@@ -180,12 +193,14 @@ module.exports = function(grunt) {
                     data: function() {
                         var config = grunt.config.data.config;
                         copyConfigChoicesAsBooleans(config, choicesProvision, 'provision', 'provision');
+                        copyConfigChoicesAsString(config, choicesPhpExtensions, 'php_extensions', 'lemp');
                         return config;
                     }
                 },
                 files: { '<%= config.provision.script_path %>': [
                     'provision/00.bang',
-                    'provision/01.mate'
+                    'provision/01.gui',
+                    'provision/02.lemp'
                 ] }
             }
         },
@@ -230,17 +245,13 @@ module.exports = function(grunt) {
         // -- Exec -------------------------------------------------------------
 
         shell: {
-            temporary: {
-                command: 'ln -sf /home/karelian/_/my/oh-my-zsh <%= config.dotfiles.path %>/.oh-my-zsh'
-            },
-
             z: {
                 command: 'touch <%= config.z.path_z_system %>'
             },
 
-            // zsh: {
-            //     command: 'chsh -s /bin/zsh'
-            // },
+            zsh: {
+                command: 'sudo apt-get --yes install zsh; chsh -s /bin/zsh'
+            },
 
             provision: {
                 command: 'cat <%= config.provision.script_path %> | bash -s stable',

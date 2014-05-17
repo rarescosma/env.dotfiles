@@ -1,17 +1,12 @@
 [
     {
         "checked": true,
-        "name": "The MATE Desktop Environment",
-        "value": "mate"
+        "name": "Window Manager",
+        "value": "wm"
     },
     {
         "checked": true,
-        "name": "nginx",
-        "value": "nginx"
-    },
-    {
-        "checked": true,
-        "name": "php-fpm + extensions",
-        "value": "php"
+        "name": "LEMP Stack",
+        "value": "lemp"
     }
 ]
