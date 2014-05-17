@@ -1,0 +1,17 @@
+[
+    {
+        "checked": true,
+        "name": "The MATE Desktop Environment",
+        "value": "mate"
+    },
+    {
+        "checked": true,
+        "name": "nginx",
+        "value": "nginx"
+    },
+    {
+        "checked": true,
+        "name": "php-fpm + extensions",
+        "value": "php"
+    }
+]

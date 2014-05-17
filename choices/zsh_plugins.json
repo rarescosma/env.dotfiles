@@ -1,0 +1,52 @@
+[
+    {
+        "checked": true,
+        "name": "Extract",
+        "value": "extract"
+    },
+    {
+        "checked": false,
+        "name": "Git",
+        "value": "git"
+    },
+    {
+        "checked": true,
+        "name": "Github",
+        "value": "github"
+    },
+    {
+        "checked": true,
+        "name": "Grunt",
+        "value": "grunt"
+    },
+    {
+        "checked": true,
+        "name": "History substring search",
+        "value": "history-substring-search"
+    },
+    {
+        "checked": true,
+        "name": "Virtualenvwrapper (python)",
+        "value": "dock_translucent"
+    },
+    {
+        "checked": true,
+        "name": "Ruby version manager (python)",
+        "value": "rvm"
+    },
+    {
+        "checked": true,
+        "name": "WordPress CLI",
+        "value": "wp-cli"
+    },
+    {
+        "checked": true,
+        "name": "Z (navigation)",
+        "value": "z"
+    },
+    {
+        "checked": true,
+        "name": "Syntax highlighting",
+        "value": "zsh-syntax-highlighting"
+    }
+]
