@@ -4,7 +4,7 @@ if [ <%- provision.lemp %> = true ] ; then
 	sudo debconf-set-selections <<< 'mariadb-server-10 mysql-server/root_password password temppass'
 	sudo debconf-set-selections <<< 'mariadb-server-10 mysql-server/root_password_again password temppass'
 
-	POSTFIX+='\echo "set PASSWORD for root@localhost = PASSWORD('')" | mysql -u root -ptemppass'
+	POSTFIX+='echo "set PASSWORD for root@localhost = PASSWORD('')" | mysql -u root -ptemppass'
 
 	# Setup MariaDB repo
 	if ! grep -q "http://mirrors.linsrv.net/mariadb" /etc/apt/sources.list; then
