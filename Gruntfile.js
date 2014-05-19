@@ -49,6 +49,8 @@ module.exports = function(grunt) {
         // -- Config -----------------------------------------------------------
 
         config: {
+            _exclude: 'provision',
+
             dotfiles: {
                 path: userhome('.dotfiles')
             },
@@ -79,6 +81,8 @@ module.exports = function(grunt) {
         // -- Prompt -----------------------------------------------------------
 
         prompt: {
+            _exclude: 'provision',
+
             git: {
                 options: {
                     questions: [
@@ -95,6 +99,7 @@ module.exports = function(grunt) {
                     ]
                 }
             },
+
             zsh: {
                 options: {
                     questions: [
@@ -112,6 +117,7 @@ module.exports = function(grunt) {
                     ]
                 }
             },
+
             provision: {
                 options: {
                     questions: [
@@ -165,6 +171,8 @@ module.exports = function(grunt) {
         // -- Templates --------------------------------------------------------
 
         template: {
+            _exclude: 'provision',
+
             git: {
                 options: {
                     data: '<%= config %>'
@@ -248,6 +256,8 @@ module.exports = function(grunt) {
         // -- Exec -------------------------------------------------------------
 
         shell: {
+            _exclude: 'provision',
+
             z: {
                 command: 'touch <%= config.z.path_z_system %>'
             },
@@ -262,6 +272,7 @@ module.exports = function(grunt) {
 
     });
 
+    grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-git');
