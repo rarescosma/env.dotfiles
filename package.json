@@ -1,7 +1,7 @@
 {
   "name": "dotfiles",
   "description": "Grunt make dotfiles.",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": {
     "email": "office@rarescosma.com",
     "name": "Rares Cosma",
