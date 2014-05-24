@@ -31,5 +31,4 @@ alias v.lssitepackages='lssitepackages'
 # -- Ruby ----------------------------------------------------------------------
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
 	alias rvm-prompt=$HOME/.rvm/bin/rvm-prompt
-	. "$HOME/.rvm/scripts/rvm"
 fi

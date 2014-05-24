@@ -1,0 +1,7 @@
+PKGS+=' python-pip'
+POSTFIX+=";sudo pip install virtualenvwrapper"
+
+if [ "<%- zsh.theme_oh_my_zsh %>" = "ric" ] ; then
+	POSTFIX+=";echo 'refresh_prompt' >> $HOME/.virtualenvs/postactivate"
+	POSTFIX+=";echo 'refresh_prompt' >> $HOME/.virtualenvs/postdeactivate"
+fi

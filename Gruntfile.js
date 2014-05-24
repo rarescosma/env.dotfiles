@@ -38,7 +38,7 @@ module.exports = function(grunt) {
                 commitMessage: 'Release v%VERSION%',
                 createTag: true,
                 files: ['package.json'],
-                push: true,
+                push: false,
                 pushTo: 'origin',
                 tagMessage: '',
                 tagName: 'v%VERSION%'
@@ -51,31 +51,18 @@ module.exports = function(grunt) {
         config: {
             _exclude: 'provision',
 
-            dotfiles: {
-                path: userhome('.dotfiles')
+            paths: {
+                home: userhome(),
+                dotfiles: userhome('.dotfiles'),
+                zsh_syntax_plugin: userhome('.dotfiles/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'),
+                oh_my_zsh: userhome('.dotfiles/.oh-my-zsh'),
+                provision_script: userhome('.dotfiles/provision')
             },
 
-            git: {
-                path_gitconfig: userhome('.dotfiles/.gitconfig'),
-                path_gitconfig_system: userhome('.gitconfig'),
-                path_gitignore: userhome('.dotfiles/.gitignore_global'),
-                path_gitignore_system: userhome('.gitignore_global')
-            },
-
-            z: {
-                path_z_system: userhome('.z')
-            },
-
-            zsh: {
-                path_oh_my_zsh: userhome('.dotfiles/.oh-my-zsh'),
-                path_plugin_syntax: userhome('.dotfiles/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'),
-                path_zshrc: userhome('.dotfiles/.zshrc'),
-                path_zshrc_system: userhome('.zshrc')
-            },
-
-            provision: {
-                script_path: userhome('.dotfiles/provision')
-            },
+            links: {
+                template: ['.gitconfig', '.gitignore_global', '.zshrc'],
+                direct: ['.zshenv', '.zlogin']
+            }
         },
 
         // -- Prompt -----------------------------------------------------------
@@ -161,9 +148,9 @@ module.exports = function(grunt) {
                     force: true
                 },
                 src: [
-                    userhome('.dotfiles'),
-                    '<%= config.z.path_z_system %>',
-                    '<%= config.zsh.path_zshrc_system %>'
+                    '<%= config.paths.dotfiles %>',
+                    '<%= config.paths.home %>/.z',
+                    '<%= config.paths.home %>/.zshrc'
                 ]
             }
         },
@@ -178,8 +165,8 @@ module.exports = function(grunt) {
                     data: '<%= config %>'
                 },
                 files: {
-                    '<%= config.git.path_gitconfig %>': ['templates/.gitconfig'],
-                    '<%= config.git.path_gitignore %>': ['templates/.gitignore_global']
+                    '<%= config.paths.dotfiles %>/.gitconfig': ['templates/.gitconfig'],
+                    '<%= config.paths.dotfiles %>/.gitignore_global': ['templates/.gitignore_global']
                 }
             },
 
@@ -192,9 +179,9 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '<%= config.dotfiles.path %>/.zshrc': ['templates/.zshrc'],
-                    '<%= config.dotfiles.path %>/.aliases': ['templates/.aliases'],
-                    '<%= config.dotfiles.path %>/.navigation': ['templates/.navigation']
+                    '<%= config.paths.dotfiles %>/.zshrc': ['templates/.zshrc'],
+                    '<%= config.paths.dotfiles %>/.aliases': ['templates/.aliases'],
+                    '<%= config.paths.dotfiles %>/.navigation': ['templates/.navigation']
                 }
             },
 
@@ -207,7 +194,7 @@ module.exports = function(grunt) {
                         return config;
                     }
                 },
-                files: { '<%= config.provision.script_path %>': [
+                files: { '<%= config.paths.provision_script %>': [
                     'provision/00.alpha',
                     'provision/01.lemp',
                     'provision/02.gui',
@@ -221,14 +208,14 @@ module.exports = function(grunt) {
         gitclone: {
             oh_my_zsh: {
                 options: {
-                    directory: '<%= config.zsh.path_oh_my_zsh %>',
+                    directory: '<%= config.paths.oh_my_zsh %>',
                     repository: 'https://github.com/rarescosma/oh-my-zsh.git'
                 }
             },
 
             zsh_syntax_highlighting: {
                 options: {
-                    directory: '<%= config.zsh.path_plugin_syntax %>',
+                    directory: '<%= config.paths.zsh_syntax_plugin %>',
                     repository: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
                 }
             }
@@ -237,19 +224,19 @@ module.exports = function(grunt) {
         // -- Symbolic links ---------------------------------------------------
 
         symlink: {
-            git_config: {
-                dest: '<%= config.git.path_gitconfig_system %>',
-                relativeSrc: '<%= config.git.path_gitconfig %>'
+            gitconfig: {
+                dest: '<%= config.paths.home %>/.gitconfig',
+                relativeSrc: '<%= config.paths.dotfiles %>/.gitconfig'
             },
 
-            git_ignore: {
-                dest: '<%= config.git.path_gitignore_system %>',
-                relativeSrc: '<%= config.git.path_gitignore %>'
+            gitignore: {
+                dest: '<%= config.paths.home %>/.gitignore_global',
+                relativeSrc: '<%= config.paths.dotfiles %>/.gitignore_global'
             },
 
-            zsh: {
-                dest: '<%= config.zsh.path_zshrc_system %>',
-                relativeSrc: '<%= config.zsh.path_zshrc %>'
+            zshrc: {
+                dest: '<%= config.paths.home %>/.zshrc',
+                relativeSrc: '<%= config.paths.dotfiles %>/.zshrc'
             }
         },
 
@@ -259,11 +246,11 @@ module.exports = function(grunt) {
             _exclude: 'provision',
 
             z: {
-                command: 'touch <%= config.z.path_z_system %>'
+                command: 'touch <%= config.paths.home %>/.z'
             },
 
             provision: {
-                command: 'chmod +x <%= config.provision.script_path %> && <%= config.provision.script_path %>',
+                command: 'chmod +x <%= config.paths.provision_script %> && <%= config.paths.provision_script %>',
                 options: {
                     stdout: true
                 }

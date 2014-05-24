@@ -14,14 +14,4 @@ if [ <%- provision.gui %> = true ] ; then
 	fi
 
 	PKGS+=' lightdm lightdm-gtk-greeter ubuntu-artwork fonts-droid fonts-inconsolata'
-
-	# Broswer
-	if ! grep -q "http://dl.google.com/linux/chrome" /etc/apt/sources.list; then
-		wget -q https://dl-ssl.google.com/linux/linux_signing_key.pub -O- | sudo apt-key add -
-		sudo add-apt-repository "deb http://dl.google.com/linux/chrome/deb/ stable main"
-	fi
-	PKGS+=' google-chrome-stable'
-
-	# Terminal & Launcher
-	PKGS+=' kupfer terminator'
 fi
