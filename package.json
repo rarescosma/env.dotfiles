@@ -36,6 +36,7 @@
     "grunt-symlink": "~0.4.0",
     "grunt-template": "~0.2.1",
     "userhome": "~0.1.0",
-    "which": "~1.0.5"
+    "which": "~1.0.5",
+    "es-hash": "~1.0.4"
   }
 }

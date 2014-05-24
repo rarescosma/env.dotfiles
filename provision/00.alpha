@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-PKGS='zsh build-essential software-properties-common'
+PKGS='zsh build-essential software-properties-common fortune cowsay'
 UBI_RELEASE=$(lsb_release -cs)
-POSTFIX=''
+POSTFIX='echo -n'

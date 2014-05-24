@@ -1,12 +1,15 @@
 'use strict';
 
 var userhome = require('userhome');
+var path = require('path');
+var hash = require('es-hash');
 
 var choicesZshPlugins = require('./choices/zsh_plugins');
 var choicesProvision = require('./choices/provision');
 var choicesPhpExtensions = require('./choices/php_extensions');
 
 function copyConfigChoicesAsBooleans(config, choices, from, to) {
+    config[to] = config[to] || {};
     choices.forEach(function(choice) {
         config[to][choice.value] =
             config.choices[from].indexOf(choice.value) > -1;
@@ -15,6 +18,7 @@ function copyConfigChoicesAsBooleans(config, choices, from, to) {
 
 function copyConfigChoicesAsString(config, choices, from, to) {
     var values = [];
+    config.choices[from] = config.choices[from] || [];
     choices.forEach(function(choice) {
         if(config.choices[from].indexOf(choice.value) > -1) {
             values.push(choice.value);
@@ -60,8 +64,19 @@ module.exports = function(grunt) {
             },
 
             links: {
-                template: ['.gitconfig', '.gitignore_global', '.zshrc'],
-                direct: ['.zshenv', '.zlogin']
+                template: {
+                    src: userhome('.dotfiles'),
+                    files: ['.gitconfig', '.gitignore_global', '.zshrc', '.zlogin', '.npmrc']
+                },
+                direct: {
+                    src: path.resolve(__dirname) + '/templates',
+                    dest: userhome('.dotfiles'),
+                    files: ['.env', '.aliases', '.navigation']
+                },
+                env: {
+                    src: path.resolve(__dirname) + '/templates',
+                    files:['.rvmrc']
+                }
             }
         },
 
@@ -135,6 +150,15 @@ module.exports = function(grunt) {
                                 return answers['config.choices.provision'].indexOf('gui') > -1;
                             }
                         },
+                        {
+                            config: 'config.zsh.theme_oh_my_zsh',
+                            default: 'ric',
+                            message: 'Which Oh My Zsh theme would you like to use?',
+                            when: function(answers) {
+                                return answers['config.choices.provision'].indexOf('env') > -1 &&
+                                'undefined' === typeof answers['config.zsh.theme_oh_my_zsh'];
+                            }
+                        }
                     ]
                 }
             }
@@ -149,8 +173,11 @@ module.exports = function(grunt) {
                 },
                 src: [
                     '<%= config.paths.dotfiles %>',
-                    '<%= config.paths.home %>/.z',
-                    '<%= config.paths.home %>/.zshrc'
+                    '<%= config.paths.home %>/.gitconfig',
+                    '<%= config.paths.home %>/.gitignore_global',
+                    '<%= config.paths.home %>/.zshrc',
+                    '<%= config.paths.home %>/.zlogin',
+                    '<%= config.paths.home %>/.z'
                 ]
             }
         },
@@ -180,8 +207,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     '<%= config.paths.dotfiles %>/.zshrc': ['templates/.zshrc'],
-                    '<%= config.paths.dotfiles %>/.aliases': ['templates/.aliases'],
-                    '<%= config.paths.dotfiles %>/.navigation': ['templates/.navigation']
+                    '<%= config.paths.dotfiles %>/.zlogin': ['templates/.zlogin'],
+                    '<%= config.paths.dotfiles %>/.npmrc': ['templates/.npmrc']
                 }
             },
 
@@ -194,12 +221,15 @@ module.exports = function(grunt) {
                         return config;
                     }
                 },
-                files: { '<%= config.paths.provision_script %>': [
-                    'provision/00.alpha',
-                    'provision/01.lemp',
-                    'provision/02.gui',
-                    'provision/99.omega'
-                ] }
+                files: {
+                    '<%= config.paths.provision_script %>': [
+                        'provision/00.alpha',
+                        'provision/01.lemp',
+                        'provision/02.gui',
+                        'provision/04.python',
+                        'provision/99.omega'
+                    ]
+                }
             }
         },
 
@@ -221,25 +251,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // -- Symbolic links ---------------------------------------------------
-
-        symlink: {
-            gitconfig: {
-                dest: '<%= config.paths.home %>/.gitconfig',
-                relativeSrc: '<%= config.paths.dotfiles %>/.gitconfig'
-            },
-
-            gitignore: {
-                dest: '<%= config.paths.home %>/.gitignore_global',
-                relativeSrc: '<%= config.paths.dotfiles %>/.gitignore_global'
-            },
-
-            zshrc: {
-                dest: '<%= config.paths.home %>/.zshrc',
-                relativeSrc: '<%= config.paths.dotfiles %>/.zshrc'
-            }
-        },
-
         // -- Exec -------------------------------------------------------------
 
         shell: {
@@ -256,7 +267,28 @@ module.exports = function(grunt) {
                 }
             },
         }
+    });
 
+    // -- Symbolic links -------------------------------------------------------
+    grunt.registerTask('symlinkProxy', function(category){
+        var config = grunt.config.data.config;
+        if('object' !== typeof config.links[category]) {
+            return false;
+        }
+
+        var links = config.links[category], options, h, dest;
+
+        links.files.forEach(function(l) {
+            dest = links.dest || config.paths.home;
+            options = {
+                dest: dest + '/' + l,
+                relativeSrc: links.src + '/' + l
+            };
+            h = hash(options);
+
+            grunt.config('symlink.' + h, options);
+            grunt.task.run('symlink:' + h);
+        });
     });
 
     grunt.loadTasks('tasks');
@@ -268,6 +300,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-symlink');
     grunt.loadNpmTasks('grunt-template');
 
-    grunt.registerTask('default', ['prompt', 'clean', 'template', 'gitclone', 'shell', 'symlink']);
-    grunt.registerTask('provision', ['prompt:provision', 'template:provision', 'shell:provision']);
+    grunt.registerTask('sym', ['symlinkProxy:template', 'symlinkProxy:direct', 'symlinkProxy:env']);
+
+    grunt.registerTask('default', [
+        'prompt',
+        'clean',
+        'template',
+        'gitclone',
+        'shell',
+        'sym'
+    ]);
+
+    grunt.registerTask('provision', ['prompt:provision', 'template:provision', 'shell:provision'])  ;
 };

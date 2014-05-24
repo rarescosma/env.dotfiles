@@ -8,5 +8,20 @@
         "checked": true,
         "name": "Graphical User Interface",
         "value": "gui"
+    },
+    {
+        "checked": true,
+        "name": "Chrome",
+        "value": "chrome"
+    },
+    {
+        "checked": true,
+        "name": "Window Manager Utilities",
+        "value": "wmutils"
+    },
+    {
+        "checked": true,
+        "name": "Language Environments",
+        "value": "env"
     }
 ]
