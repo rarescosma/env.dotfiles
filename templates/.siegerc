@@ -1,0 +1,3 @@
+show-logfile = false
+#connection = keep-alive
+benchmark = true
