@@ -28,5 +28,19 @@ alias v.cdsitepackages='cdsitepackages'
 alias v.cd='cdvirtualenv'
 alias v.lssitepackages='lssitepackages'
 
+# -- PHP -----------------------------------------------------------------------
+alias cow='composer update nothing'
+
 # -- Sublime -------------------------------------------------------------------
 alias s='subl'
+
+# -- Misc ----------------------------------------------------------------------
+alias veewee="bundle exec veewee"
+alias vpn_on="sudo nmcli c up id sony"
+alias vpn_off="sudo nmcli c down id sony"
+alias vps="mosh vps -p 1919"
+alias dontstarve="cd /home/karelian/_/dontstarve; sudo ./updater/22/updater; cd -"
+
+# -- Vagrant -------------------------------------------------------------------
+alias vup="vagrant up --provision"
+alias vdown="vagrant halt"
