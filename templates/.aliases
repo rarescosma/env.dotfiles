@@ -11,6 +11,7 @@ alias sar='sudo apt-get remove'
 alias sap='sudo apt-get --purge autoremove'
 alias sac='sudo apt-get autoclean'
 alias ac='apt-cache'
+depends() { z=`mktemp`; apt-rdepends -d $1 | dot > $z && dotty $z }
 
 # -- Node ----------------------------------------------------------------------
 alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
@@ -36,10 +37,12 @@ alias s='subl'
 
 # -- Misc ----------------------------------------------------------------------
 alias veewee="bundle exec veewee"
-alias vpn_on="sudo nmcli c up id sony"
-alias vpn_off="sudo nmcli c down id sony"
+alias vpn-on="sudo nmcli c up id sony"
+alias vpn-off="sudo nmcli c down id sony"
 alias vps="mosh vps -p 1919"
-alias dontstarve="cd /home/karelian/_/dontstarve; sudo ./updater/22/updater; cd -"
+alias dontstarve="cd /home/karelian/_/play/dontstarve; sudo ./updater/22/updater; cd -"
+tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
+alias t="tmux attach -t base || exec tmux new -s base"
 
 # -- Vagrant -------------------------------------------------------------------
 alias vup="vagrant up --provision"
