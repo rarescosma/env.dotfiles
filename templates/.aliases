@@ -32,18 +32,22 @@ alias v.lssitepackages='lssitepackages'
 # -- PHP -----------------------------------------------------------------------
 alias cow='composer update nothing'
 
-# -- Sublime -------------------------------------------------------------------
-alias s='subl'
+# -- Editors -------------------------------------------------------------------
+alias s='dev.subl'
+alias svi='sudo vi'
 
 # -- Misc ----------------------------------------------------------------------
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias veewee="bundle exec veewee"
-alias vpn-on="sudo nmcli c up id sony"
-alias vpn-off="sudo nmcli c down id sony"
 alias vps="mosh vps -p 1919"
 alias dontstarve="cd /home/karelian/_/play/dontstarve; sudo ./updater/22/updater; cd -"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
 alias t="tmux attach -t base || exec tmux new -s base"
+alias vpn="net.vpn.toggle"
 
 # -- Vagrant -------------------------------------------------------------------
-alias vup="vagrant up --provision"
+alias vup="vagrant up --no-provision"
+alias vupp="vagrant up --provision"
+alias vprov="vagrant provision"
 alias vdown="vagrant halt"
+alias vssh="vagrant ssh"
