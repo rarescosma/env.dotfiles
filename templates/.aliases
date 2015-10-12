@@ -7,6 +7,7 @@ alias sa='sudo apt-get'
 alias sai='sudo apt-get install'
 alias sau='sudo apt-get update'
 alias saug='sudo apt-get upgrade'
+alias sadug='sudo apt-get dist-upgrade'
 alias sar='sudo apt-get remove'
 alias sap='sudo apt-get --purge autoremove'
 alias sac='sudo apt-get autoclean'
@@ -35,6 +36,7 @@ alias cow='composer update nothing'
 # -- Editors -------------------------------------------------------------------
 alias s='dev.subl'
 alias svi='sudo vi'
+bag() { dev.subl $(ag -l $1 | percol) }
 
 # -- Misc ----------------------------------------------------------------------
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
