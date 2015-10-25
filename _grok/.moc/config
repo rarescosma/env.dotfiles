@@ -1,0 +1,8 @@
+Theme = ric
+MusicDir = /home/karelian/_/media/audio
+ShowTime = no
+Keymap = keymap
+StartInMusicDir = yes 
+FastDir1 = /home/karelian/_/media/audio
+PlaylistFullPaths = no
+
