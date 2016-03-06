@@ -53,3 +53,4 @@ alias vupp="vagrant up --provision"
 alias vprov="vagrant provision"
 alias vdown="vagrant halt"
 alias vssh="vagrant ssh"
+vcmd() { XS=""; for X in "$@"; do XS="${XS} \"${X}\""; done; vssh -c $XS }
