@@ -1,4 +1,0 @@
-
-sudo apt-get update
-sudo apt-get --yes --quiet install $PKGS
-eval $POSTFIX
