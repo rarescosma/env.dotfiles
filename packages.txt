@@ -54,6 +54,7 @@ thefuck
 thunar
 tmux
 ttf-dejavu
+ttf-ms-fonts
 xautolock
 xclip
 xcwd-git
