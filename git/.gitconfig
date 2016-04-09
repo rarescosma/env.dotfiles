@@ -1,0 +1,24 @@
+[user]
+    name = Rares Cosma
+    email = office@rarescosma.com
+[core]
+    editor = subl3
+    excludesfile = ~/.gitexcludes
+[color]
+    ui = true
+[push]
+    default = tracking
+[include]
+    path = ~/.gitconfig_local
+[merge]
+    tool = meld
+[mergetool "meld"]
+    keepBackup = false
+[alias]
+     # Undo / Ammend
+    undo = reset --soft HEAD^
+    ammend = commit --amend -C HEAD
+
+    # Push all / Pull all
+    pushall = push --recurse-submodules=on-demand
+    pullall = !git pull && git submodule update --init --recursive

@@ -1,0 +1,42 @@
+# -- Navigation ----------------------------------------------------------------
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+# -- APT -----------------------------------------------------------------------
+alias sa='sudo apt-get'
+alias sai='sudo apt-get install'
+alias sau='sudo apt-get update'
+alias saug='sudo apt-get upgrade'
+alias sadug='sudo apt-get dist-upgrade'
+alias sar='sudo apt-get remove'
+alias sap='sudo apt-get --purge autoremove'
+alias sac='sudo apt-get autoclean'
+alias ac='apt-cache'
+depends() { z=`mktemp`; apt-rdepends -d $1 | dot > $z && dotty $z }
+
+# -- Node ----------------------------------------------------------------------
+alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
+alias npm.cleanhome='rm -rf ~/.npm-packages'
+
+# -- PHP -----------------------------------------------------------------------
+alias cow='composer update nothing'
+
+# -- Editors -------------------------------------------------------------------
+alias s='subl3'
+alias svi='sudo vim'
+bag() { subl3 $(ag -l $1 | percol) }
+
+# -- Misc ----------------------------------------------------------------------
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias vps="mosh vps -p 1919"
+tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
+alias t="tmux attach -t base || exec tmux new -s base"
+alias vpn="(nmcli c show --active | grep sony) || nmcli c up sony"
+
+# -- Vagrant -------------------------------------------------------------------
+alias vup="vagrant up --no-provision"
+alias vupp="vagrant up --provision"
+alias vprov="vagrant provision"
+alias vdown="vagrant halt"
+alias vssh="vagrant ssh"
+vcmd() { XS=""; for X in "$@"; do XS="${XS} \"${X}\""; done; vssh -c $XS }

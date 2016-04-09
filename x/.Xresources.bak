@@ -1,0 +1,102 @@
+! Fonts {{{
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+Xft.dpi:       180 
+! }}}
+
+URxvt*termName:  rxvt-unicode
+URxvt*scrollTtyKeypress:  true
+URxvt*scrollTtyOutput:  false
+URxvt*scrollWithBuffer:  false
+URxvt*skipScroll:  true
+URxvt*visualBell:  false
+
+! Copypaste
+! ---------
+URxvt.iso14755: False
+URxvt.iso14755_52: False
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.Control-v: perl:clipboard:paste
+URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+
+! Colors
+! ------
+
+#define Ansi_0_Color #343935
+#define Ansi_1_Color #cf3f61
+#define Ansi_10_Color #767f2c
+#define Ansi_11_Color #78592f
+#define Ansi_12_Color #1f8fc2
+#define Ansi_13_Color #604291
+#define Ansi_14_Color #76bbca
+#define Ansi_15_Color #b2b5ae
+#define Ansi_2_Color #7bb75b
+#define Ansi_3_Color #e9b32a
+#define Ansi_4_Color #4c9ad4
+#define Ansi_5_Color #a57fc4
+#define Ansi_6_Color #389aad
+#define Ansi_7_Color #fafaf6
+#define Ansi_8_Color #595b59
+#define Ansi_9_Color #d18fa6
+#define Background_Color #1e1e1e
+#define Bold_Color #fffffa
+#define Cursor_Color #edcf4f
+#define Cursor_Text_Color #343935
+#define Foreground_Color #edebd4
+#define Selected_Text_Color #f7f6ec
+#define Selection_Color #175877
+
+!Rxvt*depth: 32
+Rxvt*color0:       Ansi_0_Color
+Rxvt*color1:       Ansi_1_Color
+Rxvt*color2:       Ansi_2_Color
+Rxvt*color3:       Ansi_3_Color
+Rxvt*color4:       Ansi_4_Color
+Rxvt*color5:       Ansi_5_Color
+Rxvt*color6:       Ansi_6_Color
+Rxvt*color7:       Ansi_7_Color
+Rxvt*color8:       Ansi_8_Color
+Rxvt*color9:       Ansi_9_Color
+Rxvt*color10:      Ansi_10_Color
+Rxvt*color11:      Ansi_11_Color
+Rxvt*color12:      Ansi_12_Color
+Rxvt*color13:      Ansi_13_Color
+Rxvt*color14:      Ansi_14_Color
+Rxvt*color15:      Ansi_15_Color
+Rxvt*colorBD:      Bold_Color
+Rxvt*colorIT:      Italic_Color
+Rxvt*colorUL:      Underline_Color
+Rxvt*foreground:   Foreground_Color
+Rxvt*background:   Background_Color
+Rxvt*cursorColor:  Cursor_Color
+
+!URxvt*background: rgba:0000/1600/2a00/f000
+!URxvt*foreground:              #839496
+!URxvt*foreground:              #b1bcbd
+!URxvt*foreground:              #839496
+!URxvt*fading:                  20
+!URxvt*fadeColor:               #002b36
+!URxvt*cursorColor:             #93a1a1
+!URxvt*pointerColorBackground:  #586e75
+!URxvt*pointerColorForeground:  #93a1a1
+
+!URxvt*color0:                  #073642
+!URxvt*color1:                  #dc322f
+!URxvt*color2:                  #859900
+!URxvt*color3:                  #b58900
+!URxvt*color4:                  #268bd2
+!URxvt*color5:                  #d33682
+!URxvt*color6:                  #2aa198
+!URxvt*color7:                  #eee8d5
+!URxvt*color8:                  #002b36
+!URxvt*color9:                  #cb4b16
+!URxvt*color10:                 #586e75
+!URxvt*color11:                 #657b83
+!URxvt*color12:                 #839496
+!URxvt*color12:                 #e8ebec
+!URxvt*color12:                 #b1bcbd
+!URxvt*color13:                 #6c71c4
+!URxvt*color14:                 #93a1a1
+!URxvt*color15:                 #fdf6e3
