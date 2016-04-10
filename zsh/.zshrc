@@ -85,9 +85,9 @@ function test_identities {
 
 # -- Wisdom --------------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  #initialise_ssh_agent
   exec startx -- -dpi 192
 else
-  initialise_ssh_agent
   clear
   fortune -a /usr/share/fortune/southpark | cowsay -f tux
 fi

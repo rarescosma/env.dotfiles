@@ -96,11 +96,16 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+g focus child
 
+set $workspace1 workspace "1: sh"
+set $workspace2 workspace "2: www"
+set $workspace3 workspace "3: subl"
+set $workspace4 workspace "4: misc"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 $workspace1
+bindsym $mod+2 $workspace2
+bindsym $mod+3 $workspace3
+bindsym $mod+4 $workspace4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -109,16 +114,20 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+1 move container to $workspace1
+bindsym $mod+Shift+2 move container to $workspace2
+bindsym $mod+Shift+3 move container to $workspace3
+bindsym $mod+Shift+4 move container to $workspace4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+for_window [class="Subl3"] move to $workspace3, layout tabbed
+for_window [class="chromium"] move to $workspace2, layout tabbed
+focus_on_window_activation focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,12 +190,13 @@ set $Locker ~/.i3/locker.sh
 exec --no-startup-id $Locker -c 000000
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift-gtk -t 5500:4800 -l 46.77:23.62
 exec --no-startup-id pa-applet
 exec --no-startup-id parcellite
 exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
 exec --no-startup-id dropboxd
+exec urxvt -e sh -c "tmux attach -t base || tmux new-session -s base"
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
@@ -232,3 +242,7 @@ mode "$mode_session" {
 }
 
 bindsym $mod+i mode "$mode_session"
+
+bindsym $mod+t [instance="^scratchpad$"] scratchpad show
+exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
+for_window [instance="^scratchpad$"] move scratchpad

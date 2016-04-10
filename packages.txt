@@ -57,6 +57,7 @@ ttf-dejavu
 ttf-ms-fonts
 xautolock
 xclip
+xdotool
 xcwd-git
 yaourt
 zsh

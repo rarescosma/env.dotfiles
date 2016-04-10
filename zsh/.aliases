@@ -24,7 +24,10 @@ alias cow='composer update nothing'
 # -- Editors -------------------------------------------------------------------
 alias s='subl3'
 alias svi='sudo vim'
-bag() { subl3 $(ag -l $1 | percol) }
+bag() {
+  subl3 $(ag -l $1 | percol)
+  i3-msg '[instance="^scratchpad$"]' scratchpad show
+}
 
 # -- Misc ----------------------------------------------------------------------
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
