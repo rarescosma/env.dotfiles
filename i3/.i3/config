@@ -41,7 +41,7 @@ bindsym $mod+Shift+q kill
 bindsym $alt+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 15 -p 'dmenu'"
 
 # start winmenu (dmenu wrapper for switching windows)
-bindsym $mod+c exec --no-startup-id ~/.i3/python/winmenu.py
+bindsym $mod+space exec --no-startup-id ~/.i3/python/winmenu.py
 
 # change focus
 bindsym $mod+h focus left
@@ -79,7 +79,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+d layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -88,7 +88,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $alt+Tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -98,43 +98,28 @@ bindsym $mod+g focus child
 
 set $workspace1 workspace "1: sh"
 set $workspace2 workspace "2: www"
-set $workspace3 workspace "3: subl"
-set $workspace4 workspace "4: misc"
+set $workspace3 workspace "e: subl"
+set $workspace4 workspace "c: misc"
 
 # switch to workspace
 bindsym $mod+1 $workspace1
 bindsym $mod+2 $workspace2
-bindsym $mod+3 $workspace3
-bindsym $mod+4 $workspace4
+bindsym $mod+e $workspace3
+bindsym $mod+c $workspace4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to $workspace1
 bindsym $mod+Shift+2 move container to $workspace2
-bindsym $mod+Shift+3 move container to $workspace3
-bindsym $mod+Shift+4 move container to $workspace4
+bindsym $mod+Shift+e move container to $workspace3
+bindsym $mod+Shift+c move container to $workspace4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-
-for_window [class="Subl3"] move to $workspace3, layout tabbed
-for_window [class="chromium"] move to $workspace2, layout tabbed
-focus_on_window_activation focus
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -144,16 +129,16 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym $mod+h resize shrink width 10 px or 10 ppt
-    bindsym $mod+j resize grow height 10 px or 10 ppt
-    bindsym $mod+k resize shrink height 10 px or 10 ppt
-    bindsym $mod+l resize grow width 10 px or 10 ppt
+    bindsym $mod+h resize shrink width 20 px or 20 ppt
+    bindsym $mod+j resize grow height 20 px or 20 ppt
+    bindsym $mod+k resize shrink height 20 px or 20 ppt
+    bindsym $mod+l resize grow width 20 px or 20 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 20 px or 20 ppt
+    bindsym Down resize grow height 20 px or 20 ppt
+    bindsym Up resize shrink height 20 px or 20 ppt
+    bindsym Right resize grow width 20 px or 20 ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -196,7 +181,7 @@ exec --no-startup-id parcellite
 exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
 exec --no-startup-id dropboxd
-exec urxvt -e sh -c "tmux attach -t base || tmux new-session -s base"
+exec --no-startup-id urxvt -e sh -c "tmux attach -t base || tmux new-session -s base"
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
@@ -205,21 +190,20 @@ exec --no-startup-id ~/.i3/wallpaper.sh
 new_window pixel
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+# System menu
+set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
@@ -229,6 +213,14 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Escape mode "$mode_system"
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# reload the configuration file
+# bindsym $mod+Ctrl+c reload
+# exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Session management
 set $mode_session Session (s) save, (r) restore
@@ -243,6 +235,12 @@ mode "$mode_session" {
 
 bindsym $mod+i mode "$mode_session"
 
-bindsym $mod+t [instance="^scratchpad$"] scratchpad show
+# Application management
+focus_on_window_activation focus
+for_window [class="chromium"] move to $workspace2, layout tabbed
+for_window [class="Subl3"] move to $workspace3, layout tabbed
+
+# Scratchpad
+bindsym $mod+0x60 [instance="^scratchpad$"] scratchpad show
 exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
 for_window [instance="^scratchpad$"] move scratchpad
