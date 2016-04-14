@@ -6,8 +6,8 @@ Xft.hintstyle: hintfull
 Xft.dpi:       180 
 ! }}}
 
-URxvt.font:xft:DejaVu Sans Mono:pixelsize=24:weight=normal
-URxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=24:weight=semibold
+URxvt.font:xft:DejaVu Sans Mono:pixelsize=26:weight=normal
+URxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=26:weight=semibold
 !URxvt.letterSpace: -1
 
 URxvt*termName:  rxvt-unicode
