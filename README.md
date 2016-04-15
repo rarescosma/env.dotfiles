@@ -18,10 +18,6 @@ make
 
 To perform a system wide update you can execute `update` from within a [zsh][] shell.
 
-## Author
-
-[Rares Cosma][site]
-
 ## Unlicenced
 
 Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
@@ -33,8 +29,8 @@ Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
 Do what you want. Learn as much as you can. Unlicense more software.
 
 [unlicense]: http://unlicense.org/
-[site]: http://getbetter.ro/
 [arch]: https://www.archlinux.org/
 [stow]: http://www.gnu.org/software/stow/
 [yaourt]: https://aur.archlinux.org/packages/yaourt/
+[zsh]: https://wiki.archlinux.org/index.php/zsh
 [infinality]: https://wiki.archlinux.org/index.php/Infinality
