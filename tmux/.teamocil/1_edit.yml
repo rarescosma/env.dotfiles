@@ -1,0 +1,6 @@
+windows:
+  - name: dev
+    layout: even-horizontal
+    panes:
+      - echo "TODO"
+      - echo "TODO"

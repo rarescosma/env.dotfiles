@@ -33,6 +33,7 @@ for_window [window_role="task_dialog"] floating enable
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+t exec /home/karelian/.tmux_launch.sh "1_edit"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -96,9 +97,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+g focus child
 
-set $editor_ws workspace "1: edit"
-set $misc_ws   workspace "2: misc"
-set $term_ws   workspace "3: sh"
+set $editor_ws workspace "1_edit"
+set $misc_ws   workspace "2_misc"
+set $term_ws   workspace "3_sh"
 
 # switch to workspace
 bindsym $mod+1 $editor_ws
@@ -183,7 +184,6 @@ exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
 exec --no-startup-id dropboxd
 exec --no-startup-id autokey-gtk
 exec --no-startup-id subl3
-#exec --no-startup-id urxvt -e sh -c "tmux attach -t base || tmux new-session -s base"
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
