@@ -36,14 +36,14 @@ if [[ -f "$HOME/.aliases" ]]; then
     source $HOME/.aliases
 fi
 
+# -- Agent ---------------------------------------------------------------------
+envoy -t ssh-agent
+source <(envoy -p)
 
 # -- Wisdom --------------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 192
 else
-  if [[ -f "$HOME/.ssh/init_agent.zsh" ]]; then
-    source $HOME/.ssh/init_agent.zsh
-  fi
   clear
   fortune -a /usr/share/fortune/southpark | cowsay -f tux
 fi

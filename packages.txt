@@ -3,10 +3,10 @@ cmake
 cowsay
 dmenu
 dunst
+envoy
 feh
 git
 gnome-keyring
-gnome-ssh-askpass2
 gnome-themes-standard
 gst-libav
 gst-plugins-bad
