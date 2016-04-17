@@ -3,8 +3,8 @@
 ZSH="$HOME/.oh-my-zsh"
 
 # -- Editor --------------------------------------------------------------------
-EDITOR="subl3"
-VISUAL="subl3"
+export EDITOR="subl3"
+export VISUAL="subl3"
 
 # -- Theme ---------------------------------------------------------------------
 # Set name of the theme to load.
@@ -12,11 +12,6 @@ VISUAL="subl3"
 ZSH_THEME="ric"
 
 # -- Plugins -------------------------------------------------------------------
-# Plugins can be found in <%- paths.oh_my_zsh %>/plugins/
-# Custom plugins may be added to <%- paths.oh_my_zsh %>/custom/plugins/
-#
-# Which plugins would you like to load?
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(archlinux git)
 
 # -- Env -----------------------------------------------------------------------
@@ -36,15 +31,15 @@ if [[ -f "$HOME/.aliases" ]]; then
     source $HOME/.aliases
 fi
 
-# -- Agent ---------------------------------------------------------------------
-envoy -t ssh-agent
-source <(envoy -p)
-
-# -- Wisdom --------------------------------------------------------------------
+# -- X11 -----------------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 192
 else
+  # -- Agent -------------------------------------------------------------------
+  envoy -t ssh-agent
+  source <(envoy -p)
+
+  # -- Wisdom ------------------------------------------------------------------
   clear
   fortune -a /usr/share/fortune/southpark | cowsay -f tux
 fi
-

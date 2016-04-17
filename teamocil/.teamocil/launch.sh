@@ -1,14 +1,12 @@
 #!/bin/sh
 
-i3-msg "workspace $1"
-
 tmux has-session -t $1
 
 RETVAL=$?
 
 if [ $RETVAL -eq 0 ]; then
     URXVT_C="tmux a -t $1"
-    urxvt -e bash -c "$URXVT_C" &
+    urxvt -e zsh -c "$URXVT_C" &
 else
     URXVT_C="tmux new -s $1"
     urxvt -e zsh -c "$URXVT_C" &

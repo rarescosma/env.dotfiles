@@ -31,9 +31,12 @@ floating_modifier $mod
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
-# start a terminal
+# terminals
 bindsym $mod+Return exec urxvt
-bindsym $mod+t exec /home/karelian/.tmux_launch.sh "1_edit"
+bindsym $mod+t exec /home/karelian/.teamocil/launch.sh "teamocil"
+bindsym $mod+0x60 [instance="^scratchpad$"] scratchpad show; move absolute position 1935px 455px; resize set 1250px 1300px
+exec_always --no-startup-id flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
+for_window [instance="^scratchpad$"] move scratchpad; sticky enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -97,9 +100,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+g focus child
 
-set $editor_ws workspace "1_edit"
-set $misc_ws   workspace "2_misc"
-set $term_ws   workspace "3_sh"
+set $editor_ws workspace "1: edit"
+set $misc_ws   workspace "2: misc"
+set $term_ws   workspace "3: sh"
 
 # switch to workspace
 bindsym $mod+1 $editor_ws
@@ -183,7 +186,7 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
 exec --no-startup-id dropboxd
 exec --no-startup-id autokey-gtk
-exec --no-startup-id subl3
+exec subl3
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
@@ -245,8 +248,3 @@ focus_follows_mouse no
 hide_edge_borders both
 for_window [class="Slack"] move to $misc_ws, layout tabbed
 for_window [class="Subl3"] move to $edit_ws, layout tabbed
-
-# Scratchpad
-bindsym $mod+0x60 [instance="^scratchpad$"] scratchpad show; move absolute position 1935px 455px; resize set 1250px 1300px
-exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
-for_window [instance="^scratchpad$"] move scratchpad; sticky enable
