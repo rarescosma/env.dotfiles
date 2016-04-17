@@ -12,7 +12,7 @@ export VISUAL="subl3"
 ZSH_THEME="ric"
 
 # -- Plugins -------------------------------------------------------------------
-plugins=(archlinux git)
+plugins=(archlinux extract git z zsh-syntax-highlighting)
 
 # -- Env -----------------------------------------------------------------------
 if [[ -f "$HOME/.env" ]]; then
@@ -20,6 +20,7 @@ if [[ -f "$HOME/.env" ]]; then
 fi
 
 # -- Oh My Zsh -----------------------------------------------------------------
+DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 
 # -- Options -------------------------------------------------------------------
