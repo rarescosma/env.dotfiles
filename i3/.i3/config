@@ -186,12 +186,14 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
 exec --no-startup-id dropboxd
 exec --no-startup-id autokey-gtk
+exec --no-startup-id ~/src/cloudy/watcher.py
+exec --no-startup-id syndaemon -i 1 -t -k
 exec subl3
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
 
-# No title bars. Doesn't play well with compton and MOAR SPACE!
+# No title bars
 new_window pixel 1
 
 # Sreen brightness controls
@@ -202,6 +204,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshots
+bindsym 0xff61 exec escrotum -s "~/Dropbox/Public/Shots/$(date '+%y%m%d_%H:%M:%S')_$(openssl rand -hex 16).png"
 
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
