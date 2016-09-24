@@ -72,10 +72,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+x split v
+bindsym $mod+o split v
 
 # split in vertical orientation
-bindsym $mod+v split h
+bindsym $mod+e split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -100,14 +100,14 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+g focus child
 
-set $editor_ws workspace "1: edit"
-set $misc_ws   workspace "2: misc"
-set $term_ws   workspace "3: sh"
+set $www_ws  workspace "1: www"
+set $com_ws  workspace "2: com"
+set $sh_ws   workspace "3: sh"
 
 # switch to workspace
-bindsym $mod+1 $editor_ws
-bindsym $mod+2 $misc_ws
-bindsym $mod+3 $term_ws
+bindsym $mod+1 $www_ws
+bindsym $mod+2 $com_ws
+bindsym $mod+3 $sh_ws
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -115,14 +115,17 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to $editor_ws
-bindsym $mod+Shift+2 move container to $misc_ws
-bindsym $mod+Shift+3 move container to $term_ws
+bindsym $mod+Shift+1 move container to $www_ws
+bindsym $mod+Shift+2 move container to $com_ws
+bindsym $mod+Shift+3 move container to $sh_ws
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
+
+# Move the current workspace to the next output
+bindsym $mod+x move workspace to output right
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,7 +178,7 @@ bar {
 # Power management
 set $Locker ~/.i3/locker.sh
 
-# Start background processes.
+# Start background processes
 exec --no-startup-id $Locker -c 000000
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
@@ -188,7 +191,6 @@ exec --no-startup-id dropboxd
 exec --no-startup-id autokey-gtk
 exec --no-startup-id ~/src/cloudy/watcher.py
 exec --no-startup-id syndaemon -i 1 -t -k
-exec subl3
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
@@ -251,5 +253,7 @@ bindsym $mod+i mode "$mode_session"
 focus_on_window_activation focus
 focus_follows_mouse no
 hide_edge_borders both
-for_window [class="Slack"] move to $misc_ws, layout tabbed
-for_window [class="Subl3"] move to $edit_ws, layout tabbed
+
+for_window [class="Slack"] move to $com_ws, layout tabbed
+for_window [class="google-chrome-beta"] move to $www_ws, layout tabbed
+#for_window [class="URxvt"] move to $sh_ws, layout tabbed
