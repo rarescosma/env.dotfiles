@@ -44,3 +44,4 @@ else
   clear
   fortune -a /usr/share/fortune/southpark | cowsay -f tux
 fi
+
