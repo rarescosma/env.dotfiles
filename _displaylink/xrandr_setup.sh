@@ -27,6 +27,9 @@
 # Fill in MAINOUTPUT, MAINPROVIDER, WIDTH, HEIGHT, and REFRESH with your own
 # values before use.
 
+# First things first - start the displaylink service
+sudo systemctl start displaylink.service && sleep 3
+
 MAINOUTPUT="eDP1"  # Obtained from xrandr --current
 MAINPROVIDER="0"   # Obtained from xrandr --listproviders
 WIDTH="1920"       # Width of DisplayLink monitor in pixels
