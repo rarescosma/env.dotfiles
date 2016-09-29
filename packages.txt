@@ -25,6 +25,7 @@ librsvg
 lxc
 mc
 meld
+mocp
 ncdu
 network-manager-applet
 network-manager-openvpn
