@@ -5,6 +5,7 @@ ZSH="$HOME/.oh-my-zsh"
 # -- Editor --------------------------------------------------------------------
 export EDITOR="subl3"
 export VISUAL="subl3"
+umask 002
 
 # -- Theme ---------------------------------------------------------------------
 # Set name of the theme to load.
@@ -12,7 +13,7 @@ export VISUAL="subl3"
 ZSH_THEME="ric"
 
 # -- Plugins -------------------------------------------------------------------
-plugins=(archlinux extract git z zsh-syntax-highlighting)
+plugins=(archlinux extract git z lxd zsh-syntax-highlighting)
 
 # -- Env -----------------------------------------------------------------------
 if [[ -f "$HOME/.env" ]]; then
