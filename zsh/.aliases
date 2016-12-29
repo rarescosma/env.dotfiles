@@ -37,6 +37,9 @@ alias vps="mosh vps -p 1919"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
 alias t="tmux attach -t base || exec tmux new -s base"
 alias vpn="(nmcli c show --active | grep sony) || nmcli c up sony"
+alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}" | grep -v pause'
+alias bup='sudo systemctl start bubbleupnpserver.service'
+
 
 # -- Vagrant -------------------------------------------------------------------
 alias vup="vagrant up --no-provision"
