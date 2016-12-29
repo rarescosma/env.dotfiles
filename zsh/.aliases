@@ -3,16 +3,18 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 
 # -- APT -----------------------------------------------------------------------
-alias sa='sudo apt-get'
-alias sai='sudo apt-get install'
-alias sau='sudo apt-get update'
-alias saug='sudo apt-get upgrade'
-alias sadug='sudo apt-get dist-upgrade'
-alias sar='sudo apt-get remove'
-alias sap='sudo apt-get --purge autoremove'
-alias sac='sudo apt-get autoclean'
-alias ac='apt-cache'
-depends() { z=`mktemp`; apt-rdepends -d $1 | dot > $z && dotty $z }
+if [ -x apt ]; then
+  alias sa='sudo apt-get'
+  alias sai='sudo apt-get install'
+  alias sau='sudo apt-get update'
+  alias saug='sudo apt-get upgrade'
+  alias sadug='sudo apt-get dist-upgrade'
+  alias sar='sudo apt-get remove'
+  alias sap='sudo apt-get --purge autoremove'
+  alias sac='sudo apt-get autoclean'
+  alias ac='apt-cache'
+  depends() { z=`mktemp`; apt-rdepends -d $1 | dot > $z && dotty $z }
+fi
 
 # -- Node ----------------------------------------------------------------------
 alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
