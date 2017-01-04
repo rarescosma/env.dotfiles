@@ -48,3 +48,8 @@ alias vprov="vagrant provision"
 alias vdown="vagrant halt"
 alias vssh="vagrant ssh"
 vcmd() { XS=""; for X in "$@"; do XS="${XS} \"${X}\""; done; vssh -c $XS }
+
+# -- Tomb ----------------------------------------------------------------------
+alias to='tomb open ~/Dropbox/secure.tomb -k ~/Dropbox/secure.key -f'
+alias ts='tomb slam'
+
