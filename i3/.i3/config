@@ -33,7 +33,7 @@ for_window [window_role="task_dialog"] floating enable
 
 # terminals
 bindsym $mod+Return exec urxvt
-bindsym $mod+t exec /home/karelian/.teamocil/launch.sh "teamocil"
+# bindsym $mod+t exec /home/karelian/.teamocil/launch.sh "teamocil"
 bindsym $mod+0x60 [instance="^scratchpad$"] scratchpad show; move absolute position 1935px 455px; resize set 1250px 1300px
 exec_always --no-startup-id flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
 for_window [instance="^scratchpad$"] move scratchpad; sticky enable
