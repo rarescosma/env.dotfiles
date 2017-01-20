@@ -1,6 +1,0 @@
-windows:
-  - name: teamocil
-    layout: even-horizontal
-    panes:
-      - clear
-      - clear
