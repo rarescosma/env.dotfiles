@@ -33,7 +33,7 @@ for_window [window_role="task_dialog"] floating enable
 
 # terminals
 bindsym $mod+Return exec urxvt
-# bindsym $mod+t exec /home/karelian/.teamocil/launch.sh "teamocil"
+bindsym $mod+t exec thunar
 bindsym $mod+0x60 [instance="^scratchpad$"] scratchpad show; move absolute position 1935px 455px; resize set 1250px 1300px
 exec_always --no-startup-id flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
 for_window [instance="^scratchpad$"] move scratchpad; sticky enable
@@ -208,7 +208,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots
-bindsym 0xff61 exec escrotum -s "~/Dropbox/Public/Shots/$(date '+%y%m%d_%H:%M:%S')_$(openssl rand -hex 16).png"
+bindsym 0xff61 exec escrotum -s "~/Dropbox/Public/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
