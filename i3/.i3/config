@@ -254,6 +254,7 @@ focus_on_window_activation focus
 focus_follows_mouse no
 hide_edge_borders both
 
-for_window [class="Slack"] move to $com_ws, layout tabbed
-for_window [class="google-chrome-beta"] move to $www_ws, layout tabbed
-#for_window [class="URxvt"] move to $sh_ws, layout tabbed
+for_window [class="google-chrome"] move to $www_ws, layout tabbed
+
+# Disable automatic rxvt reposition as it bugs the scratchpad
+# for_window [class="URxvt"] move to $sh_ws, layout tabbed
