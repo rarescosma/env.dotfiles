@@ -34,9 +34,6 @@ for_window [window_role="task_dialog"] floating enable
 # terminals
 bindsym $mod+Return exec urxvt
 bindsym $mod+t exec thunar
-bindsym $mod+0x60 [instance="^scratchpad$"] scratchpad show; move absolute position 1935px 455px; resize set 1250px 1300px
-exec_always --no-startup-id flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
-for_window [instance="^scratchpad$"] move scratchpad; sticky enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -170,7 +167,7 @@ bar {
     }
     # i3bar position
     position top
-    output eDP1
+    output DP1
     # Using custom i3status.conf
     status_command i3status -c ~/.i3/i3status.conf
 }
@@ -255,6 +252,3 @@ focus_follows_mouse no
 hide_edge_borders both
 
 for_window [class="google-chrome"] move to $www_ws, layout tabbed
-
-# Disable automatic rxvt reposition as it bugs the scratchpad
-# for_window [class="URxvt"] move to $sh_ws, layout tabbed
