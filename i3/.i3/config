@@ -167,7 +167,7 @@ bar {
     }
     # i3bar position
     position top
-    output DP1
+    output eDP1
     # Using custom i3status.conf
     status_command i3status -c ~/.i3/i3status.conf
 }
