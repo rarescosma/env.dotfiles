@@ -205,7 +205,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots
-bindsym 0xff61 exec escrotum -s "~/Dropbox/Public/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+bindsym 0xff61 exec escrotum -s "~/Storage/Dropbox/Public/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
