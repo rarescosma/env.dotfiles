@@ -35,10 +35,9 @@ alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias vps="mosh vps -p 1919"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
 alias t="tmux attach -t base || exec tmux new -s base"
-alias vpn="(nmcli c show --active | grep sony) || nmcli c up sony"
 alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}" | grep -v pause'
 alias bup='sudo systemctl start bubbleupnpserver.service'
-
+alias sctl='supervisorctl'
 
 # -- Vagrant -------------------------------------------------------------------
 alias vup="vagrant up --no-provision"
