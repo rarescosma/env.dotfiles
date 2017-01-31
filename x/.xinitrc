@@ -11,10 +11,11 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
-export BROWSER="chromium"
+export BROWSER="google-chrome-stable"
 
 xrdb -merge ~/.Xresources
 setxkbmap -option ctrl:nocaps
 sudo NetworkManager
 
 exec i3
+
