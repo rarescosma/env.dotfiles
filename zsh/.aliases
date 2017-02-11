@@ -1,6 +1,14 @@
 # -- Navigation ----------------------------------------------------------------
 alias ...='cd ../../'
 alias ....='cd ../../../'
+alias lr='ls -lhR'
+ff() {
+  INAMES=()
+  for X in "$@"; do
+    INAMES+=("-iname" "*${X}*")
+  done
+  find ./ $INAMES
+}
 
 # -- APT -----------------------------------------------------------------------
 if [ -x apt ]; then
@@ -24,10 +32,13 @@ alias npm.cleanhome='rm -rf ~/.npm-packages'
 alias cow='composer update nothing'
 
 # -- Editors -------------------------------------------------------------------
-alias s='subl3'
+alias s='subl3 -b -a'
 alias svi='sudo vim'
-bag() {
-  subl3 $(ag -l $1 | percol)
+sag() {
+  s $(ag -l "$@" | percol)
+}
+sff() {
+  s $(ff "$@" | percol)
 }
 
 # -- Misc ----------------------------------------------------------------------
