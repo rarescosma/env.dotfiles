@@ -46,3 +46,15 @@ else
   fortune -a /usr/share/fortune/southpark | cowsay -f tux
 fi
 
+# ZAW
+source /src/getbetter/env.zaw/zaw.zsh
+bindkey '^R' zaw-history
+bindkey -M filterselect '^R' down-line-or-history
+bindkey -M filterselect '^S' up-line-or-history
+bindkey -M filterselect '^E' accept-search
+
+zstyle ':filter-select:highlight' matched fg=yellow
+zstyle ':filter-select' max-lines 5
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive 
+zstyle ':filter-select' extended-search yes # see below
+
