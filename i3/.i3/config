@@ -34,6 +34,7 @@ for_window [window_role="task_dialog"] floating enable
 # terminals
 bindsym $mod+Return exec urxvt
 bindsym $mod+t exec thunar
+bindsym $mod+slash exec google-chrome-stable
 
 # kill focused window
 bindsym $mod+Shift+q kill
