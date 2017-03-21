@@ -47,6 +47,7 @@ alias vps="mosh vps -p 1919"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
 alias t="tmux attach -t base || exec tmux new -s base"
 alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}" | grep -v pause'
+alias dk='docker-compose'
 alias bup='sudo systemctl start bubbleupnpserver.service'
 alias sctl='supervisorctl'
 
