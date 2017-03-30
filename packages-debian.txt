@@ -3,3 +3,6 @@ curl
 silversearcher-ag
 stow
 zsh
+fortune
+cowsay
+
