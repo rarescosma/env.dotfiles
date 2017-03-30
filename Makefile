@@ -6,6 +6,10 @@ install-packages: add-repositories
 	sudo pacman -Sy yaourt termite infinality-bundle
 	yaourt -S --needed --noconfirm `cat packages.txt`
 
+install-debian-packages:
+	sudo apt-get update
+	sudo apt-get install -y `cat packages-debian.txt`
+
 add-repositories: add-infinality-key
 	cat repositories.txt | sudo tee -a /etc/pacman.conf
 
