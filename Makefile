@@ -1,5 +1,7 @@
 default: install-packages link-config set-shell
 
+server: install-debian-packages link-config set-shell
+
 install-packages: add-repositories
 	sudo pacman -Sy yaourt termite infinality-bundle
 	yaourt -S --needed --noconfirm `cat packages.txt`
@@ -14,7 +16,7 @@ add-infinality-key:
 	sudo pacman-key --lsign-key 962DDE58
 
 link-config:
-	stow --restow `ls -d */`
+	stow -t ~ --restow `ls -d */`
 
 set-shell:
 	chsh -s `which zsh`
