@@ -11,7 +11,7 @@ ff() {
 }
 
 # -- APT -----------------------------------------------------------------------
-if [ -x apt ]; then
+if (( $+commands[apt] )); then
   alias sa='sudo apt-get'
   alias sai='sudo apt-get install'
   alias sau='sudo apt-get update'
