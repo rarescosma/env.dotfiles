@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+DOT=$( cd -P "$( dirname $(readlink -f "${BASH_SOURCE[0]}") )" && pwd )
+
+source $DOT/lib.sh
+
+xrandr --output "$internal" --auto \
+  --output "$external" --off
