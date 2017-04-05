@@ -38,3 +38,5 @@ off() {
   # switch external
   ${DOT}/internal_only
 }
+
+"$@"
