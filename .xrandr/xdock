@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -ex
+set -x
 
 DOT=$( cd -P "$( dirname $(readlink -f "${BASH_SOURCE[0]}") )" && pwd )
 
