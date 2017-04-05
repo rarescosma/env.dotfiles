@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -ex
+
+DOT=$( cd -P "$( dirname $(readlink -f "${BASH_SOURCE[0]}") )" && pwd )
+
+change_state() {
+  local new_dpi=$1
+  local new_branch=$2
+
+  pushd ${DOT}/..
+
+  # checkout the required branch
+  git checkout ${new_branch}
+
+  # re-merge resources
+  xrdb -merge ${HOME}/.Xresources
+
+  # re-set DPI
+  xrandr --dpi ${new_dpi}
+
+  # re-load the i3 config
+  i3-msg reload
+
+  popd
+}
+
+on() {
+  change_state 124 dual
+
+  # switch external
+  ${DOT}/external_only
+}
+
+off() {
+  change_state 192 master
+
+  # switch external
+  ${DOT}/internal_only
+}
