@@ -99,13 +99,13 @@ bindsym $mod+a focus parent
 bindsym $mod+g focus child
 
 set $www_ws  workspace "1: www"
-set $com_ws  workspace "2: com"
-set $sh_ws   workspace "3: sh"
+set $sh_ws   workspace "2: sh"
+set $com_ws  workspace "3: com"
 
 # switch to workspace
 bindsym $mod+1 $www_ws
-bindsym $mod+2 $com_ws
-bindsym $mod+3 $sh_ws
+bindsym $mod+2 $sh_ws
+bindsym $mod+3 $com_ws
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -114,8 +114,8 @@ bindsym $mod+8 workspace 8
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to $www_ws
-bindsym $mod+Shift+2 move container to $com_ws
-bindsym $mod+Shift+3 move container to $sh_ws
+bindsym $mod+Shift+2 move container to $sh_ws
+bindsym $mod+Shift+3 move container to $com_ws
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -250,6 +250,6 @@ bindsym $mod+i mode "$mode_session"
 # Application management
 focus_on_window_activation focus
 focus_follows_mouse no
-hide_edge_borders both
+hide_edge_borders horizontal
 
 for_window [class="google-chrome"] move to $www_ws, layout tabbed
