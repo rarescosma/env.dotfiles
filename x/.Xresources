@@ -6,8 +6,8 @@ Xft.hintstyle: hintfull
 Xft.dpi:       180
 ! }}}
 
-URxvt.font:xft:DejaVu Sans Mono:pixelsize=28:weight=normal
-URxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=28:weight=semibold
+urxvt.font:xft:DejaVu Sans Mono:pixelsize=28:weight=normal
+urxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=28:weight=semibold
 
 !URxvt.letterSpace: -1
 
@@ -20,11 +20,11 @@ URxvt*visualBell:  false
 URxvt.scrollBar: false
 
 
-! Copypaste
-! ---------
+! Copypaste / ResizeFont
+! ----------------------
 URxvt.iso14755: False
 URxvt.iso14755_52: False
-URxvt.perl-ext-common: default,clipboard
+URxvt.perl-ext-common: default,clipboard,resize-font
 URxvt.keysym.Control-v: perl:clipboard:paste
 URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 
