@@ -3,7 +3,7 @@
   email = rares@getbetter.ro
   signingkey = 0xD00EC1BBBA4D3352
 [core]
-  editor = subl3
+  editor = subl3 -n -w
   excludesfile = ~/.gitexcludes
 [color]
   ui = true
@@ -25,3 +25,5 @@
   pullall = !git pull && git submodule update --init --recursive
 [commit]
   gpgsign = true
+[http "https://gopkg.in"]
+	followRedirects = true
