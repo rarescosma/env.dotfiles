@@ -16,7 +16,7 @@
 [mergetool "meld"]
   keepBackup = false
 [alias]
-   # Undo / Ammend
+  # Undo / Ammend
   undo = reset --soft HEAD^
   ammend = commit --amend -C HEAD
 
@@ -26,4 +26,4 @@
 [commit]
   gpgsign = true
 [http "https://gopkg.in"]
-	followRedirects = true
+  followRedirects = true
