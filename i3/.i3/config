@@ -179,7 +179,6 @@ set $Locker ~/.i3/locker.sh
 # Start background processes
 exec --no-startup-id $Locker -c 000000
 exec --no-startup-id nm-applet
-exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 exec --no-startup-id redshift-gtk -t 5500:4800 -l 46.77:23.62
 exec --no-startup-id pa-applet
 exec --no-startup-id parcellite
@@ -206,7 +205,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots
-bindsym 0xff61 exec escrotum -s "~/Storage/Dropbox/Public/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+bindsym 0xff61 exec escrotum -s "~/Storage/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
