@@ -4,7 +4,7 @@ ZSH="$HOME/.oh-my-zsh"
 
 # -- Editor --------------------------------------------------------------------
 export EDITOR="subl3"
-export VISUAL="subl3"
+export VISUAL="subl3 -w"
 umask 002
 
 # -- Theme ---------------------------------------------------------------------
