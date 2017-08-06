@@ -1,29 +1,29 @@
 [user]
-  name = Rareș Cosma
-  email = rares@getbetter.ro
-  signingkey = 0xD00EC1BBBA4D3352
+	name = Rareș Cosma
+	email = rares@getbetter.ro
+	signingkey = 0xD00EC1BBBA4D3352
 [core]
-  editor = subl3 -n -w
-  excludesfile = ~/.gitexcludes
+	editor = subl3 -n -w
+	excludesfile = ~/.gitexcludes
 [color]
-  ui = true
+	ui = true
 [push]
-  default = tracking
+	default = tracking
 [include]
-  path = ~/.gitconfig_local
+	path = ~/.gitconfig_local
 [merge]
-  tool = meld
+	tool = meld
 [mergetool "meld"]
-  keepBackup = false
+	keepBackup = false
 [alias]
-  # Undo / Ammend
-  undo = reset --soft HEAD^
-  ammend = commit --amend -C HEAD
+	# Undo / Ammend
+	undo = reset --soft HEAD^
+	ammend = commit --amend -C HEAD
 
-  # Push all / Pull all
-  pushall = push --recurse-submodules=on-demand
-  pullall = !git pull && git submodule update --init --recursive
+	# Push all / Pull all
+	pushall = push --recurse-submodules=on-demand
+	pullall = !git pull && git submodule update --init --recursive
 [commit]
-  gpgsign = true
+	gpgsign = true
 [http "https://gopkg.in"]
-  followRedirects = true
+	followRedirects = true
