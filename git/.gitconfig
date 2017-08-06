@@ -27,3 +27,5 @@
 	gpgsign = true
 [http "https://gopkg.in"]
 	followRedirects = true
+[rerere]
+	enabled = true

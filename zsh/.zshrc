@@ -57,4 +57,3 @@ zstyle ':filter-select:highlight' matched fg=yellow
 zstyle ':filter-select' max-lines 5
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
-
