@@ -100,12 +100,12 @@ bindsym $mod+g focus child
 
 set $www_ws  workspace "1: www"
 set $sh_ws   workspace "2: sh"
-set $com_ws  workspace "3: com"
+set $misc_ws  workspace "3: misc"
 
 # switch to workspace
 bindsym $mod+1 $www_ws
 bindsym $mod+2 $sh_ws
-bindsym $mod+3 $com_ws
+bindsym $mod+3 $misc_ws
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -115,7 +115,7 @@ bindsym $mod+8 workspace 8
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to $www_ws
 bindsym $mod+Shift+2 move container to $sh_ws
-bindsym $mod+Shift+3 move container to $com_ws
+bindsym $mod+Shift+3 move container to $misc_ws
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
