@@ -13,7 +13,7 @@ umask 002
 ZSH_THEME="ric"
 
 # -- Plugins -------------------------------------------------------------------
-plugins=(archlinux docker extract git z lxd zsh-syntax-highlighting)
+plugins=(archlinux docker extract git z lxd zsh-syntax-highlighting kubectl)
 
 # -- Env -----------------------------------------------------------------------
 if [[ -f "$HOME/.env" ]]; then
