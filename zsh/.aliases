@@ -1,7 +1,7 @@
-# -- Navigation ----------------------------------------------------------------
+# -- Editing / Nav / Fs --------------------------------------------------------
 alias ...='cd ../../'
 alias ....='cd ../../../'
-alias lr='ls -lhR'
+alias ag='ag --hidden'
 ff() {
   INAMES=()
   for X in "$@"; do
@@ -9,8 +9,38 @@ ff() {
   done
   find ./ $INAMES
 }
+alias s='subl3 -b -a'
+alias svi='sudo vim'
+sag() {
+  s $(ag -l "$@" | peco)
+}
+sff() {
+  s $(ff "$@" | peco)
+}
 
-# -- APT -----------------------------------------------------------------------
+
+# -- Containers ----------------------------------------------------------------
+alias dk='docker-compose'
+dps() {
+  docker ps $@ --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" | grep -v pause
+}
+alias k='kubectl'
+alias kcl='kubectl config get-contexts'
+alias kcu='kubectl config use-context'
+alias knl='kubectl get namespaces'
+kns() {
+  kubectl config set-context $(kubectl config current-context) --namespace="$@"
+}
+
+
+# -- Languages -----------------------------------------------------------------
+#### nodejs
+alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
+#### PHP
+alias cow='composer update nothing'
+
+
+# -- Package Management --------------------------------------------------------
 if (( $+commands[apt] )); then
   alias sa='sudo apt-get'
   alias sai='sudo apt-get install'
@@ -24,44 +54,27 @@ if (( $+commands[apt] )); then
   depends() { z=`mktemp`; apt-rdepends -d $1 | dot > $z && dotty $z }
 fi
 
-# -- Node ----------------------------------------------------------------------
-alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
-alias npm.cleanhome='rm -rf ~/.npm-packages'
 
-# -- PHP -----------------------------------------------------------------------
-alias cow='composer update nothing'
-
-# -- Editors -------------------------------------------------------------------
-alias s='subl3 -b -a'
-alias svi='sudo vim'
-sag() {
-  s $(ag -l "$@" | percol)
-}
-sff() {
-  s $(ff "$@" | percol)
-}
-
-# -- Misc ----------------------------------------------------------------------
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
-alias vps="mosh vps -p 1919"
-tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
-alias t="tmux attach -t base || exec tmux new -s base"
-dps() {
-  docker ps $@ --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" | grep -v pause
-}
-alias dk='docker-compose'
-alias bup='sudo systemctl start bubbleupnpserver.service'
-alias sctl='supervisorctl'
-
-# -- Vagrant -------------------------------------------------------------------
-alias vup="vagrant up --no-provision"
-alias vupp="vagrant up --provision"
-alias vprov="vagrant provision"
-alias vdown="vagrant halt"
-alias vssh="vagrant ssh"
-vcmd() { XS=""; for X in "$@"; do XS="${XS} \"${X}\""; done; vssh -c $XS }
-
-# -- Tomb ----------------------------------------------------------------------
+# -- Storage -------------------------------------------------------------------
 alias to='tomb open ~/tomb -k ~/heart.jpg -f'
 alias tc='tomb close'
 
+
+# -- Vagrant -------------------------------------------------------------------
+if (( $+commands[vagrant] )); then
+  alias vup="vagrant up --no-provision"
+  alias vupp="vagrant up --provision"
+  alias vprov="vagrant provision"
+  alias vdown="vagrant halt"
+  alias vssh="vagrant ssh"
+  vcmd() { XS=""; for X in "$@"; do XS="${XS} \"${X}\""; done; vssh -c $XS }
+fi
+
+
+# -- Z / Misc ------------------------------------------------------------------
+alias bup='sudo systemctl start bubbleupnpserver.service'
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias vps="mosh vps -p 1919"
+alias sctl='supervisorctl'
+alias t="tmux attach -t base || exec tmux new -s base"
+tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
