@@ -28,7 +28,7 @@ alias k='kubectl'
 alias kcl='kubectl config get-contexts'
 alias kcu='kubectl config use-context'
 alias knl='kubectl get namespaces'
-kns() {
+knu() {
   kubectl config set-context $(kubectl config current-context) --namespace="$@"
 }
 
