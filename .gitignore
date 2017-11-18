@@ -1,2 +1,5 @@
 npm-debug.log
 lockfile
+moc/.moc/*
+!moc/.moc/config
+
