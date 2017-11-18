@@ -24,9 +24,12 @@ URxvt.scrollBar: false
 ! ----------------------
 URxvt.iso14755: False
 URxvt.iso14755_52: False
-URxvt.perl-ext-common: default,clipboard,resize-font
+URxvt.perl-ext-common: default,clipboard,resize-font,matcher
 URxvt.keysym.Control-v: perl:clipboard:paste
 URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
 
 ! Colors
 ! ------
