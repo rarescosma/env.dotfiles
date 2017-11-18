@@ -1,6 +1,6 @@
 # -- Zsh -----------------------------------------------------------------------
 # Path to your oh-my-zsh configuration.
-ZSH="$HOME/.oh-my-zsh"
+ZSH="$HOME/src/env.oh-my-zsh"
 ZSH_THEME="ric"
 export ZSH_UNAME=$(uname)
 plugins=(archlinux docker git z lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
