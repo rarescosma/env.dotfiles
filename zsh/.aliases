@@ -2,7 +2,6 @@
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias ag='ag --hidden'
-alias vi='vim'
 ff() {
   INAMES=()
   for X in "$@"; do
@@ -21,7 +20,7 @@ sff() {
 vil() {
   vi "${1}" +$(< "${1}" | nl -ba -nln | peco | cut -d' ' -f1)
 }
-
+alias i='idea'
 
 # -- Containers ----------------------------------------------------------------
 alias dk='docker-compose'
@@ -36,49 +35,38 @@ knu() {
   kubectl config set-context $(kubectl config current-context) --namespace="$@"
 }
 
+# -- Cops ----------------------------------------------------------------------
+stm() {
+  q_par=''; q=''
+  [ ! -z "$@" ] && q_par='--query' && q="$@"
+
+  ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$TEAM_TAG" \
+  | grep linux | peco $q_par $q \
+  | awk {'print $2'} \
+  | xargs -I{} sh -c 'ssh {} < /dev/tty' ssh
+}
 
 # -- Languages -----------------------------------------------------------------
-#### nodejs
-alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm"
-#### PHP
-alias cow='composer update nothing'
-
-
-# -- Package Management --------------------------------------------------------
-if (( $+commands[apt] )); then
-  alias sa='sudo apt-get'
-  alias sai='sudo apt-get install'
-  alias sau='sudo apt-get update'
-  alias saug='sudo apt-get upgrade'
-  alias sadug='sudo apt-get dist-upgrade'
-  alias sar='sudo apt-get remove'
-  alias sap='sudo apt-get --purge autoremove'
-  alias sac='sudo apt-get autoclean'
-  alias ac='apt-cache'
-  depends() { z=`mktemp`; apt-rdepends -d $1 | dot > $z && dotty $z }
-fi
-
+alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.*node_modules/ {print $NF}' | xargs npm -g rm" # node
+alias cow='composer update nothing' # php
 
 # -- Storage -------------------------------------------------------------------
 alias to='tomb open ~/tomb -k ~/heart.jpg -f'
 alias tc='tomb close'
 
-
-# -- Vagrant -------------------------------------------------------------------
-if (( $+commands[vagrant] )); then
-  alias vup="vagrant up --no-provision"
-  alias vupp="vagrant up --provision"
-  alias vprov="vagrant provision"
-  alias vdown="vagrant halt"
-  alias vssh="vagrant ssh"
-  vcmd() { XS=""; for X in "$@"; do XS="${XS} \"${X}\""; done; vssh -c $XS }
-fi
-
-
 # -- Z / Misc ------------------------------------------------------------------
 alias bup='sudo systemctl start bubbleupnpserver.service'
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias derp='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias vps="mosh vps -p 1919"
 alias sctl='supervisorctl'
 alias t="tmux attach -t base || exec tmux new -s base"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
+
+# -- OSX -----------------------------------------------------------------------
+if [[ $ZSH_UNAME == 'Darwin' ]]; then
+  unalias gg 2>/dev/null
+  gg() {
+    local git_root=$(git rev-parse --show-toplevel)
+    stree $git_root
+  }
+fi

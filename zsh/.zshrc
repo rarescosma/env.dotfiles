@@ -1,26 +1,18 @@
 # -- Zsh -----------------------------------------------------------------------
 # Path to your oh-my-zsh configuration.
 ZSH="$HOME/.oh-my-zsh"
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
+ZSH_THEME="ric"
+export ZSH_UNAME=$(uname)
+plugins=(archlinux docker git z lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
 
 # -- Editor --------------------------------------------------------------------
-export EDITOR="subl3"
 export VISUAL="subl3 -w"
+export EDITOR="${VISUAL}"
 umask 002
 
-# -- Theme ---------------------------------------------------------------------
-# Set name of the theme to load.
-# Look in <%- paths.oh_my_zsh %>/themes/
-ZSH_THEME="ric"
-
-# -- Plugins -------------------------------------------------------------------
-plugins=(archlinux docker extract git z lxd zsh-syntax-highlighting kubectl)
-
 # -- Env -----------------------------------------------------------------------
-if [[ -f "$HOME/.env" ]]; then
-    source $HOME/.env
-fi
+[[ -f "$HOME/.env" ]] && source $HOME/.env
+[[ -f "$HOME/.local/env" ]] && source $HOME/.local/env
 
 # -- Oh My Zsh -----------------------------------------------------------------
 DISABLE_AUTO_UPDATE="true"
@@ -31,25 +23,11 @@ unsetopt correct_all
 unsetopt correct
 
 # -- Aliases -------------------------------------------------------------------
-if [[ -f "$HOME/.aliases" ]]; then
-    source $HOME/.aliases
-fi
+[[ -f "$HOME/.aliases" ]] && source $HOME/.aliases
+[[ -f "$HOME/.local/aliases" ]] && source $HOME/.local/aliases
 
-# -- X11 -----------------------------------------------------------------------
-if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx -- -dpi 192
-else
-  # -- Agent -------------------------------------------------------------------
-  envoy -t ssh-agent
-  source <(envoy -p)
-
-  # -- Wisdom ------------------------------------------------------------------
-  clear
-  fortune -a | cowsay -f tux
-fi
-
-# ZAW
-source $HOME/src/env.zaw/zaw.zsh
+# -- ZAW! ----------------------------------------------------------------------
+source "${HOME}/src/env.zaw/zaw.zsh"
 bindkey '^R' zaw-history
 bindkey -M filterselect '^R' down-line-or-history
 bindkey -M filterselect '^S' up-line-or-history
@@ -59,3 +37,20 @@ zstyle ':filter-select:highlight' matched fg=yellow
 zstyle ':filter-select' max-lines 5
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
+
+# -- X11 (Linux) ---------------------------------------------------------------
+if [[ $ZSH_UNAME == 'Linux' ]]; then
+  if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    exec startx -- -dpi 192
+  else
+    envoy -t ssh-agent
+    source <(envoy -p)
+    clear
+    fortune -a | cowsay -f tux
+  fi
+elif [[ $ZSH_UNAME == 'Darwin' ]]; then
+  source ~/.zsh/completions/docker.zsh-completion
+  source ~/.zsh/completions/docker-compose.zsh-completion
+  compdef _docker docker
+  compdef _docker-compose docker-compose
+fi

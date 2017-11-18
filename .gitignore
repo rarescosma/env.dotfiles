@@ -2,4 +2,5 @@ npm-debug.log
 lockfile
 moc/.moc/*
 !moc/.moc/config
+i3/.i3/backgrounds/mac/*
 
