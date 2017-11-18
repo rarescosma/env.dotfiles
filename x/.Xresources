@@ -3,11 +3,11 @@ Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
 Xft.hintstyle: hintfull
-Xft.dpi:       180
+Xft.dpi:       144
 ! }}}
 
-urxvt.font:xft:DejaVu Sans Mono:pixelsize=28:weight=normal
-urxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=28:weight=semibold
+urxvt.font:xft:Inconsolata:pixelsize=26:weight=normal
+urxvt.boldFont:xft:Inconsolata:pixelsize=26:weight=semibold
 
 !URxvt.letterSpace: -1
 

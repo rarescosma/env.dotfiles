@@ -43,11 +43,11 @@ else
 
   # -- Wisdom ------------------------------------------------------------------
   clear
-  fortune -a /usr/share/fortune/southpark | cowsay -f tux
+  fortune -a | cowsay -f tux
 fi
 
 # ZAW
-source /src/env.zaw/zaw.zsh
+source $HOME/src/env.zaw/zaw.zsh
 bindkey '^R' zaw-history
 bindkey -M filterselect '^R' down-line-or-history
 bindkey -M filterselect '^S' up-line-or-history

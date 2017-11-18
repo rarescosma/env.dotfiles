@@ -2,6 +2,7 @@
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias ag='ag --hidden'
+alias vi='vim'
 ff() {
   INAMES=()
   for X in "$@"; do
