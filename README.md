@@ -4,4 +4,4 @@
 make
 ```
 
-By default the targetet distro is Arch. If going for a Debian server instead: `make debian`
+Will target Arch by default. If going for a Debian server instead: `make debian`
