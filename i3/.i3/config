@@ -184,7 +184,7 @@ exec --no-startup-id pa-applet
 exec --no-startup-id parcellite
 exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
-exec --no-startup-id dropboxd
+exec --no-startup-id dropbox
 exec --no-startup-id autokey-gtk
 exec --no-startup-id /src/lang.python/cloudy/watcher.py
 exec --no-startup-id syndaemon -i 1 -t -k
@@ -205,7 +205,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots
-bindsym 0xff61 exec escrotum -s "~/Storage/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+bindsym XF86LaunchA exec escrotum -s "~/Storage/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
