@@ -8,7 +8,7 @@
 [color]
 	ui = true
 [push]
-	default = tracking
+	default = current
 [include]
 	path = ~/.gitconfig_local
 [merge]
