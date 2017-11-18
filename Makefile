@@ -1,23 +1,23 @@
-default: install-packages link-config set-shell
+.PHONY arch debian arch-packages debian-packages
 
-server: install-debian-packages link-config set-shell
+PACKMAN_REPOS := /etc/pacman.conf.tainted
 
-install-packages: add-repositories
+default: arch
+arch: arch-packages link-config set-shell
+debian: debian-packages link-config set-shell
+
+arch-packages: $(PACMAN_REPOS)
 	sudo pacman -Sy yaourt termite infinality-bundle
-	yaourt -S --needed --noconfirm `cat packages.txt`
+	yaourt -S --needed --noconfirm `cat .arch/packages`
 
-install-debian-packages:
+$(PACMAN_REPOS):
+	cat .arch/repos | sudo tee -a /etc/pacman.conf
+	touch $(PACMAN_REPOS)
+
+debian-packages:
 	sudo apt-get update
-	sudo apt-get install -y `cat packages-debian.txt`
-
-add-repositories: add-infinality-key
-	cat repositories.txt | sudo tee -a /etc/pacman.conf
-
-add-infinality-key:
-	sudo dirmngr &
-	sleep 1
-	sudo pacman-key -r 962DDE58
-	sudo pacman-key --lsign-key 962DDE58
+	sudo apt-get dist-upgrade -y
+	sudo apt-get install -y `cat .debian/packages`
 
 link-config:
 	stow -t ~ --restow `ls -d */`
