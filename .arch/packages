@@ -36,7 +36,7 @@ lxappearance-gtk3
 mc
 meld
 mlocate
-moc
+moc-pulse
 mplayer
 ncdu
 network-manager-applet
