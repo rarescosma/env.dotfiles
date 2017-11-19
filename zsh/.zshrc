@@ -1,6 +1,6 @@
 # -- Zsh -----------------------------------------------------------------------
 # Path to your oh-my-zsh configuration.
-ZSH="$HOME/.oh-my-zsh"
+ZSH="$HOME/src/env.oh-my-zsh"
 ZSH_THEME="ric"
 export ZSH_UNAME=$(uname)
 plugins=(archlinux docker git z lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
@@ -41,7 +41,7 @@ zstyle ':filter-select' extended-search yes # see below
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ $ZSH_UNAME == 'Linux' ]]; then
   if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx -- -dpi 192
+    exec startx -- -dpi 144
   else
     envoy -t ssh-agent
     source <(envoy -p)

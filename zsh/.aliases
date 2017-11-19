@@ -21,6 +21,10 @@ vil() {
   vi "${1}" +$(< "${1}" | nl -ba -nln | peco | cut -d' ' -f1)
 }
 alias i='idea'
+own() {
+  sudo chown -R $(id -un): .
+}
+alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,uid=$(id -u),gid=$(id -g),umask=113"
 
 # -- Containers ----------------------------------------------------------------
 alias dk='docker-compose'
@@ -51,7 +55,7 @@ alias npm.removeglobals="npm ls -gp | awk -F/ '/node_modules/ && !/node_modules.
 alias cow='composer update nothing' # php
 
 # -- Storage -------------------------------------------------------------------
-alias to='tomb open ~/tomb -k ~/heart.jpg -f'
+alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
 
 # -- Z / Misc ------------------------------------------------------------------
@@ -62,11 +66,3 @@ alias sctl='supervisorctl'
 alias t="tmux attach -t base || exec tmux new -s base"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
 
-# -- OSX -----------------------------------------------------------------------
-if [[ $ZSH_UNAME == 'Darwin' ]]; then
-  unalias gg 2>/dev/null
-  gg() {
-    local git_root=$(git rev-parse --show-toplevel)
-    stree $git_root
-  }
-fi
