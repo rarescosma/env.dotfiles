@@ -1,4 +1,4 @@
-.PHONY arch debian arch-packages debian-packages
+.PHONY: arch debian arch-packages debian-packages
 
 PACKMAN_REPOS := /etc/pacman.conf.tainted
 
