@@ -1,9 +1,9 @@
 Theme = ric
-MusicDir = /home/karelian/Storage/Music
+MusicDir = /home/karelian/Music
 ShowTime = no
 Keymap = keymap
 StartInMusicDir = yes 
-FastDir1 = /home/karelian/Storage/Music
+FastDir1 = /home/karelian/Music
 PlaylistFullPaths = no
 SoundDriver = pulseaudio
 
