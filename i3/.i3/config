@@ -196,9 +196,11 @@ exec --no-startup-id ~/.i3/wallpaper.sh
 # No title bars
 new_window pixel 1
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+# Brightness controls
+bindsym XF86MonBrightnessUp exec ~/bin/lux -a10%
+bindsym XF86MonBrightnessDown exec ~/bin/lux -s10%
+bindsym XF86KbdBrightnessUp exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -a10%
+bindsym XF86KbdBrightnessDown exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -s10%
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
