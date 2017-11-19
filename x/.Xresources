@@ -78,4 +78,4 @@ Rxvt*color15:      Ansi_15_Color
 Rxvt*colorBD:      Bold_Color
 Rxvt*foreground:   Foreground_Color
 Rxvt*background:   Background_Color
-Rxvt*cursorColor:  Cursor_Color
+Rxvt*cursorColor:  Ansi_4_Color
