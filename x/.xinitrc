@@ -15,6 +15,7 @@ export BROWSER="google-chrome-stable"
 
 xrdb -merge ~/.Xresources
 setxkbmap -option ctrl:nocaps -layout ro
+xset r rate 200 25
 sudo NetworkManager
 
 exec i3
