@@ -188,6 +188,7 @@ exec --no-startup-id dropbox
 exec --no-startup-id autokey-gtk
 exec --no-startup-id ~/src/lang.python/cloudy/watcher.py
 exec --no-startup-id syndaemon -i 1 -t -k
+exec --no-startup-id synclient RightButtonAreaLeft=1
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
