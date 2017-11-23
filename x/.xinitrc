@@ -19,4 +19,3 @@ xset r rate 300 25
 sudo NetworkManager
 
 exec i3
-

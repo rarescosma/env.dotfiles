@@ -1,13 +1,15 @@
 ! Fonts {{{
-Xft.antialias: true
-Xft.hinting:   true
-Xft.rgba:      rgb
-Xft.hintstyle: hintfull
-Xft.dpi:       144
+Xft.dpi: 144
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 ! }}}
 
-urxvt.font:xft:Inconsolata:pixelsize=26:weight=normal
-urxvt.boldFont:xft:Inconsolata:pixelsize=26:weight=semibold
+urxvt.font:xft:Inconsolata:pixelsize=24:weight=normal
+urxvt.boldFont:xft:Inconsolata:pixelsize=24:weight=semibold
 
 !URxvt.letterSpace: -1
 
