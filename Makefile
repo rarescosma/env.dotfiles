@@ -22,5 +22,11 @@ debian-packages:
 link-config:
 	stow -t ~ --restow `ls -d */`
 
+link-bin:
+	rm -rf ~/bin; mkdir -p ~/bin
+	cd $(HOME)/src/env.nodes/$(shell hostname -s)/bin && stow -t ~/bin --restow .
+	cd $(HOME)/src/env.sh && stow -t ~/bin --restow `ls -d */`
+	cd $(HOME)/Dropbox/.bin && stow -t ~/bin --restow .
+
 set-shell:
 	chsh -s `which zsh`
