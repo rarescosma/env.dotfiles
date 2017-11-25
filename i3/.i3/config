@@ -16,7 +16,7 @@ set $alt Mod1
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 9
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -34,7 +34,8 @@ for_window [window_role="task_dialog"] floating enable
 # terminals
 bindsym $mod+Return exec urxvt
 bindsym $mod+t exec thunar
-bindsym $mod+slash exec ~/bin/chrome-wrapper
+bindsym $mod+slash exec bash ~/bin/lib.sh launch::browser chromium
+bindsym $mod+Shift+slash exec bash ~/bin/lib.sh launch::browser google-chrome-stable
 
 # kill focused window
 bindsym $mod+Shift+q kill

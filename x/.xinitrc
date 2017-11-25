@@ -11,8 +11,6 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
-export BROWSER="google-chrome-stable"
-
 xrdb -merge ~/.Xresources
 setxkbmap -option ctrl:nocaps -layout ro
 xset r rate 300 25
