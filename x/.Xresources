@@ -8,8 +8,8 @@ Xft.antialias: 1
 Xft.rgba: rgb
 ! }}}
 
-urxvt.font:xft:Inconsolata:pixelsize=24:weight=normal
-urxvt.boldFont:xft:Inconsolata:pixelsize=24:weight=semibold
+urxvt.font:xft:Inconsolata:pixelsize=30:weight=normal
+urxvt.boldFont:xft:Inconsolata:pixelsize=30:weight=semibold
 
 !URxvt.letterSpace: -1
 
