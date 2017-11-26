@@ -180,7 +180,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots
-bindsym XF86LaunchA exec escrotum -s "~/Storage/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+bindsym 0xff61 exec escrotum -s "~/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+bindsym XF86LaunchA exec escrotum -s "~/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
