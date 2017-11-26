@@ -11,9 +11,8 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
-xrdb -merge ~/.Xresources
-setxkbmap -option ctrl:nocaps -layout ro
-xset r rate 300 25
-sudo NetworkManager
+if [ -x ~/bin/startup-xinit ]; then
+  ~/bin/startup-xinit
+fi
 
 exec i3

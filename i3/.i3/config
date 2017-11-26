@@ -174,22 +174,13 @@ bar {
     status_command i3status -c ~/.i3/i3status.conf
 }
 
-# Power management
+# locker
 set $Locker ~/.i3/locker.sh
-
-# Start background processes
 exec --no-startup-id $Locker -c 000000
-exec --no-startup-id nm-applet
-exec --no-startup-id redshift-gtk -t 5500:4800 -l 46.77:23.62
-exec --no-startup-id pa-applet
-exec --no-startup-id parcellite
-exec --no-startup-id thunar --daemon
-exec --no-startup-id xautolock -time 10 -locker "~/.i3/locker.sh"
-exec --no-startup-id dropbox
-exec --no-startup-id autokey-gtk
-exec --no-startup-id ~/src/lang.python/cloudy/watcher.py
-exec --no-startup-id syndaemon -i 1 -t -k
-exec --no-startup-id synclient RightButtonAreaLeft=1
+exec --no-startup-id xautolock -time 10 -locker "$Locker"
+
+# scripted startup
+exec --no-startup-id ~/bin/startup-i3
 
 # Background image
 exec --no-startup-id ~/.i3/wallpaper.sh
