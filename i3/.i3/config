@@ -198,6 +198,7 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Escape mode "$mode_system"
+bindsym XF86PowerOff mode "$mode_systeml"
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
