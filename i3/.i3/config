@@ -14,8 +14,8 @@ for_window [window_role="task_dialog"] floating enable
 # terminals
 bindsym $mod+Return exec urxvt
 bindsym $mod+t exec thunar
-bindsym $mod+slash exec bash ~/bin/lib.sh launch::browser chromium
-bindsym $mod+Shift+slash exec bash ~/bin/lib.sh launch::browser google-chrome-stable
+bindsym $mod+slash exec bash ~/bin/wm-lib.sh browser::launch chromium
+bindsym $mod+Shift+slash exec bash ~/bin/wm-lib.sh browser::launch google-chrome-stable
 
 # kill focused window
 bindsym $mod+Shift+q kill
