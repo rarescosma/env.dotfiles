@@ -32,11 +32,17 @@ dps() {
   docker ps $@ --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" | grep -v pause
 }
 alias k='kubectl'
-alias kcl='kubectl config get-contexts'
-alias kcu='kubectl config use-context'
-alias knl='kubectl get namespaces'
-knu() {
-  kubectl config set-context $(kubectl config current-context) --namespace="$@"
+kcs() {
+  q_par=''; q=''
+  [ ! -z "$@" ] && q_par='--query' && q="$@"
+  context=$(kubectl config get-contexts --no-headers | sort | peco $q_par $q | tr -s ' ' | cut -d' ' -f2)
+  [ ! -z "$context" ] && kubectl config use-context $context
+}
+kns() {
+  q_par=''; q=''
+  [ ! -z "$@" ] && q_par='--query' && q="$@"
+  ns=$(kubectl get namespaces --no-headers | sort | peco $q_par $q | tr -s ' ' | cut -d' ' -f1)
+  [ ! -z "$ns" ] && kubectl config set-context $(kubectl config current-context) --namespace="$ns"
 }
 
 # -- Cops ----------------------------------------------------------------------
