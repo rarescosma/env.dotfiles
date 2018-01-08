@@ -42,17 +42,7 @@ zplug "rupa/z", use:z.sh
 zplug load
 unalias z
 
-# -- ZAW! ----------------------------------------------------------------------
-# source "${HOME}/src/env.zaw/zaw.zsh"
-# bindkey '^R' zaw-history
-# bindkey -M filterselect '^R' down-line-or-history
-# bindkey -M filterselect '^S' up-line-or-history
-# bindkey -M filterselect '^E' accept-search
 
-# zstyle ':filter-select:highlight' matched fg=yellow
-# zstyle ':filter-select' max-lines 8
-# zstyle ':filter-select' case-insensitive yes # enable case-insensitive
-# zstyle ':filter-select' extended-search yes # see below
 
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ $ZSH_UNAME == 'Linux' ]]; then
