@@ -54,10 +54,4 @@ if [[ $ZSH_UNAME == 'Linux' ]]; then
     clear
     fortune -a | cowsay -f tux
   fi
-elif [[ $ZSH_UNAME == 'Darwin' ]]; then
-  source ~/.zsh/completions/docker.zsh-completion
-  source ~/.zsh/completions/docker-compose.zsh-completion
-  compdef _docker docker
-  compdef _docker-compose docker-compose
 fi
-
