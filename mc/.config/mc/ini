@@ -82,6 +82,8 @@ editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 
+filepos_max_saved_entries=1024
+
 [Layout]
 message_visible=1
 keybar_visible=1
@@ -92,7 +94,7 @@ menubar_visible=1
 free_space=1
 horizontal_split=0
 vertical_equal=1
-left_panel_size=102
+left_panel_size=93
 horizontal_equal=1
 top_panel_size=1
 
@@ -111,6 +113,8 @@ clipboard_paste=
 base_color=
 screen-256color=
 color_terminals=
+
+rxvt-unicode=
 
 [Panels]
 show_mini_info=true

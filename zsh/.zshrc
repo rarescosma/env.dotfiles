@@ -3,7 +3,7 @@
 ZSH="$HOME/src/env.oh-my-zsh"
 ZSH_THEME="ric"
 export ZSH_UNAME=$(uname)
-plugins=(archlinux docker git z lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
+plugins=(archlinux docker git lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
 
 # -- Editor --------------------------------------------------------------------
 export VISUAL="subl3 -w"
@@ -26,17 +26,33 @@ unsetopt correct
 [[ -f "$HOME/.aliases" ]] && source $HOME/.aliases
 [[ -f "$HOME/.local/aliases" ]] && source $HOME/.local/aliases
 
-# -- ZAW! ----------------------------------------------------------------------
-source "${HOME}/src/env.zaw/zaw.zsh"
-bindkey '^R' zaw-history
-bindkey -M filterselect '^R' down-line-or-history
-bindkey -M filterselect '^S' up-line-or-history
-bindkey -M filterselect '^E' accept-search
+# -- fzf! ----------------------------------------------------------------------
+PATH="$PATH:${HOME}/src/env.fzf/bin"
+export FZF_TMUX=1
+export FZF_DEFAULT_OPTS="--exact --extended --cycle"
+export FZ_CMD=j
+export FZ_SUBDIR_CMD=jj
 
-zstyle ':filter-select:highlight' matched fg=yellow
-zstyle ':filter-select' max-lines 8
-zstyle ':filter-select' case-insensitive yes # enable case-insensitive
-zstyle ':filter-select' extended-search yes # see below
+# source "${HOME}/src/env.fzf/shell/completion.zsh"
+source "${HOME}/src/env.fzf/shell/key-bindings.zsh"
+
+source /usr/share/zsh/scripts/zplug/init.zsh
+zplug "rarescosma/env.fz", defer:1
+zplug "rupa/z", use:z.sh
+zplug load
+unalias z
+
+# -- ZAW! ----------------------------------------------------------------------
+# source "${HOME}/src/env.zaw/zaw.zsh"
+# bindkey '^R' zaw-history
+# bindkey -M filterselect '^R' down-line-or-history
+# bindkey -M filterselect '^S' up-line-or-history
+# bindkey -M filterselect '^E' accept-search
+
+# zstyle ':filter-select:highlight' matched fg=yellow
+# zstyle ':filter-select' max-lines 8
+# zstyle ':filter-select' case-insensitive yes # enable case-insensitive
+# zstyle ':filter-select' extended-search yes # see below
 
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ $ZSH_UNAME == 'Linux' ]]; then
@@ -54,3 +70,4 @@ elif [[ $ZSH_UNAME == 'Darwin' ]]; then
   compdef _docker docker
   compdef _docker-compose docker-compose
 fi
+
