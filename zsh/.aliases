@@ -70,6 +70,6 @@ alias bup='sudo systemctl start bubbleupnpserver.service'
 alias derp='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias vps="mosh vps -p 1919"
 alias sctl='supervisorctl'
-alias t="tmux attach -t base || exec tmux new -s base"
+alias t="t -t ${HOME}/Dropbox/Tasks"
 tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
 
