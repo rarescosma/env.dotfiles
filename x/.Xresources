@@ -1,5 +1,5 @@
 ! Fonts {{{
-Xft.dpi: 144
+Xft.dpi: 124
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
@@ -8,8 +8,11 @@ Xft.antialias: 1
 Xft.rgba: rgb
 ! }}}
 
-urxvt.font:xft:Inconsolata:pixelsize=30:weight=normal
-urxvt.boldFont:xft:Inconsolata:pixelsize=30:weight=semibold
+! Fonts
+urxvt.font:           xft:Consolas:pixelsize=24
+urxvt.boldFont:       xft:Consolas:bold:pixelsize=24
+urxvt.italicFont:     xft:Consolas:italic:pixelsize=24
+urxvt.boldItalicFont: xft:Consolas:bold:italic:pixelsize=24
 
 !URxvt.letterSpace: -1
 
