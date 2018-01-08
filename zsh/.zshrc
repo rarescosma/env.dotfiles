@@ -30,19 +30,26 @@ unsetopt correct
 PATH="$PATH:${HOME}/src/env.fzf/bin"
 export FZF_TMUX=1
 export FZF_DEFAULT_OPTS="--exact --extended --cycle"
+source "${HOME}/src/env.fzf/shell/key-bindings.zsh"
+
 export FZ_CMD=j
 export FZ_SUBDIR_CMD=jj
 
-# source "${HOME}/src/env.fzf/shell/completion.zsh"
-source "${HOME}/src/env.fzf/shell/key-bindings.zsh"
+if [[ -f /usr/share/zsh/scripts/zplug/init.zsh ]]; then
+    export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
+    source /usr/share/zsh/scripts/zplug/init.zsh
 
-source /usr/share/zsh/scripts/zplug/init.zsh
-zplug "rarescosma/env.fz", defer:1
-zplug "rupa/z", use:z.sh
-zplug load
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+        echo
+    fi
+    zplug load
+fi
+
 unalias z
-
-
 
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ $ZSH_UNAME == 'Linux' ]]; then
