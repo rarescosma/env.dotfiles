@@ -45,6 +45,7 @@ kns() {
   ns=$(kubectl get namespaces --no-headers | sort | peco ${=q_par} | tr -s ' ' | cut -d' ' -f1)
   [ ! -z "$ns" ] && kubectl config set-context $(kubectl config current-context) --namespace="$ns"
 }
+alias koff='kubectl config unset current-context'
 
 # -- Cops ----------------------------------------------------------------------
 stm() {
