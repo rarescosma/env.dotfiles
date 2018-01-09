@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PLUGIN_CONFIG="${HOME}/.IntelliJIdea2017.2/config/options/trainingPlugin.xml"
+sed -i -e 's/name="passed" value="true"/name="passed" value="false"/g' ${PLUGIN_CONFIG}
+idea

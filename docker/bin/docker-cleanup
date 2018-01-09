@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -xeo pipefail
+
+docker run \
+  -v /var/run/docker.sock:/var/run/docker.sock:rw \
+  -v /var/lib/docker:/var/lib/docker:rw \
+  -e LOOP="false" -e DELAY_TIME="5" \
+  meltwater/docker-cleanup
+

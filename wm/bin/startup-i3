@@ -1,0 +1,21 @@
+#!/bin/bash
+
+dropboxd
+${HOME}/.i3/wallpaper.sh
+
+nm-applet &
+pa-applet &
+parcellite &
+autokey-gtk &
+
+thunar --daemon &
+syndaemon -i 1 -t -k &
+
+# Special Eds
+killall redshift
+redshift-gtk -t 5500:4800 -l 46.77:23.62 &
+
+kill $(pgrep -f cloudy/watcher.py)
+${HOME}/src/lang.python/cloudy/watcher.py &
+
+wait

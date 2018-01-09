@@ -9,7 +9,7 @@ Xft.rgba: rgb
 ! }}}
 
 ! Fonts
-urxvt.font:           xft:Consolas:pixelsize=24
+urxvt.font:           xft:Consolas:pixelsize=22
 urxvt.boldFont:       xft:Consolas:bold:pixelsize=24
 urxvt.italicFont:     xft:Consolas:italic:pixelsize=24
 urxvt.boldItalicFont: xft:Consolas:bold:italic:pixelsize=24
