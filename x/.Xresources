@@ -14,7 +14,7 @@ urxvt.boldFont:       xft:Consolas:bold:pixelsize=24
 urxvt.italicFont:     xft:Consolas:italic:pixelsize=24
 urxvt.boldItalicFont: xft:Consolas:bold:italic:pixelsize=24
 
-!URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 
 URxvt*termName:  rxvt-unicode
 URxvt*scrollTtyKeypress:  true
