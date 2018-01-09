@@ -29,7 +29,8 @@ unsetopt correct
 # -- fzf! ----------------------------------------------------------------------
 PATH="$PATH:${HOME}/src/env.fzf/bin"
 export FZF_TMUX=1
-export FZF_DEFAULT_OPTS="--exact --extended --cycle"
+export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
+--bind change:top --bind ctrl-e:accept"
 source "${HOME}/src/env.fzf/shell/key-bindings.zsh"
 
 export FZ_CMD=j
