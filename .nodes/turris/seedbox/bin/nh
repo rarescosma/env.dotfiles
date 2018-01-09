@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo chown ubuntu "$@"
+nh.pl /mnt/seedbox/fresh "$@"
+cp -f "$@" /mnt/seedbox/candy/
+

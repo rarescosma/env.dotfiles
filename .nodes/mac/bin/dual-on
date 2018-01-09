@@ -1,0 +1,9 @@
+#!/bin/bash
+
+dot=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
+source $dot/lib.sh
+
+# For chrome-wrapper
+touch $dot/.dual
+
+io::keyboard
