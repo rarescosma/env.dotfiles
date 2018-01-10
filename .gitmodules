@@ -1,4 +1,1 @@
-[submodule "oh-my-zsh"]
-    path = zsh/.oh-my-zsh
-    url = git@github.com:rarescosma/env.oh-my-zsh.git
 
