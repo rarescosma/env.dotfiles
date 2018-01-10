@@ -1,1 +1,7 @@
 
+[submodule "_vendor/oh-my-zsh"]
+	path = _vendor/oh-my-zsh
+	url = git@github.com:rarescosma/env.oh-my-zsh.git
+[submodule "_vendor/fzf"]
+	path = _vendor/fzf
+	url = git@github.com:rarescosma/env.fzf.git
