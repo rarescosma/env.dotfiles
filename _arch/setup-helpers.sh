@@ -22,5 +22,21 @@ pac::list() {
   comm -23 <(pacman -Qqet | sort) <(pacman -Qqg base base-devel xorg i3 | sort)
 }
 
+_completion() {
+  local fun_list=$(declare -F | cut -d ' ' -f3 | grep "^[^_]" | xargs)
+  cat <<EOF
+_completion() {
+  if (( \$COMP_CWORD < 2 )); then
+    COMPREPLY=( \$(compgen -W "${fun_list}" -- "\${COMP_WORDS[COMP_CWORD]}") )
+  else
+    COMPREPLY=""
+  fi
+  return 0
+}
+
+complete -F _completion $(basename $0)
+EOF
+}
+
 # Dispatch
 "$@"
