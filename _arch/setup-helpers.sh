@@ -2,7 +2,7 @@
 
 set -xe
 
-function net::enable_wifi() {
+net::enable_wifi() {
     IF="${IF:-wlp3s0}"
     SSID="${SSID:-getbetter}"
 
