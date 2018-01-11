@@ -17,5 +17,10 @@ net::enable_wifi() {
     dhcpcd $IF
 }
 
+pac::list() {
+  # packages from groups
+  comm -23 <(pacman -Qqet | sort) <(pacman -Qqg base base-devel xorg i3 | sort)
+}
+
 # Dispatch
 "$@"
