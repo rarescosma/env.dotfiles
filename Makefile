@@ -1,31 +1,24 @@
-.PHONY: arch debian arch-packages debian-packages
+.PHONY: arch debian arch-packages debian-packages install
 
-PACKMAN_REPOS := /etc/pacman.conf.tainted
+PACMAN_REPOS := /etc/pacman.conf.tainted
 
 default: arch
-arch: arch-packages link-config set-shell
-debian: debian-packages link-config set-shell
+arch: arch-packages install
+debian: debian-packages install
 
 arch-packages: $(PACMAN_REPOS)
-	sudo pacman -Sy yaourt termite infinality-bundle
-	yaourt -S --needed --noconfirm `cat .arch/packages`
+	sudo pacman -S --noconfirm yaourt ansible
+	#yaourt -S --needed --noconfirm `cat _arch/package.groups`
+	yaourt -S --needed --noconfirm `cat _arch/packages`
 
 $(PACMAN_REPOS):
-	cat .arch/repos | sudo tee -a /etc/pacman.conf
-	touch $(PACMAN_REPOS)
+	cat _arch/repos | sudo tee -a /etc/pacman.conf
+	sudo touch $(PACMAN_REPOS)
 
 debian-packages:
 	sudo apt-get update
 	sudo apt-get dist-upgrade -y
-	sudo apt-get install -y `cat .debian/packages`
+	sudo apt-get install -y `cat _debian/packages`
 
-link-config:
-	stow -t ~ --restow `ls -d */`
-
-link-bin:
-	rm -rf ~/bin; mkdir -p ~/bin
-	cd $(HOME)/src/env.nodes/$(shell hostname -s)/bin && stow -t ~/bin --restow .
-	cd $(HOME)/src/env.sh && stow -t ~/bin --restow `ls -d */`
-
-set-shell:
-	chsh -s `which zsh`
+install:
+	ansible-playbook _ansible/install.yaml
