@@ -30,7 +30,7 @@ unsetopt correct
 PATH="$PATH:${HOME}/src/env.fzf/bin"
 export FZF_TMUX=1
 export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
---bind change:top --bind ctrl-e:accept"
+--bind change:top --bind ctrl-e:accept --expect=enter"
 source "${HOME}/src/env.dotfiles/_vendor/fzf/shell/key-bindings.zsh"
 
 export FZ_CMD=j
