@@ -1,6 +1,6 @@
 # -- Zsh -----------------------------------------------------------------------
 # Path to your oh-my-zsh configuration.
-ZSH="$HOME/src/env.oh-my-zsh"
+ZSH="${HOME}/src/env.dotfiles/_vendor/oh-my-zsh"
 ZSH_THEME="ric"
 export ZSH_UNAME=$(uname)
 plugins=(archlinux docker git lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
@@ -31,7 +31,7 @@ PATH="$PATH:${HOME}/src/env.fzf/bin"
 export FZF_TMUX=1
 export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
 --bind change:top --bind ctrl-e:accept"
-source "${HOME}/src/env.fzf/shell/key-bindings.zsh"
+source "${HOME}/src/env.dotfiles/_vendor/fzf/shell/key-bindings.zsh"
 
 export FZ_CMD=j
 export FZ_SUBDIR_CMD=jj
@@ -59,7 +59,7 @@ if [[ $ZSH_UNAME == 'Linux' ]]; then
   else
     envoy -t ssh-agent
     source <(envoy -p)
-    clear
+#    clear
     fortune -a | cowsay -f tux
   fi
 fi
