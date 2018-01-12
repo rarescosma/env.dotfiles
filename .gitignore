@@ -4,4 +4,5 @@ moc/.moc/*
 !moc/.moc/config
 wm/.i3/backgrounds/mac/*
 *.pyc
+_ansible/*.retry
 
