@@ -3,6 +3,7 @@ lockfile
 moc/.moc/*
 !moc/.moc/config
 wm/.i3/backgrounds/mac/*
+wm/bin/*-scale
 *.pyc
 _ansible/*.retry
 
