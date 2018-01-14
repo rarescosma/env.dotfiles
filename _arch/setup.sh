@@ -28,7 +28,7 @@ bootstrap() {
   make="make -C ${dot}/.."
 
   export USER_NAME="${1}"
-  read -s -p "Pass: " USER_PASS
+  read -s -p "Pass: " USER_PASS </dev/tty
 
   # Install base packages via make
   pacman -Sy --noconfirm --needed make
