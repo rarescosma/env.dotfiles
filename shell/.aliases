@@ -81,7 +81,7 @@ _pass() {
   local fzf_cmd q_par
   fzf_cmd=$1; shift
   [ ! -z "$@" ] && q_par="--query $@"
-  lpass status -q || lpass login ${LPASS_USER}
+  lpass status -q || lpass login --trust ${LPASS_USER}
   lpass ls  | $fzf_cmd ${=q_par} -1 | awk '{print $(NF)}' | sed 's/\]//g'
 }
 pass()  { lpass show -c --password $(_pass fzf-tmux "$@") }
