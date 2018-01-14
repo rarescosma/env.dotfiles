@@ -4,11 +4,10 @@ source ${HOME}/bin/wm
 
 browser::set_scale chromium 1.75
 io::keyboard
-dpi::sublime 1.75 9
-dpi::terminal 22
-dpi::i3 9
-dpi::gtk 9
+dpi::sublime 1.75 11
+dpi::terminal 24
+dpi::i3 10
+dpi::gtk 10
 dpi::idea 26 22
 
 sudo NetworkManager
-
