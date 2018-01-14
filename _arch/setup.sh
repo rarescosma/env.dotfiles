@@ -39,7 +39,7 @@ bootstrap() {
   export USER_PASS=$(python -c "import crypt; print(crypt.crypt(\"${USER_PASS}\", \"${SALT}\"))")
   $make PLAYBOOK=bootstrap
 
-  sudo -u $USER_NAME $make PLAYBOOK=user
+  sudo -u $USER_NAME $make PLAYBOOK=user ANSIBLE_NOCOWS=1
 }
 
 _completion() {
