@@ -28,16 +28,16 @@ unsetopt correct
 [[ -f "$HOME/.local/aliases" ]] && source $HOME/.local/aliases
 
 # -- fzf! ----------------------------------------------------------------------
-PATH="$PATH:${HOME}/src/env.fzf/bin"
+PATH="$PATH:${ZSH}/../fzf/bin"
 export FZF_TMUX=1
 export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
 --bind change:top --bind ctrl-e:accept --expect=enter"
-source "${HOME}/src/env.dotfiles/_vendor/fzf/shell/key-bindings.zsh"
+source "${ZSH}/../fzf/shell/key-bindings.zsh"
 
 export FZ_CMD=j
 export FZ_SUBDIR_CMD=jj
 
-if [[ -f /usr/share/zsh/scripts/zplug/init.zsh ]]; then
+if [[ -f $ZSH/../zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
     source $ZSH/../zplug/init.zsh
 
@@ -60,7 +60,7 @@ if [[ $ZSH_UNAME == 'Linux' ]]; then
   else
     envoy -t ssh-agent
     source <(envoy -p)
-#    clear
+    clear
     fortune -a | cowsay -f tux
   fi
 fi

@@ -30,10 +30,6 @@ bootstrap() {
   export USER_NAME="${1}"
   read -s -p "Pass: " USER_PASS
 
-  # Cleanup
-  userdel $USER_NAME || true
-  rm -rf /home/$USER_NAME
-
   # Install base packages via make
   pacman -Sy --noconfirm --needed make
   $make base

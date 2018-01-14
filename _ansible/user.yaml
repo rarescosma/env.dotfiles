@@ -19,4 +19,4 @@
 
     - name: stow dotfiles
       shell: stow -d /home/{{ user }}/src/env.dotfiles -t ~/ {{ item }}
-      with_items: ['docker', 'git', 'gnupg', 'htop', 'idea', 'lang', 'mc', 'moc', 'shell', 'vim', 'wm']
+      with_items: ['devel', 'git', 'gnupg', 'htop', 'mc', 'moc', 'net', 'shell', 'vim', 'wm']
