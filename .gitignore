@@ -2,7 +2,7 @@ npm-debug.log
 lockfile
 moc/.moc/*
 !moc/.moc/config
-wm/.i3/backgrounds/mac/*
+wm/.i3/backgrounds/*
 wm/bin/*-scale
 *.pyc
 _ansible/*.retry
