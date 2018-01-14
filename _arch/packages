@@ -67,6 +67,7 @@ python-xdg
 redshift
 rmlint
 rng-tools
+rsync
 siege
 sl
 sshfs
