@@ -4,6 +4,7 @@
   gather_facts: no
   vars:
     user: "{{ lookup('env', 'USER') }}"
+    dots: "/home/{{ user }}/src/env.dotfiles"
   tasks:
     - name: create src dir
       file: path=/home/{{ user }}/src state=directory
@@ -11,12 +12,13 @@
     - name: link dotfiles
       file:
         src: "{{ playbook_dir }}/.."
-        dest: "/home/{{ user }}/src/env.dotfiles"
+        dest: "{{ dots }}"
         state: link
+      when: '"{{ playbook_dir }}" != "{{ dots }}/_ansible"'
 
     - name: yaourt all the things
       shell: make -C {{ playbook_dir }}/.. packages
 
     - name: stow dotfiles
-      shell: stow -d /home/{{ user }}/src/env.dotfiles -t ~/ {{ item }}
+      shell: stow -d {{ dots }} -t ~/ {{ item }}
       with_items: ['devel', 'git', 'gnupg', 'htop', 'mc', 'moc', 'net', 'shell', 'vim', 'wm']

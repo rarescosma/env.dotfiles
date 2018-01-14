@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Wanted pane width 0 - default 80, or pass argument 1 as wanted width
+pw0=80
+[[ "$1" =~ ^[0-9]+$ ]] && pw0="$1"
+
+# This could be done nicer, but, anyhow: getting current width of pane 0
+pw0_cur_w=$(tmux list-panes | awk -F"[ x:\\\[\\\]]+" '/^0:/{print $2}')
+
+# Resize according to current width
+if [[ "$pw0_cur_w" -eq "$pw0" ]]; then
+    echo "OK $pw0"
+elif [[ "$pw0_cur_w" -gt "$pw0" ]]; then
+    ((w = pw0_cur_w - pw0))
+    echo "$w less"
+    tmux resize-pane -L -t 0 "$w"
+elif [[ "$pw0_cur_w" -lt "$pw0" ]]; then
+    ((w = pw0 - pw0_cur_w))
+    echo "$w more"
+    tmux resize-pane -R -t 0 "$w"
+fi
+
