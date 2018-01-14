@@ -16,6 +16,7 @@ umask 002
 
 # -- Oh My Zsh -----------------------------------------------------------------
 DISABLE_AUTO_UPDATE="true"
+ZSH_DISABLE_COMPFIX="true"
 source $ZSH/oh-my-zsh.sh
 
 # -- Options -------------------------------------------------------------------
@@ -38,7 +39,7 @@ export FZ_SUBDIR_CMD=jj
 
 if [[ -f /usr/share/zsh/scripts/zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
-    source /usr/share/zsh/scripts/zplug/init.zsh
+    source $ZSH/../zplug/init.zsh
 
     if ! zplug check --verbose; then
         printf "Install? [y/N]: "

@@ -1,24 +1,22 @@
-.PHONY: arch debian arch-packages debian-packages install
+.PHONY: base playbook packages
 
+SHELL := bash
 PACMAN_REPOS := /etc/pacman.conf.tainted
 
-default: arch
-arch: arch-packages install
-debian: debian-packages install
+default: playbook
 
-arch-packages: $(PACMAN_REPOS)
-	sudo pacman -S --noconfirm yaourt ansible
-	#yaourt -S --needed --noconfirm `cat _arch/package.groups`
-	yaourt -S --needed --noconfirm `cat _arch/packages`
+base: $(PACMAN_REPOS)
+	pacman -Sy --needed --noconfirm base make ansible pwgen sudo python zsh yaourt
+
+playbook:
+	ansible-playbook -v _ansible/$(PLAYBOOK).yaml
+
+packages:
+	yaourt -S --needed --noconfirm \
+	base-devel xorg \
+	$(shell cat _arch/packages _arch/packages.aur | grep -v '#') \
+	> >(tee -a ~/yaourt.log) 2> >(tee -a ~/yaourt.err >&2)
 
 $(PACMAN_REPOS):
-	cat _arch/repos | sudo tee -a /etc/pacman.conf
-	sudo touch $(PACMAN_REPOS)
-
-debian-packages:
-	sudo apt-get update
-	sudo apt-get dist-upgrade -y
-	sudo apt-get install -y `cat _debian/packages`
-
-install:
-	ansible-playbook _ansible/install.yaml
+	cat _arch/repos | tee -a /etc/pacman.conf
+	touch $(PACMAN_REPOS)

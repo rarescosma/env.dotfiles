@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  name: "Bootstrap playbook"
+  gather_facts: no
+  vars:
+    user: "{{ lookup('env', 'USER_NAME') }}"
+    passw: "{{ lookup('env', 'USER_PASS') }}"
+  tasks:
+    - name: allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: create user
+      user:
+        name: "{{ user }}"
+        password: "{{ passw }}"
+        groups: ['wheel', 'video']
+        state: present
+        shell: /bin/zsh
+
+    - name: collect secondary groups
+      shell: /usr/bin/getent group | awk -F":" '{print $1}'
+      register: etc_groups
+
+    - name: add secondary groups to user
+      user: name="{{ user }}" groups="{{ item }}" append=yes
+      when: '"{{ item }}" in etc_groups.stdout_lines'
+      with_items: ['docker', 'vboxsf', 'http', 'lxd']
