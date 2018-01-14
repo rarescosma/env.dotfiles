@@ -91,5 +91,6 @@ xclip
 xf86-input-synaptics
 xf86-video-intel
 xorg-xinit
+xterm
 yaourt
 youtube-dl
