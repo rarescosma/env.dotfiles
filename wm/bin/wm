@@ -59,7 +59,7 @@ function dpi::gtk() {
     local font_size="${1}"
 
     gtkrc="${HOME}/.config/gtk-3.0/settings.ini"
-    $SED -e "s/Cantarell [[:digit:]]\+/Cantarell $font_size/g" $gtkrc
+    $SED -e "s/DejaVu Sans [[:digit:]]\+/DejaVu Sans $font_size/g" $gtkrc
 }
 
 # Sets Idea font sizes

@@ -6,8 +6,8 @@ browser::set_scale chromium 1.75
 io::keyboard
 dpi::sublime 1.75 11
 dpi::terminal 24
-dpi::i3 10
-dpi::gtk 10
+dpi::i3 9
+dpi::gtk 9
 dpi::idea 26 22
 
 sudo NetworkManager
