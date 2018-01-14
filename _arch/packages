@@ -14,6 +14,7 @@ cmake
 cowsay
 ctags
 debootstrap
+dmenu
 docker-compose
 downgrade
 dunst
@@ -62,6 +63,7 @@ powertop
 pulseaudio-bluetooth
 pv
 pwgen
+python-xdg
 redshift
 rmlint
 rng-tools
@@ -79,6 +81,7 @@ tmux
 tree
 ttf-arphic-uming
 ttf-baekmuk
+ttf-dejavu
 vim
 vlc
 whois

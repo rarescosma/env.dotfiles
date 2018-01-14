@@ -7,9 +7,10 @@ pa-applet-git
 peco
 pkgtools
 potato
+pulseaudio-alsa
 pyenv
 ttf-consolas-with-yahei
-urxvt-clipboard
+urxvt-perl
 urxvt-resize-font-git
 urxvt-vtwheel
 zplug
