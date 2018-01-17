@@ -41,7 +41,7 @@ function dpi::terminal() {
     local font_size="${1}"
 
     xresources="${HOME}/.Xresources"
-    $SED -e "s/Consolas:pixelsize=[^:]\+/Consolas:pixelsize=$font_size/g" $xresources
+    $SED -e "s/:pixelsize=[^:]\+/:pixelsize=$font_size/g" $xresources
     xrdb -merge $xresources
 }
 
