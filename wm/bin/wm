@@ -4,11 +4,12 @@ SED='sed --in-place --follow-symlinks'
 
 # Launches chrome/chromium
 function browser::launch() {
-    local kind="${1}"
-    local dot=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
-    local scale=$(cat $dot/.${kind}-scale)
+    local kind dot scale
+    kind="${1}"
+    dot=$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
+    scale=$(cat "$dot/.${kind}-scale")
 
-    exec $kind --force-device-scale-factor=$scale
+    exec "$kind" --force-device-scale-factor="$scale"
 }
 
 # Sets the scale for chrome/chromium
@@ -47,9 +48,10 @@ function dpi::terminal() {
 
 # Sets i3 font-size
 function dpi::i3() {
-    local font_size="${1}"
-
+    local i3_config font_size
     i3_config="${HOME}/.i3/config"
+    font_size="${1}"
+
     $SED -e "s/Sans Mono [[:digit:]]\+/Sans Mono $font_size/g" $i3_config
     i3-msg reload 1>/dev/null
 }

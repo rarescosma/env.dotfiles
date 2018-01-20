@@ -54,7 +54,7 @@ stm() {
 
   ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$TEAM_TAG" \
   | grep linux | peco $q_par $q \
-  | awk {'print $2'} \
+  | awk '{print $2}' \
   | xargs -I{} sh -c 'ssh {} < /dev/tty' ssh
 }
 
@@ -75,7 +75,9 @@ TEEE="t -t ${HOME}/Dropbox/Tasks"
 alias t="${TEEE}"
 alias tlk="${TEEE} -l k"
 alias tlro="${TEEE} -l ro"
-tsh() { ssh -t $@ "tmux attach -t base || exec tmux new -s base" }
+tsh() {
+  ssh -t $@ "tmux attach -t base || exec tmux new -s base"
+}
 alias yaourt='yaourt --noconfirm'
 _pass() {
   local fzf_cmd q_par

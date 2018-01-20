@@ -1,6 +1,6 @@
 #!/bin/bash
 
-${HOME}/.i3/wallpaper.sh
+"${HOME}/.i3/wallpaper.sh"
 dropbox &
 
 nm-applet &
@@ -15,5 +15,5 @@ syndaemon -i 1 -t -k &
 killall redshift
 redshift-gtk -t 5500:4800 -l 46.77:23.62 &
 
-kill $(pgrep -f cloudy/watcher.py)
-${HOME}/src/lang.python/cloudy/watcher.py &
+kill "$(pgrep -f cloudy/watcher.py)"
+"${HOME}/src/lang.python/cloudy/watcher.py" &
