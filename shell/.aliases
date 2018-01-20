@@ -89,8 +89,7 @@ _pass() {
 pass() { lpass show --password $(_pass fzf "$@") }
 tn() {
   local s_name
-  s_name="new -s base"
-  [ ! -z "$@" ] && s_name="new -s $@"
-  tmux ${=s_name}
+  s_name=${@:-base}
+  tmux attach -t ${=s_name} || tmux new -s ${=s_name}
 }
 
