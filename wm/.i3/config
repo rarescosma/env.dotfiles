@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:DejaVu Sans Mono 9
+font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -79,14 +79,10 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+g focus child
 
-set $www_ws  workspace "1: www"
-set $sh_ws   workspace "2: sh"
-set $misc_ws  workspace "3: misc"
-
 # switch to workspace
-bindsym $mod+1 $www_ws
-bindsym $mod+2 $sh_ws
-bindsym $mod+3 $misc_ws
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -94,9 +90,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to $www_ws
-bindsym $mod+Shift+2 move container to $sh_ws
-bindsym $mod+Shift+3 move container to $misc_ws
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
@@ -150,6 +146,7 @@ bar {
     # i3bar position
     position top
     output eDP1
+    output DP2
     # Using custom i3status.conf
     status_command i3status -c ~/.i3/i3status.conf
 }
