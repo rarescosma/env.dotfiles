@@ -87,3 +87,10 @@ _pass() {
   lpass ls  | $fzf_cmd ${=q_par} -1 | awk '{print $(NF)}' | sed 's/\]//g'
 }
 pass() { lpass show --password $(_pass fzf "$@") }
+tn() {
+  local s_name
+  s_name="new -s base"
+  [ ! -z "$@" ] && s_name="new -s $@"
+  tmux ${=s_name}
+}
+
