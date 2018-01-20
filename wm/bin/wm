@@ -56,6 +56,13 @@ function dpi::i3() {
     i3-msg reload 1>/dev/null
 }
 
+function outputs::i3() {
+    local i3_config
+    i3_config="${HOME}/.i3/config"
+
+    ## TODO - sed for output
+}
+
 # Sets GTK font-size
 function dpi::gtk() {
     local font_size gtkrc3 gtkrc2
