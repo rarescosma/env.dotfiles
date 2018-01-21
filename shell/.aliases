@@ -9,7 +9,7 @@ ff() {
   done
   find ./ $INAMES
 }
-alias s='subl3 -b -a'
+alias s='subl3 -a'
 alias svi='sudo vim'
 sag() {
   s $(ag -l "$@" | peco)
