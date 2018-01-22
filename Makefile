@@ -2,6 +2,7 @@
 
 SHELL := bash
 PACMAN_REPOS := /etc/pacman.conf.tainted
+PLAYBOOK ?= user
 
 default: playbook
 
