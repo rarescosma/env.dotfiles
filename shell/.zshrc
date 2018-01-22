@@ -52,6 +52,7 @@ if [[ -f $ZSH/../zplug/init.zsh ]]; then
 fi
 
 unalias z
+bindkey \^U backward-kill-line
 
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ $ZSH_UNAME == 'Linux' ]]; then
