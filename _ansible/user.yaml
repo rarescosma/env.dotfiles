@@ -16,6 +16,27 @@
         state: link
       when: '"{{ playbook_dir }}" != "{{ dots }}/_ansible"'
 
+    - shell: "hostname -s"
+      register: shell_hostname
+
+    - shell: "ls -lah {{ dots }}/_nodes/{{ shell_hostname.stdout }}"
+      register: foo
+
+    - name: stow nodefiles
+      shell: stow -d {{ dots }}/_nodes -t ~/ {{ shell_hostname.stdout }}
+      when: foo.rc == 0
+
     - name: stow dotfiles
       shell: stow -d {{ dots }} -t ~/ {{ item }}
-      with_items: ['devel', 'git', 'gnupg', 'htop', 'mc', 'moc', 'net', 'shell', 'vim', 'wm']
+      with_items:
+        - devel
+        - git
+        - gnupg
+        - htop
+        - mc
+        - moc
+        - net
+        - shell
+        - vim
+        - wm
+
