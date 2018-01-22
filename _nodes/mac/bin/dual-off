@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# shellcheck disable=SC1090
+source "${HOME}/bin/wm"
+
+browser::set_scale chromium 1.6
+browser::set_scale google-chrome-stable 1.6
+io::keyboard
+dpi::sublime 1.6 10
+dpi::terminal 22
+dpi::i3 8
+dpi::gtk 9
+dpi::idea 24 19

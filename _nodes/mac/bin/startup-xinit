@@ -1,13 +1,1 @@
-#!/bin/bash
-
-source ${HOME}/bin/wm
-
-browser::set_scale chromium 1.9
-io::keyboard
-dpi::sublime 1.75 13
-dpi::terminal 32
-dpi::i3 9
-dpi::gtk 9
-dpi::idea 26 22
-
-sudo NetworkManager
+dual-off
