@@ -80,7 +80,7 @@ function dpi::idea() {
     local editor_font_size="${1}"
     local ui_font_size="${2}"
 
-    idea_options="${HOME}/.IntelliJIdea2017.2/config/options"
+    idea_options="${HOME}/.IntelliJIdea2017.3/config/options"
     $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
     $idea_options/editor.xml
     $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$ui_font_size\"/g" \
