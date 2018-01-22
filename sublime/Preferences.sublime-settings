@@ -1,20 +1,23 @@
 {
 	"always_prompt_for_file_reload": false,
 	"always_show_minimap_viewport": false,
-	"animation_enabled": true,
-	"atomic_save": false,
+	"animation_enabled": false,
+	"atomic_save": true,
 	"auto_close_tags": true,
 	"auto_complete": true,
 	"auto_complete_commit_on_tab": true,
-	"auto_complete_cycle": true,
-	"auto_complete_delay": 25,
-	"auto_complete_selector": "meta.tag - punctuation.definition.tag.begin, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+	"auto_complete_delay": 50,
+	"auto_complete_selector": "source - comment, meta.tag - punctuation.definition.tag.begin",
 	"auto_complete_size_limit": 4194304,
 	"auto_complete_triggers":
 	[
 		{
 			"characters": "<",
 			"selector": "text.html"
+		},
+		{
+			"characters": ".",
+			"selector": "source.js"
 		}
 	],
 	"auto_complete_with_fields": false,
@@ -37,12 +40,12 @@
 		"*.jar",
 		"*.zip"
 	],
-	"bold_folder_labels": false,
+	"bold_folder_labels": true,
 	"caret_extra_bottom": 0,
 	"caret_extra_top": 0,
-	"caret_extra_width": 0,
-	"caret_style": "smooth",
-	"close_windows_when_empty": false,
+	"caret_extra_width": 2,
+	"caret_style": "solid",
+	"close_windows_when_empty": true,
 	"color_scheme": "Packages/User/SublimeLinter/base16-eighties.dark (SL).tmTheme",
 	"copy_with_empty_selection": true,
 	"create_window_at_startup": true,
@@ -50,15 +53,16 @@
 	"default_line_ending": "system",
 	"detect_indentation": true,
 	"dictionary": "Packages/Language - English/en_US.dic",
+	"dpi_scale": 1.0,
 	"drag_text": true,
 	"draw_centered": false,
 	"draw_indent_guides": true,
-	"draw_minimap": false,
 	"draw_minimap_border": false,
 	"draw_white_space": "all",
 	"enable_hexadecimal_encoding": true,
-	"enable_tab_scrolling": true,
-	"ensure_newline_at_eof_on_save": false,
+	"enable_tab_scrolling": false,
+	"enable_telemetry": false,
+	"ensure_newline_at_eof_on_save": true,
 	"fade_fold_buttons": true,
 	"fallback_encoding": "Western (Windows 1252)",
 	"file_exclude_patterns":
@@ -83,7 +87,8 @@
 		"*.psd",
 		"*.db",
 		"*.sublime-workspace",
-		"*.iml"
+		".tags",
+		".tags_sorted_by_file"
 	],
 	"find_selected_text": true,
 	"fold_buttons": true,
@@ -92,19 +97,20 @@
 		".svn",
 		".git",
 		".hg",
-		".idea",
 		"CVS",
+		".sass-cache",
 		"__pycache__",
-		".cache"
+		"*.egg-info"
 	],
-	"font_face": "Inconsolata",
+	"font_face": "Consolas",
 	"font_options":
 	[
+		"antialias"
 	],
 	"font_size": 12,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
-	"highlight_line": false,
+	"highlight_line": true,
 	"highlight_modified_tabs": false,
 	"hot_exit": true,
 	"ignored_packages":
@@ -119,14 +125,14 @@
 	"indent_to_bracket": false,
 	"index_exclude_patterns":
 	[
-		"*.log"
+		"*.log",
+		"patchwork/cache/*"
 	],
 	"index_files": true,
-	"index_workers": 0,
 	"line_numbers": true,
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
-	"margin": 2,
+	"margin": 0,
 	"match_brackets": true,
 	"match_brackets_angle": false,
 	"match_brackets_braces": true,
@@ -135,38 +141,37 @@
 	"match_selection": true,
 	"match_tags": true,
 	"move_to_limit_on_up_down": false,
-	"open_files_in_new_window": true,
-	"overlay_scroll_bars": "system",
+	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
 	"preview_on_click": true,
-	"remember_full_screen": false,
+	"remember_open_files": true,
 	"rulers":
 	[
-		100
+		80,
+		120
 	],
 	"save_on_focus_lost": true,
 	"scroll_past_end": true,
-	"scroll_speed": 1.0,
-	"shift_tab_unindent": false,
-	"show_definitions": true,
-	"show_encoding": false,
-	"show_errors_inline": true,
+	"scroll_speed": 1.75,
+	"shift_tab_unindent": true,
+	"show_encoding": true,
 	"show_full_path": true,
-	"show_line_endings": false,
+	"show_line_endings": true,
 	"show_panel_on_build": true,
 	"show_tab_close_buttons": true,
 	"smart_indent": true,
 	"spell_check": false,
-	"spelling_selector": "markup.raw, source string.quoted - punctuation - meta.preprocessor.c.include, source comment - source comment.block.preprocessor, -(source, constant, keyword, storage, support, variable, markup.underline.link, meta.tag)",
-	"tab_completion": false,
-	"tab_size": 4,
+	"tab_completion": true,
+	"tab_size": 2,
 	"theme": "Spacegray Eighties.sublime-theme",
-	"translate_tabs_to_spaces": false,
-	"tree_animation_enabled": true,
+	"translate_tabs_to_spaces": true,
+	"tree_animation_enabled": false,
 	"trim_automatic_white_space": true,
 	"trim_trailing_white_space_on_save": true,
+	"update_check": false,
 	"use_simple_full_screen": false,
 	"use_tab_stops": true,
 	"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?",
-	"word_wrap": "auto",
+	"word_wrap": true,
 	"wrap_width": 0
 }
