@@ -6,4 +6,4 @@ wm/.i3/backgrounds/*
 wm/bin/*-scale
 *.pyc
 _ansible/*.retry
-
+mc/.config/mc/ini~
