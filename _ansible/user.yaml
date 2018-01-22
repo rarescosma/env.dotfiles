@@ -16,9 +16,6 @@
         state: link
       when: '"{{ playbook_dir }}" != "{{ dots }}/_ansible"'
 
-    - name: yaourt all the things
-      shell: make -C {{ playbook_dir }}/.. packages
-
     - name: stow dotfiles
       shell: stow -d {{ dots }} -t ~/ {{ item }}
       with_items: ['devel', 'git', 'gnupg', 'htop', 'mc', 'moc', 'net', 'shell', 'vim', 'wm']

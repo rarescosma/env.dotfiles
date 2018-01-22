@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  name: "Userspace playbook"
+  gather_facts: no
+  vars:
+    user: "{{ lookup('env', 'USER') }}"
+    dots: "/home/{{ user }}/src/env.dotfiles"
+  tasks:
+   - name: yaourt all the things
+     shell: make -C {{ playbook_dir }}/.. packages
