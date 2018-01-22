@@ -1,9 +1,12 @@
 #!/bin/bash
 
-dot=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
-source $dot/lib.sh
-
-# For chrome-wrapper
-touch $dot/.dual
+source ${HOME}/bin/wm
 
 io::keyboard
+browser::set_scale chromium 1.6
+browser::set_scale google-chrome-stable 1
+dpi::sublime 1.0 13
+dpi::terminal 26
+dpi::i3 7
+dpi::gtk 9
+dpi::idea 19 14
