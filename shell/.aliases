@@ -94,4 +94,5 @@ tn() {
   s_name=${@:-base}
   tmux attach -t ${=s_name} || tmux new -s ${=s_name}
 }
+alias ccat='pygmentize -g'
 
