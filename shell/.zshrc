@@ -11,7 +11,7 @@ export EDITOR="${VISUAL}"
 umask 002
 
 # -- Env -----------------------------------------------------------------------
-[[ -f "$HOME/.env" ]] && source $HOME/.env
+[[ -f "$HOME/.zshenv" ]] && source $HOME/.zshenv
 [[ -f "$HOME/.local/env" ]] && source $HOME/.local/env
 
 # -- Oh My Zsh -----------------------------------------------------------------
