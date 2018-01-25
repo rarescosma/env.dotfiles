@@ -7,3 +7,5 @@
 .build.sh
 .nrepl-history
 .env
+.out
+
