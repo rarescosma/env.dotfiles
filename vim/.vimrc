@@ -43,4 +43,3 @@ set hlsearch
 " Tee trick
 set autoread
 cmap w!! w !sudo tee > /dev/null %
-
