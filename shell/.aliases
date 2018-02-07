@@ -33,17 +33,15 @@ dps() {
 }
 alias k='kubectl'
 kcs() {
-  local q_par
-  [ ! -z "$@" ] && q_par="--query $@"
-  context=$(kubectl config get-contexts --no-headers | sort | peco ${=q_par} | tr -s ' ' | cut -d' ' -f2)
+  context=$(kubectl config get-contexts --no-headers | sort | peco --query "$*" | tr -s ' ' | cut -d' ' -f2)
   [ ! -z "$context" ] && kubectl config use-context $context
+  touch "${HOME}/.kube"
 }
 
 kns() {
-  local q_par
-  [ ! -z "$@" ] && q_par="--query $@"
-  ns=$(kubectl get namespaces --no-headers | sort | peco ${=q_par} | tr -s ' ' | cut -d' ' -f1)
+  ns=$(kubectl get namespaces --no-headers | sort | peco --query "$*" | tr -s ' ' | cut -d' ' -f1)
   [ ! -z "$ns" ] && kubectl config set-context $(kubectl config current-context) --namespace="$ns"
+  touch "${HOME}/.kube"
 }
 alias koff='kubectl config unset current-context'
 
