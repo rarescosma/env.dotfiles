@@ -47,11 +47,8 @@ alias koff='kubectl config unset current-context'
 
 # -- Cops ----------------------------------------------------------------------
 stm() {
-  q_par=''; q=''
-  [ ! -z "$@" ] && q_par='--query' && q="$@"
-
   ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$TEAM_TAG" \
-  | grep linux | peco $q_par $q \
+  | grep linux | peco --query "$*" \
   | awk '{print $2}' \
   | xargs -I{} sh -c 'ssh {} < /dev/tty' ssh
 }
@@ -65,10 +62,8 @@ alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
 
 # -- Z / Misc ------------------------------------------------------------------
-alias bup='sudo systemctl start bubbleupnpserver.service'
 alias derp='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias vps="mosh vps -p 1919"
-alias sctl='supervisorctl'
 TEEE="t -t ${HOME}/Dropbox/Tasks"
 alias t="${TEEE}"
 alias tlk="${TEEE} -l k"
@@ -78,11 +73,10 @@ tsh() {
 }
 alias yaourt='yaourt --noconfirm'
 _pass() {
-  local fzf_cmd q_par
+  local fzf_cmd
   fzf_cmd=$1; shift
-  [ ! -z "$@" ] && q_par="--query $@"
   lpass status -q || lpass login --trust ${LPASS_USER}
-  lpass ls  | $fzf_cmd ${=q_par} -1 | awk '{print $(NF)}' | sed 's/\]//g'
+  lpass ls  | $fzf_cmd --query "$*" -1 | awk '{print $(NF)}' | sed 's/\]//g'
 }
 pass() {
   lpass show --password $(_pass fzf "$@")
