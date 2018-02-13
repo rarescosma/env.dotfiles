@@ -8,4 +8,5 @@
 .nrepl-history
 .env
 .out
+.venv
 
