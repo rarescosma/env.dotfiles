@@ -53,6 +53,10 @@ fi
 unalias z
 bindkey \^U backward-kill-line
 
+_aws_zsh_completer_path=$(which aws_zsh_completer.sh)
+[ -x $_aws_zsh_completer_path ] && source $_aws_zsh_completer_path
+unset _aws_zsh_completer_path
+
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 exec startx -- -dpi 144
