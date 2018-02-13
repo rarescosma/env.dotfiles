@@ -30,7 +30,8 @@ set t_Co=8 t_md=
 
 " Navigation
 set relativenumber
-nmap <F12> :set invrelativenumber<CR>
+set nu
+nmap <F12> :set invrelativenumber<CR>:set invnu<CR>
 set ruler
 set scrolloff=3
 
