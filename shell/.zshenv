@@ -51,14 +51,6 @@ export ANSIBLE_NOCOWS=1
 alias ag='ag --hidden -i' # search hidden
 PATH="${PATH}:${HOME}/bin"
 
-# -- OSX -----------------------------------------------------------------------
-if [[ $ZSH_UNAME == 'Darwin' ]]; then
-  export GPG_TTY=$(tty) # mac gpg fix
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-  MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$(manpath)"
-  export HOMEBREW_NO_AUTO_UPDATE=1
-fi
-
 # -- Encoding ------------------------------------------------------------------
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8

@@ -2,7 +2,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH="${HOME}/src/env.dotfiles/_vendor/oh-my-zsh"
 ZSH_THEME="ric"
-export ZSH_UNAME=$(uname)
 plugins=(archlinux docker git lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
 
 # -- Editor --------------------------------------------------------------------
@@ -55,13 +54,11 @@ unalias z
 bindkey \^U backward-kill-line
 
 # -- X11 (Linux) ---------------------------------------------------------------
-if [[ $ZSH_UNAME == 'Linux' ]]; then
-  if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx -- -dpi 144
-  else
-    envoy -t ssh-agent
-    source <(envoy -p)
-    clear
-    fortune -a | cowsay -f tux
-  fi
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+exec startx -- -dpi 144
+else
+envoy -t ssh-agent
+source <(envoy -p)
+clear
+fortune -a | cowsay -f tux
 fi
