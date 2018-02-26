@@ -1,4 +1,5 @@
 # -- Editing / Nav / Fs --------------------------------------------------------
+alias pbcopy='xsel -b'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias ag='rg'
@@ -36,7 +37,6 @@ alias dk='docker-compose'
 dps() {
   docker ps $@ --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" | grep -v pause
 }
-alias k='kubectl'
 kcs() {
   context=$(kubectl config get-contexts --no-headers | sort | fzf_cmd "$*" | tr -s ' ' | cut -d' ' -f2)
   [ ! -z "$context" ] && kubectl config use-context $context
