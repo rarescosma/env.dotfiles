@@ -1,7 +1,12 @@
 # -- Editing / Nav / Fs --------------------------------------------------------
 alias ...='cd ../../'
 alias ....='cd ../../../'
-alias ag='ag --hidden'
+alias ag='rg'
+
+fzf_cmd() {
+  cat | fzf-tmux --query "$*" | tr -d "\\n" | sed -e 's/^enter//g'
+}
+
 ff() {
   INAMES=()
   for X in "$@"; do
@@ -12,13 +17,13 @@ ff() {
 alias s='subl3 -a'
 alias svi='sudo vim'
 sag() {
-  s $(ag -l "$@" | peco)
+  s $(ag -l "$*" | fzf_cmd)
 }
 sff() {
-  s $(ff "$@" | peco)
+  s $(ff "$*" | fzf_cmd)
 }
 vil() {
-  vi "${1}" +$(< "${1}" | nl -ba -nln | peco | cut -d' ' -f1)
+  vi "${1}" +$(< "${1}" | nl -ba -nln | fzf_cmd | cut -d' ' -f1)
 }
 alias i='idea'
 own() {
@@ -33,13 +38,13 @@ dps() {
 }
 alias k='kubectl'
 kcs() {
-  context=$(kubectl config get-contexts --no-headers | sort | peco --query "$*" | tr -s ' ' | cut -d' ' -f2)
+  context=$(kubectl config get-contexts --no-headers | sort | fzf_cmd "$*" | tr -s ' ' | cut -d' ' -f2)
   [ ! -z "$context" ] && kubectl config use-context $context
   touch "${HOME}/.kube"
 }
 
 kns() {
-  ns=$(kubectl get namespaces --no-headers | sort | peco --query "$*" | tr -s ' ' | cut -d' ' -f1)
+  ns=$(kubectl get namespaces --no-headers | sort | fzf_cmd "$*" | tr -s ' ' | cut -d' ' -f1)
   [ ! -z "$ns" ] && kubectl config set-context $(kubectl config current-context) --namespace="$ns"
   touch "${HOME}/.kube"
 }
@@ -48,7 +53,8 @@ alias koff='kubectl config unset current-context'
 # -- Cops ----------------------------------------------------------------------
 stm() {
   ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$TEAM_TAG" \
-  | grep linux | peco --query "$*" \
+  | grep linux | fzf_cmd "$*" \
+  | tr -d "\\n" | sed -e 's/^enter//g' \
   | awk '{print $2}' \
   | xargs -I{} sh -c 'ssh {} < /dev/tty' ssh
 }
