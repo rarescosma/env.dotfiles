@@ -2,6 +2,8 @@
 
 source ${HOME}/bin/wm
 
+xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 2880x1800 --pos 2560x0 --rotate normal --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --mode 2560x1440 --pos 0x0 --rotate normal
+
 io::keyboard
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1
@@ -9,4 +11,4 @@ dpi::sublime 1.0 13
 dpi::terminal 16
 dpi::i3 7
 dpi::gtk 9
-dpi::idea 19 14
+dpi::idea 17 14
