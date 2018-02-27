@@ -12,3 +12,6 @@ dpi::terminal 16
 dpi::i3 7
 dpi::gtk 9
 dpi::idea 17 14
+
+${HOME}/.i3/wallpaper.sh
+

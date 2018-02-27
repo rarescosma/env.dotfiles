@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+sudo pacman -Sy
+
+IS_KERNEL_UPGRADE=""
+
+if {
+  KERNEL_VERSION=$(sudo pacman -Syup | \
+    grep linux-headers | \
+    sed -re 's/.*headers-(.*)-x86.*/\1-ARCH/g')
+}; then
+  echo "Kernel upgrade imminent: $KERNEL_VERSION"
+  IS_KERNEL_UPGRADE=1
+fi
+
+sudo pacman -Syu --noconfirm
+
+if [ ! -z $IS_KERNEL_UPGRADE ]; then
+  sudo mkinitcpio -c /etc/mkinitcpio.conf -k "$KERNEL_VERSION" \
+  -g /boot/initramfs-linux.img
+fi
