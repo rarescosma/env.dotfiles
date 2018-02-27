@@ -206,6 +206,7 @@ bindsym XF86PowerOff mode "$mode_system"
 bindsym $mod+Shift+r restart
 
 bindsym $mod+Shift+d exec "~/bin/dual-on"
+bindsym $mod+Shift+u exec "~/bin/dual-off"
 
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
