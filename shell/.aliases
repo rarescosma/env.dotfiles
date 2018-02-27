@@ -3,6 +3,7 @@ alias pbcopy='xsel -b'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias ag='rg'
+alias k='kubectl'
 
 fzf_cmd() {
   cat | fzf-tmux --query "$*" | tr -d "\\n" | sed -e 's/^enter//g'
