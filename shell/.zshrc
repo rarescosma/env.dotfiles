@@ -31,6 +31,7 @@ PATH="$PATH:${ZSH}/../fzf/bin"
 export FZF_TMUX=1
 export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
 --bind change:top --bind ctrl-e:accept --expect=enter"
+export FZF_CTRL_T_COMMAND='fd --type file --follow --hidden --exclude .git'
 source "${ZSH}/../fzf/shell/key-bindings.zsh"
 
 export FZ_CMD=j
@@ -59,10 +60,11 @@ unset _aws_zsh_completer_path
 
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-exec startx -- -dpi 144
+  exec startx -- -dpi 144
 else
-envoy -t ssh-agent
-source <(envoy -p)
-clear
-fortune -a | cowsay -f tux
+  envoy -t ssh-agent
+  source <(envoy -p)
+  clear
+  fortune -a | cowsay -f tux
 fi
+
