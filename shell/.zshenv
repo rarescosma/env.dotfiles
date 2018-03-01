@@ -48,11 +48,9 @@ fi
 export MC_SKIN=$HOME/.config/mc/solarized.ini
 export _Z_DATA=/var/tmp/karelian.z # stfu z
 export ANSIBLE_NOCOWS=1
-alias ag='ag --hidden -i' # search hidden
 PATH="${PATH}:${HOME}/bin"
 
 # -- Encoding ------------------------------------------------------------------
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE="C"
-
