@@ -3,16 +3,18 @@ alias pbcopy='xsel -b'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 RIPGREP="rg --hidden --follow --smart-case"
-alias ag="$RIPGREP"
+alias rg="$RIPGREP"
 
 fzf_cmd() {
   # Drop empty queries
-  local fzf_args="$(echo $* | awk '{$1=$1};1')"
-  if [[ "--query" == "$fzf_args" ]]; then
-    fzf_args=""
-  fi
+  local q
+  q=$(echo "$*" | sed -e 's/\(.*\)--query \(.*\)/\2/g')
 
-  cat | fzf-tmux $fzf_args | tail -n +2
+  if [[ -z $q ]]; then
+    cat | fzf-tmux | tail -n +2
+  else
+    cat | grep -i $q | fzf-tmux -1 $* | tail -n +2
+  fi
 }
 
 own() {
@@ -24,7 +26,7 @@ alias s='subl3 -a'
 alias svi='sudo vim'
 sag() {
   local file_list
-  file_list=$(ag $* | fzf_cmd)
+  file_list=$(rg $* | fzf_cmd)
   [[ ! -z $file_list ]] && s $file_list
 }
 vil() {
@@ -59,13 +61,11 @@ tsh() {
 }
 alias yaourt='yaourt --noconfirm'
 _pass() {
-  local fzf_cmd
-  fzf_cmd=$1; shift
   lpass status -q || lpass login --trust ${LPASS_USER}
-  lpass ls  | $fzf_cmd --query "$*" -1 | awk '{print $(NF)}' | sed 's/\]//g'
+  lpass ls  | fzf_cmd --query "$*" | awk '{print $(NF)}' | sed 's/\]//g'
 }
 pass() {
-  lpass show --password $(_pass fzf "$@")
+  lpass show --password $(_pass "$@")
 }
 tn() {
   local s_name
