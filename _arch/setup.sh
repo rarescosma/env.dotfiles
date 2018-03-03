@@ -2,6 +2,8 @@
 
 set -e
 
+PACKAGE_GROUPS="base base-devel xorg i3"
+
 net::enable_wifi() {
   IF="${IF:-wlp3s0}"
   SSID="${SSID:-getbetter}"
@@ -17,9 +19,23 @@ net::enable_wifi() {
   dhcpcd $IF
 }
 
-pac::list() {
+pac::list_aur() {
+  pacman -Qqm | sort
+}
+
+pac::list_non_group() {
   # packages from groups
-  comm -23 <(pacman -Qqet | sort) <(pacman -Qqg base base-devel xorg i3 | sort)
+  comm -23 <(pacman -Qqe | sort) <(pacman -Qqg $PACKAGE_GROUPS | sort)
+}
+
+pac::list_non_group_non_aur() {
+  comm -23 <(pac::list_non_group) <(pac::list_aur)
+}
+
+pac::list() {
+  echo $PACKAGE_GROUPS | tr " " "\n" > package.groups
+  pac::list_non_group_non_aur > packages
+  pac::list_aur > packages.aur
 }
 
 bootstrap() {
