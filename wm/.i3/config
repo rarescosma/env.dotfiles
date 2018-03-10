@@ -13,7 +13,7 @@ for_window [window_role="task_dialog"] floating enable
 
 # terminals
 bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+Return exec urxvt -e sh -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s base"
+bindsym $mod+0x60 exec urxvt -e sh -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s base"
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec wm browser::launch chromium
 bindsym $mod+Shift+slash exec wm browser::launch google-chrome-stable
@@ -212,6 +212,6 @@ bindsym $mod+Shift+u exec "~/bin/dual-off"
 bindsym $mod+Ctrl+r reload
 
 # Application management
-focus_on_window_activation focus 
+focus_on_window_activation focus
 focus_follows_mouse no
 hide_edge_borders horizontal
