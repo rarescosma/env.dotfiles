@@ -62,8 +62,6 @@ unset _aws_zsh_completer_path
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 144
 else
-  envoy -t ssh-agent
-  source <(envoy -p)
   clear
   fortune -a | cowsay -f tux
 fi

@@ -33,9 +33,11 @@ pac::list_non_group_non_aur() {
 }
 
 pac::list() {
-  echo $PACKAGE_GROUPS | tr " " "\n" > package.groups
-  pac::list_non_group_non_aur > packages
-  pac::list_aur > packages.aur
+  local output_dir
+  output_dir="${1:-./}"
+  echo $PACKAGE_GROUPS | tr " " "\n" > "$output_dir/package.groups"
+  pac::list_non_group_non_aur > "$output_dir/packages"
+  pac::list_aur > "$output_dir/packages.aur"
 }
 
 bootstrap() {

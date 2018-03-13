@@ -13,7 +13,7 @@ fzf_cmd() {
   if [[ -z $q ]]; then
     cat | fzf-tmux --multi | tail -n +2
   else
-    cat | grep -i -- $q | fzf-tmux -1 $* | tail -n +2
+    cat | grep -i "$q" | fzf-tmux -1 $* | tail -n +2
   fi
 }
 
