@@ -7,3 +7,5 @@ wm/bin/*-scale
 *.pyc
 _ansible/*.retry
 mc/.config/mc/ini~
+wm/.i3/logfile
+
