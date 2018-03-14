@@ -10,10 +10,10 @@ Xft.embeddedbitmap: 0
 ! }}}
 
 ! Fonts
-urxvt.font:           xft:Consolas:pixelsize=22
-urxvt.boldFont:       xft:Consolas:bold:pixelsize=22
-urxvt.italicFont:     xft:Consolas:italic:pixelsize=22
-urxvt.boldItalicFont: xft:Consolas:bold:italic:pixelsize=22
+urxvt.font:           xft:Consolas:pixelsize=26
+urxvt.boldFont:       xft:Consolas:bold:pixelsize=26
+urxvt.italicFont:     xft:Consolas:italic:pixelsize=26
+urxvt.boldItalicFont: xft:Consolas:bold:italic:pixelsize=26
 
 URxvt.letterSpace: -1
 
@@ -64,7 +64,7 @@ URxvt.matcher.button: 1
 #define Selected_Text_Color #f7f6ec
 #define Selection_Color #175877
 
-!Rxvt*depth: 32
+*depth: 32
 Rxvt*color0:       Ansi_0_Color
 Rxvt*color1:       Ansi_1_Color
 Rxvt*color2:       Ansi_2_Color
@@ -83,5 +83,7 @@ Rxvt*color14:      Ansi_14_Color
 Rxvt*color15:      Ansi_15_Color
 Rxvt*colorBD:      Bold_Color
 Rxvt*foreground:   Foreground_Color
-Rxvt*background:   Background_Color
+Rxvt*background:   [90]Background_Color
 Rxvt*cursorColor:  Ansi_4_Color
+*fading: 20
+*fadeColor: #000000 

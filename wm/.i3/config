@@ -215,3 +215,6 @@ bindsym $mod+Ctrl+r reload
 focus_on_window_activation focus
 focus_follows_mouse no
 hide_edge_borders horizontal
+
+exec xcompmgr -cC -fF -n -D 5 -I 0.1 -O 0.1
+

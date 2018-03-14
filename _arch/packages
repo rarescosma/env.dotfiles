@@ -74,6 +74,7 @@ lsof
 lxappearance
 mc
 meld
+mesa-demos
 mlocate
 mosh
 mplayer
@@ -156,6 +157,7 @@ wpa_supplicant
 x11vnc
 xautolock
 xclip
+xcompmgr
 xf86-input-libinput
 xf86-input-synaptics
 xf86-video-intel
