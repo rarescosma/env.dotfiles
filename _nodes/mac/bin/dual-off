@@ -3,6 +3,8 @@
 # shellcheck disable=SC1090
 source "${HOME}/bin/wm"
 
+xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 2880x1800 --pos 0x0 --rotate normal --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1.6
 io::keyboard
@@ -13,4 +15,3 @@ dpi::gtk 9
 dpi::idea 24 19
 
 ${HOME}/.i3/wallpaper.sh
-
