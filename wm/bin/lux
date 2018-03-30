@@ -197,6 +197,14 @@ main() {
     else
         arg_err
     fi
+
+    if ${aFlag} || ${sFlag} ; then
+      if [ "${value}" != "${brightness}" ] ; then
+        percentual=$(( value * 100 / own_max ))
+        what=$(echo "${file}" | cut -d/ -f5)
+        notify-send "${what}" -h int:value:$percentual -h string:synchronous:volume
+      fi
+    fi
 }
 
 main "$@"
