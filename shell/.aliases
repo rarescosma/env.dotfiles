@@ -73,3 +73,4 @@ tn() {
   tmux attach -t ${=s_name} || tmux new -s ${=s_name}
 }
 alias ccat='pygmentize -g'
+alias pocket='/usr/lib/jvm/java-8-openjdk/bin/java -jar ~/Dropbox/Apps/pocket_1.5.jar'
