@@ -11,8 +11,10 @@ google-chrome
 i3session-git
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
+inxi
 kube-aws
 kubernetes-helm
+libcloudproviders
 libtxc_dxtn
 lxd
 moc-pulse
@@ -23,7 +25,6 @@ pkgtools
 potato
 pyenv
 python2-i3-git
-restic
 soundwire
 tmsu
 tomb
