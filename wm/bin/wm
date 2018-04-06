@@ -25,6 +25,9 @@ function browser::set_scale() {
 function io::keyboard() {
     setxkbmap -option ctrl:nocaps -layout ro
     xset r rate 300 25
+    xmodmap -e 'keycode 105 = Super_L'
+    xmodmap -e 'remove control = Super_L'
+    xmodmap -e 'add mod4 = Super_L'
 }
 
 # Sets sublime DPI
