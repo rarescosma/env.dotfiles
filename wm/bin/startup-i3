@@ -18,3 +18,7 @@ redshift-gtk -t 5500:4800 -l 59.32:18.06 & # Stockholm
 
 kill "$(pgrep -f cloudy/watcher.py)"
 "${HOME}/src/lang.python/cloudy/watcher.py" &
+
+xcompmgr -cC -fF -n -D 5 -I 0.1 -O 0.1 &
+
+wait

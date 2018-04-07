@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:DejaVu Sans Mono 7
+font pango:DejaVu Sans Mono 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -215,6 +215,3 @@ bindsym $mod+Ctrl+r reload
 focus_on_window_activation focus
 focus_follows_mouse no
 hide_edge_borders horizontal
-
-exec xcompmgr -cC -fF -n -D 5 -I 0.1 -O 0.1
-
