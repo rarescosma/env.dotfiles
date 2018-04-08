@@ -5,7 +5,7 @@ source ${HOME}/bin/wm
 browser::set_scale chromium 1.75
 io::keyboard
 dpi::sublime 1.75 11
-dpi::terminal 24
+dpi::terminal 26
 dpi::i3 9
 dpi::gtk 9
 dpi::idea 26 22

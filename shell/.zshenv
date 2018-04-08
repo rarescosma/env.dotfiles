@@ -6,7 +6,7 @@ export AWS_PROFILE="default"
 export EC2_REGION="eu-west-1"
 
 # -- K8s -----------------------------------------------------------------------
-export KUBECONFIG="${HOME}/.kube/k0"
+export KUBECONFIG="${HOME}/.kube/koan.k0"
 
 # -- Language Support ----------------------------------------------------------
 if [[ "$enable_langs" =~ "python" ]] && (( $+commands[pyenv] )); then
