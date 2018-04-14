@@ -2,7 +2,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH="${HOME}/src/env.dotfiles/_vendor/oh-my-zsh"
 ZSH_THEME="ric"
-plugins=(archlinux docker git lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
+plugins=(gitalias archlinux docker git lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
 
 # -- Editor --------------------------------------------------------------------
 export VISUAL="subl3 -w"
