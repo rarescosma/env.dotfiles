@@ -13,12 +13,12 @@ syndaemon -i 1 -t -k &
 
 # Special Eds
 killall redshift
-redshift-gtk -t 5500:4800 -l 59.32:18.06 & # Stockholm
-#redshift-gtk -t 5500:4800 -l 46.77:23.62 & # Cluj-Napoca
+redshift-gtk -t 5500:4800 -l 59.32:18.06 &
+# Stockholm 59.32:18.06
+# Cluj-Napoca 46.77:23.62
 
 kill "$(pgrep -f cloudy/watcher.py)"
 "${HOME}/src/lang.python/cloudy/watcher.py" &
 
-xcompmgr -cC -fF -n -D 5 -I 0.1 -O 0.1 &
-
+compton -cC -f -D 5 -I 0.1 -O 0.1 &
 wait

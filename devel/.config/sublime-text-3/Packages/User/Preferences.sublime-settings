@@ -53,7 +53,7 @@
 	"default_line_ending": "system",
 	"detect_indentation": true,
 	"dictionary": "Packages/Language - English/en_US.dic",
-	"dpi_scale": 1.6,
+	"dpi_scale": 1.75,
 	"drag_text": true,
 	"draw_centered": false,
 	"draw_indent_guides": true,
@@ -107,7 +107,7 @@
 	[
 		"antialias"
 	],
-	"font_size": 10,
+	"font_size": 11,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
 	"highlight_line": true,

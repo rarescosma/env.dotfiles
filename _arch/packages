@@ -15,6 +15,7 @@ cheese
 chromium
 cifs-utils
 cmake
+compton
 cowsay
 ctags
 debootstrap
@@ -145,6 +146,7 @@ ttf-baekmuk
 ttf-dejavu
 ttf-freefont
 ttf-liberation
+ttf-symbola
 tumbler
 udftools
 unrar
@@ -158,7 +160,6 @@ wpa_supplicant
 x11vnc
 xautolock
 xclip
-xcompmgr
 xf86-input-libinput
 xf86-input-synaptics
 xf86-video-intel

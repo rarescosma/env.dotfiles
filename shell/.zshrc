@@ -55,7 +55,7 @@ unalias z
 bindkey \^U backward-kill-line
 
 _aws_zsh_completer_path="$HOME/.pyenv/versions/3.6.5/bin/aws_zsh_completer.sh"
-[ -x $_aws_zsh_completer_path ] && source $_aws_zsh_completer_path
+[ -f $_aws_zsh_completer_path ] && source $_aws_zsh_completer_path
 unset _aws_zsh_completer_path
 
 # -- X11 (Linux) ---------------------------------------------------------------
@@ -65,4 +65,3 @@ else
   clear
   fortune -a | cowsay -f tux
 fi
-
