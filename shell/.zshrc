@@ -63,5 +63,8 @@ if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 144
 else
   clear
-  fortune -a | cowsay -f tux
+  fortune -n 300 -s | cowsay -W 80 -f $(cowsay -l \
+  | tail -n +2 \
+  | tr ' ' '\n' \
+  | shuf -n 1)
 fi
