@@ -3,7 +3,7 @@
 	email = rares@getbetter.ro
 	signingkey = 0xD00EC1BBBA4D3352
 [core]
-	editor = subl3 -n -w
+	editor = subl3 -w
 	excludesfile = ~/.gitexcludes
 [color]
 	ui = true
