@@ -1,19 +1,21 @@
 #!/bin/bash
 
+DESIRED_COLS="$(basename $0)"
+
 i3::resize() {
   i3-msg resize $@ 1px or 1ppt 2>/dev/null | jq .[0].success
 }
 
 COLUMNS=$(tput cols)
 INIT_COLS=$COLUMNS
-while (( $COLUMNS > 80 )); do
+while (( $COLUMNS > $DESIRED_COLS )); do
   [[ "$(i3::resize shrink left)" != "false" ]] || i3::resize shrink right >/dev/null
   eval $(resize)
   if (( $COLUMNS == $INIT_COLS )); then
     break
   fi
 done
-while (( $COLUMNS < 80 )); do
+while (( $COLUMNS < $DESIRED_COLS )); do
   [[ "$(i3::resize grow left)" != "false" ]] || i3::resize grow right >/dev/null
   eval $(resize)
   if (( $COLUMNS == $INIT_COLS )); then
@@ -22,3 +24,4 @@ while (( $COLUMNS < 80 )); do
 done
 
 tput cols
+
