@@ -20,5 +20,4 @@ redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 kill "$(pgrep -f cloudy/watcher.py)"
 "${HOME}/src/lang.python/cloudy/watcher.py" &
 
-compton -cC -f -D 5 -I 0.1 -O 0.1 &
 wait
