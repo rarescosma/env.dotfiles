@@ -57,6 +57,7 @@ bindkey \^U backward-kill-line
 _aws_zsh_completer_path="$HOME/.pyenv/versions/3.6.5/bin/aws_zsh_completer.sh"
 [ -f $_aws_zsh_completer_path ] && source $_aws_zsh_completer_path
 unset _aws_zsh_completer_path
+[ -f $ZSH/../memoize/memoize.sh ] && source $ZSH/../memoize/memoize.sh
 
 # -- X11 (Linux) ---------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then

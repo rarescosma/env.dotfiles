@@ -7,3 +7,6 @@
 [submodule "_vendor/zplug"]
 	path = _vendor/zplug
 	url = https://github.com/zplug/zplug.git
+[submodule "_vendor/memoize"]
+	path = _vendor/memoize
+	url = https://github.com/aes/memoize.git
