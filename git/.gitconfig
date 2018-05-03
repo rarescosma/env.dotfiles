@@ -5,6 +5,7 @@
 [core]
 	editor = subl3 -w
 	excludesfile = ~/.gitexcludes
+	pager = /usr/share/git/diff-highlight/diff-highlight | less
 [color]
 	ui = true
 [push]
