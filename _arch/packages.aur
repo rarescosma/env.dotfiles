@@ -4,6 +4,7 @@ autokey-py3
 bfg
 bindfs
 cfssl
+docker-credential-secretservice
 dropbox
 escrotum-git
 fortune-mod-southpark
@@ -13,6 +14,7 @@ i3session-git
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
+js
 kube-aws
 libcloudproviders
 libtxc_dxtn

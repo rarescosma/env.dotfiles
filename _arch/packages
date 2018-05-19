@@ -75,6 +75,7 @@ lsof
 lxappearance
 mc
 meld
+mercurial
 mesa-demos
 mlocate
 mosh
@@ -137,6 +138,7 @@ sysstat
 thefuck
 thunar
 thunar-archive-plugin
+tig
 tk
 tlp
 tmux
