@@ -1,0 +1,80 @@
+[
+  // Selection
+  { "keys": ["alt+q"], "command": "expand_selection_to_quotes"},
+  { "keys": ["alt+s"], "command": "expand_selection_to_whitespace"},
+  { "keys": ["alt+b"], "command": "expand_selection", "args": {"to": "brackets"} },
+  { "keys": ["alt+i"], "command": "expand_selection", "args": {"to": "indentation"} },
+
+  // Jump to next/prev empty line
+  { "keys": ["alt+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false}},
+  { "keys": ["alt+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true}},
+
+  // Focus
+  { "keys": ["alt+left"],  "command": "focus_neighboring_group", "args": {"forward": false} },
+  { "keys": ["alt+right"], "command": "focus_neighboring_group" },
+
+  // Misc
+  { "keys": ["super+p"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+  { "keys": ["ctrl+super+v"], "command": "paste_and_indent" },
+  { "keys": ["alt+shift+r"], "command": "reveal_in_side_bar"},
+  { "keys": ["f5"], "command": "refresh_folder_list" },
+  { "keys": ["f12"], "command": "toggle_setting", "args": { "setting": "gutter" }},
+  { "keys": ["ctrl+k", "ctrl+s"], "command": "toggle_status_bar"},
+  { "keys": ["ctrl+k", "ctrl+m"], "command": "toggle_menu"},
+
+  // Ideal world
+  { "keys": ["ctrl+d"], "command": "duplicate_lines" },
+  { "keys": ["ctrl+y"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+  { "keys": ["alt+shift+up"], "command": "swap_line_up" },
+  { "keys": ["alt+shift+down"], "command": "swap_line_down" },
+  { "keys": ["shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+
+  { "keys": ["ctrl+\\"], "command": "expand_region" },
+  {
+    "keys": ["ctrl+shift+\\"],
+    "command": "expand_region",
+    "args": {"undo": true},
+    "context": [{ "key": "expand_region_soft_undo" }]
+  },
+
+  { "keys": ["alt+j"], "command": "find_under_expand" },
+
+  { "keys": ["ctrl+n"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+  { "keys": ["ctrl+p"], "command": "noop" },
+  { "keys": ["alt+shift+n"], "command": "new_file" },
+  { "keys": ["ctrl+b"], "command": "goto_definition" }
+
+  // PHP / JS
+  // { "keys": ["alt+["], "command": "run_macro_file", "args": {"file": "Packages/User/superBracketize.sublime-macro"} },
+  // { "keys": ["alt+;"], "command": "run_macro_file", "args": {"file": "Packages/User/superEndLine.sublime-macro"} },
+  // { "keys": ["alt+shift+;"], "command": "run_macro_file", "args": {"file": "Packages/User/superEndLineExitBlock.sublime-macro"} },
+  // { "keys": ["alt+enter"], "command": "run_macro_file", "args": {"file": "Packages/User/superExitBlock.sublime-macro"} }
+
+  // SublimeREPL bindings:
+  // =====================
+  // { "keys": ["alt+super+b"], "command": "repl_transfer_current", "args": {"scope": "block"}},
+  // { "keys": ["alt+super+r"], "command": "refresh_namespaces_in_repl"},
+  // { "keys": ["alt+super+i"], "command": "switch_to_current_namespace_in_repl"},
+  // { "keys": ["alt+super+x"], "command": "run_clojure_tests_from_current_namespace_in_repl"},
+  // { "keys": ["alt+super+a"], "command": "run_all_clojure_tests_from_project_in_repl"},
+
+
+  // BracketHighlighter bindings:
+  // ===========================
+
+  // - Swap bracket type
+  // - Swap quotes (only goes boths ways in supported languages...)
+  // - Select text between brackets
+  // - Select tag name of HTML/XML tag (both opening name and closing)
+  // - Toggle high visibility mode
+  // { "keys": ["ctrl+shift+]"],
+  //   "command": "swap_brackets"},
+  // { "keys": ["ctrl+shift+'"],
+  //   "command": "bh_key", "args": {"lines" : true, "plugin": {"type": ["single_quote", "double_quote", "py_single_quote", "py_double_quote"], "command": "bh_modules.swapquotes"} }},
+  // { "keys": ["ctrl+alt+a"],
+  //   "command": "bh_key", "args": {"lines" : true, "plugin": {"type": ["__all__"], "command": "bh_modules.bracketselect"} } },
+  // { "keys": ["ctrl+alt+t"],
+  //   "command": "bh_key", "args": {"plugin": {"type": ["cfml", "html", "angle"], "command": "bh_modules.tagnameselect"} } },
+  // { "keys": ["alt+super+="],
+  //   "command": "bh_toggle_high_visibility"},
+]
