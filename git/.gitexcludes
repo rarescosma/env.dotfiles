@@ -9,4 +9,9 @@
 .env
 .out
 .venv
+.idea
+.mypy_cache
+.pytest_cache
+*.egg-info/
+__pycache__
 
