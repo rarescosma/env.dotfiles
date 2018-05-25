@@ -75,4 +75,8 @@ tn() {
 alias ccat='pygmentize -g'
 alias pocket='/usr/lib/jvm/java-8-openjdk/bin/java -jar ~/Dropbox/Apps/pocket_1.5.jar'
 alias x509='openssl x509 -noout -text -in '
+ssh-add() {
+  chmod 400 "$@"
+  command ssh-add "$@"
+}
 
