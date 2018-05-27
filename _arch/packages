@@ -91,8 +91,10 @@ networkmanager-pptp
 nginx
 nodejs-lts-boron
 npm
+ntfs-3g
 ntp
 openssh
+parallel
 parcellite
 pavucontrol
 pcmanfm
@@ -101,6 +103,7 @@ php
 pigz
 pixz
 pkgfile
+poppler
 powertop
 pulseaudio
 pulseaudio-alsa
@@ -155,7 +158,6 @@ unrar
 unzip
 vim
 vim-runtime
-virtualbox
 vlc
 whois
 wpa_supplicant
