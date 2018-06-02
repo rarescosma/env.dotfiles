@@ -54,6 +54,7 @@ export ANSIBLE_NOCOWS=1
 PATH="${PATH}:${HOME}/bin"
 
 # -- Encoding ------------------------------------------------------------------
+. $(which env_parallel.zsh)
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE="C"
