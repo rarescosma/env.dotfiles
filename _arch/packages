@@ -126,6 +126,7 @@ rng-tools
 rsync
 rxvt-unicode
 rxvt-unicode-terminfo
+scala
 seahorse
 shellcheck
 siege
@@ -169,7 +170,6 @@ xf86-input-synaptics
 xf86-video-intel
 xorg-xinit
 xterm
-yaourt
 youtube-dl
 zip
 zsh
