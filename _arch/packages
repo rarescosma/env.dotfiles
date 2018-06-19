@@ -35,6 +35,7 @@ file-roller
 filezilla
 firefox
 geeqie
+ghc
 ghostscript
 git
 git-crypt
@@ -132,12 +133,12 @@ shellcheck
 siege
 sl
 smartmontools
+sox
 sshfs
 steghide
 stow
 strace
 sublime-text-dev
-sysdig
 sysstat
 thefuck
 thunar
@@ -146,13 +147,13 @@ tig
 tk
 tlp
 tmux
+transmission-gtk
 tree
 ttf-arphic-uming
 ttf-baekmuk
 ttf-dejavu
 ttf-freefont
 ttf-liberation
-ttf-symbola
 tumbler
 udftools
 unrar
