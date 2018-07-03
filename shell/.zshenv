@@ -1,4 +1,4 @@
-enable_langs=(python golang)
+enable_langs=(python golang node nvm)
 
 # -- AWS -----------------------------------------------------------------------
 export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
@@ -37,7 +37,7 @@ if [[ "$enable_langs" =~ "node" ]]; then
   NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 fi
 
-if [[ "$enable_langs" =~ "nvm" ]] && (( $+commands[nvm] )); then
+if [[ "$enable_langs" =~ "nvm" ]]; then
   [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
   source /usr/share/nvm/nvm.sh
   source /usr/share/nvm/install-nvm-exec
