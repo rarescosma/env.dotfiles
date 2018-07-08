@@ -23,11 +23,15 @@ moc-pulse
 nufraw
 nvme-cli
 pa-applet-git
-package-query
+pcmciautils
 pkgtools
 potato
+pulseaudio-dlna
 pyenv
+python2-elementtree
 python2-i3-git
+python2-notify2
+python2-zeroconf
 rot13
 soundwire
 tmsu

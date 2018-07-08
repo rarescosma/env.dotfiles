@@ -68,6 +68,7 @@ jq
 keychain
 klavaro
 lastpass-cli
+libstdc++5
 libvncserver
 libyaml
 linux-headers
@@ -94,6 +95,7 @@ nodejs-lts-boron
 npm
 ntfs-3g
 ntp
+nvm
 openssh
 parallel
 parcellite
