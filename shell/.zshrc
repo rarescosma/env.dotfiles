@@ -64,8 +64,21 @@ if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 144
 else
   clear
-  fortune -n 300 -s | cowsay -W 80 -f $(cowsay -l \
-  | tail -n +2 \
-  | tr ' ' '\n' \
-  | shuf -n 1)
+  read -r -d '' OK_COWS <<'EOF'
+moose
+daemon
+three-eyes
+bunny
+kitty
+elephant
+small
+skeleton
+dragon
+koala
+bud-frogs
+vader
+default
+tux
+EOF
+  fortune -n 300 -s | cowsay -W 80 -f $(echo "$OK_COWS" | shuf -n 1)
 fi
