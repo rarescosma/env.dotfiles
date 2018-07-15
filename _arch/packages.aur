@@ -25,6 +25,7 @@ nvme-cli
 pa-applet-git
 pcmciautils
 pkgtools
+postman
 potato
 pulseaudio-dlna
 pyenv
