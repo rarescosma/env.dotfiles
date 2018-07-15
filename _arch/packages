@@ -62,10 +62,10 @@ htop
 intel-ucode
 iotop
 iw
-jdk8-openjdk
 jdk9-openjdk
 jhead
 jq
+jre10-openjdk
 keychain
 klavaro
 lastpass-cli
