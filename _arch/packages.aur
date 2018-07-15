@@ -29,6 +29,7 @@ postman
 potato
 pulseaudio-dlna
 pyenv
+python-pyfiglet
 python2-elementtree
 python2-i3-git
 python2-notify2
@@ -36,6 +37,7 @@ python2-zeroconf
 reg
 rot13
 soundwire
+termdown
 tmsu
 tomb
 tomb-kdf
