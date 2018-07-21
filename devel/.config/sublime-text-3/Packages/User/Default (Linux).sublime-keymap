@@ -21,6 +21,7 @@
   { "keys": ["f12"], "command": "toggle_setting", "args": { "setting": "gutter" }},
   { "keys": ["ctrl+k", "ctrl+s"], "command": "toggle_status_bar"},
   { "keys": ["ctrl+k", "ctrl+m"], "command": "toggle_menu"},
+  { "keys": ["ctrl+k", "ctrl+f"], "command": "close_folder_list"},
 
   // Ideal world
   { "keys": ["ctrl+d"], "command": "duplicate_lines" },
