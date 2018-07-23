@@ -4,7 +4,6 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 RIPGREP="rg --hidden --follow --smart-case"
 alias rg="$RIPGREP"
-
 fzf_cmd() {
   # Drop empty queries
   local q
@@ -16,12 +15,21 @@ fzf_cmd() {
     cat | grep -i "$q" | fzf-tmux -1 $* | tail -n +2
   fi
 }
-
 own() {
   sudo chown -R $(id -un): $*
 }
 
-# -- Editors ----------------------------------------------------------------
+# -- Python --------------------------------------------------------------------
+venv() {
+  deactivate 2>/dev/null
+  python -mvenv .venv --prompt "$*"
+  source .venv/bin/activate
+  pip install -U pip
+  [ -f requirements.txt ] && pip install -r requirements.txt || true
+  [ -f test-requirements.txt ] && pip install -r test-requirements.txt || true
+}
+
+# -- Editors -------------------------------------------------------------------
 alias s='subl3 -a'
 alias svi='sudo vim'
 sag() {
@@ -36,18 +44,28 @@ i() {
   /opt/intellij-idea-ultimate-edition/bin/idea.sh $* 2>/dev/null 1>&2 &
 }
 
-# -- Containers ----------------------------------------------------------------
+# -- Turtles -------------------------------------------------------------------
 alias k='kubectl'
 alias dk='docker-compose'
-dps() {
-  docker ps $@ --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" | grep -v pause
-}
 alias koff='kubectl config unset current-context'
+dps() {
+  docker ps $@ \
+    --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
+  | grep -v pause
+}
+ec2-list() {
+  local team="$1"; shift
+  ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$team" | grep linux
+}
+ec2-ip() {
+  memoize ec2-list $* | fzf_cmd | awk '{print $2}'
+}
 
 # -- Storage -------------------------------------------------------------------
 alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
-alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,uid=$(id -u),gid=$(id -g),umask=113"
+alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
+uid=$(id -u),gid=$(id -g),umask=113"
 
 # -- Z / Misc ------------------------------------------------------------------
 alias derp='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
@@ -56,10 +74,12 @@ TEEE="t -t ${HOME}/Dropbox/_Tasks"
 alias t="${TEEE}"
 alias tlk="${TEEE} -l k"
 alias tlro="${TEEE} -l ro"
+alias yaourt='yaourt --noconfirm'
+alias ccat='pygmentize -g'
+alias x509='openssl x509 -noout -text -in '
 tsh() {
   ssh -t $@ "tmux attach -t base || exec tmux new -s base"
 }
-alias yaourt='yaourt --noconfirm'
 _pass() {
   lpass status -q || lpass login --trust ${LPASS_USER}
   lpass ls  | fzf_cmd --query "$*" | awk '{print $(NF)}' | sed 's/\]//g'
@@ -72,11 +92,7 @@ tn() {
   s_name=${@:-base}
   tmux attach -t ${=s_name} || tmux new -s ${=s_name}
 }
-alias ccat='pygmentize -g'
-alias pocket='/usr/lib/jvm/java-8-openjdk/bin/java -jar ~/Dropbox/Apps/pocket_1.5.jar'
-alias x509='openssl x509 -noout -text -in '
 ssh-add() {
   chmod 400 "$@"
   command ssh-add "$@"
 }
-
