@@ -1,4 +1,4 @@
-enable_langs=(python golang node nvm)
+enable_langs=(python golang node)
 
 # -- AWS -----------------------------------------------------------------------
 export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
@@ -52,9 +52,9 @@ export MC_SKIN=$HOME/.config/mc/solarized.ini
 export _Z_DATA=/var/tmp/karelian.z # stfu z
 export ANSIBLE_NOCOWS=1
 PATH="${PATH}:${HOME}/bin"
+. $(which env_parallel.zsh)
 
 # -- Encoding ------------------------------------------------------------------
-. $(which env_parallel.zsh)
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE="C"
