@@ -14,4 +14,7 @@
 .pytest_cache
 *.egg-info/
 __pycache__
+reports
+project/target
+target
 
