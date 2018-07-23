@@ -17,7 +17,7 @@ redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
 
-kill "$(pgrep -f cloudy/watcher.py)"
-"${HOME}/src/lang.python/cloudy/watcher.py" &
+cloudy watch ${HOME}/Dropbox/Screenshots -c ${HOME}/.config/cloudy.yaml >/tmp/cloudy.log 2>&1 &
 
 wait
+
