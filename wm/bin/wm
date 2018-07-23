@@ -34,8 +34,8 @@ function dpi::sublime() {
     local font_size="${2}"
 
     sublime_config="${HOME}/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
-    $SED -e "s/\"dpi_scale\": [^,]\+/\"dpi_scale\": $dpi_scale/g" \
-           -e "s/\"font_size\": [^,]\+/\"font_size\": $font_size/g" $sublime_config
+    $SED -E -e "s/\"dpi_scale\": [[:digit:]\.]+/\"dpi_scale\": $dpi_scale/g" \
+            -e "s/\"font_size\": [[:digit:]\.]+/\"font_size\": $font_size/g" $sublime_config
 }
 
 # Sets terminal font-size
@@ -43,7 +43,7 @@ function dpi::terminal() {
     local font_size="${1}"
 
     xresources="${HOME}/.Xresources"
-    $SED -e "s/:pixelsize=[^:]\+/:pixelsize=$font_size/g" $xresources
+    $SED -E "s/:pixelsize=[[:digit:]]+/:pixelsize=$font_size/" $xresources
     xrdb -merge $xresources
 }
 
@@ -53,7 +53,7 @@ function dpi::i3() {
     i3_config="${HOME}/.i3/config"
     font_size="${1}"
 
-    $SED -e "s/Sans Mono [[:digit:]]\+/Sans Mono $font_size/g" $i3_config
+    $SED -E "s/Sans Mono [[:digit:]]+/Sans Mono $font_size/" $i3_config
     i3-msg reload 1>/dev/null
 }
 
@@ -72,8 +72,8 @@ function dpi::gtk() {
     gtkrc2="${HOME}/.gtkrc-2.0"
     gtkrc3="${HOME}/.config/gtk-3.0/settings.ini"
 
-    $SED -e "s/DejaVu Sans [[:digit:]]\+/DejaVu Sans $font_size/g" $gtkrc2
-    $SED -e "s/DejaVu Sans [[:digit:]]\+/DejaVu Sans $font_size/g" $gtkrc3
+    $SED -E "s/DejaVu Sans [[:digit:]]+/DejaVu Sans $font_size/" $gtkrc2
+    $SED -E "s/DejaVu Sans [[:digit:]]+/DejaVu Sans $font_size/" $gtkrc3
 }
 
 # Sets Idea font sizes
