@@ -1,4 +1,4 @@
-enable_langs=(python golang node)
+enable_langs=(python golang node nvm)
 
 # -- AWS -----------------------------------------------------------------------
 export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
