@@ -34,3 +34,5 @@
 	enabled = true
 [rebase]
 	autosquash = true
+[mergetool]
+	keepBackup = false
