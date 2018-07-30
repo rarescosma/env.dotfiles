@@ -28,6 +28,7 @@ venv() {
   [ -f requirements.txt ] && pip install -r requirements.txt || true
   [ -f test-requirements.txt ] && pip install -r test-requirements.txt || true
 }
+alias pipu='pip install -U pip'
 
 # -- Editors -------------------------------------------------------------------
 alias s='subl3 -a'
