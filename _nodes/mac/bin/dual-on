@@ -9,7 +9,7 @@ io::keyboard
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1
 dpi::sublime 1.0 13
-dpi::terminal 16
+dpi::terminal 18
 dpi::i3 7
 dpi::gtk 9
 dpi::idea 17 14
