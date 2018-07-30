@@ -3,7 +3,10 @@
 source ${HOME}/bin/wm
 
 browser::set_scale chromium 1.75
+
 io::keyboard
+xmodmap -e 'keycode 105 = Menu'
+
 dpi::sublime 1.75 11
 dpi::terminal 32
 dpi::i3 10
