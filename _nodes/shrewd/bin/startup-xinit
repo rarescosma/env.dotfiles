@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ${HOME}/bin/wm
+source "${HOME}/bin/wm"
 
 browser::set_scale chromium 1.75
 
