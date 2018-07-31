@@ -1,4 +1,5 @@
 alsaequal
+android-sdk-platform-tools
 apache-tools
 autokey-py3
 bfg
@@ -8,6 +9,7 @@ docker-credential-secretservice
 dropbox
 escrotum-git
 fortune-mod-southpark
+gimp-gap
 git-test-git
 google-chrome
 i3session-git
