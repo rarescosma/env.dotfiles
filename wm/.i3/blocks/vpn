@@ -1,0 +1,10 @@
+#!/bin/bash
+
+VPN_PATH="/proc/sys/net/ipv4/conf/tun0"
+
+if [[ -e "${VPN_PATH}" ]]; then
+  echo "VPN"
+  echo "VPN"
+else
+  echo ""
+fi
