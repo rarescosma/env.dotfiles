@@ -112,7 +112,7 @@
 	[
 		"antialias"
 	],
-	"font_size": 11,
+	"font_size": 13,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
 	"highlight_line": true,
