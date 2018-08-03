@@ -81,12 +81,14 @@ alias x509='openssl x509 -noout -text -in '
 tsh() {
   ssh -t $@ "tmux attach -t base || exec tmux new -s base"
 }
-_pass() {
-  lpass status -q || lpass login --trust ${LPASS_USER}
-  lpass ls  | fzf_cmd --query "$*" | awk '{print $(NF)}' | sed 's/\]//g'
+_fzf_pass() {
+  local pwdir="${HOME}/.password-store/"
+  local stringsize="${#pwdir}"
+  ((stringsize+=1))
+  find "$pwdir" -name "*.gpg" -print | cut -c "$stringsize"- | sed -e 's/\(.*\)\.gpg/\1/' | fzf_cmd --query "$*"
 }
 pass() {
-  lpass show --password $(_pass "$@")
+  command pass show $(_fzf_pass "$@") | head -1
 }
 tn() {
   local s_name
