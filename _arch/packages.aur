@@ -4,8 +4,10 @@ apache-tools
 autokey-py3
 bfg
 bindfs
+browserpass
 cfssl
 docker-credential-secretservice
+downgrade
 dropbox
 escrotum-git
 fortune-mod-southpark
@@ -23,8 +25,11 @@ libtxc_dxtn
 lxd
 moc-pulse
 nufraw
+nvm
 nvme-cli
 pa-applet-git
+package-query
+pass-import
 pcmciautils
 pkgtools
 postman
@@ -39,12 +44,14 @@ python2-zeroconf
 reg
 rot13
 soundwire
+sublime-text-dev
 termdown
 tmsu
 tomb
 tomb-kdf
 tor-browser-en
 ttf-consolas-with-yahei
+ttf-iosevka-term
 ttf-ms-fonts
 ttf-nerd-fonts-hack-complete-git
 ttf-symbola

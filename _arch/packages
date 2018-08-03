@@ -1,3 +1,4 @@
+acpi
 ansible
 arandr
 arch-install-scripts
@@ -25,7 +26,6 @@ dnsmasq
 docker
 docker-compose
 dosfstools
-downgrade
 dunst
 eog
 expac
@@ -63,13 +63,12 @@ httpie
 intel-ucode
 iotop
 iw
-jdk9-openjdk
+jdk10-openjdk
 jhead
 jq
 jre10-openjdk
 keychain
 klavaro
-lastpass-cli
 libstdc++5
 libvncserver
 libyaml
@@ -94,10 +93,10 @@ networkmanager-openvpn
 networkmanager-pptp
 nginx
 nodejs-lts-boron
+noto-fonts
 npm
 ntfs-3g
 ntp
-nvm
 openssh
 parallel
 parcellite
@@ -144,7 +143,7 @@ sshfs
 steghide
 stow
 strace
-sublime-text-dev
+stress
 sysstat
 thefuck
 thunar
