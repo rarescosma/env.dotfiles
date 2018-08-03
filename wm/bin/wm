@@ -42,8 +42,8 @@ function dpi::terminal() {
     local font_size="${1}"
 
     xresources="${HOME}/.Xresources"
-    $SED -E "s/:pixelsize=[[:digit:]]+/:pixelsize=$font_size/" $xresources
-    xrdb -merge $xresources
+    $SED -E "s/:pixelsize=[[:digit:]]+/:pixelsize=$font_size/" "$xresources"
+    xrdb -load "$xresources"
 }
 
 # Sets i3 font-size
