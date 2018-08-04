@@ -107,12 +107,12 @@
 		"__pycache__",
 		"*.egg-info"
 	],
-	"font_face": "Consolas",
+	"font_face": "Hack Nerd Font Mono",
 	"font_options":
 	[
 		"antialias"
 	],
-	"font_size": 13,
+	"font_size": 12,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
 	"highlight_line": true,
