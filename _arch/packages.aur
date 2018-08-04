@@ -18,10 +18,7 @@ i3session-git
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
-js
 kube-aws
-libcloudproviders
-libtxc_dxtn
 lxd
 moc-pulse
 nufraw
@@ -32,12 +29,10 @@ package-query
 pass-import
 pcmciautils
 pkgtools
-postman
 potato
 pulseaudio-dlna
 pyenv
 python-pyfiglet
-python2-elementtree
 python2-i3-git
 python2-notify2
 python2-zeroconf
