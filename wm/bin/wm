@@ -42,7 +42,7 @@ function dpi::terminal() {
     local font_size="${1}"
 
     xresources="${HOME}/.Xresources"
-    $SED -E "s/:pixelsize=[[:digit:]]+/:pixelsize=$font_size/" "$xresources"
+    $SED -E "s/:size=[[:digit:]]+/:size=$font_size/" "$xresources"
     xrdb -load "$xresources"
 }
 
@@ -78,7 +78,7 @@ function dpi::gtk() {
 # Sets Idea font sizes
 function dpi::idea() {
     local options_dir
-    options_dir="${HOME}/.IntelliJIdea2018.1/config/options"
+    options_dir="${HOME}/.IntelliJIdea2018.2/config/options"
     local editor_font_size="${1}"
     local ui_font_size="${2}"
 

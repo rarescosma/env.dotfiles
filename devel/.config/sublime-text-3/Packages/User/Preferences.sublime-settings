@@ -58,7 +58,7 @@
 	"default_line_ending": "system",
 	"detect_indentation": true,
 	"dictionary": "Packages/Language - English/en_US.dic",
-	"dpi_scale": 1.75,
+	"dpi_scale": 1.85,
 	"drag_text": true,
 	"draw_centered": false,
 	"draw_indent_guides": true,
@@ -107,12 +107,12 @@
 		"__pycache__",
 		"*.egg-info"
 	],
-	"font_face": "Hack Nerd Font Mono",
+	"font_face": "Iosevka Term",
 	"font_options":
 	[
 		"antialias"
 	],
-	"font_size": 12,
+	"font_size": 13,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
 	"highlight_line": true,

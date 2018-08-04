@@ -7,10 +7,10 @@ browser::set_scale chromium 1.75
 io::keyboard
 xmodmap -e 'keycode 105 = Menu'
 
-dpi::sublime 1.75 11
-dpi::terminal 32
+dpi::sublime 1.85 13
+dpi::terminal 16
 dpi::i3 10
 dpi::gtk 10
-dpi::idea 30 24
+dpi::idea 29 24
 
 sudo NetworkManager
