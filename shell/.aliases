@@ -52,7 +52,7 @@ alias koff='kubectl config unset current-context'
 dps() {
   docker ps $@ \
     --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
-  | grep -v pause
+    | grep -v pause
 }
 ec2-list() {
   local team="$1"; shift
@@ -65,8 +65,7 @@ ec2-ip() {
 # -- Storage -------------------------------------------------------------------
 alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
-alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
-uid=$(id -u),gid=$(id -g),umask=113"
+alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,uid=$(id -u),gid=$(id -g),umask=113"
 
 # -- Z / Misc ------------------------------------------------------------------
 alias derp='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
@@ -85,10 +84,11 @@ _fzf_pass() {
   local pwdir="${HOME}/.password-store/"
   local stringsize="${#pwdir}"
   ((stringsize+=1))
-  find "$pwdir" -name "*.gpg" -print | cut -c "$stringsize"- | sed -e 's/\(.*\)\.gpg/\1/' | fzf_cmd --query "$*"
+  find "$pwdir" -name "*.gpg" -print | cut -c "$stringsize"- \
+    | sed -e 's/\(.*\)\.gpg/\1/' | fzf_cmd --query "$*"
 }
-pass() {
-  command pass show $(_fzf_pass "$@") | head -1
+passs() {
+  pass show $(_fzf_pass "$@") | head -1
 }
 tn() {
   local s_name
@@ -98,4 +98,14 @@ tn() {
 ssh-add() {
   chmod 400 "$@"
   command ssh-add "$@"
+}
+mp3() {
+  youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 \
+    --audio-quality 0 -o '~/Desktop/youtube/%(title)s.%(ext)s' "$1"
+}
+mp3p () {
+  youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 \
+    --audio-quality 0 \
+    -o '~/Dekstop/youtube/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' \
+    "$1"
 }
