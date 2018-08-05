@@ -107,7 +107,7 @@
 		"__pycache__",
 		"*.egg-info"
 	],
-	"font_face": "Iosevka Term",
+	"font_face": "Iosevka Term SS08",
 	"font_options":
 	[
 		"antialias"
