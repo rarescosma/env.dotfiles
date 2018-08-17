@@ -122,7 +122,9 @@ python-xdg
 python2-pip
 python2-yaml
 qt4
+ranger
 redshift
+reflector
 reptyr
 restic
 ripgrep
@@ -167,6 +169,7 @@ unzip
 vim
 vim-runtime
 vlc
+w3m
 whois
 wpa_supplicant
 x11vnc
