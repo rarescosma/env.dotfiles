@@ -27,8 +27,7 @@ function() {
 
 add-zsh-hook precmd _zsh_kubectl_prompt_precmd
 function _zsh_kubectl_prompt_precmd() {
-    local kubeconfig kubedir updated_at now context namespace ns separator modified_time_fmt _newline
-    _newline=$'\n'
+    local kubeconfig kubedir updated_at now context namespace ns separator modified_time_fmt
 
     kubeconfig="$HOME/.kube/config"
     kubedir="$HOME/.kube"
