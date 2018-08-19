@@ -51,7 +51,7 @@ fi
 export MC_SKIN=$HOME/.config/mc/solarized.ini
 export _Z_DATA=/var/tmp/karelian.z # stfu z
 export ANSIBLE_NOCOWS=1
-PATH="${PATH}:${HOME}/bin"
+PATH="${PATH}:${HOME}/bin:${HOME}/.local/bin"
 . $(which env_parallel.zsh)
 
 # -- Encoding ------------------------------------------------------------------
