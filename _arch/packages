@@ -117,7 +117,7 @@ pv
 pwgen
 python-gobject
 python-llfuse
-python-pipenv
+python-pip
 python-xdg
 python2-pip
 python2-yaml
@@ -147,7 +147,6 @@ stow
 strace
 stress
 sysstat
-thefuck
 thunar
 thunar-archive-plugin
 tig

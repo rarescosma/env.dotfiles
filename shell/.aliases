@@ -31,6 +31,20 @@ venv() {
   touch .envlocal
 }
 alias pipu='pip install -U pip'
+penv() {
+  deactivate 2>/dev/null
+  ln -sf "$ZSH/../../devel/.pythonenv" .env
+  source .env
+  touch .envlocal
+  if [ -f Pipfile ]; then
+    pipenv install --dev
+  else
+    [ -f requirements.txt ] && pipenv install -r requirements.txt
+    [ -f test-requirements.txt ] && pipenv install --dev -r test-requirements.txt
+  fi
+  [ -f .venv/bin/activate ] && source .venv/bin/activate
+}
+alias pe='pipenv'
 
 # -- Editors -------------------------------------------------------------------
 alias s='subl3 -a'
@@ -70,7 +84,6 @@ alias tc='tomb close'
 alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,uid=$(id -u),gid=$(id -g),umask=113"
 
 # -- Z / Misc ------------------------------------------------------------------
-alias derp='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias vps="mosh vps -p 1919"
 TEEE="t -t ${HOME}/Dropbox/_Tasks"
 alias t="${TEEE}"
