@@ -18,4 +18,7 @@ __pycache__
 reports
 project/target
 target
+.coverage
+.coverage.*
+/htmlcov
 
