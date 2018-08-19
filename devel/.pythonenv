@@ -1,0 +1,4 @@
+ROOT=$(git rev-parse --show-toplevel)
+source "$ROOT/.venv/bin/activate"
+export GIT_TEST_VERIFY='make test'
+[[ -f "$ROOT/.envlocal" ]] && source "$ROOT/.envlocal"
