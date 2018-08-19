@@ -118,6 +118,7 @@ pv
 pwgen
 python-gobject
 python-llfuse
+python-pipenv
 python-xdg
 python2-pip
 python2-yaml
