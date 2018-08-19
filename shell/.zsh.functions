@@ -2,8 +2,9 @@
 alias pbcopy='xsel -b'
 alias ...='cd ../../'
 alias ....='cd ../../../'
-RIPGREP="rg --hidden --follow --smart-case"
-alias rg="$RIPGREP"
+alias rg="rg --hidden --follow --smart-case"
+
+## wrapper for fzf to allow partial queries
 fzf_cmd() {
   # Drop empty queries
   local q
@@ -15,11 +16,17 @@ fzf_cmd() {
     cat | grep -i "$q" | fzf-tmux -1 $* | tail -n +2
   fi
 }
+
+## own all files/directories passed as arguments
 own() {
   sudo chown -R $(id -un): $*
 }
 
 # -- Python --------------------------------------------------------------------
+alias pipu='pip install -U pip'
+alias pe='pipenv'
+
+## automate .venv creation for pip-based projects
 venv() {
   deactivate 2>/dev/null
   python -mvenv .venv --prompt "$*"
@@ -30,33 +37,38 @@ venv() {
   ln -sf "$ZSH/../../devel/.pythonenv" .env
   touch .envlocal
 }
-alias pipu='pip install -U pip'
+
+## automate .venv creation for pipenv-based projects
 penv() {
   deactivate 2>/dev/null
-  ln -sf "$ZSH/../../devel/.pythonenv" .env
-  source .env
-  touch .envlocal
   if [ -f Pipfile ]; then
     pipenv install --dev
   else
     [ -f requirements.txt ] && pipenv install -r requirements.txt
     [ -f test-requirements.txt ] && pipenv install --dev -r test-requirements.txt
   fi
-  [ -f .venv/bin/activate ] && source .venv/bin/activate
+  source .venv/bin/activate
+  ln -sf "$ZSH/../../devel/.pythonenv" .env
+  touch .envlocal
 }
-alias pe='pipenv'
 
-# -- Editors -------------------------------------------------------------------
+# -- Editing -------------------------------------------------------------------
 alias s='subl3 -a'
 alias svi='sudo vim'
+
+## grep for line content and open the selected file(s) in sublime
 sag() {
   local file_list
   file_list=$(rg $* | fzf_cmd)
   [[ ! -z $file_list ]] && s $file_list
 }
+
+## open file in Vim at specified line
 vil() {
   vi "${1}" +$(< "${1}" | nl -ba -nln | fzf_cmd | cut -d' ' -f1)
 }
+
+## open dir in IntelliJ
 i() {
   /opt/intellij-idea-ultimate-edition/bin/idea.sh $* 2>/dev/null 1>&2 &
 }
@@ -64,18 +76,35 @@ i() {
 # -- Turtles -------------------------------------------------------------------
 alias k='kubectl'
 alias dk='docker-compose'
-alias koff='kubectl config unset current-context'
+
+## docker ps with port information
 dps() {
   docker ps $@ \
     --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
     | grep -v pause
 }
+
+## list ec2 instances belonging to team
 ec2-list() {
   local team="$1"; shift
   ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$team" | grep linux
 }
+
+## output instance IP after filtering
 ec2-ip() {
-  memoize ec2-list $* | fzf_cmd | awk '{print $2}'
+  memoize ec2-list $TEAM_TAG | fzf_cmd --query "$*" | awk '{print $2}'
+}
+
+# -- Pass ----------------------------------------------------------------------
+_fzf_pass() {
+  local pwdir="${HOME}/.password-store/"
+  local stringsize="${#pwdir}"
+  ((stringsize+=1))
+  find "$pwdir" -name "*.gpg" -print | cut -c "$stringsize"- \
+    | sed -e 's/\(.*\)\.gpg/\1/' | fzf_cmd --query "$*"
+}
+passs() {
+  pass show $(_fzf_pass "$@") | head -1
 }
 
 # -- Storage -------------------------------------------------------------------
@@ -92,32 +121,31 @@ alias tlro="${TEEE} -l ro"
 alias yaourt='yaourt --noconfirm'
 alias ccat='pygmentize -g'
 alias x509='openssl x509 -noout -text -in '
+
+## ssh into tmux session on host
 tsh() {
   ssh -t $@ "tmux attach -t base || exec tmux new -s base"
 }
-_fzf_pass() {
-  local pwdir="${HOME}/.password-store/"
-  local stringsize="${#pwdir}"
-  ((stringsize+=1))
-  find "$pwdir" -name "*.gpg" -print | cut -c "$stringsize"- \
-    | sed -e 's/\(.*\)\.gpg/\1/' | fzf_cmd --query "$*"
+
+## shmoded ssh-add
+ssh-add() {
+  chmod 400 "$@" && command ssh-add "$@"
 }
-passs() {
-  pass show $(_fzf_pass "$@") | head -1
-}
+
+## launch or attach to named tmux session
 tn() {
   local s_name
   s_name=${@:-base}
   tmux attach -t ${=s_name} || tmux new -s ${=s_name}
 }
-ssh-add() {
-  chmod 400 "$@"
-  command ssh-add "$@"
-}
+
+## download mp3 from youtube video URL
 mp3() {
   youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 \
     --audio-quality 0 -o '~/Desktop/youtube/%(title)s.%(ext)s' "$1"
 }
+
+## download mp3s from youtube playlist URL
 mp3p () {
   youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 \
     --audio-quality 0 \

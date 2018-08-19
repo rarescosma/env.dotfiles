@@ -1,7 +1,3 @@
-export PIPENV_VENV_IN_PROJECT=1
-export PIPENV_IGNORE_VIRTUALENVS=0
-export PIPENV_HIDE_EMOJIS=1
-export PIPENV_NOSPIN=1
 export GIT_TEST_VERIFY="make test"
 
 ROOT=$(git rev-parse --show-toplevel)
