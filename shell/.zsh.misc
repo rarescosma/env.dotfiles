@@ -1,10 +1,10 @@
 # -- Ansible -------------------------------------------------------------------
-ANSIBLE_NOCOWS=1
+export ANSIBLE_NOCOWS=1
 
 # -- AWS -----------------------------------------------------------------------
-AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
-AWS_PROFILE="default"
-EC2_REGION="eu-west-1"
+export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
+export AWS_PROFILE="default"
+export EC2_REGION="eu-west-1"
 _aws_zsh_completer_path="$HOME/.local/bin/aws_zsh_completer.sh"
 [ -f $_aws_zsh_completer_path ] && source $_aws_zsh_completer_path
 unset _aws_zsh_completer_path
@@ -23,7 +23,8 @@ unset KUBECONFIG
 [ -f "$ZSH/../memoize/memoize.sh" ] && source "$ZSH/../memoize/memoize.sh"
 
 # -- Midnight Commander --------------------------------------------------------
-MC_SKIN=$HOME/.config/mc/solarized.ini
+export MC_SKIN=$HOME/.config/mc/solarized.ini
 
 # -- Z -------------------------------------------------------------------------
-_Z_DATA=/var/tmp/karelian.z
+export _Z_DATA=/var/tmp/karelian.z
+
