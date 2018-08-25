@@ -96,6 +96,7 @@ npm
 ntfs-3g
 ntp
 openssh
+pacman-contrib
 parallel
 parcellite
 pavucontrol
