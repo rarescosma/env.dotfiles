@@ -1,24 +1,23 @@
+# Macs...
 .DS_Store
-.tern-project
-.tern-port
-.lvimrc
-.projections.json
-.quicksave.vim
-.build.sh
-.nrepl-history
-.env
-.envlocal
-.out
-.venv
-.idea
-.mypy_cache
-.pytest_cache
-*.egg-info/
-__pycache__
-reports
-project/target
-target
-.coverage
-.coverage.*
-/htmlcov
 
+# Autoenv
+/.env
+/.envlocal
+
+# IntelliJ
+/.idea
+
+# Python
+/.venv
+/.mypy_cache
+/.pytest_cache
+/*.egg-info/
+/.coverage
+/.coverage.*
+/htmlcov
+__pycache__
+
+# Generic ignores for all projects
+/var
+/.out
