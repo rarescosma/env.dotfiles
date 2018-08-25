@@ -121,6 +121,7 @@ python-pip
 python-xdg
 python2-pip
 python2-yaml
+qemu-arch-extra
 qt4
 ranger
 redshift
