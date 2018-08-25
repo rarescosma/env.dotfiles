@@ -26,7 +26,6 @@ nufraw
 nvm
 nvme-cli
 pa-applet-git
-package-query
 pass-import
 pcmciautils
 pkgtools
@@ -44,6 +43,7 @@ tmsu
 tomb
 tomb-kdf
 tor-browser-en
+trizen
 ttf-consolas-with-yahei
 ttf-iosevka-term
 ttf-iosevka-term-ss08
@@ -54,5 +54,4 @@ urxvt-clipboard
 urxvt-resize-font-git
 urxvt-vtwheel
 watchexec
-yaourt
 zplug

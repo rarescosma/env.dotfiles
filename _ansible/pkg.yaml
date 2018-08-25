@@ -6,5 +6,5 @@
     user: "{{ lookup('env', 'USER') }}"
     dots: "/home/{{ user }}/src/env.dotfiles"
   tasks:
-   - name: yaourt all the things
+   - name: pacaur all the things
      shell: make -C {{ playbook_dir }}/.. packages

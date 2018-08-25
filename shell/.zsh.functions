@@ -118,7 +118,7 @@ TEEE="t -t ${HOME}/Dropbox/_Tasks"
 alias t="${TEEE}"
 alias tlk="${TEEE} -l k"
 alias tlro="${TEEE} -l ro"
-alias yaourt='yaourt --noconfirm'
+alias trizen='trizen --noconfirm'
 alias ccat='pygmentize -g'
 alias x509='openssl x509 -noout -text -in '
 

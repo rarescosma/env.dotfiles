@@ -7,16 +7,16 @@ PLAYBOOK ?= user
 default: playbook
 
 base: $(PACMAN_REPOS)
-	pacman -Sy --needed --noconfirm base make ansible pwgen sudo python zsh yaourt
+	pacman -Sy --needed --noconfirm base make ansible pwgen sudo python zsh trizen
 
 playbook:
 	ansible-playbook -v _ansible/$(PLAYBOOK).yaml
 
 packages:
-	yaourt -S --needed --noconfirm \
+	trizen -S --needed --noconfirm \
 	base-devel xorg \
 	$(shell cat _arch/packages _arch/packages.aur | grep -v '#') \
-	> >(tee -a ~/yaourt.log) 2> >(tee -a ~/yaourt.err >&2)
+	> >(tee -a ~/packages.log) 2> >(tee -a ~/packages.err >&2)
 
 $(PACMAN_REPOS):
 	cat _arch/repos | tee -a /etc/pacman.conf
