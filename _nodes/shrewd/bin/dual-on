@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# shellcheck disable=SC1090
+source "${HOME}/bin/wm"
+
+xrandr --output DP1 --mode 3440x1440 --pos 0x0 --rotate normal \
+  --output HDMI2 --off \
+  --output HDMI1 --off \
+  --output DP2 --off \
+  --output VIRTUAL1 --off \
+  --output eDP1 --off
+
+io::keyboard
+browser::set_scale chromium 1.2
+browser::set_scale google-chrome-stable 1
+dpi::sublime 1.2 12
+dpi::terminal 10
+dpi::i3 7
+dpi::gtk 9
+dpi::idea 17 14
+
+"${HOME}/.i3/wallpaper.sh"
