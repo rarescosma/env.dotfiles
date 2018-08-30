@@ -3,14 +3,19 @@
 # shellcheck disable=SC1090
 source "${HOME}/bin/wm"
 
-xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 2880x1800 --pos 0x0 --rotate normal --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
-
-browser::set_scale chromium 1.6
-browser::set_scale google-chrome-stable 1.6
+xrandr --output eDP1 --primary --mode 2880x1800 --pos 0x0 --rotate normal \
+  --output VIRTUAL1 --off \
+  --output DP1 --off \
+  --output HDMI3 --off \
+  --output HDMI2 --off \
+  --output HDMI1 --off \
+  --output DP2 --off
 
 io::keyboard
 xmodmap -e 'keycode 134 = Menu'
 
+browser::set_scale chromium 1.6
+browser::set_scale google-chrome-stable 1.6
 dpi::sublime 1.6 10
 dpi::terminal 22
 dpi::i3 8

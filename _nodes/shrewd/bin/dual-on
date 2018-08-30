@@ -11,6 +11,7 @@ xrandr --output DP1 --mode 3440x1440 --pos 0x0 --rotate normal \
   --output eDP1 --off
 
 io::keyboard
+
 browser::set_scale chromium 1.2
 browser::set_scale google-chrome-stable 1
 dpi::sublime 1.2 12

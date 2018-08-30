@@ -2,15 +2,23 @@
 
 source "${HOME}/bin/wm"
 
-browser::set_scale chromium 1.75
+xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x0 --rotate normal \
+  --output VIRTUAL1 --off  \
+  --output DP1 --off \
+  --output HDMI2 --off \
+  --output HDMI1 --off \
+  --output DP2 --off
+
 
 io::keyboard
+killall xcape
 xcape -e 'Control_R=Menu'
 
+browser::set_scale chromium 1.75
 dpi::sublime 1.85 13
 dpi::terminal 16
 dpi::i3 10
 dpi::gtk 10
 dpi::idea 29 24
 
-sudo NetworkManager
+"${HOME}/.i3/wallpaper.sh"
