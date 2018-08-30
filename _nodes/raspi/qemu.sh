@@ -17,7 +17,6 @@ create_base_image() {
   local lodev
 
   fallocate -l 8G $image
-  # pv --timer --rate --stop-at-size -s 8589934592 /dev/zero > $image
   fdisk $image  # 100Mb for boot, the rest for the system
   lodev=$(sudo losetup -f --show $image)
   sudo partx -a "$lodev"

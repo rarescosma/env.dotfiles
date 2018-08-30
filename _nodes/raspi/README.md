@@ -28,3 +28,6 @@ the rest -> system (n -> p)
 # configure and start gmediarender
 ./gmrender.sh do_gmrender_conf
 ```
+
+# Fix switching bug
+--gstout-buffer-duration=0

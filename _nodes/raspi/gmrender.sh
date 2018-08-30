@@ -35,7 +35,10 @@ do_user() {
   )
 
   # secure ssh
-  </etc/ssh/sshd_config sed -E 's|#+PasswordAuthentication .+|PasswordAuthentication no|' | sed -E 's|#+PermitRootLogin .+|PermitRootLogin no|' >/etc/ssh/sshd_config.new
+  </etc/ssh/sshd_config \
+    sed -E 's|#+PasswordAuthentication .+|PasswordAuthentication no|' \
+    | sed -E 's|#+PermitRootLogin .+|PermitRootLogin no|' \
+    >/etc/ssh/sshd_config.new
   mv /etc/ssh/sshd_config.new /etc/ssh/sshd_config
   systemctl daemon-reload
   systemctl restart sshd.service
