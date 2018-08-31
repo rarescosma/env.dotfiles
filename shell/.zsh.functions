@@ -42,14 +42,15 @@ venv() {
 penv() {
   deactivate 2>/dev/null
   if [ -f Pipfile ]; then
-    pipenv install --dev
+    pipenv install --dev --skip-lock "$@"
   else
-    [ -f requirements.txt ] && pipenv install -r requirements.txt
-    [ -f test-requirements.txt ] && pipenv install --dev -r test-requirements.txt
+    [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
   fi
   source .venv/bin/activate
   ln -sf "$ZSH/../../devel/.pythonenv" .env
   touch .envlocal
+  [ -f test_requirements.txt ] && pip install -r test_requirements.txt
+  [ -f test-requirements.txt ] && pip install -r test-requirements.txt
 }
 
 # -- Editing -------------------------------------------------------------------
