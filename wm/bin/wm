@@ -88,4 +88,20 @@ function dpi::idea() {
     $options_dir/ui.lnf.xml
 }
 
+function _usb::dispatch() {
+  local action port
+  action=$1; shift; port="1-$*"
+  cd /sys/bus/usb/drivers/usb || return
+  sudo tee "$action" <<< "$port"
+  cd - || return
+}
+
+function usb::detach() {
+  _usb::dispatch unbind "$*"
+}
+
+function usb::attach() {
+  _usb::dispatch bind "$*"
+}
+
 "$@"

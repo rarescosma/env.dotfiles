@@ -10,8 +10,6 @@ xrandr --output DP1 --mode 3440x1440 --pos 0x0 --rotate normal \
   --output VIRTUAL1 --off \
   --output eDP1 --off
 
-io::keyboard
-
 browser::set_scale chromium 1
 browser::set_scale google-chrome-stable 1
 dpi::sublime 1.2 12
@@ -21,3 +19,13 @@ dpi::gtk 9
 dpi::idea 17 14
 
 "${HOME}/.i3/wallpaper.sh"
+
+# cycle USB ports
+usb::detach 1
+usb::detach 2
+sleep 1
+usb::attach 1
+usb::attach 2
+sleep 2
+
+io::keyboard
