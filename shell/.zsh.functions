@@ -26,19 +26,7 @@ own() {
 alias pipu='pip install -U pip'
 alias pe='pipenv'
 
-## automate .venv creation for pip-based projects
-venv() {
-  deactivate 2>/dev/null
-  python -mvenv .venv --prompt "$*"
-  source .venv/bin/activate
-  pip install -U pip
-  [ -f requirements.txt ] && pip install -r requirements.txt || true
-  [ -f test-requirements.txt ] && pip install -r test-requirements.txt || true
-  ln -sf "$ZSH/../../devel/.pythonenv" .env
-  touch .envlocal
-}
-
-## automate .venv creation for pipenv-based projects
+## automate .venv creation for pip/pipenv-based projects
 penv() {
   deactivate 2>/dev/null
   if [ -f Pipfile ]; then
@@ -49,8 +37,13 @@ penv() {
   source .venv/bin/activate
   ln -sf "$ZSH/../../devel/.pythonenv" .env
   touch .envlocal
-  [ -f test_requirements.txt ] && pip install -r test_requirements.txt
+  pip install -e .
   [ -f test-requirements.txt ] && pip install -r test-requirements.txt
+}
+
+rmpenv() {
+  deactivate 2>/dev/null
+  rm -rf .venv .env Pipfile Pipfile.lock .python-version
 }
 
 # -- Editing -------------------------------------------------------------------
