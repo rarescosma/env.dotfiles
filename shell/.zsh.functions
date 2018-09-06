@@ -133,7 +133,7 @@ tn() {
   tmux attach -t ${=s_name} || tmux new -s ${=s_name}
 }
 
-alias tnm='tmuxp load ~/.tmuxp/misc.yaml'
+alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 
 ## download mp3 from youtube video URL
 mp3() {
