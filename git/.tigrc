@@ -69,7 +69,7 @@
 
 set blame-view	= id:yes,color file-name:auto author:abbreviated date:no line-number:yes,interval=1 text
 set grep-view	= file-name:no line-number:yes,interval=1 text
-set main-view	= line-number:no,interval=5 id:no date:no author:abbreviated,width=2 commit-title:yes,graph,refs,overflow=no
+set main-view	= line-number:no date:relative id:yes author:abbreviated,width=2 commit-title:yes,graph,refs,overflow=no
 set refs-view	= line-number:no id:no date:default author:full ref commit-title
 set stash-view	= line-number:no,interval=5 id:no date:default author:full commit-title
 set status-view	= line-number:no,interval=5 status:short file-name
@@ -85,8 +85,8 @@ set diff-view	= line-number:no,interval=5 text:yes,commit-title-overflow=no
 # UI display settings
 set show-changes		= yes		# Show changes commits in the main view?
 set wrap-lines			= no		# Wrap long lines in pager views?
-set tab-size			= 8		# Number of spaces to use when expanding tabs
-set line-graphics		= default	# Enum: ascii, default, utf-8
+set tab-size			= 2		# Number of spaces to use when expanding tabs
+set line-graphics		= utf-8	# Enum: ascii, default, utf-8
 set truncation-delimiter	= ~		# Character drawn for truncations, or "utf-8"
 
 # Format reference names based on type.
