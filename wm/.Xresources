@@ -1,13 +1,14 @@
+*dpi: 144
+
+Xft.dpi: 144
+
 ! Fonts
 ! -----
-Xft.dpi: 144
-Xft.autohint: 0
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintfull
-Xft.hinting: 1
-Xft.antialias: 1
 Xft.rgba: rgb
-Xft.embeddedbitmap: 0
 
 URxvt.font:           xft:Iosevka Term SS08:style=regular:size=16,xft:DejaVu Sans Mono:size=16 !orig=16
 URxvt.boldFont:       xft:Iosevka Term SS08:style=bold:size=16,xft:DejaVu Sans Mono:size=16 !orig=16
@@ -70,6 +71,9 @@ URxvt.keysym.Control-Right: \033[1;5C
 #define Selected_Text_Color #f7f6ec
 #define Selection_Color #175877
 
+Rxvt*background:   Background_Color
+Rxvt*foreground:   Foreground_Color
+Rxvt*cursorColor:  Ansi_4_Color
 Rxvt*color0:       Ansi_0_Color
 Rxvt*color1:       Ansi_1_Color
 Rxvt*color2:       Ansi_2_Color
@@ -87,10 +91,3 @@ Rxvt*color13:      Ansi_13_Color
 Rxvt*color14:      Ansi_14_Color
 Rxvt*color15:      Ansi_15_Color
 Rxvt*colorBD:      Bold_Color
-Rxvt*foreground:   Foreground_Color
-Rxvt*cursorColor:  Ansi_4_Color
-
-*depth: 32
-Rxvt*background:   [90]Background_Color
-*fading: 20
-*fadeColor: #000000
