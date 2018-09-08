@@ -82,10 +82,10 @@ mosh
 mplayer
 mtr
 ncdu
-net-tools
 netdata
-network-manager-applet
+net-tools
 networkmanager
+network-manager-applet
 networkmanager-openvpn
 networkmanager-pptp
 nginx
@@ -114,12 +114,12 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pv
 pwgen
+python2-pip
+python2-yaml
 python-gobject
 python-llfuse
 python-pip
 python-xdg
-python2-pip
-python2-yaml
 qemu-arch-extra
 qt4
 ranger
