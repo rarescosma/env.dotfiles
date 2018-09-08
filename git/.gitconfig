@@ -1,38 +1,37 @@
+[branch]
+	autosetuprebase = always
+[color "branch"]
+	current = green reverse
+	local = green
+	remote = yellow
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = blue
+[core]
+	autocrlf = input
+	editor = subl3 -w
+	excludesfile = ~/.gitexcludes
+	pager = /usr/share/git/diff-highlight/diff-highlight | less --tabs=4 -RFX
+	untrackedCache = true
+[commit]
+	gpgsign = true
+[interactive]
+	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+[merge]
+	tool = meld
+[mergetool]
+	keepBackup = false
+	prompt = false
+[push]
+	default = current
+[rebase]
+	autosquash = true
+	autostash = true
 [user]
 	name = Rareș Cosma
 	email = rares@getbetter.ro
 	signingkey = 0xD00EC1BBBA4D3352
-[core]
-	editor = subl3 -w
-	excludesfile = ~/.gitexcludes
-	pager = /usr/share/git/diff-highlight/diff-highlight | less
-[interactive]
-	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
-[color]
-	ui = true
-[push]
-	default = current
-[include]
-	path = ~/.gitconfig_local
-[merge]
-	tool = meld
-[mergetool "meld"]
-	keepBackup = false
-[alias]
-	# Undo / Ammend
-	undo = reset --soft HEAD^
-	ammend = commit --amend -C HEAD
-
-	# Push all / Pull all
-	pushall = push --recurse-submodules=on-demand
-	pullall = !git pull && git submodule update --init --recursive
-[commit]
-	gpgsign = true
-[http "https://gopkg.in"]
-	followRedirects = true
-[rerere]
-	enabled = true
-[rebase]
-	autosquash = true
-[mergetool]
-	keepBackup = false
+	useConfigOnly = true
+[includeif "gitdir:~/src/klarna/"]
+	path = ~/.gitconfig.work
