@@ -1,6 +1,6 @@
 # Partition scheme
-+100M -> boot (n -> p)
-the rest -> system (n -> p)
+* +100M -> boot (n -> p)
+* the rest -> system (n -> p)
 
 # Qemu steps
 ```
@@ -30,4 +30,5 @@ the rest -> system (n -> p)
 ```
 
 # Fix switching bug
---gstout-buffer-duration=0
+
+Start gmrender with the `--gstout-buffer-duration=0` flag.
