@@ -31,7 +31,6 @@ fd
 feh
 file-roller
 filezilla
-firefox
 geeqie
 ghc
 ghostscript
@@ -82,10 +81,10 @@ mosh
 mplayer
 mtr
 ncdu
-netdata
 net-tools
-networkmanager
+netdata
 network-manager-applet
+networkmanager
 networkmanager-openvpn
 networkmanager-pptp
 nginx
@@ -113,12 +112,12 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pv
 pwgen
-python2-pip
-python2-yaml
 python-gobject
 python-llfuse
 python-pip
 python-xdg
+python2-pip
+python2-yaml
 qemu-arch-extra
 qt4
 ranger

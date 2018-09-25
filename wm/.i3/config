@@ -16,7 +16,7 @@ for_window [class="^jetbrains-.+"][window_type=dialog] focus
 bindsym $mod+Return exec urxvt
 bindsym $mod+0x60 exec urxvt -e sh -c "tmux attach -d -t base || exec tmux new -s base"
 bindsym $mod+t exec thunar
-bindsym $mod+slash exec chromium
+bindsym $mod+slash exec wm browser::launch chromium
 bindsym $mod+Shift+slash exec wm browser::launch google-chrome-stable
 
 # kill focused window
