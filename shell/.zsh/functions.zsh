@@ -10,6 +10,9 @@ fzf_cmd() {
   # Drop empty queries
   local q
   q=$(echo "$*" | sed -e 's/\(.*\)--query \(.*\)/\2/g')
+alias rm='rmtrash -rf'
+alias rm!='\rm -rf'
+alias sudo='sudo -E '
 
   if [[ -z $q ]]; then
     cat | fzf-tmux --multi | tail -n +2

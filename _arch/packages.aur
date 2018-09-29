@@ -34,6 +34,7 @@ pyenv
 python2-notify2
 python2-zeroconf
 reg
+rmtrash
 rot13
 soundwire
 sqlite-replication
