@@ -137,9 +137,20 @@ bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    status_command i3blocks -c ~/.i3/i3blocks.conf
+    i3bar_command i3bar -t
+
+    output eDP1
+    output DP1
+    output DP2
+
+    bindsym button4 nop
+    bindsym button5 nop
+
+    position top
     colors {
         # Whole color settings
-        background #242424
+        background #222222
         statusline #ffffff
         separator  #666666
 
@@ -149,13 +160,6 @@ bar {
         inactive_workspace #333333 #222222 #888888
         urgent_workspace   #aa0000 #990000 #ffffff
     }
-    # i3bar position
-    position top
-    output eDP1
-    output DP1
-    output DP2
-
-    status_command i3blocks -c ~/.i3/i3blocks.conf
 }
 
 # locker
