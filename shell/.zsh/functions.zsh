@@ -20,6 +20,12 @@ alias sudo='sudo -E '
     cat | grep -i "$q" | fzf-tmux -1 $* | tail -n +2
   fi
 }
+alias ls="exa --git --group-directories-first"
+alias ll="ls -l"
+alias la="ll -a"
+alias lk="ll -s=size"                # Sorted by size
+alias lm="ll -s=modified"            # Sorted by modified date
+alias lc="ll --created -s=created"   # Sorted by created date
 
 ## own all files/directories passed as arguments
 own() {

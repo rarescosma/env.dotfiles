@@ -27,6 +27,7 @@ docker-compose
 dosfstools
 dunst
 eog
+exa
 expac
 fd
 feh
