@@ -30,13 +30,11 @@
       shell: stow -d {{ dots }} -t ~/ {{ item }}
       with_items:
         - devel
-        - git
         - gnupg
         - htop
         - mc
         - moc
         - shell
-        - vim
         - wm
 
     - name: stow bin
