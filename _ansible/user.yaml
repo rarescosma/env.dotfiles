@@ -35,8 +35,9 @@
         - htop
         - mc
         - moc
-        - net
         - shell
         - vim
         - wm
 
+    - name: stow bin
+      shell: stow -d {{ dots }} -t ~/bin bin
