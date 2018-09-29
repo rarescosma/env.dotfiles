@@ -1,3 +1,5 @@
+source /usr/share/LS_COLORS/dircolors.sh
+
 source ~/.zsh/oh-my-zplug.zsh
 source ~/.zsh/fzf.zsh
 
