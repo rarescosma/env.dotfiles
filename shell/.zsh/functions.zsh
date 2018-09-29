@@ -138,17 +138,3 @@ tn() {
 }
 
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
-
-## download mp3 from youtube video URL
-mp3() {
-  youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 \
-    --audio-quality 0 -o '~/Desktop/youtube/%(title)s.%(ext)s' "$1"
-}
-
-## download mp3s from youtube playlist URL
-mp3p () {
-  youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 \
-    --audio-quality 0 \
-    -o '~/Dekstop/youtube/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' \
-    "$1"
-}
