@@ -6,5 +6,6 @@
     <option name="HIDE_NAVIGATION_ON_FOCUS_LOSS" value="false" />
     <option name="HIDE_TOOL_STRIPES" value="true" />
     <option name="OVERRIDE_NONIDEA_LAF_FONTS" value="true" />
+    <option name="SHOW_NAVIGATION_BAR" value="false" />
   </component>
 </application>
