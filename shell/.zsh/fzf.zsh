@@ -4,12 +4,17 @@ source "$_VENDOR/fzf/shell/key-bindings.zsh"
 ## wrapper for fzf to allow partial queries
 fzf_cmd() {
   # Drop empty queries
-  local q
+  local q fzf_bin
   q=$(echo "$*" | sed -e 's/\(.*\)--query \(.*\)/\2/g')
+  if [[ -z $FZF_TMUX ]]; then
+    fzf_bin="fzf"
+  else
+    fzf_bin="fzf-tmux"
+  fi
 
   if [[ -z $q ]]; then
-    cat | fzf-tmux --multi | tail -n +2
+    cat | $fzf_bin --multi | tail -n +2
   else
-    cat | grep -i "$q" | fzf-tmux -1 $* | tail -n +2
+    cat | grep -i "$q" | $fzf_bin -1 $* | tail -n +2
   fi
 }
