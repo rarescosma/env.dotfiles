@@ -114,6 +114,7 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pv
 pwgen
+pygmentize
 python-gobject
 python-llfuse
 python-pip
