@@ -9,14 +9,13 @@ VISUAL="subl3 -w"
 EDITOR="${VISUAL}"
 
 # -- Oh My Zsh -----------------------------------------------------------------
-ZSH="${HOME}/src/env.dotfiles/_vendor/oh-my-zsh"
-ZSH_THEME="ric"
+_VENDOR="${HOME}/src/env.dotfiles/_vendor"
+ZSH="${_VENDOR}/oh-my-zsh"
 DISABLE_AUTO_UPDATE="true"
-plugins=(gitalias archlinux docker git lxd zsh-syntax-highlighting kubectl zsh-autosuggestions)
 
 # -- fzf! ----------------------------------------------------------------------
-export FZF_TMUX=1
-export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
+FZF_TMUX=1
+FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
 --bind change:top --bind ctrl-e:accept --expect=enter"
 FZF_CTRL_T_COMMAND='fd --type file --follow --hidden --exclude .git'
 FZ_CMD=j

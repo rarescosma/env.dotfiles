@@ -1,54 +1,23 @@
-# -- Omz + Zplug ---------------------------------------------------------------
-source "$ZSH/oh-my-zsh.sh"
+source ~/.zsh/oh-my-zplug.zsh
 
-if [[ -f "$ZSH/../zplug/init.zsh" ]]; then
-  export ZPLUG_LOADFILE="${HOME}/.zplug.zsh"
-  source "$ZSH/../zplug/init.zsh"
+source ~/.zsh/prompt.zsh
 
-  if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
-    echo
-  fi
-  zplug load
-fi
+source ~/.zsh/opts.zsh
+source ~/.zsh/keybindings.zsh
+source ~/.zsh/functions.zsh
+source ~/.zsh/fzf.zsh
+source ~/.zsh/memoize.zsh
 
-# -- Options + Keys ------------------------------------------------------------
-unsetopt correct_all
-unsetopt correct
-unalias z
-bindkey \^U backward-kill-line
+source ~/.zsh/devel.zsh
 
-# -- Dispatch ------------------------------------------------------------------
-for mod in "$HOME"/.zsh.*; do
-  source "$mod"
-done
+source ~/.zsh/misc.zsh
 
-[[ -f "$HOME/.local/env" ]] && source "$HOME/.local/env"
-[[ -f "$HOME/.local/functions" ]] && source "$HOME/.local/functions"
+[[ -f ~/.local/env ]] && source ~/.local/env
+[[ -f ~/.local/functions ]] && source ~/.local/functions
 
 # -- X11 -----------------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 144
 else
-  clear
-  read -r -d '' OK_COWS <<'EOF'
-moose
-daemon
-three-eyes
-bunny
-kitty
-elephant
-small
-skeleton
-dragon
-koala
-bud-frogs
-vader
-default
-tux
-EOF
-  fortune -n 300 -s | cowsay -W 80 -f $(echo "$OK_COWS" | shuf -n 1)
+  source ~/.zsh/fortune.zsh
 fi

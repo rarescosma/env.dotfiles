@@ -1,4 +1,5 @@
 # -- Nav / Fs ------------------------------------------------------------------
+unalias z
 alias pbcopy='xsel -b'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -35,7 +36,7 @@ penv() {
     [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
   fi
   source .venv/bin/activate
-  ln -sf "$ZSH/../../devel/.pythonenv" .env
+  ln -sf "$_VENDOR/../devel/.pythonenv" .env
   touch .envlocal
   pip install -e .
   [ -f test-requirements.txt ] && pip install -r test-requirements.txt
