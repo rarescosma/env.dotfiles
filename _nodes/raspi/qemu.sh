@@ -7,7 +7,7 @@ KERNEL_VER='kernel-qemu-4.4.34-jessie'
 
 # 0. Prep
 prep() {
-  wget https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/$KERNEL_VER
+  wget https://github.com/rarescosma/qemu-rpi-kernel/raw/master/$KERNEL_VER
   wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz
 }
 
