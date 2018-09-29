@@ -5,11 +5,17 @@ alias ....='cd ../../../'
 alias rg="rg --hidden --follow --smart-case"
 alias locate='locate -i'
 
-alias rm='rmtrash -rf'
+if (( $+commands[rmtrash] )); then
+  alias rm='rmtrash -rf'
+fi
 alias rm!='\rm -rf'
 alias sudo='sudo -E '
 
-alias l="exa -lhg --git --group-directories-first"
+if (( $+commands[exa] )); then
+  alias l="exa -lhg --git --group-directories-first"
+else
+  alias l='ls -l'
+fi
 alias la="l -a"
 alias lk="l -s=size"                # Sorted by size
 alias lm="l -s=modified"            # Sorted by modified date
