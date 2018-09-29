@@ -1,11 +1,11 @@
 source ~/.zsh/oh-my-zplug.zsh
+source ~/.zsh/fzf.zsh
 
 source ~/.zsh/prompt.zsh
 
 source ~/.zsh/opts.zsh
 source ~/.zsh/keybindings.zsh
 source ~/.zsh/functions.zsh
-source ~/.zsh/fzf.zsh
 source ~/.zsh/memoize.zsh
 
 source ~/.zsh/devel.zsh

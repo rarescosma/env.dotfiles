@@ -5,21 +5,10 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias rg="rg --hidden --follow --smart-case"
 
-## wrapper for fzf to allow partial queries
-fzf_cmd() {
-  # Drop empty queries
-  local q
-  q=$(echo "$*" | sed -e 's/\(.*\)--query \(.*\)/\2/g')
 alias rm='rmtrash -rf'
 alias rm!='\rm -rf'
 alias sudo='sudo -E '
 
-  if [[ -z $q ]]; then
-    cat | fzf-tmux --multi | tail -n +2
-  else
-    cat | grep -i "$q" | fzf-tmux -1 $* | tail -n +2
-  fi
-}
 alias ls="exa --git --group-directories-first"
 alias ll="ls -l"
 alias la="ll -a"

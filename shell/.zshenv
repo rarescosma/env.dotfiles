@@ -14,8 +14,8 @@ ZSH="${_VENDOR}/oh-my-zsh"
 DISABLE_AUTO_UPDATE="true"
 
 # -- fzf! ----------------------------------------------------------------------
-FZF_TMUX=1
-FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
+export FZF_TMUX=1
+export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
 --bind change:top --bind ctrl-e:accept --expect=enter"
 FZF_CTRL_T_COMMAND='fd --type file --follow --hidden --exclude .git'
 FZ_CMD=j
