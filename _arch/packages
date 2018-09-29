@@ -133,6 +133,7 @@ rkt
 rmlint
 rng-tools
 rsync
+rustup
 rxvt-unicode
 rxvt-unicode-terminfo
 scala
