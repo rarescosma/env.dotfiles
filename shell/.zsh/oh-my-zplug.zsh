@@ -1,6 +1,4 @@
-plugins=(\
-  gitalias archlinux docker git lxd \
-  zsh-syntax-highlighting kubectl zsh-autosuggestions)
+plugins=(gitalias archlinux docker git lxd kubectl zsh-autosuggestions)
 
 source "$ZSH/oh-my-zsh.sh"
 
