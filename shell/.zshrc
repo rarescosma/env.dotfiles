@@ -1,3 +1,5 @@
+[[ -f ~/.local/env ]] && source ~/.local/env
+
 source /usr/share/LS_COLORS/dircolors.sh
 
 source ~/.zsh/oh-my-zplug.zsh
@@ -14,7 +16,6 @@ source ~/.zsh/devel.zsh
 
 source ~/.zsh/misc.zsh
 
-[[ -f ~/.local/env ]] && source ~/.local/env
 [[ -f ~/.local/functions ]] && source ~/.local/functions
 
 # -- X11 -----------------------------------------------------------------------
