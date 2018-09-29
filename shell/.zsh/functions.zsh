@@ -9,12 +9,11 @@ alias rm='rmtrash -rf'
 alias rm!='\rm -rf'
 alias sudo='sudo -E '
 
-alias ls="exa --git --group-directories-first"
-alias ll="ls -l"
-alias la="ll -a"
-alias lk="ll -s=size"                # Sorted by size
-alias lm="ll -s=modified"            # Sorted by modified date
-alias lc="ll --created -s=created"   # Sorted by created date
+alias l="exa -lhg --git --group-directories-first"
+alias la="l -a"
+alias lk="l -s=size"                # Sorted by size
+alias lm="l -s=modified"            # Sorted by modified date
+alias lc="l --created -s=created"   # Sorted by created date
 
 alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
