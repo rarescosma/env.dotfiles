@@ -57,13 +57,13 @@ print "$short_text\n";
 if ($status eq 'Discharging') {
 
 	if ($percent < 20) {
-		print "#FF1B3B\n";
+		print "#CC162F\n";
 	} elsif ($percent < 40) {
-		print "#FFAE00\n";
+		print "#CC8B00\n";
 	} elsif ($percent < 60) {
-		print "#FFF600\n";
+		print "#CCC500\n";
 	} elsif ($percent < 85) {
-		print "#A8FF00\n";
+		print "#86CC00\n";
 	}
 
 	if ($percent < 10) {
