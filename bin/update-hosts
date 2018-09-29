@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$1" == '-f' ]; then
+    wget -qq -O ~/.local/hosts.someonewhocares https://someonewhocares.org/hosts/hosts
+fi
+
+cat ~/.local/hosts.* | sudo tee /etc/hosts
