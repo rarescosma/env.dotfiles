@@ -13,8 +13,8 @@ if [[ "$enable_langs" =~ "python" ]] && (( $+commands[pyenv] )); then
 fi
 
 if [[ "$enable_langs" =~ "golang" ]]; then
-  PATH="${PATH}:${HOME}/go/bin"
-  export GOPATH="${HOME}/go"
+  PATH="${PATH}:${HOME}/.golang/bin"
+  export GOPATH="${HOME}/.golang"
 fi
 
 if [[ "$enable_langs" =~ "java" ]]; then
