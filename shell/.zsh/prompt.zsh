@@ -1,6 +1,6 @@
-source ~/src/env.dotfiles/_vendor/zsh-kubectl-prompt/kubectl.zsh
+source "$_VENDOR/zsh-kubectl-prompt/kubectl.zsh"
 
-# These Git variables are used by the oh-my-zsh git_prompt_info helper:
+#  git_prompt_info overrides
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[red]%}?"

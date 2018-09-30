@@ -12,12 +12,10 @@ source ~/.zsh/keybindings.zsh
 source ~/.zsh/functions.zsh
 
 source ~/.zsh/devel.zsh
-
 source ~/.zsh/misc.zsh
 
 [[ -f ~/.local/functions ]] && source ~/.local/functions
 
-# -- X11 -----------------------------------------------------------------------
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx -- -dpi 144
 else
