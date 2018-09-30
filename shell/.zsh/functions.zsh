@@ -1,3 +1,5 @@
+alias sudo='sudo -E '
+
 # -- Fs ------------------------------------------------------------------------
 unalias z
 alias ...='cd ../../'
@@ -9,7 +11,6 @@ if (( $+commands[rmtrash] )); then
   alias rm='rmtrash -rf'
 fi
 alias rm!='\rm -rf'
-alias sudo='sudo -E '
 
 if (( $+commands[exa] )); then
   alias l="exa -lhg --git --group-directories-first"
@@ -21,13 +22,43 @@ alias lk="l -s=size"                # Sorted by size
 alias lm="l -s=modified"            # Sorted by modified date
 alias lc="l --created -s=created"   # Sorted by created date
 
-alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
-alias tc='tomb close'
-alias sshfs="sshfs -o idmap=user,allow_other,reconnect,no_readahead,uid=$(id -u),gid=$(id -g),umask=113"
-
 ## own all files/directories passed as arguments
 own() {
-  sudo chown -R $(id -un): "$@"
+  sudo chown -R "$(id -un):" "$@"
+}
+
+# -- Crypto --------------------------------------------------------------------
+alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
+alias tc='tomb close'
+
+vpn() {
+    tomb list || to
+    sudo openvpn --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn"
+}
+
+_fzf_pass() {
+  local pwdir="${HOME}/.password-store/"
+  local stringsize="${#pwdir}"
+  ((stringsize+=1))
+  find "$pwdir" -name "*.gpg" -print \
+    | cut -c "$stringsize"- \
+    | sed -e 's/\(.*\)\.gpg/\1/' \
+    | fzf_cmd --query "$*"
+}
+
+## pass + fzf integration
+pass() {
+  \pass show $(_fzf_pass "$@") | head -1
+}
+
+alias x509='openssl x509 -noout -text -in '
+alias sshfs="\
+  sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
+    uid=$(id -u),gid=$(id -g),umask=113"
+
+## shmoded ssh-add
+ssh-add() {
+  chmod 400 "$@" && command ssh-add "$@"
 }
 
 # -- Editors -------------------------------------------------------------------
@@ -48,7 +79,7 @@ vil() {
 
 ## open dir in IntelliJ
 i() {
-  /opt/intellij-idea-ultimate-edition/bin/idea.sh $* 2>/dev/null 1>&2 &
+  nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh $* 2>/dev/null 1>&2 &
 }
 
 # -- Turtles -------------------------------------------------------------------
@@ -61,38 +92,19 @@ dps() {
     | grep -v pause
 }
 
-# -- Pass ----------------------------------------------------------------------
-_fzf_pass() {
-  local pwdir="${HOME}/.password-store/"
-  local stringsize="${#pwdir}"
-  ((stringsize+=1))
-  find "$pwdir" -name "*.gpg" -print \
-    | cut -c "$stringsize"- \
-    | sed -e 's/\(.*\)\.gpg/\1/' \
-    | fzf_cmd --query "$*"
-}
-passs() {
-  pass show $(_fzf_pass "$@") | head -1
-}
-
 # -- Z / Misc ------------------------------------------------------------------
-alias vps="mosh vps -p 1919"
+alias ccat='pygmentize -g'
+alias pbcopy='xsel -b'
 alias t="t -t ${HOME}/Dropbox/_Tasks"
 alias tlk="t -l k"
 alias tlro="t -l ro"
+alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias trizen='trizen --noconfirm'
-alias ccat='pygmentize -g'
-alias x509='openssl x509 -noout -text -in '
-alias pbcopy='xsel -b'
+alias vps="mosh vps -p 1919"
 
 ## ssh into tmux session on host
 tsh() {
   ssh -t "$@" "tmux attach -t base || exec tmux new -s base"
-}
-
-## shmoded ssh-add
-ssh-add() {
-  chmod 400 "$@" && command ssh-add "$@"
 }
 
 ## launch or attach to named tmux session
@@ -102,4 +114,3 @@ tn() {
   tmux attach -t "$s_name" || tmux new -s "$s_name"
 }
 
-alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
