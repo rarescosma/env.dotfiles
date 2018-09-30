@@ -13,4 +13,7 @@
 [submodule "_vendor/z"]
 	path = _vendor/z
 	url = git://github.com/rupa/z.git
+[submodule "_vendor/autoenv"]
+	path = _vendor/autoenv
+	url = git://github.com/zpm-zsh/autoenv.git
 
