@@ -3,6 +3,8 @@
 
 set -x
 
+LXC_ROOT=/srv/lxc/seedbox/rootfs
+
 mount_ext4() {
   local dev="${1}"
   local mp="${2}"
@@ -13,6 +15,7 @@ mount_ext4() {
 
 mount_external_hdds() {
   mdadm --assemble /dev/md0
+  mdadm --assemble /dev/md1
   lvscan
   lvchange -a y Media
 
@@ -20,27 +23,35 @@ mount_external_hdds() {
   mount_ext4 /dev/Seedbox/seedbox /mnt/seedbox
 }
 
-main() {
-  START_LXC=0
-  LXC_ROOT=/srv/lxc/seedbox/rootfs
-  mount_external_hdds
-
-  sleep 2
-
+cycle_samba() {
   /etc/init.d/samba restart
-  [ -d /mnt/seedbox/fresh ] && START_LXC=1
+}
 
-  if [ "$START_LXC" -eq "1" ]; then
-    mount --bind /mnt/seedbox/lxc /srv/lxc
-    mount --bind /mnt/seedbox ${LXC_ROOT}/mnt/seedbox
-    mount --bind /src ${LXC_ROOT}/src
+bind_seedbox() {
+  mount --bind /mnt/seedbox/lxc /srv/lxc
+  mount --bind /mnt/seedbox ${LXC_ROOT}/mnt/seedbox
+  mount --bind /src ${LXC_ROOT}/src
+  mount --bind /mnt/media ${LXC_ROOT}/mnt/media
+}
+
+start_seedbox() {
+  /usr/bin/lxc-start -n seedbox
+}
+
+main() {
+  mount_external_hdds
+  sleep 2
+  cycle_samba
+
+  if [[ -d /mnt/seedbox/fresh ]]; then
+    bind_seedbox
     sleep 2
-    /usr/bin/lxc-start -n seedbox
+    start_seedbox
   fi
 }
 
 # Verbatim, yeah!
-if [[ "-noexec" == "$1" ]]; then
+if [[ "-x" == "$1" ]]; then
   shift
   $@
 else
