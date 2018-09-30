@@ -30,31 +30,7 @@ own() {
   sudo chown -R $(id -un): "$@"
 }
 
-# -- Python --------------------------------------------------------------------
-alias pipu='pip install -U pip'
-alias pe='pipenv'
-
-## automate .venv creation for pip/pipenv-based projects
-nvenv() {
-  deactivate 2>/dev/null
-  if [ -f Pipfile ]; then
-    pipenv install --dev --skip-lock "$@"
-  else
-    [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
-  fi
-  source .venv/bin/activate
-  ln -sf "$_VENDOR/../devel/.pythonenv" .env
-  touch .envlocal
-  pip install -e .
-  [ -f test-requirements.txt ] && pip install -r test-requirements.txt
-}
-
-rvenv() {
-  deactivate 2>/dev/null
-  rm -rf .venv .env Pipfile Pipfile.lock .python-version
-}
-
-# -- Editing -------------------------------------------------------------------
+# -- Editors -------------------------------------------------------------------
 alias s='subl3 -a'
 alias svi='sudo vim'
 
@@ -76,7 +52,6 @@ i() {
 }
 
 # -- Turtles -------------------------------------------------------------------
-alias k='kubectl'
 alias dk='docker-compose'
 
 ## docker ps with port information
@@ -84,17 +59,6 @@ dps() {
   docker ps $@ \
     --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
     | grep -v pause
-}
-
-## list ec2 instances belonging to team
-ec2-list() {
-  local team="$1"; shift
-  ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$team" | grep linux
-}
-
-## output instance IP after filtering
-ec2-ip() {
-  memoize ec2-list $TEAM_TAG | fzf_cmd --query "$*" | awk '{print $2}'
 }
 
 # -- Pass ----------------------------------------------------------------------

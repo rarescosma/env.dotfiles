@@ -1,8 +1,9 @@
 enable_devel=(kubectl aws python golang node nvm)
 
-# -- Language Support ----------------------------------------------------------
+# -- Turtles -------------------------------------------------------------------
 if [[ "$enable_devel" =~ "kubectl" ]]; then
   unset KUBECONFIG
+  alias k='kubectl'
 fi
 
 if [[ "$enable_devel" =~ "aws" ]]; then
@@ -12,8 +13,20 @@ if [[ "$enable_devel" =~ "aws" ]]; then
   _aws_zsh_completer_path="${HOME}/.local/bin/aws_zsh_completer.sh"
   [ -f "$_aws_zsh_completer_path" ] && source "$_aws_zsh_completer_path"
   unset _aws_zsh_completer_path
+
+  ## list ec2 instances belonging to team
+  ec2-list() {
+    local team="$1"; shift
+    ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$team" | grep linux
+  }
+
+  ## output instance IP after filtering
+  ec2-ip() {
+    memoize ec2-list $TEAM_TAG | fzf_cmd --query "$*" | awk '{print $2}'
+  }
 fi
 
+# -- Python --------------------------------------------------------------------
 if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
   export PYENV_ROOT="${HOME}/.pyenv"
   eval "$(pyenv init -)"
@@ -23,6 +36,30 @@ if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
   export PIPENV_HIDE_EMOJIS=1
   export PIPENV_NOSPIN=1
   eval "$(pipenv --completion)"
+
+  alias pipu='pip install -U pip'
+  alias pe='pipenv'
+
+  ## create pipenv-based .venv
+  nvenv() {
+    deactivate 2>/dev/null
+    if [ -f Pipfile ]; then
+      pipenv install --dev --skip-lock "$@"
+    else
+      [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
+    fi
+    source .venv/bin/activate
+    ln -sf "$_VENDOR/../devel/.pythonenv" .env
+    touch .envlocal
+    pip install -e .
+    [ -f test-requirements.txt ] && pip install -r test-requirements.txt
+  }
+
+  ## delete/cleanup .venv
+  rvenv() {
+    deactivate 2>/dev/null
+    rm -rf .venv .env Pipfile Pipfile.lock .python-version
+  }
 fi
 
 if [[ "$enable_devel" =~ "golang" ]]; then
