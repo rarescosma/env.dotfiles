@@ -2,7 +2,7 @@
 
 source /usr/share/LS_COLORS/dircolors.sh
 
-source ~/.zsh/oh-my-zplug.zsh
+source ~/.zsh/oh-my-vendor.zsh
 source ~/.zsh/fzf.zsh
 
 source ~/.zsh/prompt.zsh
@@ -10,7 +10,6 @@ source ~/.zsh/prompt.zsh
 source ~/.zsh/opts.zsh
 source ~/.zsh/keybindings.zsh
 source ~/.zsh/functions.zsh
-source ~/.zsh/memoize.zsh
 
 source ~/.zsh/devel.zsh
 
