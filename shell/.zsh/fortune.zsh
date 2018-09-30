@@ -1,5 +1,6 @@
 clear
-read -r -d '' OK_COWS <<'EOF'
+if (( $+commands[fortune] )); then
+  read -r -d '' OK_COWS <<'EOF'
 moose
 daemon
 three-eyes
@@ -15,4 +16,5 @@ vader
 default
 tux
 EOF
-fortune -n 300 -s | cowsay -W 80 -f $(echo "$OK_COWS" | shuf -n 1)
+  fortune -n 300 -s | cowsay -W 80 -f $(echo "$OK_COWS" | shuf -n 1)
+fi
