@@ -1,7 +1,5 @@
 [[ -f ~/.local/env ]] && source ~/.local/env
 
-source /usr/share/LS_COLORS/dircolors.sh
-
 source ~/.zsh/oh-my-vendor.zsh
 source ~/.zsh/fzf.zsh
 
