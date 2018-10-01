@@ -15,10 +15,10 @@ io::keyboard
 
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1
-dpi::sublime 1.0 13
-dpi::terminal 18
+dpi::sublime 1.0 15
+dpi::terminal 10
 dpi::i3 7
 dpi::gtk 9
-dpi::idea 17 14
+dpi::idea 19 15
 
 "${HOME}/.i3/wallpaper.sh"
