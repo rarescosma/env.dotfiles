@@ -36,6 +36,7 @@ vpn() {
     sudo openvpn --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn"
 }
 
+## pass + fzf integration
 _fzf_pass() {
   local pwdir="${HOME}/.password-store/"
   local stringsize="${#pwdir}"
@@ -45,10 +46,9 @@ _fzf_pass() {
     | sed -e 's/\(.*\)\.gpg/\1/' \
     | fzf_cmd --query "$*"
 }
-
-## pass + fzf integration
+alias _pass='command pass'
 pass() {
-  \pass show $(_fzf_pass "$@") | head -1
+  _pass show $(_fzf_pass "$@") | head -1
 }
 
 alias x509='openssl x509 -noout -text -in '
