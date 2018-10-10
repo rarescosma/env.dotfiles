@@ -101,6 +101,7 @@ alias tlro="t -l ro"
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias trizen='trizen --noconfirm'
 alias vps="mosh vps -p 1919"
+alias o='xdg-open'
 
 ## ssh into tmux session on host
 tsh() {
