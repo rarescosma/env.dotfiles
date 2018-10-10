@@ -8,7 +8,6 @@ font "pango:DejaVu Sans Mono 7" #orig=10
 floating_modifier $mod
 
 # specific window configuration
-for_window [class=".*"] sticky enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
