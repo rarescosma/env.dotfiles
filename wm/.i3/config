@@ -2,14 +2,15 @@
 set $mod Mod4
 set $alt Mod1
 
-font "pango:DejaVu Sans Mono 10" #orig=10
+font "pango:DejaVu Sans Mono 7" #orig=10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start more windows floating.
+# specific window configuration
+for_window [class=".*"] sticky enable
 for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
+for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # terminals
@@ -101,7 +102,7 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 
-# Move the current workspace to the next output
+# move the current workspace to the next output
 bindsym $mod+x move workspace to output right
 
 # resize window (you can also use the mouse for that)
@@ -134,8 +135,7 @@ bindsym $mod+Ctrl+k resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+j resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# i3blocks / i3bar
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf
     i3bar_command i3bar -t
@@ -167,31 +167,31 @@ set $Locker ~/.i3/locker.sh
 exec --no-startup-id $Locker -c 000000
 exec --no-startup-id xautolock -time 10 -locker "$Locker"
 
-# scripted startup
+# startup
 exec --no-startup-id ~/bin/startup-i3
 
-# Background image
+# wallpaper
 exec --no-startup-id ~/.i3/wallpaper.sh
 
-# No title bars
+# no title bars
 new_window pixel 1
 
-# Brightness controls
+# brightness controls
 bindsym XF86MonBrightnessUp exec ~/bin/lux -a10%
 bindsym XF86MonBrightnessDown exec ~/bin/lux -s10%
 bindsym XF86KbdBrightnessUp exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -a10%
 bindsym XF86KbdBrightnessDown exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -s10%
 
-# Media player controls
+# media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Screenshots
+# screenshots
 bindsym 0xff61 exec escrotum -s "~/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 bindsym XF86LaunchA exec escrotum -s "~/Dropbox/Screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
-# System menu
+# system menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -217,7 +217,7 @@ bindsym $mod+Shift+u exec "~/bin/dual-off"
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
 
-# Application management
+# application management
 focus_on_window_activation focus
 focus_follows_mouse no
 hide_edge_borders horizontal
