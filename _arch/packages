@@ -91,11 +91,11 @@ networkmanager-openvpn
 networkmanager-pptp
 nginx
 nodejs-lts-boron
-noto-fonts
 npm
 ntfs-3g
 ntp
 openssh
+otf-font-awesome
 pacman-contrib
 parallel
 parcellite
@@ -158,12 +158,7 @@ tmux
 tmuxp
 transmission-gtk
 tree
-ttf-arphic-uming
-ttf-baekmuk
 ttf-dejavu
-ttf-font-awesome
-ttf-freefont
-ttf-liberation
 tumbler
 udftools
 unbound
