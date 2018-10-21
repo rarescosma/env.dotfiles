@@ -30,7 +30,7 @@ cycle_samba() {
 bind_seedbox() {
   mount --bind /mnt/seedbox/lxc /srv/lxc
   mount --bind /mnt/seedbox ${LXC_ROOT}/mnt/seedbox
-  mount --bind /src ${LXC_ROOT}/src
+  mount --bind /root/src ${LXC_ROOT}/home/ubuntu/src
   mount --bind /mnt/media ${LXC_ROOT}/mnt/media
 }
 
