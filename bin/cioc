@@ -1,0 +1,5 @@
+#!/bin/bash
+
+knock -u getbetter.ro $(cat "$HOME/.ciocrc")
+sleep 1
+

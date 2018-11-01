@@ -67,6 +67,7 @@ jq
 jre10-openjdk
 keychain
 klavaro
+knockd
 libstdc++5
 libvncserver
 libyaml
@@ -121,6 +122,7 @@ python-pip
 python-xdg
 python2-pip
 python2-yaml
+qbittorrent
 qemu-arch-extra
 qt4
 ranger
