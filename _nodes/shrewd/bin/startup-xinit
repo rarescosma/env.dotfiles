@@ -12,7 +12,7 @@ xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x0 --rotate normal \
 
 io::keyboard
 killall xcape
-xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace'
+xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
 
 browser::set_scale chromium 1.75
 dpi::sublime 1.85 13
