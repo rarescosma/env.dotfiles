@@ -12,6 +12,13 @@ xrandr --output eDP1 --primary --mode 2880x1800 --pos 2560x0 --rotate normal \
   --output HDMI1 --off
 
 io::keyboard
+killall -9 xcape
+if [ -f "$HOME/keymap.xkb" ]; then
+    xkbcomp "$HOME/keymap.xkb" $DISPLAY
+    xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
+else
+    xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
+fi
 
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1
