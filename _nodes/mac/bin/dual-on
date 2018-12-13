@@ -3,8 +3,8 @@
 # shellcheck disable=SC1090
 source "${HOME}/bin/wm"
 
-xrandr --output eDP1 --primary --mode 2880x1800 --pos 2560x0 --rotate normal \
-  --output DP2 --mode 2560x1440 --pos 0x0 --rotate normal \
+xrandr --output eDP1 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
+  --output DP1-8 --mode 3440x1440 --pos 0x0 --rotate normal \
   --output VIRTUAL1 --off \
   --output DP1 --off \
   --output HDMI3 --off \
@@ -26,6 +26,6 @@ dpi::sublime 1.0 15
 dpi::terminal 10
 dpi::i3 7
 dpi::gtk 9
-dpi::idea 19 15
+dpi::idea 18 15
 
 "${HOME}/.i3/wallpaper.sh"
