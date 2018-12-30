@@ -90,6 +90,7 @@ networkmanager
 networkmanager-openvpn
 networkmanager-pptp
 nginx
+nmap
 nodejs-lts-boron
 npm
 ntfs-3g
