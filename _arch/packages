@@ -13,6 +13,7 @@ btrfs-progs
 calibre
 ccd2iso
 cheese
+chromium
 cifs-utils
 cmake
 compton
@@ -33,6 +34,7 @@ fd
 feh
 file-roller
 filezilla
+firefox
 geeqie
 ghc
 ghostscript
@@ -91,7 +93,7 @@ networkmanager-openvpn
 networkmanager-pptp
 nginx
 nmap
-nodejs-lts-boron
+nodejs-lts-dubnium
 npm
 ntfs-3g
 ntp
@@ -161,6 +163,7 @@ tmuxp
 transmission-gtk
 tree
 ttf-dejavu
+ttf-linux-libertine
 tumbler
 udftools
 unbound
@@ -171,6 +174,7 @@ vim-runtime
 vlc
 w3m
 whois
+wireless_tools
 wpa_supplicant
 x11vnc
 xautolock
