@@ -21,3 +21,4 @@ __pycache__
 # Generic ignores for all projects
 /var
 /.out
+/reports
