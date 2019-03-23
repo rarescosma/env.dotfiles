@@ -51,7 +51,7 @@ if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
     source .venv/bin/activate
     ln -sf "$_VENDOR/../devel/.pythonenv" .env
     touch .envlocal
-    pip install -e .
+    [ -f setup.py ] && pip install -e .
     [ -f test-requirements.txt ] && pip install -r test-requirements.txt
   }
 
