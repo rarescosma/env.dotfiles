@@ -16,7 +16,6 @@ git-test-git
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
-kube-aws
 lcms
 lscolors-git
 lxd
@@ -33,9 +32,7 @@ python2-notify2
 python2-zeroconf
 reg
 rmtrash
-rot13
 signal-desktop-beta-bin
-soundwire
 sqlite-replication
 sublime-text-dev
 tomb

@@ -1,4 +1,5 @@
 acpi
+alsa-plugins
 ansible
 arandr
 arch-install-scripts
@@ -58,6 +59,7 @@ gst-plugins-good
 gst-plugins-ugly
 gthumb
 gvfs-smb
+hexchat
 htop
 httpie
 intel-ucode
@@ -110,6 +112,7 @@ pigz
 pixz
 pkgfile
 poppler
+portaudio
 postgresql
 powertop
 pulseaudio
@@ -127,7 +130,6 @@ python2-yaml
 qbittorrent
 qemu-arch-extra
 qt4
-ranger
 redshift
 reflector
 reptyr
@@ -173,7 +175,6 @@ unzip
 vim
 vim-runtime
 vlc
-w3m
 whois
 wireless_tools
 wpa_supplicant
