@@ -26,6 +26,7 @@ nvme-cli
 pa-applet-git
 pass-import
 pkgtools
+projectm-git
 pulseaudio-dlna
 pyenv
 python2-notify2
@@ -34,6 +35,7 @@ reg
 rmtrash
 signal-desktop-beta-bin
 sqlite-replication
+stack-bin
 sublime-text-dev
 tomb
 tomb-kdf
