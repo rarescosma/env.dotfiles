@@ -23,10 +23,10 @@ fi
 
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1.6
-dpi::sublime 1.6 10
+dpi::sublime 1.6 12
 dpi::terminal 16
 dpi::i3 8
 dpi::gtk 9
-dpi::idea 24 19
+dpi::idea 27 20
 
 "${HOME}/.i3/wallpaper.sh"
