@@ -4,7 +4,7 @@
 source "${HOME}/bin/wm"
 
 xrandr --output eDP1 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
-  --output DP1-8 --mode 3440x1440 --pos 0x0 --rotate normal \
+  --output DP2-8 --mode 3440x1440 --pos 0x0 --rotate normal \
   --output VIRTUAL1 --off \
   --output DP1 --off \
   --output HDMI3 --off \
