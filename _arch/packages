@@ -10,6 +10,8 @@ bind-tools
 bleachbit
 bluez-utils
 borg
+browserpass
+browserpass-chromium
 btrfs-progs
 calibre
 ccd2iso
@@ -42,7 +44,6 @@ ghostscript
 git
 git-crypt
 gitg
-gnome-alsamixer
 gnome-calculator
 gnome-disk-utility
 gnome-keyring
@@ -175,6 +176,7 @@ unzip
 vim
 vim-runtime
 vlc
+watchexec
 whois
 wireless_tools
 wpa_supplicant

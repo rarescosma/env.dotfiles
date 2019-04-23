@@ -4,7 +4,6 @@ apache-tools
 autokey
 bfg
 bindfs
-browserpass
 cfssl
 docker-credential-secretservice
 downgrade
@@ -13,6 +12,7 @@ escrotum-git
 fortune-mod-southpark
 gimp-gap
 git-test-git
+gnome-alsamixer
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
@@ -48,6 +48,5 @@ ttf-symbola
 tzupdate
 urxvt-clipboard
 urxvt-resize-font-git
-watchexec
 woeusb
 zplug
