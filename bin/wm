@@ -33,7 +33,7 @@ function dpi::sublime() {
     local font_size="${2}"
 
     sublime_config="${HOME}/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
-    $SED -E -e "s/\"dpi_scale\": [[:digit:]\.]+/\"dpi_scale\": $dpi_scale/g" \
+    $SED -E -e "s/\"ui_scale\": [[:digit:]\.]+/\"ui_scale\": $dpi_scale/g" \
             -e "s/\"font_size\": [[:digit:]\.]+/\"font_size\": $font_size/g" $sublime_config
 }
 
