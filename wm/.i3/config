@@ -213,6 +213,7 @@ bindsym $mod+Shift+r restart
 
 bindsym $mod+Shift+d exec "~/bin/dual-on"
 bindsym $mod+Shift+u exec "~/bin/dual-off"
+bindsym $mod+Shift+p exec "~/bin/proj-on"
 
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
