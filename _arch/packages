@@ -3,6 +3,7 @@ alsa-plugins
 ansible
 arandr
 arch-install-scripts
+aspell-en
 axel
 bc
 beep
@@ -121,6 +122,7 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pv
 pwgen
+pyenv
 pygmentize
 python-gobject
 python-llfuse
@@ -130,7 +132,6 @@ python2-pip
 python2-yaml
 qbittorrent
 qemu-arch-extra
-qt4
 redshift
 reflector
 reptyr
