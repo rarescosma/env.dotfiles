@@ -2,6 +2,7 @@ alsaequal
 android-sdk-platform-tools
 apache-tools
 autokey
+aws-iam-authenticator-bin
 bfg
 bindfs
 cfssl
@@ -16,6 +17,7 @@ gnome-alsamixer
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
+kubernetes-helm-bin
 lcms
 lscolors-git
 lxd

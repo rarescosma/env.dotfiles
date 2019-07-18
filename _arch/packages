@@ -70,6 +70,7 @@ iw
 jhead
 jq
 jre10-openjdk
+keepass
 keybase
 keychain
 klavaro
@@ -102,6 +103,7 @@ nodejs-lts-dubnium
 npm
 ntfs-3g
 ntp
+oath-toolkit
 openssh
 otf-font-awesome
 pacman-contrib
