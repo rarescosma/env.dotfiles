@@ -103,6 +103,7 @@ nodejs-lts-dubnium
 npm
 ntfs-3g
 ntp
+nvme-cli
 oath-toolkit
 openssh
 otf-font-awesome

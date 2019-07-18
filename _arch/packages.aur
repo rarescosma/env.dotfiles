@@ -24,7 +24,6 @@ lxd
 moc-pulse
 nufraw
 nvm
-nvme-cli
 pa-applet-git
 pass-import
 pkgtools
@@ -41,7 +40,6 @@ stack-bin
 sublime-text-dev
 tomb
 tomb-kdf
-tor-browser-en
 trizen
 ttf-iosevka-term
 ttf-iosevka-term-ss08
