@@ -11,3 +11,6 @@ xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x1080 --rotate normal \
   --output VIRTUAL1 --off
 
 "${HOME}/.i3/wallpaper.sh"
+pkill -f autolock
+pkill -f redshift-gtk
+lux -S1%
