@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# shellcheck disable=SC1090
+source "${HOME}/bin/wm"
+
+xrandr --output DP2 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
+  --output DP2-8 --mode 3440x1440 --pos 0x0 --rotate normal \
+  --output VIRTUAL1 --off \
+  --output DP1 --off \
+  --output HDMI3 --off \
+  --output HDMI2 --off \
+  --output HDMI1 --off
+
+io::keyboard
+killall -9 xcape
+if [ -f "$HOME/keymap.xkb" ]; then
+    xkbcomp "$HOME/keymap.xkb" $DISPLAY
+    xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
+else
+    xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
+fi
+
+browser::set_scale chromium 1.6
+browser::set_scale google-chrome-stable 1
+dpi::sublime 1.2 10
+dpi::terminal 8
+dpi::i3 7
+dpi::gtk 9
+dpi::idea 18 15
+
+"${HOME}/.i3/wallpaper.sh"
