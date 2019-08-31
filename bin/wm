@@ -79,7 +79,7 @@ function dpi::gtk() {
 # Sets Idea font sizes
 function dpi::idea() {
     local options_dir
-    options_dir="${HOME}/.IntelliJIdea{$IDEA_VERSION}/config/options"
+    options_dir="${HOME}/.IntelliJIdea${IDEA_VERSION}/config/options"
     local editor_font_size="${1}"
     local ui_font_size="${2}"
 
