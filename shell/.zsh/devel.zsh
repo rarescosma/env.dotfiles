@@ -42,17 +42,22 @@ if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
 
   ## create pipenv-based .venv
   nvenv() {
+    if [ -d ".venv" ]; then
+      return
+    fi
+
     deactivate 2>/dev/null
+
     if [ -f Pipfile ]; then
       pipenv install --dev --skip-lock "$@"
     else
       [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
     fi
+
     source .venv/bin/activate
+
     ln -sf "$_VENDOR/../devel/.pythonenv" .env
     touch .envlocal
-    [ -f setup.py ] && pip install -e .
-    [ -f test-requirements.txt ] && pip install -r test-requirements.txt
   }
 
   ## delete/cleanup .venv
