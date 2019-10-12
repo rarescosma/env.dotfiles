@@ -18,6 +18,7 @@ bindsym $mod+0x60 exec urxvt -e sh -c "tmux attach -d -t base || exec tmux new -
 bindsym $mod+0x27 exec subl3
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec wm browser::launch chromium
+bindsym $mod+period exec wm browser::launch chromium --incognito
 bindsym $mod+Shift+slash exec wm browser::launch google-chrome-stable
 
 # kill focused window

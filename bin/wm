@@ -10,7 +10,7 @@ function browser::launch() {
     dot=$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
     scale=$(cat "$dot/.${kind}-scale")
 
-    exec "$kind" --force-device-scale-factor="$scale"
+    exec "$@" --force-device-scale-factor="$scale"
 }
 
 # Sets the scale for chrome/chromium
