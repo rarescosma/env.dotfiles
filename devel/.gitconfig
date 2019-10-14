@@ -1,37 +1,53 @@
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [color "branch"]
-	current = green reverse
-	local = green
-	remote = yellow
+    current = green reverse
+    local = green
+    remote = yellow
 [color "status"]
-	added = green
-	changed = yellow
-	untracked = blue
+    added = green
+    changed = yellow
+    untracked = blue
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[diff-so-fancy]
+    first-run = false
 [core]
-	autocrlf = input
-	editor = subl3 -w
-	excludesfile = ~/.gitexcludes
-	pager = /usr/share/git/diff-highlight/diff-highlight | less --tabs=4 -RFX
-	untrackedCache = true
+    autocrlf = input
+    editor = subl3 -w
+    excludesfile = ~/.gitexcludes
+    pager = diff-so-fancy | less --tabs=4 -RFX
+    untrackedCache = true
 [commit]
-	gpgsign = true
+    gpgsign = true
 [interactive]
-	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+    diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
 [merge]
-	tool = meld
+    tool = meld
 [mergetool]
-	keepBackup = false
-	prompt = false
+    keepBackup = false
+    prompt = false
 [push]
-	default = current
+    default = current
 [rebase]
-	autosquash = true
-	autostash = true
+    autosquash = true
+    autostash = true
 [user]
-	name = Rareș Cosma
-	email = rares@getbetter.ro
-	signingkey = 0xD00EC1BBBA4D3352
-	useConfigOnly = true
+    name = Rareș Cosma
+    email = rares@getbetter.ro
+    signingkey = 0xD00EC1BBBA4D3352
+    useConfigOnly = true
 [includeif "gitdir:~/src/klarna/"]
-	path = ~/.gitconfig.work
+    path = ~/.gitconfig.work
+[color]
+    ui = true
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
