@@ -8,15 +8,6 @@
     added = green
     changed = yellow
     untracked = blue
-[color "diff"]
-    meta = yellow
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-[diff-so-fancy]
-    first-run = false
 [core]
     autocrlf = input
     editor = subl3 -w
