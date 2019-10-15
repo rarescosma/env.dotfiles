@@ -1,6 +1,6 @@
 export GIT_TEST_VERIFY="make test"
 
-ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo .)
+ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 VENV_ACTIVATE="$ROOT/.venv/bin/activate"
 [[ -f "$VENV_ACTIVATE" ]] && source "$VENV_ACTIVATE" && export PIPENV_ACTIVE=1
 
