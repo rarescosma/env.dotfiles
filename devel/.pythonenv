@@ -6,4 +6,4 @@ VENV_ACTIVATE="$ROOT/.venv/bin/activate"
 
 [[ -f "$ROOT/.envlocal" ]] && source "$ROOT/.envlocal"
 
-tmux rename-window -t${TMUX_PANE} "$(basename $ROOT)"
+test -z $TMUX_PANE || tmux rename-window -t${TMUX_PANE} "$(basename $ROOT)"
