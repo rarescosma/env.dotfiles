@@ -26,6 +26,7 @@ cowsay
 ctags
 debootstrap
 dialog
+diff-so-fancy
 diffutils
 dmenu
 dnsmasq
