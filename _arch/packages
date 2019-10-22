@@ -85,11 +85,13 @@ less
 libstdc++5
 libvncserver
 libyaml
+licenses
 linux
 linux-headers
 lm_sensors
 lsof
 lxappearance
+man-pages
 mc
 meld
 mercurial
@@ -172,6 +174,7 @@ stow
 strace
 stress
 sysstat
+systemd-sysvcompat
 tar
 telegram-desktop
 thunar
@@ -187,7 +190,6 @@ ttf-dejavu
 ttf-linux-libertine
 tumbler
 udftools
-unbound
 unrar
 unzip
 vim
