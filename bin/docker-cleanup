@@ -8,3 +8,4 @@ docker run \
   -e LOOP="false" -e DELAY_TIME="5" \
   meltwater/docker-cleanup
 
+docker system prune -af
