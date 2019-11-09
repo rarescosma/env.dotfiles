@@ -28,6 +28,7 @@ pass-import
 pkgtools
 projectm-git
 pulseaudio-dlna
+python2-docopt
 python2-notify2
 python2-zeroconf
 reg

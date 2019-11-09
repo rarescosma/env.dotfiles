@@ -23,8 +23,10 @@ cmake
 compton
 coreutils
 cowsay
+cryptsetup
 ctags
 debootstrap
+dhcpcd
 dialog
 diff-so-fancy
 diffutils
@@ -91,6 +93,7 @@ linux-headers
 lm_sensors
 lsof
 lxappearance
+man-db
 man-pages
 mc
 meld
