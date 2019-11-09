@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+WATCH_DIR="${HOME}/Downloads"
+UPLOAD_TO="seedbox:/mnt/seedbox/candy"
+
+if test "${1}" = "--trampoline"; then
+    echo ">>> Starting watchexec"
+    watchexec -w "${WATCH_DIR}" -e "torrent" -r -p "$0"
+    exit 0
+fi
+
+f="${WATCHEXEC_WRITTEN_PATH}"
+
+if ! test -z "$f"; then
+    echo ">>> Processing new torrent file ${f}"
+    scp "${f}" "${UPLOAD_TO}/" && rm -f "${f}"
+fi

@@ -19,5 +19,9 @@ redshift-gtk -t 5500:4800 -l 46.77:23.62 &
 
 cloudy watch ${HOME}/Dropbox/Screenshots -c ${HOME}/.config/cloudy.yaml >/tmp/cloudy.log 2>&1 &
 
+if test -x "${HOME}/bin/rtorrent-watch"; then
+    "${HOME}/bin/rtorrent-watch" --trampoline &
+fi
+
 wait
 
