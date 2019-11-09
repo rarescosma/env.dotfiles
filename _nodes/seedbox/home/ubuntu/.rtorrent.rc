@@ -25,6 +25,9 @@ session = ~/session_2
 # deleted.
 schedule = watch_directory,5,5,load.start=/mnt/seedbox/candy/*.torrent
 
+# Notify pushover clients when torrent finishes
+method.set_key = event.download.finished,edf,"execute=/home/ubuntu/bin/pushover,\"Finished pirating the s*** out of\",$d.name="
+
 # Port range to use for listening.
 port_range = 51413-51413
 bind = 192.168.5.140
