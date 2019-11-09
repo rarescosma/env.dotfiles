@@ -27,6 +27,14 @@ own() {
   sudo chown -R "$(id -un):" "$@"
 }
 
+permfix() {
+  local d
+  d=${1:-./}
+  sudo chown -R "$(id -un)": "$d"
+  find "$d" -type d -exec chmod 775 {} \; -exec chmod u-s {} \; -exec chmod g+s {} \;
+  find "$d" -type f -exec chmod 664 {} \;
+}
+
 # -- Crypto --------------------------------------------------------------------
 to() {
   tomb list || {
