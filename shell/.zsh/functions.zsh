@@ -10,7 +10,6 @@ alias locate='locate -i'
 if (( $+commands[rmtrash] )); then
   alias rm='rmtrash -rf'
 fi
-alias rm!='\rm -rf'
 
 if (( $+commands[exa] )); then
   alias l="exa -lhg --git --group-directories-first"
