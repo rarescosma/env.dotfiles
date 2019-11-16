@@ -15,8 +15,3 @@ if {
 fi
 
 sudo pacman -Syu --noconfirm
-
-if [ ! -z $IS_KERNEL_UPGRADE ]; then
-  sudo mkinitcpio -c /etc/mkinitcpio.conf -k "$KERNEL_VERSION" \
-  -g /boot/initramfs-linux.img
-fi
