@@ -14,6 +14,7 @@ borg
 browserpass
 browserpass-chromium
 btrfs-progs
+bzip2
 calibre
 ccd2iso
 cheese
@@ -119,6 +120,7 @@ ntfs-3g
 ntp
 nvme-cli
 oath-toolkit
+openldap
 openssh
 otf-font-awesome
 pacman-contrib
@@ -126,6 +128,7 @@ parallel
 parcellite
 pavucontrol
 pcmanfm
+perl
 perl-image-exiftool
 perl-json
 pigz
@@ -135,6 +138,7 @@ poppler
 portaudio
 postgresql
 powertop
+psmisc
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
@@ -195,6 +199,7 @@ tumbler
 udftools
 unrar
 unzip
+util-linux
 vim
 vim-runtime
 vlc

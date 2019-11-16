@@ -5,7 +5,6 @@ autokey
 aws-iam-authenticator-bin
 bfg
 bindfs
-cfssl
 docker-credential-secretservice
 downgrade
 dropbox
@@ -33,7 +32,7 @@ python2-notify2
 python2-zeroconf
 reg
 rmtrash
-signal-desktop-beta-bin
+signal-desktop
 stack-bin
 sublime-text-dev
 tomb
