@@ -1,6 +1,15 @@
 enable_devel=(kubectl aws python golang node nvm)
 
 # -- Turtles -------------------------------------------------------------------
+dscum() {
+    # scum a docker image off
+    docker run \
+        --rm -it \
+        --name="dscum-$(pwgen -A01)" \
+        --entrypoint="/bin/bash" "$@"
+}
+
+
 if [[ "$enable_devel" =~ "kubectl" ]]; then
   unset KUBECONFIG
   alias k='kubectl'
