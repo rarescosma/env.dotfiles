@@ -44,7 +44,6 @@ if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
   export PIPENV_IGNORE_VIRTUALENVS=0
   export PIPENV_HIDE_EMOJIS=1
   export PIPENV_NOSPIN=1
-  eval "$(pipenv --completion)"
 
   alias pipu='pip install -U pip'
   alias pe='pipenv'
