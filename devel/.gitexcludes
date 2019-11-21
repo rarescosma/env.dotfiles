@@ -18,6 +18,7 @@
 .coverage
 /htmlcov
 __pycache__
+.python-version
 
 # Generic ignores for all projects
 /var
