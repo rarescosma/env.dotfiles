@@ -5,6 +5,7 @@ arandr
 arch-install-scripts
 aspell-en
 axel
+bash
 bc
 beep
 bind-tools
@@ -21,12 +22,12 @@ cheese
 chromium
 cifs-utils
 cmake
-compton
 coreutils
 cowsay
 cryptsetup
 ctags
 debootstrap
+device-mapper
 dhcpcd
 dialog
 diff-so-fancy
@@ -37,6 +38,7 @@ docker
 docker-compose
 dosfstools
 dunst
+e2fsprogs
 eog
 exa
 expac
@@ -54,6 +56,7 @@ ghostscript
 git
 git-crypt
 gitg
+glibc
 gnome-calculator
 gnome-disk-utility
 gnome-keyring
@@ -73,9 +76,13 @@ gvfs-smb
 hexchat
 htop
 httpie
+inetutils
 intel-ucode
 iotop
+iproute2
+iputils
 iw
+jfsutils
 jhead
 jq
 jre10-openjdk
@@ -92,7 +99,9 @@ licenses
 linux
 linux-headers
 lm_sensors
+logrotate
 lsof
+lvm2
 lxappearance
 man-db
 man-pages
@@ -105,8 +114,10 @@ mlocate
 mosh
 mplayer
 mtr
+nano
 ncdu
 net-tools
+netctl
 netdata
 network-manager-applet
 networkmanager
@@ -127,10 +138,12 @@ pacman-contrib
 parallel
 parcellite
 pavucontrol
+pciutils
 pcmanfm
 perl
 perl-image-exiftool
 perl-json
+picom
 pigz
 pixz
 pkgfile
@@ -138,6 +151,7 @@ poppler
 portaudio
 postgresql
 powertop
+procps-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
@@ -157,6 +171,7 @@ qbittorrent
 qemu-arch-extra
 redshift
 reflector
+reiserfsprogs
 reptyr
 restic
 ripgrep
@@ -168,6 +183,7 @@ rxvt-unicode
 rxvt-unicode-terminfo
 scala
 seahorse
+shadow
 shellcheck
 shntool
 siege
@@ -180,6 +196,7 @@ steghide
 stow
 strace
 stress
+sysfsutils
 sysstat
 systemd-sysvcompat
 tar
@@ -199,6 +216,7 @@ tumbler
 udftools
 unrar
 unzip
+usbutils
 util-linux
 vim
 vim-runtime
@@ -214,6 +232,7 @@ xclip
 xf86-input-libinput
 xf86-input-synaptics
 xf86-video-intel
+xfsprogs
 xorg-xinit
 xterm
 youtube-dl
