@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SED='sed --in-place --follow-symlinks'
-IDEA_VERSION='2019.2'
+IDEA_VERSION='2019.3'
 
 # Launches chrome/chromium
 function browser::launch() {
