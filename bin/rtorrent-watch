@@ -9,7 +9,7 @@ if test "${1}" = "--trampoline"; then
     exit 0
 fi
 
-f="${WATCHEXEC_WRITTEN_PATH}"
+f="${WATCHEXEC_CREATED_PATH}"
 
 if ! test -z "$f"; then
     echo ">>> Processing new torrent file ${f}"
