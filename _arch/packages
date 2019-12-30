@@ -112,7 +112,6 @@ mesa-demos
 mkvtoolnix-gui
 mlocate
 mosh
-mplayer
 mtr
 nano
 ncdu
@@ -225,7 +224,6 @@ watchexec
 whois
 wireless_tools
 wpa_supplicant
-x11vnc
 xautolock
 xcape
 xclip

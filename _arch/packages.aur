@@ -12,6 +12,7 @@ escrotum-git
 fortune-mod-southpark
 git-test-git
 gnome-alsamixer
+gpup
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
@@ -26,10 +27,10 @@ pa-applet-git
 pass-import
 pkgtools
 projectm-git
-pulseaudio-dlna
-python2-docopt
-python2-notify2
-python2-zeroconf
+pulseaudio-dlna-aharter-python3-git
+python-casttube
+python-notify2
+python-pychromecast
 reg
 rmtrash
 stack-bin
