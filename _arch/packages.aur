@@ -5,6 +5,7 @@ autokey
 aws-iam-authenticator-bin
 bfg
 bindfs
+chromium-vaapi-bin
 docker-credential-secretservice
 downgrade
 dropbox
