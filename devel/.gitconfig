@@ -1,44 +1,44 @@
 [branch]
-    autosetuprebase = always
-[color "branch"]
-    current = green reverse
-    local = green
-    remote = yellow
-[color "status"]
-    added = green
-    changed = yellow
-    untracked = blue
-[core]
-    autocrlf = input
-    editor = subl3 -w
-    excludesfile = ~/.gitexcludes
-    pager = diff-so-fancy | less --tabs=4 -RFX
-    untrackedCache = true
-[commit]
-    gpgsign = true
-[interactive]
-    diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
-[merge]
-    tool = meld
-[mergetool]
-    keepBackup = false
-    prompt = false
-[push]
-    default = current
-[rebase]
-    autosquash = true
-    autostash = true
-[user]
-    name = Rareș Cosma
-    email = rares@getbetter.ro
-    signingkey = 0xD00EC1BBBA4D3352
-    useConfigOnly = true
-[includeif "gitdir:~/src/klarna/"]
-    path = ~/.gitconfig.work
+	autosetuprebase = always
 [color]
-    ui = true
+	ui = true
+[color "branch"]
+	current = green reverse
+	local = green
+	remote = yellow
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = blue
+[core]
+	autocrlf = input
+	editor = subl3 -w
+	excludesfile = ~/.gitexcludes
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	untrackedCache = true
+[commit]
+	gpgsign = true
+[interactive]
+	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+[merge]
+	tool = meld
+[mergetool]
+	keepBackup = false
+	prompt = false
+[push]
+	default = current
+[rebase]
+	autosquash = true
+	autostash = true
+[user]
+	name = Rareș Cosma
+	email = rares@getbetter.ro
+	signingkey = 0xD00EC1BBBA4D3352
+	useConfigOnly = true
+[includeif "gitdir:~/src/klarna/"]
+	path = ~/.gitconfig.work
