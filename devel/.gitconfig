@@ -23,6 +23,8 @@
 	untrackedCache = true
 [commit]
 	gpgsign = true
+[init]
+	templatedir = ~/.git-template
 [interactive]
 	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
 [merge]
