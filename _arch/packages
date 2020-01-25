@@ -15,6 +15,7 @@ bluez-utils
 borg
 browserpass
 browserpass-chromium
+browserpass-firefox
 btrfs-progs
 bzip2
 calibre
@@ -49,6 +50,7 @@ file-roller
 filesystem
 filezilla
 firefox
+fwupd
 gaupol
 geeqie
 ghc

@@ -5,14 +5,17 @@ autokey
 aws-iam-authenticator-bin
 bfg
 bindfs
+browserpass-chrome
 chromium-vaapi-bin
 docker-credential-secretservice
 downgrade
 dropbox
 escrotum-git
 fortune-mod-southpark
+gconf
 git-test-git
 gnome-alsamixer
+google-chrome
 gpup
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
@@ -36,6 +39,7 @@ reg
 rmtrash
 stack-bin
 sublime-text-dev
+tidal-hifi-git
 tomb
 tomb-kdf
 tor-browser
