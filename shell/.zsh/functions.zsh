@@ -32,6 +32,7 @@ alias tc='tomb close'
 
 vpn() {
     tomb list || to
+    trename "vpn-${1}"
     sudo openvpn --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn"
 }
 
@@ -114,3 +115,9 @@ tn() {
   tmux attach -t "$s_name" || tmux new -s "$s_name"
 }
 
+## rename tmux pane
+trename() {
+  local p_name
+  p_name=${*:-zsh}
+  test -z "$TMUX_PANE" || tmux rename-window -t"${TMUX_PANE}" "$p_name"
+}
