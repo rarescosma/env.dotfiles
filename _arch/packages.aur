@@ -6,7 +6,6 @@ aws-iam-authenticator-bin
 bfg
 bindfs
 browserpass-chrome
-chromium-vaapi-bin
 docker-credential-secretservice
 downgrade
 dropbox
@@ -23,7 +22,6 @@ inxi
 kubernetes-helm-bin
 lcms
 lscolors-git
-lxd
 moc-pulse
 nufraw
 nvm
