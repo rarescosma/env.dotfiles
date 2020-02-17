@@ -26,14 +26,12 @@ URxvt.scrollBar: false
 
 ! Copypaste / ResizeFont
 ! ----------------------
-URxvt.iso14755: False
-URxvt.iso14755_52: False
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard,clipboard,resize-font
-URxvt.keysym.Control-v: perl:clipboard:paste
-URxvt.keysym.Control-Shift-C: perl:clipboard:copy
-URxvt.clipboard.autocopy: true
-URxvt.clipboard.copycmd:  xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext-common: default,eval,matcher,resize-font
+URxvt.keysym.Control-v: eval:paste_clipboard
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
 URxvt.matcher.button: 1
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.url-select.underline: true
