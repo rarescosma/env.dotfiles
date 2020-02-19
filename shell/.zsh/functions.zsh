@@ -31,9 +31,13 @@ alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
 
 vpn() {
+    local old_name
     tomb list || to
-    trename "vpn-${1}"
-    sudo openvpn --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn"
+    old_name=$(trename "vpn-${1}")
+    sudo openvpn \
+      --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn" \
+      --mute-replay-warnings
+    trename "${old_name}"
 }
 
 ## pass + fzf integration
@@ -119,5 +123,14 @@ tn() {
 trename() {
   local p_name
   p_name=${*:-zsh}
-  test -z "$TMUX_PANE" || tmux rename-window -t"${TMUX_PANE}" "$p_name"
+
+  local old_name
+  old_name=""
+
+  if [ -n "$TMUX_PANE" ]; then
+    old_name=$(tmux display-message -p '#W')
+    tmux rename-window -t"${TMUX_PANE}" "$p_name"
+  fi
+
+  echo "$old_name"
 }
