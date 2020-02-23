@@ -169,7 +169,7 @@ main() {
         ${percent_mode} && valArg=$(( best_max * valArg / 100 ))
         [ "$valArg" -lt 0 ] && valArg=0
         [ "$valArg" -gt "$best_max" ] && valArg="${best_max}"
-        echo "${valArg}" | tee "${file}"
+        echo "${valArg}" | sudo tee "${file}"
         exit
     fi
 
@@ -189,11 +189,11 @@ main() {
     if ${aFlag} ; then
         value=$(( brightness + valArg ))
         [ "$value" -gt "$own_max" ] && value="${own_max}"
-        echo "${value}" | tee "${file}"
+        echo "${value}" | sudo tee "${file}"
     elif ${sFlag} ; then
         value=$(( brightness - valArg ))
         [ "$value" -lt "$own_min" ] && value="${own_min}"
-        echo "${value}" | tee "${file}"
+        echo "${value}" | sudo tee "${file}"
     else
         arg_err
     fi
