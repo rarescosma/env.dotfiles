@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sleep 0.2
+scrot -s "${HOME}/media/screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+
