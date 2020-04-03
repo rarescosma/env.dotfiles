@@ -1,0 +1,69 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "alt+shift+2",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "alt+up",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "alt+down",
+        "command": "workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "alt+shift+m",
+        "command": "workbench.action.toggleMenuBar"
+    },
+    {
+        "key": "alt",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+left",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+\\",
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+]

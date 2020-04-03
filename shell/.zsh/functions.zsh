@@ -66,7 +66,7 @@ ssh-add() {
 }
 
 # -- Editors -------------------------------------------------------------------
-alias s='subl3 -a'
+alias s='vscodium'
 alias svi='sudo vim'
 
 ## grep for line content and edit the selected file(s)

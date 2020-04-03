@@ -1,0 +1,15 @@
+{
+    "breadcrumbs.enabled": true,
+    "editor.fontFamily": "'Iosevka Term SS08', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 16,
+    "editor.fontWeight": "400",
+    "git.enabled": false,
+    "git.enableStatusBarSync": false,
+    "git.decorations.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "problems.showCurrentInStatus": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "boundary",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true
+}
