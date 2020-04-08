@@ -66,4 +66,9 @@
         "command": "editor.action.smartSelect.shrink",
         "when": "editorTextFocus"
     },
+    {
+        "key": "alt+j",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    }
 ]

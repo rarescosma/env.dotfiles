@@ -3,6 +3,7 @@
     "editor.fontFamily": "'Iosevka Term SS08', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 16,
     "editor.fontWeight": "400",
+    "editor.rulers": [80],
     "git.enabled": false,
     "git.enableStatusBarSync": false,
     "git.decorations.enabled": false,
@@ -11,5 +12,21 @@
     "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "boundary",
     "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true
+    "files.trimFinalNewlines": true,
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext",
+        "markdown"
+    ],
+    "window.zoomLevel": 0,
+    "workbench.editor.showTabs": false,
+    "files.autoSave": "onFocusChange",
+    "workbench.colorCustomizations": {
+        "statusBar.background" : "#1A1A1A",
+        "statusBar.noFolderBackground" : "#212121",
+        "statusBar.debuggingBackground": "#263238"
+    }
 }
