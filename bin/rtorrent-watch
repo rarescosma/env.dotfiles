@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 WATCH_DIR="${HOME}/Downloads"
-UPLOAD_TO="seedbox:/mnt/seedbox/candy"
+
+source "${HOME}/.local/env"
+
+if test -z "${RWATCH_UPLOAD_TO}" || test -z "${RWATCH_IDENTITY}"; then
+    echo "!!! Must set RWATCH_UPLOAD_TO and RWATCH_IDENTITY" 1>&2
+    exit 1
+fi
 
 if test "${1}" = "--trampoline"; then
     echo ">>> Starting watchexec"
@@ -13,5 +19,5 @@ f="${WATCHEXEC_CREATED_PATH}"
 
 if ! test -z "$f"; then
     echo ">>> Processing new torrent file ${f}"
-    scp "${f}" "${UPLOAD_TO}/" && rm -f "${f}"
+    scp -i "${RWATCH_IDENTITY}" "${f}" "${RWATCH_UPLOAD_TO}/" && rm -f "${f}"
 fi
