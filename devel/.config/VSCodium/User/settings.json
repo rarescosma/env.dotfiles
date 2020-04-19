@@ -28,5 +28,6 @@
         "statusBar.background" : "#1A1A1A",
         "statusBar.noFolderBackground" : "#212121",
         "statusBar.debuggingBackground": "#263238"
-    }
+    },
+    "update.mode": "none"
 }
