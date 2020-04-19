@@ -28,7 +28,7 @@ bindsym $mod+Shift+q kill
 bindsym $alt+space exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 15 -p 'dmenu'"
 
 # start winmenu (dmenu wrapper for switching windows)
-bindsym $mod+space exec --no-startup-id ~/.i3/python/winmenu.py
+bindsym $mod+space exec --no-startup-id ~/.i3/focus.sh
 
 # change focus
 bindsym $mod+h focus left
