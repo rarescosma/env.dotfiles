@@ -39,13 +39,22 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+down",
+        "key": "alt+shift+down",
         "command": "editor.action.moveLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+up",
+        "key": "alt+shift+up",
         "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.joinLines"
+    },
+    {
+        "key": "shift+enter",
+        "command": "editor.action.insertLineAfter",
         "when": "editorTextFocus && !editorReadonly"
     },
     {
@@ -70,5 +79,20 @@
         "key": "alt+j",
         "command": "editor.action.addSelectionToNextFindMatch",
         "when": "editorFocus"
-    }
+    },
+    {
+        "key": "alt+shift+b",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "escape",
+        "when": "filesExplorerFocus && !inputFocus",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "alt+1",
+        "when": "!filesExplorerFocus",
+        "command": "workbench.files.action.focusFilesExplorer"
+    },
 ]

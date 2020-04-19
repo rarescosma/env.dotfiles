@@ -1,33 +1,59 @@
 {
-    "breadcrumbs.enabled": true,
+    "breadcrumbs.enabled": false,
     "editor.fontFamily": "'Iosevka Term SS08', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "editor.fontWeight": "400",
-    "editor.rulers": [80],
-    "git.enabled": false,
-    "git.enableStatusBarSync": false,
-    "git.decorations.enabled": false,
-    "window.menuBarVisibility": "toggle",
-    "problems.showCurrentInStatus": true,
-    "files.trimTrailingWhitespace": true,
+    "editor.minimap.enabled": false,
+    "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "boundary",
+    "editor.roundedSelection": true,
+    "editor.rulers": [
+        80
+    ],
+    "explorer.confirmDelete": false,
+    "files.autoSave": "onFocusChange",
+    "files.enableTrash": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.decorations.enabled": false,
+    "git.enabled": false,
+    "git.enableStatusBarSync": false,
+    "problems.showCurrentInStatus": true,
+    "python.formatting.blackArgs": [
+        "-l",
+        "80"
+    ],
+    "python.formatting.blackPath": "~/.local/bin/black",
+    "python.linting.pylintPath": "~/.local/bin/pylint",
+    "python.pythonPath": "~/.pyenv/versions/3.7.7/bin/python3.7",
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
+    ],
     "spellright.language": [
         "en_US"
     ],
-    "spellright.documentTypes": [
-        "latex",
-        "plaintext",
-        "markdown"
-    ],
-    "window.zoomLevel": 0,
-    "workbench.editor.showTabs": false,
-    "files.autoSave": "onFocusChange",
+    "terminal.explorerKind": "external",
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "hidden",
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+    "window.zoomLevel": 1,
+    "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
-        "statusBar.background" : "#1A1A1A",
-        "statusBar.noFolderBackground" : "#212121",
-        "statusBar.debuggingBackground": "#263238"
+        "[Darcula]": {
+            "editor.background": "#1E1E1E",
+            "statusBar.background": "#1A1A1A",
+            "statusBar.noFolderBackground": "#212121",
+            "statusBar.debuggingBackground": "#263238"
+        },
     },
+    "workbench.editor.showTabs": false,
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Darcula",
+    "vscode_custom_css.imports": ["file:///home/karelian/bla.css"],
+    "vscode_custom_css.policy": true,
     "update.mode": "none"
 }
