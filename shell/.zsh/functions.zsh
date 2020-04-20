@@ -107,6 +107,15 @@ alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias trizen='trizen --noconfirm'
 alias o='xdg-open'
 
+## kill and restart process
+kick() {
+  local process="${@}"
+  command -v "${process}" >/dev/null || return
+  pkill -f "${process}"
+  nohup "${process}" >/dev/null 2>&1 &
+  disown
+}
+
 ## ssh into tmux session on host
 tsh() {
   ssh -t "$@" "tmux attach -t base || exec tmux new -s base"
