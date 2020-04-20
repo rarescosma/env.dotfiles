@@ -2,7 +2,7 @@
 
 set -e
 
-PACKAGE_GROUPS="base base-devel xorg i3"
+PACKAGE_GROUPS="base-devel xorg i3"
 
 net::enable_wifi() {
   IF="${IF:-wlp3s0}"
@@ -25,7 +25,7 @@ pac::list_aur() {
 
 pac::list_non_group() {
   # packages from groups
-  comm -23 <(pacman -Qqe | sort) <(pacman -Qqg $PACKAGE_GROUPS | sort)
+  comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg $PACKAGE_GROUPS; expac -l '\n' '%E' base; } | sort | uniq)
 }
 
 pac::list_non_group_non_aur() {

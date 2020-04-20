@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Updating package lists...
+When = PostTransaction
+Exec = /usr/bin/bash -c "cd /home/karelian/src/env.dotfiles/_arch; ./setup.sh pac::list"
