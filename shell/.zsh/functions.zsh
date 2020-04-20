@@ -27,8 +27,20 @@ own() {
 }
 
 # -- Crypto --------------------------------------------------------------------
-alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
-alias tc='tomb close'
+to() {
+  tomb list || {
+    tomb open $TOMB_FILE -k $TOMB_KEY -f \
+    && kick autokey-gtk \
+  }
+}
+
+tc() {
+  tomb list && {
+    sudo -E pkill -f openvpn
+    pkill -f autokey-gtk
+    tomb close
+  }
+}
 
 vpn() {
   local old_name
