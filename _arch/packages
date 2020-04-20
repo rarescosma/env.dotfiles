@@ -49,6 +49,7 @@ gnome-keyring
 gnome-system-monitor
 gnome-themes-extra
 gnu-netcat
+go
 gparted
 groovy
 grub
@@ -102,6 +103,7 @@ openssh
 otf-font-awesome
 parallel
 parcellite
+pass
 pavucontrol
 perl-image-exiftool
 picom
@@ -114,7 +116,6 @@ pulseaudio-bluetooth
 pv
 pwgen
 pyenv
-python
 python-black
 python-gobject
 python-llfuse

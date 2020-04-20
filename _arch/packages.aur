@@ -21,7 +21,6 @@ nvm
 pa-applet-git
 pkgtools
 pulseaudio-dlna-aharter-python3-git
-pygtk
 python-casttube
 python-fudge
 python-notify2
@@ -43,5 +42,4 @@ tzupdate
 urxvt-clipboard
 urxvt-resize-font-git
 vscodium-bin
-wikiquote-fortune
 zplug
