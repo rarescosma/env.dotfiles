@@ -37,8 +37,8 @@ to() {
 tc() {
   tomb list && {
     sudo -E pkill -f openvpn
-    pkill -f autokey-gtk
     tomb close
+    kick autokey-gtk
   }
 }
 
