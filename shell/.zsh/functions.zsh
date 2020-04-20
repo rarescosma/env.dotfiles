@@ -31,13 +31,13 @@ alias to='tomb open $TOMB_FILE -k $TOMB_KEY -f'
 alias tc='tomb close'
 
 vpn() {
-    local old_name
-    tomb list || to
-    old_name=$(trename "vpn-${1}")
-    sudo openvpn \
-      --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn" \
-      --mute-replay-warnings
-    trename "${old_name}"
+  local old_name
+  tomb list || to
+  old_name=$(trename "vpn-${1}")
+  sudo openvpn \
+    --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn" \
+    --mute-replay-warnings
+  trename "${old_name}"
 }
 
 ## pass + fzf integration
