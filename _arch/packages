@@ -1,5 +1,4 @@
 acpi
-ansible
 arandr
 arch-install-scripts
 aspell-en
@@ -15,12 +14,12 @@ borg
 browserpass
 browserpass-chromium
 browserpass-firefox
-btrfs-progs
 calibre
 ccd2iso
 chromium
 cifs-utils
 cmake
+colordiff
 cowsay
 ctags
 debootstrap
@@ -30,7 +29,6 @@ diff-so-fancy
 dmenu
 docker
 docker-compose
-dosfstools
 dunst
 efibootmgr
 eog
@@ -38,7 +36,6 @@ exa
 expac
 fd
 feh
-ffmpeg
 file-roller
 filezilla
 firefox
@@ -70,13 +67,10 @@ iw
 jfsutils
 jhead
 jq
-keepass
+keepassxc
 keychain
 klavaro
 linux
-linux-firmware
-linux-headers
-lm_sensors
 logrotate
 lsof
 lvm2
@@ -100,14 +94,12 @@ networkmanager-pptp
 nginx
 nmap
 nodejs-lts-dubnium
-npm
 ntfs-3g
 nvme-cli
 oath-toolkit
 openldap
 openssh
 otf-font-awesome
-pacman-contrib
 parallel
 parcellite
 pavucontrol
@@ -165,6 +157,7 @@ tmux
 tmuxp
 tree
 ttf-dejavu
+ttf-joypixels
 tumbler
 unrar
 unzip
@@ -172,12 +165,12 @@ usbutils
 vim
 vlc
 watchexec
+wdiff
 whois
 wpa_supplicant
 xautolock
 xcape
 xclip
-xf86-input-libinput
 xf86-input-synaptics
 xf86-video-intel
 xfsprogs
