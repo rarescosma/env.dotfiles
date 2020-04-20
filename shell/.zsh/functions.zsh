@@ -83,7 +83,8 @@ vil() {
 
 ## open dir in IntelliJ
 i() {
-  nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh $* 2>/dev/null 1>&2 &
+  nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh $* >/dev/null 2>&1 &
+  disown
 }
 
 # -- Turtles -------------------------------------------------------------------
