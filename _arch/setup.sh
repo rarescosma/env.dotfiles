@@ -2,7 +2,7 @@
 
 set -e
 
-PACKAGE_GROUPS="base base-devel xorg i3"
+PACKAGE_GROUPS="base-devel xorg i3"
 
 net::enable_wifi() {
   IF="${IF:-wlp3s0}"
