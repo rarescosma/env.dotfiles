@@ -1,9 +1,7 @@
 alsaequal
-android-sdk-platform-tools
 apache-tools
 autokey
 aws-iam-authenticator-bin
-bfg
 bindfs
 browserpass-chrome
 docker-credential-secretservice
@@ -17,8 +15,6 @@ google-chrome
 https-dns-proxy-git
 intellij-idea-ultimate-edition
 inxi
-lcms
-lscolors-git
 moc-pulse
 nvm
 pa-applet-git
@@ -44,8 +40,5 @@ ttf-ms-fonts
 tzupdate
 urxvt-clipboard
 urxvt-resize-font-git
-vidcutter
 vscodium-bin
-wikiquote-fortune
-woeusb
 zplug
