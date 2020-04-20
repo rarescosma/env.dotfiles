@@ -149,6 +149,7 @@ stow
 strace
 stress
 sysfsutils
+sysstat
 telegram-desktop
 thunar
 thunar-archive-plugin

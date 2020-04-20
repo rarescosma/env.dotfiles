@@ -19,6 +19,7 @@ moc-pulse
 ntpdate
 nvm
 pa-applet-git
+pacman-cleanup-hook
 pkgtools
 pulseaudio-dlna-aharter-python3-git
 python-casttube
