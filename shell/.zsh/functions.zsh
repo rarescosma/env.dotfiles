@@ -8,7 +8,8 @@ alias rg="rg --hidden --follow --smart-case"
 alias locate='locate -i'
 
 if (( $+commands[rmtrash] )); then
-  alias rm='rmtrash -rf'
+  alias rm='rmtrash'
+  alias rm!='trash-put'
 fi
 
 if (( $+commands[exa] )); then
