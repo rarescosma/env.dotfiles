@@ -32,6 +32,30 @@ pac::list_non_group_non_aur() {
   comm -23 <(pac::list_non_group) <(pac::list_aur)
 }
 
+pac::git_sync() {
+  local dot packs new_packs removed added
+  dot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+  packs=$( { cat "${dot}/packages"; cat "${dot}/packages.aur"; } | sort | uniq )
+  git pull --ff-only
+  new_packs=$( { cat "${dot}/packages"; cat "${dot}/packages.aur"; } | sort | uniq )
+
+  removed=$( comm -23 <(echo "${packs}") <(echo "${new_packs}") | tr "\n" " " )
+  added=$( comm -13 <(echo "${packs}") <(echo "${new_packs}") | tr "\n" " " )
+
+  if [ ! -z "${added}" ]; then
+    printf ">> Found new packages:\n${added}\n"
+    read -p "<< Press any key to install them."
+    trizen -Sy "${added}"
+  fi
+
+  if [ ! -z "${removed}" ]; then
+    printf ">> Packages removed on remote:\n${removed}\n"
+    read -p "<< Press any key to remove them."
+    sudo pacman -Rns --noconfirm $removed
+  fi
+}
+
 pac::list() {
   local output_dir
   output_dir="${1:-./}"
