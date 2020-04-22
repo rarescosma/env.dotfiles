@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/bin/*
+
+[Action]
+Description = Rehashing Z shells...
+Depends = zsh
+Depends = procps-ng
+When = PostTransaction
+Exec = /usr/bin/pkill zsh --signal=USR2

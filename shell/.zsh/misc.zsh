@@ -15,3 +15,10 @@ export _Z_DATA=/var/tmp/karelian.z
 
 # -- umask ---------------------------------------------------------------------
 umask 002
+
+# -- rehash trap ---------------------------------------------------------------
+_usr2_rehash() {
+  trap _usr2_rehash USR2
+  rehash
+}
+trap _usr2_rehash USR2
