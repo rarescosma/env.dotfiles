@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# Commit sudoku
+list_descendants() {
+    local children=$(ps -o pid= --ppid "$1")
+    for pid in $children; do
+        list_descendants "$pid"
+    done
+    echo "$children"
+}
+
+_MY_NAME=${BASH_SOURCE[0]}
+for pid in $(pidof -x $_MY_NAME); do
+    if [ $pid != $$ ]; then
+        kill $(list_descendants $pid)
+    fi
+done
+
 "${HOME}/.i3/wallpaper.sh"
 dropbox &
 
@@ -12,7 +28,6 @@ thunar --daemon &
 syndaemon -i 1 -t -k &
 
 # Special Eds
-killall redshift
 redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
@@ -24,4 +39,3 @@ if test -x "${HOME}/bin/rtorrent-watch"; then
 fi
 
 wait
-
