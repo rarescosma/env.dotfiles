@@ -4,6 +4,7 @@ autokey
 aws-iam-authenticator-bin
 bindfs
 browserpass-chrome
+dive
 docker-credential-secretservice
 downgrade
 dropbox
