@@ -44,13 +44,26 @@ tc() {
 }
 
 vpn() {
-  local old_name
-  tomb list || to
+  local vpn_config log_path old_name
+  vpn_config="vpn/${1}/$(hostname -s).ovpn"
+  log_path="/tmp/vpn-${1}.log"; echo -n > "$log_path"
+
+  # pre-hooks
   old_name=$(trename "vpn-${1}")
+  {
+    tail -f "$log_path" | sed '/Initialization Sequence Completed/ q';
+    sudo systemctl restart https_dns_proxy;
+  } &
+
+  tomb list || to
   sudo openvpn \
-    --config "$HOME/Tomb/vpn/${1}/$(hostname -s).ovpn" \
-    --mute-replay-warnings
+    --config "$HOME/Tomb/${vpn_config}" \
+    --mute-replay-warnings | tee "$log_path"
+
+  # post-hooks
+  wait
   trename "${old_name}"
+  sudo systemctl restart https_dns_proxy
 }
 
 ## pass + fzf integration
