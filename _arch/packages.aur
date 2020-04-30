@@ -23,7 +23,7 @@ nvm
 pa-applet-git
 pacman-cleanup-hook
 pkgtools
-pulseaudio-dlna-aharter-python3-git
+pulseaudio-dlna-python3-git
 python-casttube
 python-fudge
 python-notify2
