@@ -26,6 +26,7 @@ fi
 browser::set_scale chromium 1.6
 browser::set_scale google-chrome-stable 1.6
 dpi::sublime 1.6 12
+dpi::vscodium 1
 dpi::terminal 16
 dpi::i3 8
 dpi::gtk 9

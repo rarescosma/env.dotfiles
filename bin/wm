@@ -38,6 +38,14 @@ function dpi::sublime() {
             -e "s/\"font_size\": [[:digit:]\.]+/\"font_size\": $font_size/g" $sublime_config
 }
 
+# Sets vscodium DPI
+function dpi::vscodium() {
+    local zoom_level="${1}"
+
+    config_file="${HOME}/.config/VSCodium/User/settings.json"
+    $SED -E -e "s/zoomLevel\": [[:digit:]\.\-]+/zoomLevel\": $zoom_level/g" $config_file
+}
+
 # Sets terminal font-size
 function dpi::terminal() {
     local font_size="${1}"
