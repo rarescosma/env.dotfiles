@@ -48,6 +48,8 @@ vpn() {
   vpn_config="vpn/${1}/$(hostname -s).ovpn"
   log_path="/tmp/vpn-${1}.log"; echo -n > "$log_path"
 
+  to || return
+
   # pre-hooks
   old_name=$(trename "vpn-${1}")
   {
@@ -55,7 +57,6 @@ vpn() {
     sudo systemctl restart https_dns_proxy;
   } &
 
-  tomb list || to
   sudo openvpn \
     --config "$HOME/Tomb/${vpn_config}" \
     --mute-replay-warnings | tee "$log_path"
