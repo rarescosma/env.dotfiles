@@ -74,6 +74,7 @@ keepassxc
 keychain
 klavaro
 linux
+linux-headers
 logrotate
 lsof
 lvm2
@@ -114,6 +115,7 @@ pkgfile
 postgresql
 powertop
 pulseaudio
+pulseaudio-alsa
 pulseaudio-bluetooth
 pv
 pwgen
@@ -146,7 +148,6 @@ sl
 smartmontools
 sox
 sshfs
-steghide
 stow
 strace
 stress
