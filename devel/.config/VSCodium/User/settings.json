@@ -29,7 +29,8 @@
     "python.pythonPath": "~/.pyenv/versions/3.7.7/bin/python3.7",
     "spellright.documentTypes": [
         "latex",
-        "plaintext"
+        "plaintext",
+        "markdown"
     ],
     "spellright.language": [
         "en_US"
