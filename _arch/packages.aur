@@ -25,10 +25,8 @@ pacman-cleanup-hook
 pkgtools
 pulseaudio-dlna-python3-git
 python-casttube
-python-fudge
 python-notify2
 python-pychromecast
-python-soundcloud-git
 reg
 rmtrash
 stack-bin
