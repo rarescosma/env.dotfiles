@@ -1,0 +1,7 @@
+#!/bin/sh
+
+INSTANCE="roamresearch.com"
+
+xdotool search --classname ${INSTANCE} \
+    && i3-msg "[instance=\"${INSTANCE}\"] focus" \
+    || i3-msg 'exec wm browser::launch chromium --app=https://roamresearch.com/#/app/rar'
