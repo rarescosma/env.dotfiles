@@ -7,7 +7,7 @@ axel
 base
 bc
 beep
-bind-tools
+bind
 bluez-utils
 borg
 browserpass
@@ -85,6 +85,7 @@ mc
 meld
 mlocate
 mosh
+mtools
 mtr
 nano
 ncdu
@@ -163,6 +164,7 @@ tmuxp
 tree
 ttf-dejavu
 ttf-joypixels
+ttf-opensans
 tumbler
 unrar
 unzip

@@ -27,6 +27,7 @@ pulseaudio-dlna-python3-git
 python-casttube
 python-notify2
 python-pychromecast
+python2-pytoml
 reg
 rmtrash
 stack-bin
@@ -43,4 +44,6 @@ tzupdate
 urxvt-clipboard
 urxvt-resize-font-git
 vscodium-bin
+wasabi-wallet-bin
+xorg-font-utils
 zplug
