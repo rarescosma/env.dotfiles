@@ -50,10 +50,17 @@ if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
 
   ## create pipenv-based .venv
   nvenv() {
+    local prompt
     local root
     if [ ! -d ".venv" ]; then
       root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-      python -mvenv .venv --prompt $(basename $root)
+      if [ -z "$1" ]; then
+        prompt=$(basename $root)
+      else
+        prompt="${1}"
+        shift
+      fi
+      python -mvenv .venv --prompt "${prompt}"
     fi
 
     deactivate 2>/dev/null
