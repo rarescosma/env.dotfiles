@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-feh --bg-fill ~/media/wallpapers/0f44e7f5623d2ac3f297d4c60355977c.jpg
+WALLPAPER="tjikko_crop.png"
+
+feh --bg-fill ~/media/wallpapers/${WALLPAPER}
