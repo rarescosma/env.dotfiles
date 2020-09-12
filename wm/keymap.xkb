@@ -1279,6 +1279,7 @@ xkb_symbols "pc+robleh+inet(evdev)+ctrl(nocaps)" {
     };
     key <AD11> {
         type= "FOUR_LEVEL",
+        overlay1= <I246>,
         symbols[Group1]= [     bracketleft,       braceleft, doublelowquotemark,        NoSymbol ]
     };
     key <AD12> {
@@ -1329,8 +1330,16 @@ xkb_symbols "pc+robleh+inet(evdev)+ctrl(nocaps)" {
         overlay1= <RGHT>,
         symbols[Group1]= [               l,               L ]
     };
-    key <AC10> {         [       semicolon,           colon ] };
-    key <AC11> {         [      apostrophe,        quotedbl ] };
+    key <AC10> {
+        type= "ALPHABETIC",
+        overlay1= <I247>,
+        symbols[Group1]=[       semicolon,           colon ]
+    };
+    key <AC11> {
+        type= "ALPHABETIC",
+        overlay1= <I248>,
+        symbols[Group1]=[      apostrophe,        quotedbl ]
+    };
     key <TLDE> {         [           grave,      asciitilde ] };
     key <LFSH> {         [         Shift_L ] };
     key <BKSL> {         [       backslash,             bar ] };
@@ -1603,6 +1612,9 @@ xkb_symbols "pc+robleh+inet(evdev)+ctrl(nocaps)" {
     key <I243> {         [ abreve, Abreve ] };
     key <I244> {         [ icircumflex, Icircumflex ] };
     key <I245> {         [ Greek_lamda, Greek_LAMDA ] };
+    key <I246> {         [ aring, Aring ] };
+    key <I247> {         [ odiaeresis, Odiaeresis ] };
+    key <I248> {         [ adiaeresis, Adiaeresis ] };
     modifier_map Control { <LCTL> };
     modifier_map Shift { <LFSH> };
     modifier_map Shift { <RTSH> };
