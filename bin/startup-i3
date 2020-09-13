@@ -20,6 +20,8 @@ for pid in $(pidof -x $_MY_NAME); do
    fi
 done
 
+sleep 3
+
 "${HOME}/.i3/wallpaper.sh"
 dropbox &
 
