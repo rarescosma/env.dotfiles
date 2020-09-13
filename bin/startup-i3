@@ -27,6 +27,7 @@ nm-applet &
 pa-applet &
 parcellite &
 autokey-gtk &
+unclutter &
 
 thunar --daemon &
 syndaemon -i 1 -t -k &
