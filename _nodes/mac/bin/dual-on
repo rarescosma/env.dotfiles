@@ -3,8 +3,11 @@
 # shellcheck disable=SC1090
 source "${HOME}/bin/wm"
 
+# EXTERNAL="DP2-8"
+EXTERNAL="DP1"
+
 xrandr --output eDP1 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
-  --output DP2-8 --mode 3440x1440 --pos 0x0 --rotate normal \
+  --output ${EXTERNAL} --mode 3440x1440 --pos 0x0 --rotate normal \
   --output VIRTUAL1 --off \
   --output DP1 --off \
   --output HDMI3 --off \
