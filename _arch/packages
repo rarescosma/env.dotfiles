@@ -111,7 +111,6 @@ parcellite
 pass
 pavucontrol
 perl-image-exiftool
-picom
 pigz
 pkgfile
 postgresql
@@ -155,7 +154,6 @@ strace
 stress
 sysfsutils
 sysstat
-telegram-desktop
 thunar
 thunar-archive-plugin
 tig
