@@ -15,7 +15,8 @@ for_window [class="^jetbrains-.+"][window_type=dialog] focus
 # terminals
 bindsym $mod+Return exec urxvt
 bindsym $mod+0x60 exec urxvt -e sh -c "tmux attach -d -t base || exec tmux new -s base"
-bindsym $mod+0x27 exec --no-startup-id roam 
+bindsym $mod+0x27 exec --no-startup-id roam
+bindsym $mod+m exec --no-startup-id rofi-emoji
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec wm browser::launch chromium
 bindsym $mod+period exec wm browser::launch chromium --incognito

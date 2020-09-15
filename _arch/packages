@@ -137,6 +137,7 @@ restic
 ripgrep
 rmlint
 rng-tools
+rofi
 rsync
 rustup
 rxvt-unicode
