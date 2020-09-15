@@ -89,3 +89,12 @@ Rxvt*color13:      Ansi_13_Color
 Rxvt*color14:      Ansi_14_Color
 Rxvt*color15:      Ansi_15_Color
 Rxvt*colorBD:      Bold_Color
+
+! Rofi
+! ----
+rofi.modi: window,run,ssh,drun,combi
+rofi.theme: glue_pro_blue
+rofi.width: 25
+rofi.lines: 25
+rofi.combi-hide-mode-prefix: true
+rofi.combi-modi: window,drun
