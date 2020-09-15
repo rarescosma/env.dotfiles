@@ -141,6 +141,7 @@ bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf
     i3bar_command i3bar -t
+    separator_symbol "·"
 
     output eDP1
     output DP1

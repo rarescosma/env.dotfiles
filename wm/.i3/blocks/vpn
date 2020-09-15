@@ -4,8 +4,8 @@ VPN_PATH="/proc/sys/net/ipv4/conf/tun0"
 
 if [[ -e "${VPN_PATH}" ]]; then
   VPN_CONFIG=$(pgrep -a openvpn | head -1 | awk -F"/vpn/" '{$0=$2}1' | cut -d/ -f1)
-  echo "VPN: ${VPN_CONFIG}"
-  echo "VPN: ${VPN_CONFIG}"
+  echo "🔐 VPN: ${VPN_CONFIG}"
+  echo "🔐 VPN: ${VPN_CONFIG}"
   echo "#A8FF00"
 else
   echo ""
