@@ -19,6 +19,8 @@ intellij-idea-ultimate-edition-jre
 inxi
 moc-pulse
 mtaws
+nerd-fonts-iosevka
+nerd-fonts-noto
 ntpdate
 nvm
 pa-applet-git
@@ -38,9 +40,7 @@ tidal-hifi-git
 tomb
 tor-browser
 trizen
-ttf-iosevka-term-ss08
 ttf-ms-fonts
-ttf-symbola
 tzupdate
 urxvt-clipboard
 urxvt-resize-font-git

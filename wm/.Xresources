@@ -10,10 +10,10 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
 
-URxvt.font:           xft:Iosevka Term SS08:style=regular:size=16,xft:DejaVu Sans Mono:size=16 !orig=16
-URxvt.boldFont:       xft:Iosevka Term SS08:style=bold:size=16,xft:DejaVu Sans Mono:size=16 !orig=16
-URxvt.italicFont:     xft:Iosevka Term SS08:style=italic:size=16,xft:DejaVu Sans Mono:size=16 !orig=16
-URxvt.boldItalicFont: xft:Iosevka Term SS08:style=medium:size=16,xft:DejaVu Sans Mono:size=16 !orig=16
+URxvt.font: xft:Iosevka Term:style=regular:size=16
+URxvt.boldFont: xft:Iosevka Term:style=bold:size=16
+URxvt.italicFont: xft:Iosevka Term:style=italic:size=16
+URxvt.boldItalicFont: xft:Iosevka Term:style=medium:size=16
 
 URxvt*termName:  rxvt-unicode
 URxvt*scrollTtyKeypress:  true

@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font "pango:DejaVu Sans Mono 10" #orig=10
+font "pango:Iosevka Nerd Font 9" #orig=10
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
