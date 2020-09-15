@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 # Zakaria Barkouk ( Zakaria.gatter@gmail.com)
 
 # Show CPU Info - 1 (Mpstat)
@@ -115,7 +115,7 @@ _UPTIME_ () {
     [ -z "$1" ] && icon="" || icon="$1"
 
     uptime=$(uptime -p \
-	| sed -E 's/ hour/H/g; s/ hours/H/g; s/ minutes/M/g; s/ minute/M/g; s/ day/D/g; s/ days/D/; s/up //g') 
+	| sed -E 's/ hour/H/g; s/ hours/H/g; s/ minutes/M/g; s/ minute/M/g; s/ day/D/g; s/ days/D/; s/up //g')
 
     echo "$icon $uptime"
 }
@@ -160,9 +160,9 @@ _MOCP_ () {
     Status=$(mocp -Q %state)
 
 
-if [ "$Status" != "PLAY" ];then 
+if [ "$Status" != "PLAY" ];then
         echo "$icon Pause"
-elif [ -z "$Title" ];then 
+elif [ -z "$Title" ];then
     echo "$icon $(basename $F_Title)"
 else
     echo "$icon $Title"
@@ -177,7 +177,7 @@ _MPD_ () {
 NCMP=$(mpc | awk '/^\[playing\]/{print $1}')
 _NCMP=$(mpc | head -1 )
 
-if [ "$NCMP" = "[playing]" ];then 
+if [ "$NCMP" = "[playing]" ];then
     echo "$icon $(basename $(mpc current)) "
 else
     echo "$icon Pause "
@@ -220,7 +220,7 @@ _VOLUME_ () {
 Vol=$(amixer -c 0 get Master | awk '/Mono:/{print $4}' | tr -d "[ %]")
 Mute=$(amixer -c 0 get Master | awk '/Mono:/{print $6}' | tr -d "[-]")
 
-if [ "$Mute" = "off" ];then 
+if [ "$Mute" = "off" ];then
     echo -e " Mute"
 else
     if [ "$Vol" -gt "80" ];then
@@ -231,9 +231,9 @@ else
         echo -e " $Vol%"
     elif [ "$Vol" -gt "20" ];then
         echo -e " $Vol%"
-    elif [ "$Vol" -eq "0" ];then 
+    elif [ "$Vol" -eq "0" ];then
         echo -e " $Vol%"
-    fi 
+    fi
 fi
 }
 
@@ -242,8 +242,8 @@ _WIFI_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    
-(nmcli d | awk '/wifi/{print $1}') | while read W ; do 
+
+(nmcli d | awk '/wifi/{print $1}') | while read W ; do
     W_C=$(nmcli d | awk '/'"$W"'/{print $3}');
     W_N=$(nmcli d | awk '/'"$W"'/{print $4}');
     W_IP=$(ifconfig "$W" | awk '/inet addr/{print $2}' | cut -d: -f2);
@@ -258,8 +258,8 @@ _ETHERNET_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
 
-    
-(nmcli d | awk '/ethernet/{print $1}') | while read E ; do 
+
+(nmcli d | awk '/ethernet/{print $1}') | while read E ; do
     E_C=$(nmcli d | awk '/'"$E"'/{print $3}');
     E_N=$(nmcli d | awk '/'"$E"'/{print $4}');
     E_IP=$(ifconfig $E | awk '/inet addr/{print $2}' | cut -d: -f2);
@@ -329,7 +329,7 @@ _UFW_ () {
     [ "$S_UFW" == "active" ] && echo "$icon On" || echo "$icon Off"
 }
 
-#Show number lock status - 27 
+#Show number lock status - 27
 _NUM_LOCK_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
@@ -339,7 +339,7 @@ _NUM_LOCK_ () {
     [ "$NUM_LOCK" == "on" ] && echo "$icon On" || echo "$icon Off"
 }
 
-#Show Bluetooth Status - 28 
+#Show Bluetooth Status - 28
 _BLUETOOTH_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
@@ -348,10 +348,10 @@ _BLUETOOTH_ () {
     S_BLU=$(systemctl status bluetooth.target | awk '/Active:/{print $2}');
 
     [ "$S_BLU" == "active" ] && echo "$icon On" || echo "$icon Off"
-    
+
 }
 
-#Show Caps lock status - 29 
+#Show Caps lock status - 29
 _CAPS_LOCK_ () {
 
     [ -z "$1" ] && icon="" || icon="$1"
@@ -381,12 +381,12 @@ _MOUNT_ () {
 echo "$icon $MP"
 }
 
-#Usage Dialog 
+#Usage Dialog
 USAGE () {
 echo -e "
-$0 : Simple script Collaction for i3blocks 
+$0 : Simple script Collaction for i3blocks
 
-	Utils : 
+	Utils :
 	    (1)  :
 		-  Show CPU Info * Deps : (Mpstat)
 		    usage : $0 1 \"\$ICON\"
@@ -404,10 +404,10 @@ $0 : Simple script Collaction for i3blocks
 		    usage : $0 5 \"\$ICON\"
 	    (6)  :
 		-  Show Battery Status * Deps : (acpi)
-		    usage : $0 6 
+		    usage : $0 6
 	    (7)  :
 		-  Show Disk Usage * Deps : (df)
-		    usage : $0 7 \"\$PARTITION\" \"\$ICON\" 
+		    usage : $0 7 \"\$PARTITION\" \"\$ICON\"
 		    example : $0 7 \"/home\" \"\"
 	    (8)  :
 		-  Show Keyboard Layout
@@ -441,7 +441,7 @@ $0 : Simple script Collaction for i3blocks
 		    usage : $0 17 \"\$ICON\"
 	    (18) :
 		-  Show Volume Status * Deps : (alsa)
-		    usage : $0 18  
+		    usage : $0 18
 	    (19) :
 		-  Show Wifi info ; ip ; connected name * Deps : (ifconfig; nmcli)
 		    usage : $0 19 \"\$ICON\"
@@ -467,10 +467,10 @@ $0 : Simple script Collaction for i3blocks
 		-  Show ufw Status * Deps : (ufw)
 		    usage : $0 26 \"\$ICON\"
 	    (27) :
-		-  Show number lock status 
+		-  Show number lock status
 		    usage : $0 27 \"\$ICON\"
 	    (28) :
-		-  Show Bluetooth Status 
+		-  Show Bluetooth Status
 		    usage : $0 28 \"\$ICON\"
 	    (29) :
 		-  Show Caps Lock Status
@@ -481,13 +481,13 @@ $0 : Simple script Collaction for i3blocks
 	    (31) :
 		-  Calcule Mount Points on System - 31
 		    usage : $0 31 \"\$ICON\"
-	    (-h): 
-		- Show this help message 
+	    (-h):
+		- Show this help message
 " |less
 }
 
 
-case $1 in 
+case $1 in
     1 )
 	[ "$#" -gt "2" ] && {echo " $0 : To many Argument " && return 0 }
 	    _CPU_ "$2"
