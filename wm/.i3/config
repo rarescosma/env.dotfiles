@@ -11,6 +11,7 @@ floating_modifier $mod
 for_window [window_role="pop-up" instance="^(?!roamresearch).*"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+assign [instance="^roamresearch.*$"] 7
 
 # terminals
 bindsym $mod+Return exec urxvt
