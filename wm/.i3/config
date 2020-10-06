@@ -147,6 +147,7 @@ bar {
     output eDP1
     output DP1
     output DP2
+    output HDMI2
 
     bindsym button4 nop
     bindsym button5 nop
