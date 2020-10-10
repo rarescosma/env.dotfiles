@@ -24,9 +24,8 @@
         "-l",
         "80"
     ],
-    "python.formatting.blackPath": "~/.local/bin/black",
-    "python.linting.pylintPath": "~/.local/bin/pylint",
-    "python.pythonPath": "~/.pyenv/versions/3.7.7/bin/python3.7",
+    "python.formatting.blackPath": "/usr/bin/black",
+    "python.linting.pylintPath": "/usr/bin/pylint",
     "spellright.documentTypes": [
         "latex",
         "plaintext",
@@ -57,5 +56,21 @@
     "vscode_custom_css.imports": ["file:///home/karelian/bla.css"],
     "vscode_custom_css.policy": true,
     "update.mode": "none",
-    "editor.fontLigatures": null
+    "editor.fontLigatures": null,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pycodestyleEnabled": false,
+    "python.pythonPath": "/usr/bin/python3.8",
+    "python.formatting.provider": "black",
+    "python.defaultInterpreterPath": "/usr/bin/python3.8",
+    "python.diagnostics.sourceMapsEnabled": true,
+    "python.linting.mypyEnabled": false,
+    "python.linting.mypyPath": "/usr/bin/mypy",
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.linting.mypyArgs": [
+        "--ignore-missing-imports",
+        "--follow-imports=silent",
+        "--show-column-numbers",
+        "--dissalow-untyped-defs"
+    ]
 }

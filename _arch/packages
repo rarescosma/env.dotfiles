@@ -66,6 +66,7 @@ hunspell-en_US
 inetutils
 intel-ucode
 iotop
+ipython
 iw
 jfsutils
 jhead
@@ -125,8 +126,10 @@ pwgen
 pyenv
 python-black
 python-gobject
+python-isort
 python-llfuse
 python-pip
+python-pylint
 python-pyxdg
 python2-pip
 python2-yaml
