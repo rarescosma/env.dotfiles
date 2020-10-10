@@ -143,6 +143,17 @@ kick() {
   disown
 }
 
+## remind after $1 seconds
+remind() {
+  local seconds="${1}"
+  shift
+  {
+    sleep "${seconds}"
+    notify-send "reminder:" "$*" -u critical
+  } >/dev/null 2>&1 &
+  disown
+}
+
 ## ssh into tmux session on host
 tsh() {
   ssh -t "$@" "tmux attach -t base || exec tmux new -s base"
