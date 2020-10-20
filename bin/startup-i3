@@ -45,4 +45,8 @@ if test -x "${HOME}/bin/rtorrent-watch"; then
     "${HOME}/bin/rtorrent-watch" --trampoline &
 fi
 
+if test -x "${HOME}/bin/roam-watch"; then
+    "${HOME}/bin/roam-watch" --trampoline >> /tmp/roam-watch.log 2>&1 &
+fi
+
 wait
