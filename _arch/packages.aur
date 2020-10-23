@@ -3,16 +3,15 @@ apache-tools
 autokey
 aws-iam-authenticator-bin
 bindfs
-browserpass-chrome
 dive
 docker-credential-secretservice
 downgrade
 dropbox
+edge
 fortune-mod-southpark
 gconf
 git-test-git
 gnome-alsamixer
-google-chrome
 https-dns-proxy-git
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
@@ -38,7 +37,6 @@ steghide
 sublime-text-dev
 tidal-hifi-git
 tomb
-tor-browser
 trizen
 ttf-ms-fonts
 tzupdate
