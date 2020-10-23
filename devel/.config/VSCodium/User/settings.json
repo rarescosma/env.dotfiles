@@ -72,5 +72,6 @@
         "--follow-imports=silent",
         "--show-column-numbers",
         "--dissalow-untyped-defs"
-    ]
+    ],
+    "explorer.confirmDragAndDrop": false
 }
