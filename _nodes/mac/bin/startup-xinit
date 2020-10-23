@@ -32,4 +32,11 @@ dpi::i3 9
 dpi::gtk 9
 dpi::idea 27 20
 
+# reset wallpaper
 "${HOME}/.i3/wallpaper.sh"
+
+# restart redshift if not already running
+pgrep redshift-gtk || {
+  redshift-gtk -t 5500:4800 -l 59.32:18.06 &
+  disown
+}
