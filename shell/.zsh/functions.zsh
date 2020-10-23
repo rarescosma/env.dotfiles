@@ -96,6 +96,13 @@ ssh-add() {
 alias s='vscodium'
 alias svi='sudo vim'
 
+## edit immutable files
+svii() {
+  sudo chattr -i "${1}"
+  sudo vi "${1}"
+  sudo chattr +i "${1}"
+}
+
 ## grep for line content and edit the selected file(s)
 srg() {
   local file_list
