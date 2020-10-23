@@ -3,6 +3,7 @@ apache-tools
 autokey
 aws-iam-authenticator-bin
 bindfs
+cfssl
 dive
 docker-credential-secretservice
 downgrade
