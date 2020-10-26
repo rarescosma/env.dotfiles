@@ -1,4 +1,5 @@
-enable_devel=(kubectl aws python golang node nvm)
+# Sane defaults
+[[ -v enable_devel ]] || enable_devel=(kubectl python aws golang)
 
 # -- Turtles -------------------------------------------------------------------
 dscum() {
