@@ -20,3 +20,6 @@ export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse \
 FZF_CTRL_T_COMMAND='fd --type file --follow --hidden --exclude .git'
 FZ_CMD=j
 FZ_SUBDIR_CMD=jj
+
+# -- kube ----------------------------------------------------------------------
+export CLUSTER="k0"
