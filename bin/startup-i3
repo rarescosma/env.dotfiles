@@ -35,7 +35,7 @@ thunar --daemon &
 syndaemon -i 1 -t -k &
 
 # Special Eds
-redshift-gtk -t 5500:4800 -l 59.32:18.06 &
+pgrep redshift-gtk || redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
 

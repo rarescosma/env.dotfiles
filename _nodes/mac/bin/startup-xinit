@@ -37,6 +37,8 @@ dpi::idea 27 20
 
 # restart redshift if not already running
 pgrep redshift-gtk || {
+  # Cluj-Napoca 46.77:23.62
+  # Stockholm 59.32:18.06
   redshift-gtk -t 5500:4800 -l 59.32:18.06 &
   disown
 }
