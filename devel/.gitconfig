@@ -17,7 +17,6 @@
 	untracked = blue
 [core]
 	autocrlf = input
-	editor = vscodium -w
 	excludesfile = ~/.gitexcludes
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	untrackedCache = true

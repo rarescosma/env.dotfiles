@@ -5,8 +5,8 @@ LC_CTYPE=en_US.UTF-8
 LC_COLLATE="C"
 
 # -- Editor --------------------------------------------------------------------
-VISUAL="vscodium -w"
-EDITOR="${VISUAL}"
+export VISUAL="vscodium -w"
+export EDITOR="${VISUAL}"
 
 # -- Oh My Zsh -----------------------------------------------------------------
 _VENDOR="${HOME}/src/env.dotfiles/_vendor"
