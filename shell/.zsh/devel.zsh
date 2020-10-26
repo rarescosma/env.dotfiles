@@ -12,8 +12,7 @@ dscum() {
 
 
 if [[ "$enable_devel" =~ "kubectl" ]]; then
-  unset KUBECONFIG
-  alias k='kubectl'
+  source "${HOME}/.zsh/kube.zsh"
 fi
 
 if [[ "$enable_devel" =~ "aws" ]]; then
