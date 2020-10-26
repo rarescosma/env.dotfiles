@@ -1,0 +1,2 @@
+make ansible stow screen htop ncdu net-utils tree locate git tig lxd dnsmasq
+zlib1g zlib1g-dev libssl-dev libffi-dev
