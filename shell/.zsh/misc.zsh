@@ -5,7 +5,9 @@ export ANSIBLE_NOCOWS=1
 export GIT_TEST_VERIFY=true
 
 # -- GNU Parallel --------------------------------------------------------------
-. $(which env_parallel.zsh)
+if (( $+commands[env_parallel.zsh] )); then
+  . $(which env_parallel.zsh)
+fi
 
 # -- Midnight Commander --------------------------------------------------------
 export MC_SKIN=$HOME/.config/mc/solarized.ini
