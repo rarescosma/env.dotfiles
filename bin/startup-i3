@@ -39,14 +39,14 @@ redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
 
-cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" >/tmp/cloudy.log 2>&1 &
+cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 
 if test -x "${HOME}/bin/rtorrent-watch"; then
     "${HOME}/bin/rtorrent-watch" --trampoline &
 fi
 
 if test -x "${HOME}/bin/roam-watch"; then
-    "${HOME}/bin/roam-watch" --trampoline >> /tmp/roam-watch.log 2>&1 &
+    "${HOME}/bin/roam-watch" --trampoline &
 fi
 
 wait
