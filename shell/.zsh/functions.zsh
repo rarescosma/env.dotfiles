@@ -101,13 +101,13 @@ ssh-add() {
 }
 
 # -- Editors -------------------------------------------------------------------
-alias s='vscodium'
+alias s="$VISUAL"
 alias svi='sudo vim'
 
 ## edit immutable files
 svii() {
   sudo chattr -i "${1}"
-  sudo vi "${1}"
+  sudo vim "${1}"
   sudo chattr +i "${1}"
 }
 
