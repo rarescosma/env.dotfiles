@@ -37,9 +37,14 @@ if [[ "$enable_devel" =~ "aws" ]]; then
 fi
 
 # -- Python --------------------------------------------------------------------
-if [[ "$enable_devel" =~ "python" ]] && (( $+commands[pyenv] )); then
+if [[ "$enable_devel" =~ "python" ]]; then
   export PYENV_ROOT="${HOME}/.pyenv"
-  eval "$(pyenv init -)"
+  if [[ -x "${PYENV_ROOT}/bin/pyenv" ]]; then
+    export PATH="${PATH}:${PYENV_ROOT}/bin"
+  fi
+  if (( $+commands[pyenv] )); then
+    eval "$(pyenv init -)"
+  fi
 
   export PIPENV_VENV_IN_PROJECT=1
   export PIPENV_IGNORE_VIRTUALENVS=0
