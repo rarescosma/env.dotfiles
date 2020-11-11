@@ -185,6 +185,7 @@ tn() {
 trename() {
   local p_name
   p_name=${*:-zsh}
+  echo >&2 "Renaming tmux pane to: \"${p_name}\""
 
   local old_name
   old_name=""
