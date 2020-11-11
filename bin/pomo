@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" ]]; then
+  echo "Please specify number of seconds."
+fi
+
+sleep "$1"
+notify-send "Time for a break. Locking in 30s..."
+sleep 30
+${HOME}/bin/tidal-flip
+${HOME}/.i3/locker.sh
+
