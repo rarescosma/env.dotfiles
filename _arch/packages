@@ -1,4 +1,5 @@
 acpi
+alacritty
 arandr
 arch-install-scripts
 aspell-en
@@ -146,8 +147,6 @@ rng-tools
 rofi
 rsync
 rustup
-rxvt-unicode
-rxvt-unicode-terminfo
 scala
 scrot
 seahorse
@@ -187,6 +186,7 @@ xf86-input-synaptics
 xf86-video-intel
 xfsprogs
 xorg-xinit
+xsel
 xterm
 yarn
 youtube-dl
