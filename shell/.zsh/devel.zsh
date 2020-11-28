@@ -94,6 +94,10 @@ if [[ "$enable_devel" =~ "golang" ]]; then
   export GOPATH="${HOME}/.golang"
 fi
 
+if [[ "$enable_devel" =~ "rust" ]]; then
+  PATH="${PATH}:${HOME}/.cargo/bin"
+fi
+
 if [[ "$enable_devel" =~ "node" ]]; then
   NPM_PACKAGES="${HOME}/.npm-packages"
   PATH="${PATH}:${NPM_PACKAGES}/bin"
