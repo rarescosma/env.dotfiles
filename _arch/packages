@@ -29,7 +29,6 @@ diff-so-fancy
 dmenu
 docker
 docker-compose
-dpkg
 dunst
 efibootmgr
 eog
@@ -40,7 +39,6 @@ feh
 file-roller
 filezilla
 firefox
-flowblade
 ghc
 git
 git-crypt
@@ -88,7 +86,6 @@ man-db
 man-pages
 mc
 meld
-mkvtoolnix-gui
 mlocate
 mosh
 mtools
@@ -128,7 +125,6 @@ pwgen
 pyenv
 python-black
 python-gobject
-python-isort
 python-llfuse
 python-pip
 python-poetry
@@ -189,8 +185,6 @@ xf86-video-intel
 xfsprogs
 xorg-xinit
 xsel
-xterm
-yarn
 youtube-dl
 zip
 zsh
