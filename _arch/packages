@@ -131,6 +131,7 @@ python-gobject
 python-isort
 python-llfuse
 python-pip
+python-poetry
 python-pylint
 python-pyxdg
 python2-pip
