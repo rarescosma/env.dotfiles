@@ -50,3 +50,6 @@ colors:
 key_bindings:
   - { key: V,        mods: Control, action: Paste                            }
   - { key: C,        mods: Control|Shift, action: Copy                             }
+
+url:
+  launcher: xdg-open
