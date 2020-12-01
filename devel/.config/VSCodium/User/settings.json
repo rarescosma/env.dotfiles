@@ -41,8 +41,7 @@
     "window.zoomLevel": 1,
     "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
-        "[Darcula]": {
-            "editor.background": "#1E1E1E",
+        "[Base16 Gruvbox dark, hard]": {
             "statusBar.background": "#1A1A1A",
             "statusBar.noFolderBackground": "#212121",
             "statusBar.debuggingBackground": "#263238"
@@ -52,7 +51,7 @@
     "workbench.settings.openDefaultKeybindings": true,
     "workbench.settings.openDefaultSettings": true,
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Darcula",
+    "workbench.colorTheme": "Base16 Gruvbox dark, hard",
     "vscode_custom_css.imports": ["file:///home/karelian/bla.css"],
     "vscode_custom_css.policy": true,
     "update.mode": "none",
@@ -73,5 +72,6 @@
         "--show-column-numbers",
         "--dissalow-untyped-defs"
     ],
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "workbench.preferredDarkColorTheme": "Base16 Gruvbox dark, hard"
 }
