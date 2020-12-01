@@ -39,6 +39,7 @@ feh
 file-roller
 filezilla
 firefox
+flowblade
 ghc
 git
 git-crypt
@@ -86,6 +87,7 @@ man-db
 man-pages
 mc
 meld
+mkvtoolnix-gui
 mlocate
 mosh
 mtools
@@ -125,6 +127,7 @@ pwgen
 pyenv
 python-black
 python-gobject
+python-isort
 python-llfuse
 python-pip
 python-poetry
