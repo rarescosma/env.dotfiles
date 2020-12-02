@@ -20,8 +20,6 @@ lens
 lxd-git
 moc-pulse
 mtaws
-nerd-fonts-iosevka
-nerd-fonts-noto
 ntpdate
 nvm
 pa-applet-git
@@ -41,7 +39,10 @@ tidal-hifi-git
 tomb
 tor-browser
 trizen
+ttc-iosevka
+ttf-iosevka
 ttf-ms-fonts
+ttf-public-sans
 tzupdate
 vscodium-bin
 wasabi-wallet-bin

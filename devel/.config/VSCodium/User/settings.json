@@ -1,6 +1,6 @@
 {
     "breadcrumbs.enabled": false,
-    "editor.fontFamily": "'Iosevka Nerd Font'",
+    "editor.fontFamily": "Iosevka",
     "editor.fontSize": 14,
     "editor.fontWeight": "400",
     "editor.minimap.enabled": false,
