@@ -79,6 +79,7 @@ setup::_node() {
 
   if [[ $HOSTNAME == mac ]]; then
     copy_host "etc/modprobe.d/hid_apple.conf"
+    copy_host "etc/X11/xorg.conf.d/20-intel.conf"
     copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
   fi
 }
