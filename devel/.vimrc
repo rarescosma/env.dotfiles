@@ -44,3 +44,7 @@ set hlsearch
 " Tee trick
 set autoread
 cmap w!! w !sudo tee > /dev/null %
+
+" Moving lines up & down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
