@@ -141,7 +141,7 @@ dps() {
 
 # -- Z / Misc ------------------------------------------------------------------
 alias ccat='pygmentize -g'
-alias pbcopy='xsel -b'
+(( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
 alias t="t -t ${HOME}/Dropbox/apps/t"
 alias tlk="t -l k"
 alias tlro="t -l ro"
