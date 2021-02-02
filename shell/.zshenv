@@ -12,6 +12,8 @@ export EDITOR="${VISUAL}"
 _VENDOR="${HOME}/src/env.dotfiles/_vendor"
 ZSH="${_VENDOR}/oh-my-zsh"
 DISABLE_AUTO_UPDATE="true"
+ZSH_DISABLE_COMPFIX="true"
+export TERMINFO=/usr/share/terminfo
 
 # -- fzf! ----------------------------------------------------------------------
 export FZF_TMUX=1
