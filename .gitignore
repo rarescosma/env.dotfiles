@@ -8,4 +8,5 @@ wm/bin/*-scale
 _ansible/*.retry
 mc/.config/mc/ini~
 wm/.i3/logfile
+.gnupg
 
