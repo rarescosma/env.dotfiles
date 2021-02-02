@@ -25,7 +25,7 @@
 [init]
 	templatedir = ~/.git-template
 [interactive]
-	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+	diffFilter = "/usr/local/bin/diff-highlight"
 [merge]
 	tool = meld
 [mergetool]
