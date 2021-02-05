@@ -1,0 +1,10 @@
+#!/usr/bin/env osascript
+
+tell application "Tunnelblick"
+  connect "mcbrick"
+  get state of first configuration where name = "mcbrick"
+  repeat until result = "CONNECTED"
+    delay 1
+    get state of first configuration where name = "mcbrick"
+  end repeat
+end tell
