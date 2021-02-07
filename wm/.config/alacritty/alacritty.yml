@@ -7,7 +7,7 @@ scrolling:
 font:
   normal:
     family: "Fantasque Sans Mono"
-  size: 18.0
+  size: 16.5
   use_thin_strokes: true
 
 colors:
