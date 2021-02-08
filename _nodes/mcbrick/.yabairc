@@ -2,7 +2,9 @@
 
 # go eat a hamburger, big sur
 sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add label=inject_sa \
+  event=dock_did_restart \
+  action="sudo yabai --load-sa"
 
 # you too, intellij
 # - skip action on windows with empty titles, as they are just tooltips
