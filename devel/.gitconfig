@@ -43,3 +43,5 @@
 	useConfigOnly = true
 [includeif "gitdir:~/src/klarna/"]
 	path = ~/.gitconfig.work
+[pull]
+	ff = only
