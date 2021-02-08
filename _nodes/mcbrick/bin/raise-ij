@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-LAST_IJ_ID=$(yabai -m query --windows | jq -c '.[] | select(.app|test("intellij.";"i")) | .id' | sort | tail -1)
-
-if [[ "$YABAI_WINDOW_ID" == "$LAST_IJ_ID" ]]; then
-  yabai -m window $LAST_IJ_ID --toggle topmost
-fi

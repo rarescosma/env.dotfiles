@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Must pass an application matching prefix
+test -z "${1}" && exit
+
+HIGHEST_ID=$(yabai -m query --windows | jq -c "[.[] | select(.app|test(\"^${1}\")) | .id] | max")
+
+if [[ "$YABAI_WINDOW_ID" == "$HIGHEST_ID" ]]; then
+  yabai -m window $YABAI_WINDOW_ID --toggle topmost
+fi

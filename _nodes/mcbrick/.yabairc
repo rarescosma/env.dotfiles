@@ -5,7 +5,12 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # you too, intellij
-yabai -m signal --add event=window_created action="${HOME}/bin/raise-ij" title!="^$"
+# - skip action on windows with empty titles, as they are just tooltips
+yabai -m signal --add label=autoraise_ij \
+  event=window_created \
+  action="${HOME}/bin/yabai-raise-highest IntelliJ" \
+  app="^IntelliJ" \
+  title!="^$"
 
 # global settings
 yabai -m config layout bsp
