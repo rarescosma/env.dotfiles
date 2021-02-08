@@ -5,7 +5,7 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # you too, intellij
-yabai -m signal --add event=window_created action="${HOME}/bin/raise-ij" 
+yabai -m signal --add event=window_created action="${HOME}/bin/raise-ij" title!="^$"
 
 # global settings
 yabai -m config layout bsp
@@ -37,5 +37,4 @@ yabai -m rule --add label="mpv" app="^mpv$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 
 yabai -m rule --add label="any preference dialogs" title="[Pp]reference" manage=off
-yabai -m rule --add label="Intellij Welcome" title="Welcome to IntelliJ" manage=off
 yabai -m rule --add label="Intellij Welcome" title="Welcome to IntelliJ" manage=off
