@@ -6,8 +6,9 @@ scrolling:
 
 font:
   normal:
-    family: "Fantasque Sans Mono"
-  size: 16.5
+    family: "Iosevka KG Terminal"
+    style: "Medium Extended"
+  size: 17
   use_thin_strokes: true
 
 colors:
