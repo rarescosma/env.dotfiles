@@ -48,8 +48,9 @@ colors:
     - { index: 21, color: '#ebdbb2' }
 
 key_bindings:
-  - { key: V,        mods: Control, action: Paste                            }
-  - { key: C,        mods: Control|Shift, action: Copy                             }
+  - { key: V, mods: Control, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: F, mods: Control, chars: "\x01/" }
 
 url:
   launcher: xdg-open
