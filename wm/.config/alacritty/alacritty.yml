@@ -69,6 +69,7 @@ key_bindings:
   - { key: J, mods: Alt|Shift, chars: "\x0A" }
   - { key: K, mods: Alt|Shift, chars: "\x0B" }
   - { key: L, mods: Command, chars: "\x0C" }
+  - { key: F, mods: Command, chars: "\x01/" } 
 
 url:
   launcher: open
