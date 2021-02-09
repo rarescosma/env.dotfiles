@@ -11,6 +11,7 @@ fi
 
 # -- Midnight Commander --------------------------------------------------------
 export MC_SKIN=$HOME/.config/mc/solarized.ini
+alias mc='LANG=en_US mc --nosubshell'
 
 # -- Z -------------------------------------------------------------------------
 export _Z_DATA=/var/tmp/karelian.z
