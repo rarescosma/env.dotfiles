@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+STATE_FILE="${HOME}/.cache/yss.state"
+
+TO_SPACE="${1}"
+LAST_SPACE=""
+test -f "${STATE_FILE}" && LAST_SPACE=$(tr -d '\n' < ${STATE_FILE})
+CURRENT_SPACE=$(yabai -m query --spaces | jq -c '.[] | select(.visible == 1) | .index')
+
+echo "{'to': '${TO_SPACE}', 'current': '${CURRENT_SPACE}', 'last': '${LAST_SPACE}'}"
+
+change_focus () {
+  local to_space
+  to_space="${1}"
+  yabai -m space --focus "${to_space}"
+  echo "${CURRENT_SPACE}" > "${STATE_FILE}"
+}
+
+# quick re-focus
+if [[ "$TO_SPACE" == "$CURRENT_SPACE" ]] && [ -n "$LAST_SPACE" ]; then
+  change_focus "${LAST_SPACE}"
+  exit 0
+fi
+
+# normal focus
+change_focus "${TO_SPACE}"
+
