@@ -39,9 +39,25 @@ set scrolloff=3
 set ignorecase
 set smartcase
 set incsearch
-set hlsearch
+set gdefault
 
-" Tee trick
+" Search results centered please
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" Very magic by default
+nnoremap ? ?\v
+nnoremap / /\v
+cnoremap %s/ %sm/
+
+" Ctrl+n to stop searching
+vnoremap <C-n> :nohlsearch<cr>
+nnoremap <C-n> :nohlsearch<cr>
+
+" Sudo make me a sandwich
 set autoread
 cmap w!! w !sudo tee > /dev/null %
 
