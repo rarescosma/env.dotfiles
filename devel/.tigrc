@@ -139,3 +139,5 @@ set mouse-wheel-cursor		= no		# Prefer moving the cursor to scrolling the view?
 
 color cursor black green standout 
 
+# Quick commit
+bind status C >git commit
