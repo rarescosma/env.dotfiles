@@ -6,6 +6,8 @@
 " Made more minimal by:  Ben Orenstein
 " Customized by:         Rares Cosma
 "
+let mapleader = "\<Space>"
+nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -60,6 +62,9 @@ nnoremap <C-n> :nohlsearch<cr>
 " Sudo make me a sandwich
 set autoread
 cmap w!! w !sudo tee > /dev/null %
+
+" Quick-save
+nmap <leader>w :w<CR>
 
 " Moving lines up & down
 nnoremap <C-j> :m .+1<CR>==
