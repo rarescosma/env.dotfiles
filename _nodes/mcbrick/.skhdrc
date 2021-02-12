@@ -1,3 +1,15 @@
+# modes
+:: default : osascript -e 'display notification "Normal mode" with title "skhd"'
+:: resize : osascript -e 'display notification "Resize mode" with title "skhd"'
+shift + alt - r ; resize
+resize < escape; default
+
+# resize
+resize < h : yabai -m window --resize right:-20:0 
+resize < j : yabai -m window --resize right:20:0
+resize < k : yabai -m window --resize left:-20:0 
+resize < l : yabai -m window --resize left:20:0
+
 # apps
 ctrl - 0x32 : open -na /Applications/Alacritty.app --args -e sh -c "tmux attach -d -t base || exec tmux new -s base"
 shift + ctrl - 0x32 : open -na /Applications/Alacritty.app --args --option window.decorations=full -e sh -c "tmux attach -d -t base || exec tmux new -s base"
