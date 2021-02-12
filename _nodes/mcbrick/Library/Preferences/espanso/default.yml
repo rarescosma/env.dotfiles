@@ -1,0 +1,31 @@
+toggle_key: OFF
+
+matches:
+  # Dates
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y/%m/%d"
+
+  # Email
+  - trigger: "@nolabel"
+    replace: "-has:userlabels -in:sent -in:chat -in:draft -in:inbox"
+
+  - trigger: "g@"
+    replace: "rares@getbetter.ro"
+
+  - trigger: "k@"
+    replace: "rares.cosma@klarna.com"
+
+  # Markdown
+  - trigger: ":a"
+    replace: "[$|$]({{clip}})"
+    vars:
+      - name: "clip"
+        type: "shell"
+        params:
+          cmd: "pbpaste | tr -d '\n'"
+
