@@ -5,7 +5,9 @@ LC_CTYPE=en_US.UTF-8
 LC_COLLATE="C"
 
 # -- Editor --------------------------------------------------------------------
-export VISUAL="vim"
+alias vi="nvim"
+alias vim="nvim"
+export VISUAL="nvim"
 export EDITOR="${VISUAL}"
 
 # -- Oh My Zsh -----------------------------------------------------------------
