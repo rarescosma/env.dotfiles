@@ -118,8 +118,8 @@ set diff-highlight		= /usr/local/bin/diff-highlight		# String (or bool): Path to
 #set mailmap			= yes		# Use .mailmap to show canonical name and email address
 
 # Misc
-set refresh-mode		= auto		# Enum: manual, auto, after-command, periodic
-set refresh-interval		= 10		# Interval in seconds between refreshes
+set refresh-mode		= auto # Enum: manual, auto, after-command, periodic
+set refresh-interval		= 5		# Interval in seconds between refreshes
 set ignore-case			= no		# Enum: no, yes, smart-case
 						# Ignore case when searching? Smart-case option will
 set wrap-search			= yes		# Wrap around to top/bottom of view when searching
