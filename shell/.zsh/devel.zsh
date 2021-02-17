@@ -78,8 +78,9 @@ if [[ "$enable_devel" =~ "python" ]]; then
 
     source .venv/bin/activate
 
-    ln -sf "$_VENDOR/../devel/.pythonenv" .env
-    touch .envlocal
+    ln -sf "$_VENDOR/../devel/.pythonenv" .autoenv
+    echo "deactivate" > .autoout
+    touch .env
   }
 
   ## delete/cleanup .venv

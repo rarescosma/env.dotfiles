@@ -4,6 +4,8 @@
 # Autoenv
 /.env
 /.envlocal
+/.autoenv
+/.autoout
 
 # IntelliJ
 /.idea

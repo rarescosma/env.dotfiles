@@ -27,3 +27,7 @@ FZ_SUBDIR_CMD=jj
 
 # -- kube ----------------------------------------------------------------------
 export CLUSTER="k0"
+
+# -- autoenv -------------------------------------------------------------------
+export AUTOENV_IN_FILE=".autoenv"
+export AUTOENV_OUT_FILE=".autoout"
