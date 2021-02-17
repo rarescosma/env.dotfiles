@@ -37,12 +37,19 @@ check_env "SWATCH_UPLOAD_TO"
 check_env "SWATCH_WEB_PREFIX"
 
 if test "${1}" = "--trampoline"; then
-  echo ">>> Starting watchexec"
+  echo ">>> Starting watchexec on ${SWATCH_DIR}"
   watchexec -w "${SWATCH_DIR}" -e "png" -r -p "$0"
   exit 0
 fi
 
-f="${SWATCH_DIR}/$(basename "${WATCHEXEC_RENAMED_PATH}")"
+if test -n "${WATCHEXEC_RENAMED_PATH}"; then
+  f="${WATCHEXEC_RENAMED_PATH}"
+elif test -n "${WATCHEXEC_CREATED_PATH}"; then
+  f="${WATCHEXEC_CREATED_PATH}"
+fi
+
+f="${SWATCH_DIR}/$(basename "${f#.}")"
+sleep 1
 
 if test -f "$f"; then
   set -e
