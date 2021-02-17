@@ -17,9 +17,16 @@ inter_vpn () {
   sudo pfctl -d; sudo pfctl -e -f /etc/pf.conf; sudo pfctl -sn
 }
 
+# Disable snitches
+disable_snitches () {
+   xargs sudo launchctl unload <${HOME}/.disabled_svcs 2>/dev/null
+   xargs launchctl unload <${HOME}/.disabled_svcs 2>/dev/null
+}
+
 main () {
   unlock_keys
   inter_vpn
+  disable_snitches
 }
 
 # Verbatim, yeah!
