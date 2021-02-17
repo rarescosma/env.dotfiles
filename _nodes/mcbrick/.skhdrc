@@ -60,7 +60,7 @@ shift + ctrl - n : yabai -m space --create && \
 shift + ctrl - space : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 
 # change layout
-shift + ctrl - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+shift + ctrl - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" elif .type == "float" then "stack" else "bsp" end')
 
 # toggle window native fullscreen
 shift + ctrl - f : yabai -m window --toggle native-fullscreen
