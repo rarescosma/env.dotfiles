@@ -25,7 +25,6 @@ disable_snitches () {
 
 main () {
   unlock_keys
-  inter_vpn
   disable_snitches
 }
 
