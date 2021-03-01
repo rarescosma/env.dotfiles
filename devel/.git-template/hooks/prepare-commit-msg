@@ -9,7 +9,7 @@ TICKET="$(\
     | grep -Eo '(\w+[-])?[0-9]+' \
     | tr '[:lower:]' '[:upper:]')"
 
-if [[ $TICKET == "" || "$MESSAGE" == "$TICKET"* ]];then
+if [[ $TICKET == "" || "$MESSAGE" == "$TICKET"* || "$MESSAGE" == *fixup* ]];then
     exit 0;
 fi
 
