@@ -7,7 +7,9 @@ export -f locked_print
 PYLINT_ARGS=""
 test -f setup.cfg && PYLINT_ARGS="--rcfile=setup.cfg"
 
+pycln "${@}"
 isort -l80 -m3 --tc "${@}"
+black -l 80 "${@}"
 (mypy --ignore-missing-imports --disallow-untyped-defs "${@}" | locked_print) &
 (pylint "${PYLINT_ARGS}" "${@}" | locked_print) &
 
