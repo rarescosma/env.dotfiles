@@ -70,14 +70,17 @@ nmap <leader>w :w<CR>
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
-" Use spaces instead of tabs
+" Spacetab
 set expandtab
-
-" Be smart when using tabs ;)
 set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
-set shiftwidth=2
-set tabstop=2
+" Show those damn hidden characters
+" Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
+set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶
+nnoremap <leader>h :set invlist<cr>
 
 " Linebreak on 500 characters
 set lbr
