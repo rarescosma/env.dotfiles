@@ -29,5 +29,11 @@ main () {
 }
 
 # Verbatim, yeah!
-test -z "$1" && main || $@
+if test -z "${1:-}"; then
+  main
+else
+  for target in "${@}"; do
+    $target
+  done
+fi
 
