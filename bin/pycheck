@@ -4,10 +4,11 @@ locked_print() {
   flock -e /tmp/pycheck.lock cat
 }
 export -f locked_print
+PYLINT_ARGS=""
+test -f setup.cfg && PYLINT_ARGS="--rcfile=setup.cfg"
 
-black -l 80 "${@}"
 isort -l80 -m3 --tc "${@}"
 (mypy --ignore-missing-imports --disallow-untyped-defs "${@}" | locked_print) &
-(pylint "${@}" | locked_print) &
+(pylint "${PYLINT_ARGS}" "${@}" | locked_print) &
 
 wait
