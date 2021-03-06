@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# get current window & space
+current_space="$(yabai -m query --windows | jq -c '.[] | select(.focused==1) | .space')"
+current_win="$(yabai -m query --windows | jq -c '.[] | select(.focused==1) | .id')"
+
+# tell window to go full-screen
+yabai -m window $current_win --toggle native-fullscreen
+
+# swap spaces
+new_space="$(yabai -m query --windows | jq -c ".[] | select(.id==$current_win) | .space")"
+yabai -m space $new_space --swap $current_space
+
+# cleanup empty spaces
+for empty_space in $(yabai -m query --spaces | jq -c '.[] | select(.windows==[]) | .id'); do
+    yabai -m space $empty_space --destroy || true
+done
+
