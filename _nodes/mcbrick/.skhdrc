@@ -11,8 +11,8 @@ resize < k : yabai -m window --resize left:-20:0
 resize < l : yabai -m window --resize left:20:0
 
 # apps
-ctrl - 0x32 : open -na /Applications/Alacritty.app --args -e sh -c "tmux attach -d -t base || exec tmux new -s base"
-shift + ctrl - 0x32 : open -na /Applications/Alacritty.app --args --option window.decorations=full -e sh -c "tmux attach -d -t base || exec tmux new -s base"
+ctrl - 0x32 : open -na /Applications/Alacritty.app --args --option window.decorations=full -e sh -c "tmux attach -d -t base || exec tmux new -s base"
+shift + ctrl - 0x32 : open -na /Applications/Alacritty.app --args -e sh -c "tmux attach -d -t base || exec tmux new -s base"
 ctrl - 0x24 : open -na /Applications/Alacritty.app
 ctrl - 0x2C : open -na /Applications/Brave\ Browser.app
 shift + ctrl - 0x2C : open -na /Applications/Google\ Chrome.app
