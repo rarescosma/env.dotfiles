@@ -9,4 +9,4 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 PROMPT='%{$fg[magenta]%}@%m%{$reset_color%} \
 %{$fg[cyan]%}$ZSH_KUBECTL_PROMPT%{$fg[blue]%}%~%{$fg[default]%} $(git_prompt_info)
-%130(?..%(?..[%{$fg[red]%}%?%{$reset_color%}] ))%{$reset_color%}> '
+%130(?..%(?..[%{$fg[red]%}%?%{$reset_color%}] ))%{$reset_color%}# '
