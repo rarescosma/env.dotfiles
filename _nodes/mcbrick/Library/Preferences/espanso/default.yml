@@ -29,3 +29,10 @@ matches:
         params:
           cmd: "pbpaste | tr -d '\n'"
 
+  - trigger: ":img"
+    replace: "![$|$]({{clip}})"
+    vars:
+      - name: "clip"
+        type: "shell"
+        params:
+          cmd: "pbpaste | tr -d '\n'"
