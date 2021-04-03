@@ -36,3 +36,12 @@ matches:
         type: "shell"
         params:
           cmd: "pbpaste | tr -d '\n'"
+
+  - trigger: ":wiki"
+    replace: "{{res}}"
+    vars:
+      - name: "res"
+        type: "shell"
+        params:
+          cmd: "pbpaste | tr '\n' ' ' | xargs findwiki"
+
