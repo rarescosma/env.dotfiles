@@ -26,6 +26,7 @@ disable_snitches () {
 main () {
   unlock_keys
   disable_snitches
+  inter_vpn
 }
 
 # Verbatim, yeah!
