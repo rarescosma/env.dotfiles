@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
 
-locked_print() {
-  flock -e /tmp/pycheck.lock cat
+locat() { 
+  flock -e /tmp/pycheck.lock cat 
 }
-export -f locked_print
+export -f locat
+
 PYLINT_ARGS=""
 test -f setup.cfg && PYLINT_ARGS="--rcfile=setup.cfg"
 
+# clean & sort imports
 pycln "${@}"
 isort -l80 -m3 --tc "${@}"
+
+# format
 black -l 80 "${@}"
-(mypy --ignore-missing-imports --disallow-untyped-defs "${@}" | locked_print) &
-(pylint "${PYLINT_ARGS}" "${@}" | locked_print) &
+
+# types are good
+(mypy --ignore-missing-imports --disallow-untyped-defs "${@}" | locat) &
+
+# messy code is bad
+(pylint "${PYLINT_ARGS}" "${@}" | locat) &
 
 wait
