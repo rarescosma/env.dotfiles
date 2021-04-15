@@ -17,6 +17,15 @@ inter_vpn () {
   sudo pfctl -d; sudo pfctl -e -f /etc/pf.conf; sudo pfctl -sn
 }
 
+# Totally Stockholm-originating traffic
+sthlm_vpn () {
+  sudo sysctl -w net.inet.ip.forwarding=1
+  sudo route change default 192.168.5.140
+  curl icanhazip.com
+  globalprotect-on
+  sudo pfctl -d; sudo pfctl -e -f /etc/pf.conf; sudo pfctl -sn
+}
+
 # Disable snitches
 disable_snitches () {
    xargs sudo launchctl unload <${HOME}/.disabled_svcs 2>/dev/null
@@ -26,7 +35,7 @@ disable_snitches () {
 main () {
   unlock_keys
   disable_snitches
-  inter_vpn
+  sthlm_vpn
 }
 
 # Verbatim, yeah!
