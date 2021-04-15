@@ -88,6 +88,21 @@ if [[ "$enable_devel" =~ "python" ]]; then
     deactivate 2>/dev/null
     rm -rf .venv .env Pipfile Pipfile.lock .python-version
   }
+
+  revenv() {
+    local _prompt
+    local _root
+    _root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+    if [ -z "$1" ]; then
+      _prompt=$(basename $_root)
+    else
+      _prompt="${1}"
+      shift
+    fi
+    deactivate 2>/dev/null
+    rm -rf .venv
+    python -mvenv .venv --prompt "${_prompt}"
+  }
 fi
 
 if [[ "$enable_devel" =~ "golang" ]]; then
