@@ -1,7 +1,9 @@
 acpi
 alacritty
+anki
 arandr
 arch-install-scripts
+archiso
 aspell-en
 audacity
 axel
@@ -30,6 +32,7 @@ dmenu
 docker
 docker-compose
 dunst
+easy-rsa
 efibootmgr
 eog
 exa
@@ -39,7 +42,6 @@ feh
 file-roller
 filezilla
 firefox
-flowblade
 ghc
 git
 git-crypt
@@ -63,7 +65,7 @@ gvfs
 hexchat
 htop
 httpie
-hunspell-en_US
+hunspell-en_us
 inetutils
 intel-ucode
 iotop
@@ -87,7 +89,7 @@ man-db
 man-pages
 mc
 meld
-mkvtoolnix-gui
+mesa-demos
 mlocate
 mosh
 mtools
@@ -95,6 +97,7 @@ mtr
 mypy
 nano
 ncdu
+neovim
 net-tools
 netctl
 netdata
@@ -107,8 +110,10 @@ nmap
 ntfs-3g
 nvme-cli
 oath-toolkit
+obs-studio
 openldap
 openssh
+otf-fantasque-sans-mono
 otf-font-awesome
 parallel
 parcellite
@@ -127,14 +132,11 @@ pwgen
 pyenv
 python-black
 python-gobject
-python-isort
 python-llfuse
 python-pip
-python-poetry
 python-pylint
 python-pyxdg
 python2-pip
-python2-yaml
 qemu-arch-extra
 redshift
 reflector
@@ -168,6 +170,7 @@ tlp
 tmux
 tmuxp
 tree
+ttc-iosevka
 ttf-opensans
 tumbler
 unclutter
@@ -176,6 +179,7 @@ unzip
 usbutils
 vim
 vlc
+vulkan-intel
 watchexec
 wdiff
 whois
