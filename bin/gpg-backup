@@ -1,0 +1,7 @@
+#!/bin/bash
+
+test -z $KEY && echo "Usage: KEY=bla $0" && exit 1
+
+gpg -a --export $KEY > $KEY-public.key
+gpg -a --export-secret-keys $KEY > $KEY-secret.key
+gpg --export-ownertrust > $KEY-ownertrust.txt
