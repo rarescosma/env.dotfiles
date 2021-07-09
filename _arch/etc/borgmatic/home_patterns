@@ -11,7 +11,9 @@
 ! /home/karelian/Dropbox/.dropbox.cache
 ! /home/karelian/backup
 ! /home/karelian/kube
-! /home/karelian/media
+- /home/karelian/media
++ /home/karelian/media/books
+- /home/karelian/media/books/_Collections.tgz
 ! /home/karelian/mnt
 ! /home/karelian/src/ops.kube/core/.git
 ! /home/karelian/src/ops.kube/share/.pv
