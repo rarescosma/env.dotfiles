@@ -4,6 +4,7 @@ location:
 
   repositories:
     - /home/karelian/backup/shrewd/home_borg
+    - trial:/home/karelian/backup/shrewd/home_borg
 
   one_file_system: true
 
