@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Create a hardlink mirror of the passed in path
+# taking either .rsync_exclude (prioritized) or .rsync_filter into account.
+
+set -eo pipefail
+
+_rsync_mirror() {
+  local root="${1}"
+  echo -e "> Taking rsync_mirror from ${root} to ${root}/.rsync_mirror..."
+  if [ -f "$root/.rsync_exclude" ]; then
+    rm -rf "$root/.rsync_mirror/*"
+    rsync -av --delete --exclude-from "${root}/.rsync_exclude" \
+      --link-dest="$root" "$root/" "$root/.rsync_mirror/"
+  elif [ -f "$root/.rsync_filter" ]; then
+    rm -rf "$root/.rsync_mirror/*"
+    rsync -av --filter=". ${root}/.rsync_filter" \
+      --link-dest="$root" "$root/" "$root/.rsync_mirror/"
+  else
+    echo "> Cannot mirror without exclusions. Aborting!"
+    return
+  fi
+}
+
+_rsync_mirror "$(realpath "$@")"
