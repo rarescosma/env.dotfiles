@@ -42,7 +42,7 @@ if [[ "$enable_devel" =~ "python" ]]; then
     export PATH="${PATH}:${PYENV_ROOT}/bin"
   fi
   if (( $+commands[pyenv] )); then
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
   fi
 
   export PIPENV_VENV_IN_PROJECT=1
