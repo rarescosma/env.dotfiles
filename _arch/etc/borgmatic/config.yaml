@@ -1,0 +1,32 @@
+location:
+  source_directories:
+    - /home/karelian
+
+  repositories:
+    - /home/karelian/backup/shrewd/home_borg
+
+  one_file_system: true
+
+  patterns_from:
+    - /etc/borgmatic/home_patterns
+
+  exclude_caches: true
+
+  exclude_if_present:
+    - .nobackup
+
+
+storage:
+  encryption_passcommand: cat /root/.borg_pass
+  compression: auto,zstd
+  relocated_repo_access_is_ok: true
+
+retention:
+  keep_daily: 7
+  keep_weekly: 4
+  keep_monthly: 6
+  prefix: "{hostname}-"
+
+hooks:
+  after_everything:
+    - "chown -R karelian: /home/karelian/backup/shrewd/home_borg"

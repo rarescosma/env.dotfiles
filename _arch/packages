@@ -13,6 +13,7 @@ beep
 bind
 bluez-utils
 borg
+borgmatic
 browserpass
 browserpass-chromium
 browserpass-firefox
