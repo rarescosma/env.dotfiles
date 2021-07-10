@@ -31,3 +31,4 @@ retention:
 hooks:
   after_everything:
     - "chown -R karelian: /home/karelian/backup/shrewd/home_borg"
+    - "chown -R karelian: /home/karelian/.config/borg"
