@@ -99,7 +99,7 @@ function dpi::idea() {
 
 function _usb::dispatch() {
   local action port
-  action=$1; shift; port="1-$*"
+  action=$1; shift; port="$*"
   cd /sys/bus/usb/drivers/usb || return
   sudo tee "$action" <<< "$port"
   cd - || return
