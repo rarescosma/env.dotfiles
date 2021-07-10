@@ -2,7 +2,7 @@
 Description=Run borgmatic backup
 
 [Timer]
-OnCalendar=*-*-* 18:00
+OnCalendar=*-*-* 10:00
 Persistent=true
 
 [Install]
