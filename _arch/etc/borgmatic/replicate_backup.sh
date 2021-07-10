@@ -1,32 +1,44 @@
 #!/usr/bin/env bash
 
-DOT=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
-MOUNTPOINT=/mnt/backup
-
+sleep 1
 set -e
 
-# This is the file that will later contain UUIDs of registered backup drives
-DISKS="${DOT}/backup.disks"
+DOT=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
+DEVICES="${DOT}/replicate_backup.devices"
 
-# Find whether the connected block device is a backup drive
-for uuid in $(lsblk --noheadings --list --output uuid); do
-    if grep --quiet --fixed-strings $uuid $DISKS; then
-        break
-    fi
-    uuid=
-done
-
-if [ ! $uuid ]; then
-    echo "No backup disk found, exiting"
-    exit 0
+UUID="$1"
+if [ ! $UUID ]; then
+  echo "Invoked without a UUID parameter, exiting"
+  exit 0
+fi
+if ! grep --quiet --fixed-strings $UUID $DEVICES; then
+  echo "No backup disk found, exiting"
+  exit 0
 fi
 
-echo "Disk ${uuid} is a backup disk"
-partition_path="/dev/disk/by-uuid/${uuid}"
-(mount | grep $MOUNTPOINT) || mount $partition_path $MOUNTPOINT
+DEV_TYPE=$(grep $UUID $DEVICES | cut -d" " -f2)
+echo "Device with UUID ${UUID} is a ${DEV_TYPE}"
 
-drive=$(lsblk --inverse --noheadings --list --paths --output name "${partition_path}" | head --lines 1)
-echo "Drive path: ${drive}"
+PARTITION_PATH="/dev/disk/by-uuid/${UUID}"
+MOUNTPOINT="/mnt/${DEV_TYPE}"
+DRIVE=$(lsblk --inverse --noheadings --list --paths --output name "${PARTITION_PATH}" | head --lines 1)
 
-rsync -avP --delete /home/karelian/backup/ "${MOUNTPOINT}/backup/"
+_replica_backup() {
+  rsync -avP --delete /home/karelian/backup/ "${MOUNTPOINT}/backup/"
+}
+
+_kindle_backup () {
+  local ts="$(date "+%F@%T")"
+  echo "Grabbing kindle notes at ${ts}"
+  cp \
+    "${MOUNTPOINT}/documents/My Clippings.txt" \
+    "/home/karelian/backup/kindle/notes-${ts}.txt"
+  chown -R karelian: /home/karelian/backup/kindle
+  chmod -R 644 /home/karelian/backup/kindle/*
+}
+
+# Mount -> dispatch -> paranoia -> unmount
+(mount | grep $MOUNTPOINT) || mount $PARTITION_PATH $MOUNTPOINT
+"_${DEV_TYPE}_backup"
 sync
+umount "${DRIVE}"

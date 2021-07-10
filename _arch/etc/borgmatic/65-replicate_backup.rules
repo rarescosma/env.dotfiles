@@ -1,3 +1,2 @@
 ACTION=="add", SUBSYSTEM=="bdi", DEVPATH=="/devices/pci0000:00/0000:00:14.0/usb2/2-2/2-2:1.0/host8/target8:0:0/8:0:0:0/block/*",
-TAG+="systemd", ENV{SYSTEMD_WANTS}="replicate_backup.service"
-
+TAG+="systemd", ENV{SYSTEMD_WANTS}="replicate_backup@%E{ID_FS_UUID}.service"
