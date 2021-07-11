@@ -3,20 +3,20 @@
 sleep 1
 set -e
 
-DOT=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
+DOT=$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
 DEVICES="${DOT}/replicate_backup.devices"
 
 UUID="$1"
-if [ ! $UUID ]; then
+if [ ! "$UUID" ]; then
   echo "Invoked without a UUID parameter, exiting"
   exit 0
 fi
-if ! grep --quiet --fixed-strings $UUID $DEVICES; then
+if ! grep --quiet --fixed-strings "$UUID" "$DEVICES"; then
   echo "No backup disk found, exiting"
   exit 0
 fi
 
-DEV_TYPE=$(grep $UUID $DEVICES | cut -d" " -f2)
+DEV_TYPE=$(grep "$UUID" "$DEVICES" | cut -d" " -f2)
 echo "Device with UUID ${UUID} is a ${DEV_TYPE}"
 
 PARTITION_PATH="/dev/disk/by-uuid/${UUID}"
@@ -28,7 +28,8 @@ _replica_backup() {
 }
 
 _kindle_backup () {
-  local ts="$(date "+%F@%T")"
+  local ts
+  ts="$(date "+%F@%T")"
   echo "Grabbing kindle notes at ${ts}"
   cp \
     "${MOUNTPOINT}/documents/My Clippings.txt" \
@@ -38,7 +39,7 @@ _kindle_backup () {
 }
 
 # Mount -> dispatch -> paranoia -> unmount
-(mount | grep $MOUNTPOINT) || mount $PARTITION_PATH $MOUNTPOINT
+(mount | grep "$MOUNTPOINT") || mount "$PARTITION_PATH" "$MOUNTPOINT"
 "_${DEV_TYPE}_backup"
 sync
 umount "${DRIVE}"

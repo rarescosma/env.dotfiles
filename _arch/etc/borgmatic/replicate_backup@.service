@@ -1,3 +1,0 @@
-[Service]
-Type=oneshot
-ExecStart=/etc/borgmatic/replicate_backup.sh %i

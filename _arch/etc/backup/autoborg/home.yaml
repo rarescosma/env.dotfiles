@@ -9,7 +9,7 @@ location:
   one_file_system: true
 
   patterns_from:
-    - /etc/borgmatic/home_patterns
+    - /etc/backup/autoborg/home_patterns
 
   exclude_caches: true
 

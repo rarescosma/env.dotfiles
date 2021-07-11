@@ -1,0 +1,3 @@
+[Service]
+Type=oneshot
+ExecStart=/etc/backup/autousb/replicate_backup.sh %i
