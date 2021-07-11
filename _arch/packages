@@ -23,6 +23,7 @@ cifs-utils
 cmake
 colordiff
 cowsay
+cpupower
 ctags
 debootstrap
 dhcpcd
@@ -62,12 +63,14 @@ gst-libav
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
+gstreamer-vaapi
 gvfs
 hexchat
 htop
 httpie
 hunspell-en_us
 inetutils
+intel-media-driver
 intel-ucode
 iotop
 ipython
@@ -80,6 +83,9 @@ keepassxc
 keychain
 klavaro
 libheif
+libva-intel-driver
+libva-utils
+libvdpau-va-gl
 linux
 linux-headers
 linux-lts
