@@ -6,6 +6,7 @@ aws-iam-authenticator-bin
 bindfs
 brave-bin
 cfssl
+cpufrequtils
 dive
 docker-credential-secretservice
 downgrade
