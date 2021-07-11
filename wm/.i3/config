@@ -19,9 +19,8 @@ bindsym $mod+0x60 exec alacritty -e sh -c "tmux attach -d -t base || exec tmux n
 bindsym $mod+0x27 exec --no-startup-id roam
 bindsym $mod+m exec --no-startup-id rofi-emoji
 bindsym $mod+t exec thunar
-bindsym $mod+slash exec wm browser::launch brave
-bindsym $mod+period exec wm browser::launch brave --incognito
-bindsym $mod+Shift+slash exec wm browser::launch chromium
+bindsym $mod+slash exec firefox
+bindsym $mod+Shift+slash exec firefox --private-window
 
 # kill focused window
 bindsym $mod+Shift+q kill
