@@ -1,0 +1,22 @@
+[Unit]
+Description=mtglacier backup
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+
+# Lower CPU and I/O priority.
+Nice=19
+CPUSchedulingPolicy=batch
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+IOWeight=100
+
+Restart=no
+
+LogRateLimitIntervalSec=0
+
+ExecStart=systemd-inhibit \
+  --who="mtglacier" --why="Prevents interrupting scheduled glaciation" \
+  /sbin/sudo -H -u karelian /etc/backup/autoglacier/autoglacier.sh

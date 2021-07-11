@@ -1,0 +1,9 @@
+[Unit]
+Description=Run mtglacier backup
+
+[Timer]
+OnCalendar=*-*-* 10:45
+Persistent=true
+
+[Install]
+WantedBy=timers.target
