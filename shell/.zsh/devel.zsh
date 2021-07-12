@@ -140,3 +140,5 @@ if [[ "$enable_devel" =~ "ruby" ]] && (( $+commands[chruby] )); then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   chruby ruby-2.3.1
 fi
+
+[[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
