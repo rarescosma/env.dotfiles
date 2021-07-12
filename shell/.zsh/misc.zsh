@@ -9,6 +9,9 @@ if (( $+commands[env_parallel.zsh] )); then
   . $(which env_parallel.zsh)
 fi
 
+# -- disable hosts completion --------------------------------------------------
+zstyle ':completion:*:*:*' hosts off
+
 # -- Midnight Commander --------------------------------------------------------
 export MC_SKIN=$HOME/.config/mc/solarized.ini
 
