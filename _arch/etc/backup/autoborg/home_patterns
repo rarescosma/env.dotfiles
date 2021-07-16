@@ -9,7 +9,9 @@
 ! /home/karelian/.rsync_mirror
 ! /home/karelian/Dropbox/.dropbox
 ! /home/karelian/Dropbox/.dropbox.cache
-! /home/karelian/backup
+- /home/karelian/backup
++ /home/karelian/backup/kindle
++ /home/karelian/backup/mtglacier
 ! /home/karelian/kube
 - /home/karelian/media
 + /home/karelian/media/books
