@@ -24,6 +24,7 @@ MOUNTPOINT="/mnt/${DEV_TYPE}"
 DRIVE=$(lsblk --inverse --noheadings --list --paths --output name "${PARTITION_PATH}" | head --lines 1)
 
 _replica_backup() {
+  mkdir -p "${MOUNTPOINT}/backup"
   rsync -avP --delete /home/karelian/backup/ "${MOUNTPOINT}/backup/"
 }
 
