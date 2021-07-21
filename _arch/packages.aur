@@ -6,7 +6,6 @@ autokey-common
 autokey-gtk
 aws-iam-authenticator-bin
 bindfs
-brave-bin
 cfssl
 dive
 docker-credential-secretservice
