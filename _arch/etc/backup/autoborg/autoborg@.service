@@ -17,4 +17,4 @@ Restart=no
 
 LogRateLimitIntervalSec=0
 
-ExecStart=systemd-inhibit --who="borgmatic" --why="Prevents interrupting scheduled backup" /usr/bin/borgmatic --syslog-verbosity 1 -c /etc/backup/autoborg/%i.yaml
+ExecStart=systemd-inhibit --who="borgmatic-%i" --why="Prevents interrupting scheduled backup" /usr/bin/borgmatic --syslog-verbosity 1 -c /etc/backup/autoborg/%i.yaml
