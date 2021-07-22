@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
+UUID="$1"
+if [ ! "$UUID" ]; then
+  echo "Invoked without a UUID parameter, exiting"
+  exit 0
+fi
+if [[ "$UUID" =~ ^sys-.* ]]; then
+  exit 0
+fi
+
 sleep 1
 set -e
 
 DOT=$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
 DEVICES="${DOT}/replicate_backup.devices"
 
-UUID="$1"
-if [ ! "$UUID" ]; then
-  echo "Invoked without a UUID parameter, exiting"
-  exit 0
-fi
 if ! grep --quiet --fixed-strings "$UUID" "$DEVICES"; then
   echo "No backup disk found, exiting"
   exit 0
