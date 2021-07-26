@@ -11,7 +11,7 @@ fi
 
 if test "${1}" = "--trampoline"; then
     echo ">>> Starting watchexec"
-    watchexec -w "${WATCH_DIR}" -e "torrent" -r -p "$0"
+    watchexec -w "${WATCH_DIR}" -e "torrent" -W -p "$0"
     exit 0
 fi
 
@@ -19,5 +19,6 @@ f="${WATCHEXEC_CREATED_PATH}"
 
 if ! test -z "$f"; then
     echo ">>> Processing new torrent file ${f}"
-    scp -i "${RWATCH_IDENTITY}" "${f}" "${RWATCH_UPLOAD_TO}/" && rm -f "${f}"
+    while [[ $(stat -c %s "${f}") -eq 0 ]]; do sleep 1; done
+    rsync -qP -e "ssh -i ${RWATCH_IDENTITY}" "${f}" "${RWATCH_UPLOAD_TO}/"
 fi
