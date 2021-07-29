@@ -86,8 +86,6 @@ libva-utils
 libvdpau-va-gl
 linux
 linux-headers
-linux-lts
-linux-lts-headers
 logrotate
 lsof
 lvm2
