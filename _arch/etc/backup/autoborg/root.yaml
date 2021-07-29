@@ -17,11 +17,13 @@ location:
   exclude_if_present:
     - .nobackup
 
-
 storage:
   encryption_passcommand: cat /root/.borg_pass
   compression: auto,zstd
   relocated_repo_access_is_ok: true
+
+consistency:
+  checks: ["disabled"]
 
 retention:
   keep_daily: 7
