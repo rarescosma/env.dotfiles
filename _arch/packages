@@ -143,7 +143,6 @@ python-pip
 python-pylint
 python-pyxdg
 python2-pip
-qemu-arch-extra
 redshift
 reflector
 reiserfsprogs

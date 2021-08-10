@@ -13,6 +13,7 @@ downgrade
 downgrader-git
 dropbox
 fortune-mod-southpark
+freetube-bin
 gconf
 git-test-git
 gnome-alsamixer
@@ -23,7 +24,6 @@ inxi
 lxd-git
 masterpdfeditor-free
 moc-pulse
-mozilla-common
 mtaws
 ntpdate
 obsidian
@@ -34,7 +34,7 @@ pkgtools
 pulseaudio-dlna
 python-casttube
 python-pychromecast6
-python2-pygments
+qemu-arm-static
 raiseorlaunch
 realvnc-vnc-server
 reg
