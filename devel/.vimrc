@@ -66,6 +66,9 @@ cmap w!! w !sudo tee > /dev/null %
 " Quick-save
 nmap <leader>w :w<CR>
 
+" Quick-yank
+nmap <leader>y :%w !xsel -b<CR><CR>
+
 " Moving lines up & down
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
