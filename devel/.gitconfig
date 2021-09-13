@@ -24,6 +24,7 @@
 	gpgsign = true
 [init]
 	templatedir = ~/.git-template
+	defaultBranch = main
 [interactive]
 	diffFilter = "/usr/local/bin/diff-highlight"
 [merge]
