@@ -1,6 +1,6 @@
 configuration {
     theme: "/usr/share/rofi/themes/glue_pro_blue.rasi";
     font: "iosevka 24";
-    combi-modi: "tmux:rfh tmux,tuya:rfh tuya,window,ssh,drun";
+    combi-modi: "rfh: rfh,window,ssh,drun";
     ssh-command: "tmux new-window -n '@{host}' 'ssh {host}'";
 }
