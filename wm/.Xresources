@@ -57,12 +57,3 @@ Xft.rgba: rgb
 *.color13:      base06
 *.color14:      base0F
 *.color15:      base07
-
-! Rofi
-! ----
-rofi.modi: window,run,ssh,drun,combi
-rofi.theme: glue_pro_blue
-rofi.width: 25
-rofi.lines: 25
-rofi.combi-hide-mode-prefix: true
-rofi.combi-modi: window,drun
