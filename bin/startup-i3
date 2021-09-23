@@ -49,4 +49,6 @@ if test -x "${HOME}/bin/roam-watch"; then
     "${HOME}/bin/roam-watch" --trampoline &
 fi
 
+wm io::keyboard
+
 wait

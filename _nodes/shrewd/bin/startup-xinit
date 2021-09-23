@@ -2,21 +2,18 @@
 
 source "${HOME}/bin/wm"
 
-xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x0 --rotate normal \
+xrandr --output eDP1 --off \
   --output VIRTUAL1 --off  \
-  --output DP1 --off \
+  --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
   --output HDMI2 --off \
   --output HDMI1 --off \
   --output DP2 --off
 
-
 io::keyboard
 
-browser::set_scale chromium 1.75
-dpi::sublime 1.85 13
-dpi::terminal 16
-dpi::i3 10
-dpi::gtk 10
-dpi::idea 29 24
+dpi::terminal 12
+dpi::i3 8
+dpi::gtk 8 
+dpi::idea 18 16
 
 "${HOME}/.i3/wallpaper.sh"
