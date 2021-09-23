@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SED='sed --in-place --follow-symlinks'
-IDEA_VERSION='2020.1'
+IDEA_VERSION='2021.2'
 
 # Launches chrome/chromium
 function browser::launch() {
@@ -57,9 +57,8 @@ function dpi::vscodium() {
 function dpi::terminal() {
     local font_size="${1}"
 
-    xresources="${HOME}/.Xresources"
-    $SED -E "s/:size=[[:digit:]]+/:size=$font_size/" "$xresources"
-    xrdb -load "$xresources"
+    config="${HOME}/.config/alacritty/alacritty.yml"
+    $SED -E "s/size: [0-9.]+ #fontsize/size: $font_size #fontsize/" "$config"
 }
 
 # Sets i3 font-size
@@ -68,7 +67,7 @@ function dpi::i3() {
     i3_config="${HOME}/.i3/config"
     font_size="${1}"
 
-    $SED -E "s/Nerd Font [[:digit:]]+/Nerd Font $font_size/" $i3_config
+    $SED -E "s/Iosevka [[:digit:]]+/Iosevka $font_size/" $i3_config
     i3-msg reload 1>/dev/null
 }
 
@@ -87,8 +86,8 @@ function dpi::gtk() {
     gtkrc2="${HOME}/.gtkrc-2.0"
     gtkrc3="${HOME}/.config/gtk-3.0/settings.ini"
 
-    $SED -E "s/Nerd Font [[:digit:]]+/Nerd Font $font_size/" $gtkrc2
-    $SED -E "s/Nerd Font [[:digit:]]+/Nerd Font $font_size/" $gtkrc3
+    $SED -E "s/Public Sans [[:digit:]]+/Public Sans $font_size/" $gtkrc2
+    $SED -E "s/Public Sans [[:digit:]]+/Public Sans $font_size/" $gtkrc3
 }
 
 # Sets Idea font sizes
