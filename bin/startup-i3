@@ -20,6 +20,8 @@ for pid in $(pidof -x $_MY_NAME); do
    fi
 done
 
+wm io::keyboard
+
 sleep 3
 
 "${HOME}/.i3/wallpaper.sh"
@@ -48,7 +50,5 @@ fi
 if test -x "${HOME}/bin/roam-watch"; then
     "${HOME}/bin/roam-watch" --trampoline &
 fi
-
-wm io::keyboard
 
 wait
