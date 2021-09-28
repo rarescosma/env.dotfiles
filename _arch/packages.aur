@@ -1,5 +1,6 @@
 64gram-desktop-bin
 alsaequal
+anki
 apache-tools
 asdf-vm
 autokey-common
@@ -33,6 +34,7 @@ pandoc-bin
 pkgtools
 pulseaudio-dlna
 python-casttube
+python-mypy-protobuf
 python-pychromecast6
 qemu-arm-static
 raiseorlaunch
