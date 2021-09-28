@@ -11,7 +11,7 @@ xrandr --output eDP1 --off \
 
 dpi::terminal 12
 dpi::i3 8
-dpi::gtk 8
+dpi::gtk 10
 dpi::idea 18 16
 dpi::x 110
 dpi::rofi 12

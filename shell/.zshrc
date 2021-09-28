@@ -15,7 +15,7 @@ source ~/.zsh/misc.zsh
 [[ -f ~/.local/functions ]] && source ~/.local/functions
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx -- -dpi 144
+  exec startx -- -dpi 110
 else
   source ~/.zsh/fortune.zsh
 fi
