@@ -82,4 +82,24 @@ function dpi::idea() {
   $options_dir/ui.lnf.xml
 }
 
+function dpi::x() {
+  local font_size xres zshrc
+  font_size="${1}"
+
+  xres="${HOME}/.Xresources"
+  zshrc="${HOME}/.zshrc"
+
+  $SED -E "s/dpi: [[:digit:]]+/dpi: $font_size/" $xres
+  $SED -E "s/-dpi [[:digit:]]+/-dpi $font_size/" $zshrc
+}
+
+function dpi::rofi() {
+  local font_size roficonf
+  font_size="${1}"
+
+  roficonf="${HOME}/.config/rofi/config.rasi"
+
+  $SED -E "s/iosevka [[:digit:]]+/iosevka $font_size/" $roficonf
+}
+
 "$@"
