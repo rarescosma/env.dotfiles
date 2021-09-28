@@ -1,6 +1,7 @@
 acpi
 alacritty
 anki
+alsa-utils
 arandr
 arch-install-scripts
 archiso
@@ -17,6 +18,7 @@ borgmatic
 browserpass
 browserpass-chromium
 browserpass-firefox
+cadence
 calibre
 ccd2iso
 cifs-utils
@@ -94,6 +96,7 @@ lxappearance
 man-db
 man-pages
 mc
+mediainfo
 meld
 mesa-demos
 mkvtoolnix-cli
@@ -184,6 +187,7 @@ unclutter
 unrar
 unzip
 usbutils
+vdpauinfo
 vim
 vlc
 vulkan-intel
