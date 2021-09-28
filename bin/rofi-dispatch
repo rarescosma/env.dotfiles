@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PREFIX="$(basename "$0")"
+DOT="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [[ "$@" == "" ]]; then
+    # no args - listing
+    find -L "$DOT" -type f -name "${PREFIX}-*" -executable -print0 | xargs -0l basename
+else
+    . "${DOT}/$1"
+fi

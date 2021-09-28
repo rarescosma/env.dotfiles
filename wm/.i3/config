@@ -215,9 +215,8 @@ bindsym XF86PowerOff mode "$mode_system"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-bindsym $mod+Shift+d exec "~/bin/dual-on"
-bindsym $mod+Shift+u exec "~/bin/dual-off"
-bindsym $mod+Shift+p exec "~/bin/proj-on"
+bindsym $mod+Shift+e exec "~/bin/display-external"
+bindsym $mod+Shift+i exec "~/bin/display-internal"
 
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
