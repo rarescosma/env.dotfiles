@@ -23,10 +23,6 @@ else
     xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
 fi
 
-browser::set_scale chromium 1.6
-browser::set_scale google-chrome-stable 1
-dpi::sublime 1.0 10
-dpi::vscodium -1
 dpi::terminal 10
 dpi::i3 7
 dpi::gtk 9

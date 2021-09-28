@@ -3,104 +3,22 @@
 SED='sed --in-place --follow-symlinks'
 IDEA_VERSION='2021.2'
 
-# Launches chrome/chromium
-function browser::launch() {
-    local kind dot scale
-    kind="${1}"
-    dot=$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
-    scale=$(cat "$dot/.${kind}-scale")
+#     ____
+#    / __ \___ _   __(_)_______  _____
+#   / / / / _ \ | / / / ___/ _ \/ ___/
+#  / /_/ /  __/ |/ / / /__/  __(__  )
+# /_____/\___/|___/_/\___/\___/____/
 
-    exec "$@" --force-device-scale-factor="$scale"
-}
-
-# Sets the scale for chrome/chromium
-function browser::set_scale() {
-    local kind="${1}"
-    local scale="${2}"
-    local dot=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
-
-    echo $scale > $dot/.${kind}-scale
-}
-
-# Sets the keyboard up
 function io::keyboard() {
-    setxkbmap -option ctrl:nocaps -layout ro
-    xset r rate 300 25
-    killall xcape
-    if [ -f "$HOME/keymap.xkb" ]; then
-        xkbcomp "$HOME/keymap.xkb" $DISPLAY
-        xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
-    else
-        xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
-    fi
-}
-
-# Sets sublime DPI
-function dpi::sublime() {
-    local dpi_scale="${1}"
-    local font_size="${2}"
-
-    sublime_config="${HOME}/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
-    $SED -E -e "s/\"ui_scale\": [[:digit:]\.]+/\"ui_scale\": $dpi_scale/g" \
-            -e "s/\"font_size\": [[:digit:]\.]+/\"font_size\": $font_size/g" $sublime_config
-}
-
-# Sets vscodium DPI
-function dpi::vscodium() {
-    local zoom_level="${1}"
-
-    config_file="${HOME}/.config/VSCodium/User/settings.json"
-    $SED -E -e "s/zoomLevel\": [[:digit:]\.\-]+/zoomLevel\": $zoom_level/g" $config_file
-}
-
-# Sets terminal font-size
-function dpi::terminal() {
-    local font_size="${1}"
-
-    config="${HOME}/.config/alacritty/alacritty.yml"
-    $SED -E "s/size: [0-9.]+ #fontsize/size: $font_size #fontsize/" "$config"
-}
-
-# Sets i3 font-size
-function dpi::i3() {
-    local i3_config font_size
-    i3_config="${HOME}/.i3/config"
-    font_size="${1}"
-
-    $SED -E "s/Iosevka [[:digit:]]+/Iosevka $font_size/" $i3_config
-    i3-msg reload 1>/dev/null
-}
-
-function outputs::i3() {
-    local i3_config
-    i3_config="${HOME}/.i3/config"
-
-    ## TODO - sed for output
-}
-
-# Sets GTK font-size
-function dpi::gtk() {
-    local font_size gtkrc3 gtkrc2
-    font_size="${1}"
-
-    gtkrc2="${HOME}/.gtkrc-2.0"
-    gtkrc3="${HOME}/.config/gtk-3.0/settings.ini"
-
-    $SED -E "s/Merriweather Sans [[:digit:]]+/Merriweather Sans $font_size/" $gtkrc2
-    $SED -E "s/Merriweather Sans [[:digit:]]+/Merriweather Sans $font_size/" $gtkrc3
-}
-
-# Sets Idea font sizes
-function dpi::idea() {
-    local options_dir
-    options_dir="${HOME}/.config/JetBrains/IntelliJIdea${IDEA_VERSION}/options"
-    local editor_font_size="${1}"
-    local ui_font_size="${2}"
-
-    $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
-    $options_dir/editor.xml
-    $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$ui_font_size\"/g" \
-    $options_dir/ui.lnf.xml
+  setxkbmap -option ctrl:nocaps -layout ro
+  xset r rate 300 25
+  killall xcape
+  if [ -f "$HOME/keymap.xkb" ]; then
+      xkbcomp "$HOME/keymap.xkb" $DISPLAY
+      xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
+  else
+      xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
+  fi
 }
 
 function _usb::dispatch() {
@@ -117,6 +35,51 @@ function usb::detach() {
 
 function usb::attach() {
   _usb::dispatch bind "$*"
+}
+
+#     ____  ____  ____
+#    / __ \/ __ \/  _/
+#   / / / / /_/ // /
+#  / /_/ / ____// /
+# /_____/_/   /___/
+
+function dpi::terminal() {
+  local font_size="${1}"
+
+  config="${HOME}/.config/alacritty/alacritty.yml"
+  $SED -E "s/size: [0-9.]+ #fontsize/size: $font_size #fontsize/" "$config"
+}
+
+function dpi::i3() {
+  local i3_config font_size
+  i3_config="${HOME}/.i3/config"
+  font_size="${1}"
+
+  $SED -E "s/Iosevka [[:digit:]]+/Iosevka $font_size/" $i3_config
+  i3-msg reload 1>/dev/null
+}
+
+function dpi::gtk() {
+  local font_size gtkrc3 gtkrc2
+  font_size="${1}"
+
+  gtkrc2="${HOME}/.gtkrc-2.0"
+  gtkrc3="${HOME}/.config/gtk-3.0/settings.ini"
+
+  $SED -E "s/Merriweather Sans [[:digit:]]+/Merriweather Sans $font_size/" $gtkrc2
+  $SED -E "s/Merriweather Sans [[:digit:]]+/Merriweather Sans $font_size/" $gtkrc3
+}
+
+function dpi::idea() {
+  local options_dir
+  options_dir="${HOME}/.config/JetBrains/IntelliJIdea${IDEA_VERSION}/options"
+  local editor_font_size="${1}"
+  local ui_font_size="${2}"
+
+  $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
+  $options_dir/editor.xml
+  $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$ui_font_size\"/g" \
+  $options_dir/ui.lnf.xml
 }
 
 "$@"
