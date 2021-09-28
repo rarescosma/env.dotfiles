@@ -86,8 +86,8 @@ function dpi::gtk() {
     gtkrc2="${HOME}/.gtkrc-2.0"
     gtkrc3="${HOME}/.config/gtk-3.0/settings.ini"
 
-    $SED -E "s/Public Sans [[:digit:]]+/Public Sans $font_size/" $gtkrc2
-    $SED -E "s/Public Sans [[:digit:]]+/Public Sans $font_size/" $gtkrc3
+    $SED -E "s/Merriweather Sans [[:digit:]]+/Merriweather Sans $font_size/" $gtkrc2
+    $SED -E "s/Merriweather Sans [[:digit:]]+/Merriweather Sans $font_size/" $gtkrc3
 }
 
 # Sets Idea font sizes
