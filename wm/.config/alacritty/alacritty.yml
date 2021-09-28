@@ -8,7 +8,7 @@ scrolling:
 font:
   normal:
     family: "Iosevka Term"
-  size: 12 #fontsize
+  size: 10 #fontsize
   use_thin_strokes: true
 
 colors:

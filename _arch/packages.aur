@@ -34,7 +34,6 @@ pandoc-bin
 pkgtools
 pulseaudio-dlna
 python-casttube
-python-mypy-protobuf
 python-pychromecast6
 qemu-arm-static
 raiseorlaunch
@@ -46,9 +45,15 @@ tidal-hifi-git
 tomb
 tor-browser
 trizen
-ttf-iosevka
 ttf-merriweather-sans
-ttf-ms-fonts
+ttf-ms-win10
+ttf-ms-win10-japanese
+ttf-ms-win10-korean
+ttf-ms-win10-other
+ttf-ms-win10-sea
+ttf-ms-win10-thai
+ttf-ms-win10-zh_cn
+ttf-ms-win10-zh_tw
 tzupdate
 wasabi-wallet-bin
 zotero
