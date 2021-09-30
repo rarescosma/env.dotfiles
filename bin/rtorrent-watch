@@ -21,4 +21,5 @@ if ! test -z "$f"; then
     echo ">>> Processing new torrent file ${f}"
     while [[ $(stat -c %s "${f}") -eq 0 ]]; do sleep 1; done
     rsync -qP -e "ssh -i ${RWATCH_IDENTITY}" "${f}" "${RWATCH_UPLOAD_TO}/"
+    rm -f "${f}"
 fi
