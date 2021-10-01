@@ -17,7 +17,6 @@ borgmatic
 browserpass
 browserpass-chromium
 browserpass-firefox
-cadence
 calibre
 ccd2iso
 cifs-utils
@@ -70,6 +69,7 @@ htop
 httpie
 hunspell-en_us
 inetutils
+intel-gpu-tools
 intel-media-driver
 intel-ucode
 iotop
@@ -145,7 +145,6 @@ python-nox
 python-pip
 python-pylint
 python-pyxdg
-python2-pip
 redshift
 reflector
 reiserfsprogs
