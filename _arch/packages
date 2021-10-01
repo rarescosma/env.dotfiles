@@ -17,7 +17,9 @@ borgmatic
 browserpass
 browserpass-chromium
 browserpass-firefox
+calf
 calibre
+carla
 ccd2iso
 cifs-utils
 colordiff
@@ -59,6 +61,7 @@ graphviz
 groovy
 grub
 gst-libav
+gst-plugin-pipewire
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
@@ -129,12 +132,12 @@ pavucontrol
 perl-file-mimeinfo
 perl-image-exiftool
 pigz
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
 pkgfile
 postgresql
 powertop
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
 pv
 pwgen
 pyenv
@@ -145,6 +148,7 @@ python-nox
 python-pip
 python-pylint
 python-pyxdg
+realtime-privileges
 redshift
 reflector
 reiserfsprogs

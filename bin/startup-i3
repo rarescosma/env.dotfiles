@@ -28,7 +28,7 @@ sleep 3
 dropbox &
 
 nm-applet &
-pa-applet &
+volctl &
 parcellite &
 autokey-gtk &
 unclutter &
