@@ -13,6 +13,7 @@ docker-credential-secretservice
 downgrade
 downgrader-git
 dropbox
+ebtables
 fonts-meta-base
 fonts-meta-extended-lt
 fortune-mod-southpark

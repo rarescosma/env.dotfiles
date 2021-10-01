@@ -31,6 +31,7 @@ dhcpcd
 dialog
 diff-so-fancy
 dmenu
+dmidecode
 docker
 docker-compose
 dunst
@@ -148,6 +149,7 @@ python-nox
 python-pip
 python-pylint
 python-pyxdg
+qemu
 realtime-privileges
 redshift
 reflector
@@ -192,6 +194,7 @@ unzip
 usbutils
 vdpauinfo
 vim
+virt-manager
 vlc
 vulkan-intel
 watchexec
