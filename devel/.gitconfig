@@ -26,7 +26,7 @@
 	templatedir = ~/.git-template
 	defaultBranch = main
 [interactive]
-	diffFilter = "/usr/local/bin/diff-highlight"
+	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
 [merge]
 	tool = meld
 [mergetool]
