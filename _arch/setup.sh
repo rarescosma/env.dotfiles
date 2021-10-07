@@ -46,7 +46,7 @@ pac::git_sync() {
   if [ ! -z "${added}" ]; then
     printf ">> Found new packages:\n${added}\n"
     read -p "<< Press any key to install them."
-    trizen -Sy "${added}"
+    paru -Sy $added
   fi
 
   if [ ! -z "${removed}" ]; then

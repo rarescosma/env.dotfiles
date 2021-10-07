@@ -146,7 +146,6 @@ alias t="t -t ${HOME}/Dropbox/apps/t"
 alias tlk="t -l k"
 alias tlro="t -l ro"
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
-alias trizen='trizen --noconfirm'
 alias o='xdg-open'
 
 ## kill and restart process
