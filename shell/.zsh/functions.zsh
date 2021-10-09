@@ -143,7 +143,6 @@ dps() {
 alias ccat='pygmentize -g'
 (( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
 alias t="t -t ${HOME}/Dropbox/apps/t"
-alias tlk="t -l k"
 alias tlro="t -l ro"
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias o='xdg-open'

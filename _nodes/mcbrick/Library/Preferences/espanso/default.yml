@@ -17,9 +17,6 @@ matches:
   - trigger: "g@"
     replace: "rares@getbetter.ro"
 
-  - trigger: "k@"
-    replace: "rares.cosma@klarna.com"
-
   # Markdown
   - trigger: ":a"
     replace: "[$|$]({{clip}})"

@@ -1,7 +1,5 @@
 session_name: misc
 windows:
-- window_name: vpn
-  panes: ['vpn klarna']
 - window_name: moc
   panes: ['mocp']
 - window_name: dot

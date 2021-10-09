@@ -42,7 +42,5 @@
 	email = rares@getbetter.ro
 	signingkey = 0xD00EC1BBBA4D3352
 	useConfigOnly = true
-[includeif "gitdir:~/src/klarna/"]
-	path = ~/.gitconfig.work
 [pull]
 	ff = only
