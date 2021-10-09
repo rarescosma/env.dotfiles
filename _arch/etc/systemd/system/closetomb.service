@@ -1,0 +1,13 @@
+[Unit]
+Description=Rest In Peace
+User=karelian
+Group=karelian
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStop=/usr/bin/tomb close
+
+[Install]
+WantedBy=multi-user.target
+
