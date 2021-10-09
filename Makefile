@@ -1,18 +1,25 @@
-.PHONY: base playbook packages
-
 SHELL := bash
-PLAYBOOK ?= user
+PARU_VER := 1.8.2
+PARU_RELEASE := paru-v$(PARU_VER)-x86_64.tar.zst
 
-default: playbook
+all: help
 
-base:
-	pacman -Sy --needed --noconfirm base make ansible pwgen sudo python zsh
+/usr/bin/paru:
+	curl -sL https://github.com/Morganamilo/paru/releases/download/v$(PARU_VER)/$(PARU_RELEASE) -O
+	tar -xvf $(PARU_RELEASE) paru
+	mv paru /usr/bin/paru
+	rm $(PARU_RELEASE)
 
-playbook:
-	ansible-playbook -v _ansible/$(PLAYBOOK).yaml
+.PHONY: packages
+packages: /usr/bin/paru ## Install arch packages
+	paru -Sy --needed --noconfirm xorg i3 \
+	$(shell cat _arch/packages | grep -v '#')
 
-packages:
-	paru -S --needed \
-	base-devel xorg \
-	$(shell cat _arch/packages _arch/packages.aur | grep -v '#') \
-	> >(tee -a ~/packages.log) 2> >(tee -a ~/packages.err >&2)
+.PHONY: aur
+aur: /usr/bin/paru ## Install AUR packages
+	paru -Syu --needed --noconfirm \
+	$(shell cat _arch/packages.aur | grep -v '#')
+
+.PHONY: help
+help: ## This help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
