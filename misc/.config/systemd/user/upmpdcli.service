@@ -1,0 +1,11 @@
+[Unit]
+Description=UPnP Daemon CLI
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/upmpdcli -c ${HOME}/.config/upmpdcli.conf
+
+[Install]
+WantedBy=default.target
+
