@@ -12,7 +12,7 @@ all: help
 
 .PHONY: packages
 packages: /usr/bin/paru ## Install arch packages
-	paru -Sy --needed --noconfirm xorg i3 \
+	paru -Sy --needed --noconfirm base-devel xorg \
 	$(shell cat _arch/packages | grep -v '#')
 
 .PHONY: aur
