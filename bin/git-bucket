@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo '# Changes'
+
+base="${1:-origin/master}"
+
+git --no-pager log                                              \
+    --abbrev-commit                                             \
+    --abbrev=7                                                  \
+    --format='* %h %s'                                          \
+    --reverse                                                   \
+    HEAD "^${base}"                                             \
+    | sed 's/_/\\_/g;'
+
+cat <<EOF
+
+# git test
+EOF
+
+git test -v -o reports HEAD "^${base}"                          \
+    | sed "s/^iter/\niter/"
+test_result=$?
+
+cat <<EOF
+
+# Total changes
+
+file | n | bar
+-----|---|----
+EOF
+
+git --no-pager diff                                             \
+    --stat "${base}"                                            \
+    | sed 's/^ //; s/_/\\_/g; s/[|]\([ 0-9]*\)/| \1 |/'
+
+exit $test_result

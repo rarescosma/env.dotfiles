@@ -1,0 +1,5 @@
+#!/bin/bash
+
+base="${1:-origin/master}"
+
+git rebase "${base}" -x "git test -o .git/test-output HEAD~1..HEAD || (cat .git/test-output/latest/0000_fail && git test --clear HEAD~1..HEAD && false)"

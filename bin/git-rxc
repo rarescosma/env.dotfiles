@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git test --clear HEAD~1..HEAD; git test -o .git/test-output HEAD~1..HEAD || (cat .git/test-output/latest/0000_fail && false)
+if [ $? == 0 ]; then
+  git rebase --continue || true
+fi
