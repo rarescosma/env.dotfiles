@@ -112,6 +112,7 @@ parallel
 parcellite
 pass
 pavucontrol
+perl-lwp-protocol-https
 pigz
 pipewire-alsa
 pipewire-jack
