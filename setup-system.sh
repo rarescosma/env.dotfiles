@@ -86,14 +86,24 @@ systemctl_enable_start "btrfs-scrub@-.timer"
 systemctl_enable_start "btrfs-scrub@home.timer"
 systemctl_enable_start "btrfs-scrub@snapshots.timer"
 systemctl_enable_start "btrfs-scrub@var_log.timer"
-systemctl_enable_start "docker.socket"
 systemctl_enable_start "fstrim.timer"
-systemctl_enable_start "libvirtd.service"
-systemctl_enable_start "lxd.service"
-systemctl_enable_start "snapper-cleanup.timer"
 systemctl_enable_start "autoborg@home.timer"
 systemctl_enable_start "autoborg@root.timer"
 systemctl_enable_start "autoglacier.timer"
+
+if is_chroot; then
+  echo >&2 "=== Running in chroot, skipping turtles..."
+else
+  echo ""
+  echo "================================"
+  echo "Enabling and starting turtles..."
+  echo "================================"
+
+  systemctl_enable_start "docker.socket"
+  systemctl_enable_start "libvirtd.service"
+  systemctl_enable_start "lxd.service"
+fi
+
 
 echo ""
 echo "==============================="

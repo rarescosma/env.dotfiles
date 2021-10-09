@@ -51,6 +51,10 @@ link() {
   echo "$dest_file -> $orig_file"
 }
 
+is_chroot() {
+  ! cmp -s /proc/1/mountinfo /proc/self/mountinfo
+}
+
 systemctl_enable_start() {
   echo "systemctl enable --now "$1""
   systemctl enable "$1"

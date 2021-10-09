@@ -44,7 +44,7 @@ echo "==========================="
 echo "Setting up user dotfiles..."
 echo "==========================="
 
-stow bin bin
+mkdir -p "$HOME/bin"; stow bin bin
 stow devel
 stow gnupg
 stow shell

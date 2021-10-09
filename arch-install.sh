@@ -183,15 +183,16 @@ arch-chroot /mnt passwd -dl root
 
 if [ "${user}" = "karelian" ]; then
     echo -e "\n### Cloning dotfiles"
+    arch-chroot /mnt rm -rf "/home/$user/src/env.dotfiles"
     arch-chroot /mnt sudo -u $user mkdir -p "/home/$user/src/env.dotfiles"
-    arch-chroot /mnt sudo -u $user bash -c 'git clone --recursive https://github.com/rarescosma/env.dotfiles.git /home/karelian/src/env.dotfiles'
+    arch-chroot /mnt sudo -u $user bash -c 'git clone https://github.com/rarescosma/env.dotfiles.git /home/karelian/src/env.dotfiles'
 
     echo -e "\n### Running initial setup"
     arch-chroot /mnt /home/$user/src/env.dotfiles/setup-system.sh
     arch-chroot /mnt sudo -u $user /home/$user/src/env.dotfiles/setup-user.sh
     arch-chroot /mnt sudo -u $user zsh -ic true
 
-    echo -e "\n### DONE - re-run both ~/.dotfiles/setup-*.sh scripts after reboot"
+    echo -e "\n### DONE - re-run both setup-*.sh scripts after reboot"
 fi
 
 echo -e "\n### Power off - remember to remove the installation media!"
