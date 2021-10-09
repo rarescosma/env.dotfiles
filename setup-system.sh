@@ -24,7 +24,6 @@ echo "Setting up /etc configs..."
 echo "=========================="
 
 copy "etc/NetworkManager/dispatcher.d/10-dispatch.sh"
-copy "etc/X11/xorg.conf.d/20-intel.conf"
 copy "etc/default/docker"
 copy "etc/default/grub"
 copy "etc/depmod.d/00-extra.conf"
