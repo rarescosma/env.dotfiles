@@ -1,9 +1,0 @@
-[Unit]
-Description=Sync time from ntp every 3 hours
-
-[Timer]
-OnBootSec=1min
-OnUnitActiveSec=3h
-
-[Install]
-WantedBy=timers.target

@@ -1,9 +1,0 @@
-[Unit]
-Description=Sync NTP
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/ntpdate -v -s us.pool.ntp.org
-
-[Install]
-WantedBy=multi-user.target
