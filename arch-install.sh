@@ -188,6 +188,7 @@ if [ "${user}" = "karelian" ]; then
     arch-chroot /mnt sudo -u $user bash -c 'git clone https://github.com/rarescosma/env.dotfiles.git /home/karelian/src/env.dotfiles'
 
     echo -e "\n### Running initial setup"
+    arch-chroot /mnt bash -c 'cd /home/karelian/src/env.dotfiles; make packages'
     arch-chroot /mnt /home/$user/src/env.dotfiles/setup-system.sh
     arch-chroot /mnt sudo -u $user /home/$user/src/env.dotfiles/setup-user.sh
     arch-chroot /mnt sudo -u $user zsh -ic true
