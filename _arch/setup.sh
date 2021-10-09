@@ -32,13 +32,14 @@ pac::list_non_group_non_aur() {
   comm -23 <(pac::list_non_group) <(pac::list_aur)
 }
 
-pac::git_sync() {
-  local dot packs new_packs removed added
+pac::diff() {
+  local dot other packs new_packs removed added
   dot="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+  other="${1}"
+  shift
 
   packs=$( { cat "${dot}/packages"; cat "${dot}/packages.aur"; } | sort | uniq )
-  git pull --ff-only
-  new_packs=$( { cat "${dot}/packages"; cat "${dot}/packages.aur"; } | sort | uniq )
+  new_packs=$( { cat "${other}/packages"; cat "${other}/packages.aur"; } | sort | uniq )
 
   removed=$( comm -23 <(echo "${packs}") <(echo "${new_packs}") | tr "\n" " " )
   added=$( comm -13 <(echo "${packs}") <(echo "${new_packs}") | tr "\n" " " )
