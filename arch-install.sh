@@ -185,7 +185,7 @@ if [ "${user}" = "karelian" ]; then
     echo -e "\n### Cloning dotfiles"
     arch-chroot /mnt rm -rf "/home/$user/src/env.dotfiles"
     arch-chroot /mnt sudo -u $user mkdir -p "/home/$user/src/env.dotfiles"
-    arch-chroot /mnt sudo -u $user bash -c 'git clone https://github.com/rarescosma/env.dotfiles.git /home/karelian/src/env.dotfiles'
+    arch-chroot /mnt sudo -u $user bash -c 'git clone --recursive https://github.com/rarescosma/env.dotfiles.git /home/karelian/src/env.dotfiles'
 
     echo -e "\n### Running initial setup"
     arch-chroot /mnt bash -c 'cd /home/karelian/src/env.dotfiles; make packages'

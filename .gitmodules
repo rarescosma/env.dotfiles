@@ -1,19 +1,18 @@
 [submodule "_vendor/oh-my-zsh"]
 	path = _vendor/oh-my-zsh
-	url = git@github.com:rarescosma/env.oh-my-zsh.git
+	url = https://github.com/rarescosma/env.oh-my-zsh
 [submodule "_vendor/fzf"]
 	path = _vendor/fzf
-	url = git@github.com:rarescosma/env.fzf.git
+	url = https://github.com/rarescosma/env.fzf
 [submodule "_vendor/fz"]
 	path = _vendor/fz
-	url = git@github.com:rarescosma/env.fz.git
+	url = https://github.com/rarescosma/env.fz
 [submodule "_vendor/memoize"]
 	path = _vendor/memoize
-	url = git@github.com:rarescosma/memoize.git
+	url = https://github.com/rarescosma/memoize
 [submodule "_vendor/z"]
 	path = _vendor/z
-	url = git://github.com/rupa/z.git
+	url = https://github.com/rupa/z
 [submodule "_vendor/autoenv"]
 	path = _vendor/autoenv
-	url = git://github.com/zpm-zsh/autoenv.git
-
+	url = https://github.com/zpm-zsh/autoenv
