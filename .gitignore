@@ -9,4 +9,5 @@ _ansible/*.retry
 mc/.config/mc/ini~
 wm/.i3/logfile
 .gnupg
-
+var
+__pycache__
