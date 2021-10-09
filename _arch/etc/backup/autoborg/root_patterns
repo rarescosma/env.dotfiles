@@ -4,6 +4,7 @@
 ! /home/karelian
 ! /var/cache
 ! /var/lib/lxd/storage-pools
+! /var/lib/libvirt/images
 ! /var/log
 ! /dev
 ! /proc

@@ -3,10 +3,14 @@
 - **/node_modules
 - **/.cache
 ! /home/karelian/.cache
+! /home/karelian/.cargo
 ! /home/karelian/.config/tidal-hifi/Cache
+! /home/karelian/.jdks
 ! /home/karelian/.local/share/Trash
 ! /home/karelian/.npm
 ! /home/karelian/.rsync_mirror
+! /home/karelian/.rustup
+! /home/karelian/Desktop
 ! /home/karelian/Dropbox/.dropbox
 ! /home/karelian/Dropbox/.dropbox.cache
 - /home/karelian/backup
