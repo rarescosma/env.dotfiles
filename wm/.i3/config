@@ -147,6 +147,7 @@ bar {
     output DP1
     output DP2
     output HDMI2
+    output Virtual-1
 
     bindsym button4 nop
     bindsym button5 nop
