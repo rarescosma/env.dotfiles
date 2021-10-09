@@ -66,7 +66,7 @@ vpn() {
   } &
 
   sudo openvpn \
-    --config "$HOME/Tomb/${vpn_config}" \
+    --config "/tomb/${vpn_config}" \
     --mute-replay-warnings | tee "$log_path"
 
   # post-hooks
