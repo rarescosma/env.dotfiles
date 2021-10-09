@@ -5,6 +5,7 @@ bindfs
 cfssl
 dropbox
 ebtables
+flexo-git
 fonts-meta-base
 fonts-meta-extended-lt
 fortune-mod-southpark
