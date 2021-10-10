@@ -138,8 +138,12 @@ set mouse-wheel-cursor		= no		# Prefer moving the cursor to scrolling the view?
 
 color cursor blue default standout
 
+# Push/pull
+bind main L !git pull --tags -f
+bind main P !git push -u
+
 # Quick commit
-bind status C >git commit
+bind status C !git commit -v
 
 # Quick (F)ixup
 bind main F !>sh -c "git commit --fixup=%(commit) && GIT_SEQUENCE_EDITOR=true git rebase -i %(commit)^ --autostash --autosquash"
