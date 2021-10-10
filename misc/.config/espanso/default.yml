@@ -34,6 +34,14 @@ matches:
         params:
           cmd: "xsel -bo | tr -d '\n'"
 
+  - trigger: ":wiki"
+    replace: "{{res}}"
+    vars:
+      - name: "res"
+        type: "shell"
+        params:
+          cmd: "xsel -bo | tr '\n' ' ' | xargs findwiki"
+
   # Misc
   - trigger: ":uuid"
     replace: "{{res}} foo"

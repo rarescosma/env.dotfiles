@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+"""Search wikipedia for an article matching the space-concatenated input
+and return the first result."""
+import sys
+from contextlib import suppress
+from typing import Sequence, Union
+
+import requests
+
+
+def main(search: Sequence[str]) -> None:
+    """Perform the query."""
+    query = " ".join(search)
+    with suppress(Exception):
+        res = requests.get(
+            "https://en.wikipedia.org/w/api.php",
+            params={
+                "action": "opensearch",
+                "search": query,
+                "limit": "1",
+                "namespace": "0",
+                "format": "json",
+            },
+        ).json()
+
+        if _is_valid(res):
+            print(res[3][0])
+            return
+
+    sys.exit(1)
+
+
+def _is_valid(res: Union[dict, list]) -> bool:
+    return "error" not in res and len(res) >= 3 and res[3]
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
