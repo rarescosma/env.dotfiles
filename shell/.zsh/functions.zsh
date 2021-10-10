@@ -38,16 +38,16 @@ permfix() {
 # -- Crypto --------------------------------------------------------------------
 to() {
   tomb list || {
-    tomb open $TOMB_FILE -k $TOMB_KEY -f \
-    && kick autokey-gtk \
+    tomb open $TOMB_FILE -k $TOMB_KEY -f
+    ln -sf /tomb/espanso/*.yml ~/.config/espanso/user/
   }
 }
 
 tc() {
   tomb list && {
     sudo -E pkill -f openvpn
+    command rm -f ~/.config/espanso/user/*.yml
     tomb close
-    kick autokey-gtk
   }
 }
 

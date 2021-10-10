@@ -30,7 +30,6 @@ dropbox &
 nm-applet &
 volctl &
 parcellite &
-autokey-gtk &
 unclutter &
 
 thunar --daemon &
