@@ -6,8 +6,6 @@ cfssl
 dropbox
 ebtables
 flexo-git
-fonts-meta-base
-fonts-meta-extended-lt
 fortune-mod-southpark
 freetube-bin
 gconf
@@ -26,7 +24,6 @@ masterpdfeditor-free
 mtaws
 obsidian
 openfec
-otf-symbola
 pacman-cleanup-hook
 pandoc-bin
 paru
@@ -41,13 +38,7 @@ timeshift
 tomb
 tor-browser
 ttf-courier-prime
-ttf-gelasio-ib
 ttf-heuristica
-ttf-impallari-cantora
-ttf-merriweather
-ttf-merriweather-sans
-ttf-oswald
-ttf-quintessential
 ttf-signika
 upmpdcli
 volctl
