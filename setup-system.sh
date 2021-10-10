@@ -125,6 +125,10 @@ setup::var() {
 
   echo "Configuring NTP"
   timedatectl set-ntp true
+
+  echo "Locking firefox settings"
+  copy "usr/lib/firefox/defaults/pref/local-settings.js"
+  copy "usr/lib/firefox/mozilla.cfg"
 }
 
 main() {
