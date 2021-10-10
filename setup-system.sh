@@ -114,9 +114,9 @@ setup::services() {
 
 setup::var() {
   echo ""
-  echo "========================================"
-  echo "Finishing various user configurations..."
-  echo "========================================"
+  echo "=========================================="
+  echo "Finishing various system configurations..."
+  echo "=========================================="
 
   echo "Creating top level Trash dir"
   mkdir --parent /.Trash
