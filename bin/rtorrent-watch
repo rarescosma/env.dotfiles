@@ -21,5 +21,6 @@ if ! test -z "$f"; then
     echo ">>> Processing new torrent file ${f}"
     while [[ $(stat -c %s "${f}") -eq 0 ]]; do sleep 1; done
     rsync -qP -e "ssh -i ${RWATCH_IDENTITY}" "${f}" "${RWATCH_UPLOAD_TO}/"
+    notify-send -u "low" -t 2500 "Uploaded $(basename "${f}") to seedbox."
     rm -f "${f}"
 fi
