@@ -40,37 +40,61 @@ systemctl_enable_start() {
   systemctl --user enable --now "$1"
 }
 
-echo "==========================="
-echo "Setting up user dotfiles..."
-echo "==========================="
+stow::bin() {
+  echo "========================"
+  echo "Stowing user binaries..."
+  echo "========================"
 
-mkdir -p "$HOME/bin"; stow bin bin
-stow devel
-stow gnupg
-stow shell
-stow wm
-stow misc
+  mkdir -p "$HOME/bin"; stow bin bin
 
-host_dir="$dotfiles_dir/_nodes/$HOSTNAME"
-if test -d "$host_dir"; then
+  host_dir="$dotfiles_dir/_nodes/$HOSTNAME"
+  if test -d "$host_dir"; then
+    echo "========================"
+    echo "Stowing node binaries..."
+    echo "========================"
+
+    command stow -d "$host_dir" -t "$HOME/bin" --no-folding -R bin
+    echo "stow $host_dir -> $HOME/bin / bin"
+  fi
+}
+
+stow::dotfiles() {
   echo "==========================="
-  echo "Setting up node binaries..."
+  echo "Setting up user dotfiles..."
   echo "==========================="
+  stow devel
+  stow gnupg
+  stow shell
+  stow wm
+  stow misc
+}
 
-  command stow -d "$host_dir" -t "$HOME/bin" --no-folding -R bin
-  echo "stow $host_dir -> $HOME/bin / bin"
-fi
+setup::services() {
+  if is_chroot; then
+    echo >&2 "=== Running in chroot, skipping user services..."
+  else
+    echo ""
+    echo "================================="
+    echo "Enabling and starting services..."
+    echo "================================="
 
-if is_chroot; then
-  echo >&2 "=== Running in chroot, skipping user services..."
+    systemctl --user daemon-reload
+    systemctl_enable_start "mpd.socket"
+    systemctl_enable_start "mpd.service"
+    systemctl_enable_start "upmpdcli.service"
+  fi
+}
+
+main() {
+  stow::bin
+  stow::dotfiles
+  setup::services
+}
+
+if test -z "${1:-}"; then
+  main
 else
-  echo ""
-  echo "================================="
-  echo "Enabling and starting services..."
-  echo "================================="
-
-  systemctl --user daemon-reload
-  systemctl_enable_start "mpd.socket"
-  systemctl_enable_start "mpd.service"
-  systemctl_enable_start "upmpdcli.service"
+  for target in "${@}"; do
+    $target
+  done
 fi
