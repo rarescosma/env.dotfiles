@@ -4,6 +4,10 @@ LANG=en_US.UTF-8
 LC_CTYPE=en_US.UTF-8
 LC_COLLATE="C"
 
+export $(systemctl --user show-environment | grep -E "^XDG_")
+export GPG_TTY="$TTY"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+
 # -- Editor --------------------------------------------------------------------
 alias vi="nvim"
 alias vim="nvim"
