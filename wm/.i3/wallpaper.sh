@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-WALLPAPER="tjikko_crop.png"
-
-feh --bg-fill ~/media/wallpapers/${WALLPAPER}
+feh --bg-fill --geometry +0+640 ~/media/wallpapers/mac/Mountain\ Range.jpg
