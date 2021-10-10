@@ -89,7 +89,7 @@ setup::var() {
   echo "========================================"
 
   echo "Customizing firefox css"
-  profile=$(grep 'Path=' "$HOME/.mozilla/firefox/profiles.ini" | sed s/^Path=//)
+  profile=$(head -n4 "$HOME/.mozilla/firefox/profiles.ini" | grep -E 'Default=' | sed s/^Default=//)
   [[ -z "$profile" ]] || link "_vendor/firefox-css" ".mozilla/firefox/$profile/chrome"
 }
 
