@@ -70,26 +70,39 @@ stow::dotfiles() {
 }
 
 setup::services() {
-  if is_chroot; then
-    echo >&2 "=== Running in chroot, skipping user services..."
-  else
-    echo ""
-    echo "================================="
-    echo "Enabling and starting services..."
-    echo "================================="
+  echo ""
+  echo "================================="
+  echo "Enabling and starting services..."
+  echo "================================="
 
-    systemctl --user daemon-reload
-    systemctl_enable_start "mpd.socket"
-    systemctl_enable_start "mpd.service"
-    systemctl_enable_start "upmpdcli.service"
-    systemctl_enable_start "espanso.service"
-  fi
+  systemctl --user daemon-reload
+  systemctl_enable_start "mpd.socket"
+  systemctl_enable_start "mpd.service"
+  systemctl_enable_start "upmpdcli.service"
+  systemctl_enable_start "espanso.service"
+}
+
+setup::var() {
+  echo ""
+  echo "========================================"
+  echo "Finishing various user configurations..."
+  echo "========================================"
+
+  echo "Customizing firefox css"
+  profile=$(grep 'Path=' "$HOME/.mozilla/firefox/profiles.ini" | sed s/^Path=//)
+  link "_vendor/firefox-css" ".mozilla/firefox/$profile/chrome"
 }
 
 main() {
   stow::bin
   stow::dotfiles
-  setup::services
+
+  if is_chroot; then
+    echo >&2 "=== Running in chroot, skipping services + var..."
+  else
+    setup::services
+    setup::var
+  fi
 }
 
 if test -z "${1:-}"; then
