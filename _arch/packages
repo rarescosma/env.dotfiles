@@ -192,5 +192,6 @@ xorg-fonts-misc
 xorg-xinit
 xsel
 youtube-dl
+zenity
 zip
 zsh
