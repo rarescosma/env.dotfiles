@@ -38,8 +38,11 @@ permfix() {
 # -- Crypto --------------------------------------------------------------------
 to() {
   tomb list || {
-    tomb open $TOMB_FILE -k $TOMB_KEY -f
-    ln -sf /tomb/espanso/*.yml ~/.config/espanso/user/
+    temp_key="$(mktemp)"
+    cp "$TOMB_KEY" "$temp_key"
+    tomb open $TOMB_FILE -k $temp_key -f && \
+      ln -sf /tomb/espanso/*.yml ~/.config/espanso/user/
+    rm "$temp_key"
   }
 }
 
