@@ -20,18 +20,11 @@ for pid in $(pidof -x $_MY_NAME); do
    fi
 done
 
-wm io::keyboard
-
-sleep 3
-
-"${HOME}/.i3/wallpaper.sh"
 dropbox &
-
 nm-applet &
 volctl &
 parcellite &
 unclutter &
-
 thunar --daemon &
 syndaemon -i 1 -t -k &
 
@@ -45,7 +38,5 @@ cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 if test -x "${HOME}/bin/rtorrent-watch"; then
     "${HOME}/bin/rtorrent-watch" --trampoline &
 fi
-
-wm io::keyboard_post
 
 wait

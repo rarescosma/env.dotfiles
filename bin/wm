@@ -9,18 +9,18 @@ IDEA_VERSION=${IDEA_VERSION:-"2021.2"}
 #  / /_/ /  __/ |/ / / /__/  __(__  )
 # /_____/\___/|___/_/\___/\___/____/
 
-function io::keyboard() {
-  setxkbmap -option ctrl:nocaps -layout ro
+function keyboard::rate() {
+  xset r rate 300 25
 }
 
-function io::keyboard_post() {
-  xset r rate 300 25
+function keyboard::map() {
+  setxkbmap -option ctrl:nocaps -layout ro
+
   killall -9 xcape
+  sleep 0.5
+  xcape -e "Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape"
   if [ -f "$HOME/keymap.xkb" ]; then
       xkbcomp "$HOME/keymap.xkb" $DISPLAY
-      xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
-  else
-      xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
   fi
 }
 

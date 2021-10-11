@@ -173,6 +173,7 @@ exec --no-startup-id $Locker -c 000000
 exec --no-startup-id xautolock -time 10 -locker "$Locker"
 
 # startup
+exec --no-startup-id ~/bin/startup-xinit
 exec --no-startup-id ~/bin/startup-i3
 
 # wallpaper

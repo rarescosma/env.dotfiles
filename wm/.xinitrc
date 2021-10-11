@@ -11,10 +11,6 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
-if [ -x ~/bin/startup-xinit ]; then
-  ~/bin/startup-xinit
-fi
-
 dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID
