@@ -69,6 +69,7 @@ iotop
 ipython
 iw
 jq
+kernel-modules-hook
 keychain
 klavaro
 libva-intel-driver
