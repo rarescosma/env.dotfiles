@@ -5,6 +5,7 @@ arandr
 audacity
 axel
 base
+bat
 bc
 borg
 borgmatic
@@ -18,6 +19,7 @@ colordiff
 cowsay
 cpupower
 debootstrap
+dfrs
 dhcpcd
 dialog
 diff-so-fancy
@@ -122,6 +124,7 @@ pipewire-jack
 pipewire-pulse
 pkgfile
 powertop
+progress
 pv
 pwgen
 pyenv
