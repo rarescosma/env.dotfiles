@@ -84,6 +84,7 @@ logrotate
 lsof
 lvm2
 lxappearance
+lxd
 man-db
 man-pages
 mc
