@@ -4,21 +4,6 @@ set -e
 
 PACKAGE_GROUPS="base-devel xorg"
 
-net::enable_wifi() {
-  IF="${IF:-wlp3s0}"
-  SSID="${SSID:-getbetter}"
-
-  ip link set $IF up
-
-  echo -n "${SSID} passphrase:"
-  read -s PASSPHRASE
-  echo
-  wpa_supplicant -i $IF -c <(wpa_passphrase "${SSID}" "${PASSPHRASE}") -B
-
-  sleep 5
-  dhcpcd $IF
-}
-
 pac::list_aur() {
   pacman -Qqm | sort
 }
@@ -63,26 +48,6 @@ pac::list() {
   echo $PACKAGE_GROUPS | tr " " "\n" > "$output_dir/package.groups"
   pac::list_non_group_non_aur > "$output_dir/packages"
   pac::list_aur > "$output_dir/packages.aur"
-}
-
-bootstrap() {
-  local dot make
-  dot=$(cd -P "$(dirname $(readlink -f "${BASH_SOURCE[0]}"))" && pwd)
-  make="make -C ${dot}/.."
-
-  export USER_NAME="${1}"
-  read -s -p "Pass: " USER_PASS </dev/tty
-
-  # Install base packages via make
-  pacman -Sy --noconfirm --needed make
-  $make base
-
-  # Setup user
-  SALT="\$1\$$(pwgen -1 8)\$"
-  export USER_PASS=$(python -c "import crypt; print(crypt.crypt(\"${USER_PASS}\", \"${SALT}\"))")
-  $make PLAYBOOK=bootstrap
-
-  sudo -u $USER_NAME $make PLAYBOOK=user ANSIBLE_NOCOWS=1
 }
 
 _completion() {
