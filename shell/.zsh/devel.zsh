@@ -1,5 +1,6 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(kubectl python aws golang)
+[[ -v enable_devel ]] || enable_devel=(kubectl python aws rust)
+export IDEA_VERSION="2021.2"
 
 # -- Turtles -------------------------------------------------------------------
 dscum() {

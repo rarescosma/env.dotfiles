@@ -8,10 +8,11 @@ import os
 import time
 
 # see com.intellij.idea.SocketLock for the server side of this interface
-
-RUN_PATH = u'/opt/intellij-idea-ultimate-edition/bin/idea.sh'
-CONFIG_PATH = u'/home/karelian/.IntelliJIdea2021.2/config'
-SYSTEM_PATH = u'/home/karelian/.IntelliJIdea2021.2/system'
+IDEA_VERSION = os.environ.get("IDEA_VERSION", "2021.2")
+HOME = os.path.expanduser("~")
+RUN_PATH = "/opt/intellij-idea-ultimate-edition/bin/idea.sh"
+CONFIG_PATH = f"${HOME}/.IntelliJIdea{IDEA_VERSION}/config"
+SYSTEM_PATH = f"${HOME}/.IntelliJIdea{IDEA_VERSION}/system"
 
 
 def print_usage(cmd):

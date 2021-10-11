@@ -1,5 +1,0 @@
-#!/bin/bash
-
-PLUGIN_CONFIG="${HOME}/.IntelliJIdea2017.3/config/options/ide-features-trainer.xml"
-sed -i -e 's/value="PASSED"/value="NOT_PASSED"/g' "${PLUGIN_CONFIG}"
-idea
