@@ -76,6 +76,7 @@ setup::services() {
   echo "================================="
 
   systemctl --user daemon-reload
+  mkdir -p "${HOME}/.local/mpd"
   systemctl_enable_start "mpd.socket"
   systemctl_enable_start "mpd.service"
   systemctl_enable_start "upmpdcli.service"
