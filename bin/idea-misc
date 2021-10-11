@@ -15,6 +15,25 @@ golf() {
   exec idea
 }
 
-for target in "${@}"; do
-  $target
-done
+backup() {
+  output_file=${1:-${HOME}/idea-backup-$(date "+%s").zst}
+  echo "Backing up idea to ${output_file} ..."
+  pushd "${HOME}" >/dev/null 2>&1
+  tar -c \
+    ".local/share/JetBrains/IntelliJIdea${IDEA_VERSION}" \
+    ".config/JetBrains/IntelliJIdea${IDEA_VERSION}" \
+    | zstd > "${output_file}"
+  popd >/dev/null 2>&1
+  echo "DONE!"
+}
+
+restore() {
+  if [[ -z "${1}" ]]; then
+    echo -e "Pass me the path to a .zstd backup file."
+    exit 1
+  fi
+
+  tar --zstd -xvf "${1}" -C "${HOME}"
+}
+
+"${@}"
