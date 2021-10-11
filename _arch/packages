@@ -103,6 +103,7 @@ networkmanager-openvpn
 networkmanager-pptp
 nginx
 nmap
+noto-fonts-emoji
 ntfs-3g
 nvme-cli
 oath-toolkit
@@ -142,6 +143,7 @@ rlwrap
 rmlint
 rng-tools
 rofi
+rofi-emoji
 rsync
 scala
 scrot
@@ -165,7 +167,6 @@ tree
 ttc-iosevka
 ttf-dejavu
 ttf-droid
-ttf-joypixels
 ttf-lato
 ttf-liberation
 ttf-opensans

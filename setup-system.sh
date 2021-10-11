@@ -29,7 +29,7 @@ setup::etc() {
   copy "etc/default/docker"
   copy "etc/default/grub"
   copy "etc/depmod.d/00-extra.conf"
-  copy "etc/fonts/conf.d/75-joypixels.conf"
+  copy "etc/fonts/conf.d/75-noto-color-emoji.conf"
   copy "etc/fonts/conf.d/30-font-aliases.conf"
   copy "etc/libvirt/qemu.conf"
   copy "etc/pacman.d/hooks"
