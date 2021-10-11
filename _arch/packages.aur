@@ -4,7 +4,6 @@ apache-tools
 bindfs
 cfssl
 dropbox
-ebtables
 espanso-bin
 flexo-git
 fortune-mod-southpark
@@ -17,13 +16,11 @@ intellij-idea-ultimate-edition-jre
 inxi
 libhugetlbfs
 libnpupnp
-libupnp1.12
 libupnpp
 localepurge
 masterpdfeditor-free
 mtaws
 obsidian
-openfec
 pacman-cleanup-hook
 pandoc-bin
 paru-bin
@@ -31,7 +28,6 @@ pkgtools
 python-pulsectl
 realvnc-vnc-server
 rmtrash
-roc-git
 steghide
 tidal-hifi-git
 timeshift
