@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Wanted pane width 0 - default 80, or pass argument 1 as wanted width
 pw0=80

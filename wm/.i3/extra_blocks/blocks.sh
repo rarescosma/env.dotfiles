@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Zakaria Barkouk ( Zakaria.gatter@gmail.com)
 
 # Show CPU Info - 1 (Mpstat)

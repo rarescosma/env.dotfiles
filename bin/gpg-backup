@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 test -z $KEY && echo "Usage: KEY=bla $0" && exit 1
 
