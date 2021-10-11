@@ -39,4 +39,7 @@ if test -x "${HOME}/bin/rtorrent-watch"; then
     "${HOME}/bin/rtorrent-watch" --trampoline &
 fi
 
+${HOME}/bin/startup-xinit
+${HOME}/.i3/wallpaper.sh
+
 wait

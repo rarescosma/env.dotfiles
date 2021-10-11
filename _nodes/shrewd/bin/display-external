@@ -16,5 +16,5 @@ dpi::idea 16 14
 dpi::x 110
 dpi::rofi 12
 
-keyboard::rate
 keyboard::map
+keyboard::rate
