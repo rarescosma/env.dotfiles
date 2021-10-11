@@ -106,9 +106,9 @@ setup::services() {
     echo "Enabling and starting turtles..."
     echo "================================"
 
-    systemctl_enable_start "docker.socket"
-    systemctl_enable_start "libvirtd.service"
-    systemctl_enable_start "lxd.service"
+    systemctl_enable_start "docker.socket" || true
+    systemctl_enable_start "libvirtd.service" || true
+    systemctl_enable_start "lxd.service" || true
   fi
 }
 
