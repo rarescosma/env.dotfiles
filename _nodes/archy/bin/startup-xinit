@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source "${HOME}/bin/wm"
+
+xrandr --output Virtual-1 --primary --mode 1600x1200 --pos 0x0 --rotate normal
+
+dpi::terminal 10
+dpi::i3 8
+dpi::gtk 10
+dpi::idea 16 14
+dpi::x 110
+dpi::rofi 12
+
+keyboard::rate
+setxkbmap -option ctrl:nocaps -layout ro
+
+if [ -f "$HOME/keymap.xkb" ]; then
+  xkbcomp "$HOME/keymap.xkb" $DISPLAY
+fi
