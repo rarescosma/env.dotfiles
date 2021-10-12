@@ -23,7 +23,7 @@
 [commit]
 	gpgsign = true
 [init]
-	templatedir = ~/.git-template
+	templatedir = ~/.config/git-template
 	defaultBranch = main
 [interactive]
 	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
