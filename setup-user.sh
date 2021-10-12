@@ -15,22 +15,6 @@ stow() {
   echo "stow $dotfiles_dir -> $target / $1"
 }
 
-link() {
-  orig_file="$dotfiles_dir/$1"
-  if [ -n "$2" ]; then
-    dest_file="$HOME/$2"
-  else
-    dest_file="$HOME/$1"
-  fi
-
-  mkdir -p "$(dirname "$orig_file")"
-  mkdir -p "$(dirname "$dest_file")"
-
-  rm -rf "$dest_file"
-  ln -s "$orig_file" "$dest_file"
-  echo "$dest_file -> $orig_file"
-}
-
 is_chroot() {
   ! cmp -s /proc/1/mountinfo /proc/self/mountinfo
 }
@@ -91,7 +75,11 @@ setup::var() {
 
   echo "Customizing firefox css"
   profile=$(head -n4 "$HOME/.mozilla/firefox/profiles.ini" | grep -E 'Default=' | sed s/^Default=//)
-  [[ -z "$profile" ]] || link "_vendor/firefox-css" ".mozilla/firefox/$profile/chrome"
+  [[ -z "$profile" ]] || {
+    _dest="${HOME}/.mozilla/firefox/$profile/chrome"
+    rm -rf "$dest"
+    ln -sf "${dotfiles_dir}/_vendor/firefox-css" "$dest"
+  }
 }
 
 main() {
@@ -109,7 +97,5 @@ main() {
 if test -z "${1:-}"; then
   main
 else
-  for target in "${@}"; do
-    $target
-  done
+  ${@}
 fi
