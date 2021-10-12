@@ -68,6 +68,7 @@ inetutils
 intel-gpu-tools
 intel-media-driver
 intel-ucode
+interception-dual-function-keys
 iotop
 ipython
 iw
@@ -192,7 +193,6 @@ watchexec
 wdiff
 whois
 xautolock
-xcape
 xclip
 xdg-utils
 xf86-input-synaptics

@@ -3,7 +3,6 @@
 # shellcheck disable=SC1090
 source "${HOME}/bin/wm"
 
-# EXTERNAL="DP2-8"
 EXTERNAL="DP1"
 
 xrandr --output eDP1 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
@@ -14,18 +13,9 @@ xrandr --output eDP1 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
   --output HDMI2 --off \
   --output HDMI1 --off
 
-io::keyboard
-killall -9 xcape
-if [ -f "$HOME/keymap.xkb" ]; then
-    xkbcomp "$HOME/keymap.xkb" $DISPLAY
-    xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
-else
-    xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
-fi
-
 dpi::terminal 10
 dpi::i3 7
 dpi::gtk 9
 dpi::idea 18 15
 
-"${HOME}/.i3/wallpaper.sh"
+keyboard::setup

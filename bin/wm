@@ -9,22 +9,12 @@ IDEA_VERSION=${IDEA_VERSION:-"2021.2"}
 #  / /_/ /  __/ |/ / / /__/  __(__  )
 # /_____/\___/|___/_/\___/\___/____/
 
-function keyboard::rate() {
+function keyboard::setup() {
   xset r rate 300 25
-}
-
-function keyboard::map() {
-  setxkbmap -option ctrl:nocaps -layout ro
-
+  setxkbmap -layout ro
   if [ -f "$HOME/keymap.xkb" ]; then
-      xkbcomp "$HOME/keymap.xkb" $DISPLAY
+      xkbcomp "$HOME/keymap.xkb" $DISPLAY 2>/dev/null
   fi
-}
-
-function keyboard::xcape() {
-  killall -9 xcape
-  sleep 0.5
-  xcape -e "Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape"
 }
 
 function _usb::dispatch() {

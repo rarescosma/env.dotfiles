@@ -4,40 +4,18 @@
 cmd="$@"; shift $#
 source "${HOME}/bin/wm"
 
-function setup::display() {
-  xrandr --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
-    --output eDP1 --off \
-    --output VIRTUAL1 --off  \
-    --output HDMI2 --off \
-    --output HDMI1 --off \
-    --output DP2 --off
-}
+xrandr --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
+  --output eDP1 --off \
+  --output VIRTUAL1 --off  \
+  --output HDMI2 --off \
+  --output HDMI1 --off \
+  --output DP2 --off
 
-function setup::keyboard() {
-  keyboard::map
-  keyboard::rate
-  keyboard::xcape
-}
+dpi::terminal 12
+dpi::i3 8
+dpi::gtk 10
+dpi::idea 18 14
+dpi::x 110
+dpi::rofi 12
 
-function main() {
-  setup::display
-
-  dpi::terminal 12
-  dpi::i3 8
-  dpi::gtk 10
-  dpi::idea 16 14
-  dpi::x 110
-  dpi::rofi 12
-
-  setup::keyboard
-}
-
-function pre() {
-  setup::keyboard
-}
-
-if [[ "$cmd" == "" ]]; then
-  main
-else
-  $cmd
-fi
+keyboard::setup

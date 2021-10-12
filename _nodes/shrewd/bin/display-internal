@@ -16,4 +16,4 @@ dpi::idea 29 24
 dpi::x 144
 dpi::rofi 24
 
-"${HOME}/.i3/wallpaper.sh"
+keyboard::setup

@@ -32,6 +32,8 @@ setup::etc() {
   copy "etc/depmod.d/00-extra.conf"
   copy "etc/fonts/conf.d/75-noto-color-emoji.conf"
   copy "etc/fonts/conf.d/30-font-aliases.conf"
+  copy "etc/interception/udevmon.yaml"
+  copy "etc/interception/dual-function-keys/modifiers.yaml"
   copy "etc/libvirt/qemu.conf"
   copy "etc/pacman.d/hooks"
   copy "etc/profile.d/freetype2.sh"
@@ -92,15 +94,16 @@ setup::services() {
 
   systemctl daemon-reload
   systemctl_enable_start "NetworkManager.service"
+  systemctl_enable_start "autoborg@home.timer"
+  systemctl_enable_start "autoborg@root.timer"
+  systemctl_enable_start "autoglacier.timer"
   systemctl_enable_start "btrfs-scrub@-.timer"
   systemctl_enable_start "btrfs-scrub@home.timer"
   systemctl_enable_start "btrfs-scrub@snapshots.timer"
   systemctl_enable_start "btrfs-scrub@var_log.timer"
   systemctl_enable_start "fstrim.timer"
   systemctl_enable_start "snapper-cleanup.timer"
-  systemctl_enable_start "autoborg@home.timer"
-  systemctl_enable_start "autoborg@root.timer"
-  systemctl_enable_start "autoglacier.timer"
+  systemctl_enable_start "udevmon.service"
 
   if is_chroot; then
     echo >&2 "=== Running in chroot, skipping turtles..."

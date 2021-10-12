@@ -18,14 +18,4 @@ dpi::i3 9
 dpi::gtk 9
 dpi::idea 27 20
 
-keyboard::rate
-
-xmodmap -e 'keycode 134 = Menu'
-
-killall xcape
-if [ -f "$HOME/keymap.xkb" ]; then
-    xkbcomp "$HOME/keymap.xkb" $DISPLAY
-    xcape -e 'Control_R=Menu;Mode_switch=BackSpace;Control_L=Escape'
-else
-    xcape -e 'Control_R=Menu;ISO_Level3_Shift=BackSpace;Control_L=Escape'
-fi
+keyboard::setup

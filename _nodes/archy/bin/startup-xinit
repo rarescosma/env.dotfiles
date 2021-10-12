@@ -11,9 +11,4 @@ dpi::idea 16 14
 dpi::x 110
 dpi::rofi 12
 
-keyboard::rate
-setxkbmap -option ctrl:nocaps -layout ro
-
-if [ -f "$HOME/keymap.xkb" ]; then
-  xkbcomp "$HOME/keymap.xkb" $DISPLAY
-fi
+keyboard::setup
