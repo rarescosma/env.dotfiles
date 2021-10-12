@@ -1,6 +1,8 @@
 # Sane defaults
 [[ -v enable_devel ]] || enable_devel=(kubectl python aws rust)
-export IDEA_VERSION="2021.2"
+
+alias vi="$EDITOR"
+alias vim="$EDITOR"
 
 # -- Turtles -------------------------------------------------------------------
 dscum() {
@@ -38,10 +40,6 @@ fi
 
 # -- Python --------------------------------------------------------------------
 if [[ "$enable_devel" =~ "python" ]]; then
-  export PYENV_ROOT="${HOME}/.pyenv"
-  if [[ -x "${PYENV_ROOT}/bin/pyenv" ]]; then
-    export PATH="${PATH}:${PYENV_ROOT}/bin"
-  fi
   if (( $+commands[pyenv] )); then
     eval "$(pyenv init --path)"
   fi
@@ -107,28 +105,21 @@ if [[ "$enable_devel" =~ "python" ]]; then
 fi
 
 if [[ "$enable_devel" =~ "golang" ]]; then
-  PATH="${PATH}:${HOME}/.golang/bin"
-  export GOPATH="${HOME}/.golang"
+  PATH="${PATH}:${GOPATH}/bin"
 fi
 
 if [[ "$enable_devel" =~ "rust" ]]; then
-  PATH="${PATH}:${HOME}/.cargo/bin"
+  PATH="${PATH}:${CARGO_HOME}/bin"
 fi
 
 if [[ "$enable_devel" =~ "node" ]]; then
-  NPM_PACKAGES="${HOME}/.npm-packages"
   PATH="${PATH}:${NPM_PACKAGES}/bin"
   NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
 fi
 
 if [[ "$enable_devel" =~ "nvm" ]]; then
-  [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
   source /usr/share/nvm/nvm.sh --no-use
   source /usr/share/nvm/install-nvm-exec
-fi
-
-if [[ "$enable_devel" =~ "php" ]]; then
-  PATH="${PATH}:${HOME}/.composer/vendor/bin"
 fi
 
 if [[ "$enable_devel" =~ "java" ]]; then

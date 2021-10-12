@@ -1,3 +1,6 @@
+export FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse --bind change:top --bind ctrl-e:accept --expect=enter"
+export FZF_CTRL_T_COMMAND="fd --type file --follow --hidden --exclude .git"
+
 PATH="$PATH:$_VENDOR/fzf/bin"
 source "$_VENDOR/fzf/shell/key-bindings.zsh"
 

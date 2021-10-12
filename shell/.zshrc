@@ -1,4 +1,5 @@
 [[ -f ~/.local/env ]] && source ~/.local/env
+export $(systemctl --user show-environment)
 
 source ~/.zsh/oh-my-vendor.zsh
 source ~/.zsh/fzf.zsh
@@ -14,8 +15,14 @@ source ~/.zsh/misc.zsh
 
 [[ -f ~/.local/functions ]] && source ~/.local/functions
 
+if [[ "$TTY" == /dev/tty* ]]; then
+  export GPG_TTY="$TTY"
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+  systemctl --user import-environment GPG_TTY SSH_AUTH_SOCK
+fi
+
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx -- -dpi 110
+  exec systemd-cat -t startx startx -- -dpi 110
 else
   source ~/.zsh/fortune.zsh
 fi
