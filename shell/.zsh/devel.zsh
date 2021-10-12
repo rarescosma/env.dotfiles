@@ -122,15 +122,4 @@ if [[ "$enable_devel" =~ "nvm" ]]; then
   source /usr/share/nvm/install-nvm-exec
 fi
 
-if [[ "$enable_devel" =~ "java" ]]; then
-  export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home"
-  export SDKMAN_DIR="${HOME}/.sdkman"
-  [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
-fi
-
-if [[ "$enable_devel" =~ "ruby" ]] && (( $+commands[chruby] )); then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  chruby ruby-2.3.1
-fi
-
 [[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
