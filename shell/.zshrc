@@ -22,7 +22,9 @@ if [[ "$TTY" == /dev/tty* ]]; then
 fi
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec systemd-cat -t startx startx -- -dpi 110
+  systemd-cat -t startx startx -- -dpi 110
+  systemctl --user unset-environment DISPLAY
+  exit
 else
   source ~/.zsh/fortune.zsh
 fi
