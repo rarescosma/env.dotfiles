@@ -1,20 +1,43 @@
 #!/usr/bin/env bash
 
+# wm also got a trampoline, so gobble all args
+cmd="$@"; shift $#
 source "${HOME}/bin/wm"
 
-xrandr --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
-  --output eDP1 --off \
-  --output VIRTUAL1 --off  \
-  --output HDMI2 --off \
-  --output HDMI1 --off \
-  --output DP2 --off
+function setup::display() {
+  xrandr --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
+    --output eDP1 --off \
+    --output VIRTUAL1 --off  \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off
+}
 
-dpi::terminal 10
-dpi::i3 8
-dpi::gtk 10
-dpi::idea 16 14
-dpi::x 110
-dpi::rofi 12
+function setup::keyboard() {
+  keyboard::map
+  keyboard::rate
+  keyboard::xcape
+}
 
-keyboard::map
-keyboard::rate
+function main() {
+  setup::display
+
+  dpi::terminal 10
+  dpi::i3 8
+  dpi::gtk 10
+  dpi::idea 16 14
+  dpi::x 110
+  dpi::rofi 12
+
+  setup::keyboard
+}
+
+function pre() {
+  setup::keyboard
+}
+
+if [[ "$cmd" == "" ]]; then
+  main
+else
+  $cmd
+fi
