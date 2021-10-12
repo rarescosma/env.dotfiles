@@ -65,6 +65,8 @@ setup::services() {
   systemctl_enable_start "mpd.service"
   systemctl_enable_start "upmpdcli.service"
   systemctl_enable_start "espanso.service"
+  systemctl_enable_start "mpDris2.service" || true
+  systemctl_enable_start "moc_mpris.service" || true
 }
 
 setup::var() {
