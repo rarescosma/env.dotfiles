@@ -40,9 +40,7 @@ fi
 
 # -- Python --------------------------------------------------------------------
 if [[ "$enable_devel" =~ "python" ]]; then
-  if (( $+commands[pyenv] )); then
-    eval "$(pyenv init --path)"
-  fi
+  export PATH="${PYENV_ROOT}/shims:$PATH"
 
   export PIPENV_VENV_IN_PROJECT=1
   export PIPENV_IGNORE_VIRTUALENVS=0
