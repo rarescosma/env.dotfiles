@@ -104,8 +104,13 @@ ssh-add() {
 }
 
 # -- Editors -------------------------------------------------------------------
-alias s="$(echo $VISUAL | cut -d' ' -f1)"
-alias svi='sudo vim'
+s() {
+  if test -w "$@"; then
+    $VISUAL "$@"
+  else
+    sudo $VISUAL "$@"
+  fi
+}
 
 ## edit immutable files
 svii() {
