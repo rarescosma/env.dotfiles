@@ -1,9 +1,10 @@
-Theme = ric
-MusicDir = /home/karelian/Music
+Theme = darkdot_theme
+MusicDir = /home/karelian/media/audio
 ShowTime = no
 Keymap = keymap
 StartInMusicDir = yes 
-FastDir1 = /home/karelian/Music
+FastDir1 = /home/karelian/media/audio
+FastDir2 = /home/karelian/var
 PlaylistFullPaths = no
 SoundDriver = pulseaudio
 
