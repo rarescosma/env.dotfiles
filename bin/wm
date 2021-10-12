@@ -12,8 +12,8 @@ IDEA_VERSION=${IDEA_VERSION:-"2021.2"}
 function keyboard::setup() {
   xset r rate 300 25
   setxkbmap -layout ro
-  if [ -f "$HOME/keymap.xkb" ]; then
-      xkbcomp "$HOME/keymap.xkb" $DISPLAY 2>/dev/null
+  if [ -f "$XDG_CONFIG_HOME/keymap.xkb" ]; then
+      xkbcomp "$XDG_CONFIG_HOME/keymap.xkb" $DISPLAY 2>/dev/null
   fi
 }
 
