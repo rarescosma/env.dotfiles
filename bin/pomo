@@ -6,5 +6,5 @@ grace_time="${2:-30}"
 sleep "$pomo_time"
 notify-send "Time for a break. Locking in ${grace_time}s ..."
 sleep "$grace_time"
-playerctl pause
+playerctl -a pause
 ${HOME}/.i3/locker.sh
