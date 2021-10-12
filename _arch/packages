@@ -125,6 +125,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pkgfile
+playerctl
 powertop
 progress
 pv

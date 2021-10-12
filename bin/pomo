@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-if [[ -z "$1" ]]; then
-  echo "Please specify number of seconds."
-fi
+pomo_time="${1:-1200}"
+grace_time="${2:-30}"
 
-sleep "$1"
-notify-send "Time for a break. Locking in 30s..."
-sleep 30
-${HOME}/bin/tidal-flip
+sleep "$pomo_time"
+notify-send "Time for a break. Locking in ${grace_time}s ..."
+sleep "$grace_time"
+playerctl pause
 ${HOME}/.i3/locker.sh
-
