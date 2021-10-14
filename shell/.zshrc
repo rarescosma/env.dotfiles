@@ -1,6 +1,4 @@
 [[ -f ~/.local/env ]] && source ~/.local/env
-export $(systemctl --user show-environment)
-
 source ~/.zsh/oh-my-vendor.zsh
 source ~/.zsh/fzf.zsh
 
@@ -22,9 +20,7 @@ if [[ "$TTY" == /dev/tty* ]]; then
 fi
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  systemd-cat -t startx startx -- -dpi 110
-  systemctl --user unset-environment DISPLAY
-  exit
+  exec systemd-cat -t startx startx -- -dpi 110
 else
   source ~/.zsh/fortune.zsh
 fi
