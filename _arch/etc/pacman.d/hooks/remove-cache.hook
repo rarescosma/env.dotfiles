@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Nuking pacman cache because flexo...
+When = PostTransaction
+Exec = /usr/bin/paccache -rk0
