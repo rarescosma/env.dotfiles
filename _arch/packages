@@ -59,6 +59,7 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 gstreamer-vaapi
+gtk-engine-murrine
 gvfs
 htop
 httpie
