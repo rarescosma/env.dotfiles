@@ -141,7 +141,7 @@ echo -e "\n### Installing packages"
 pacstrap -i /mnt base linux linux-firmware linux-headers intel-ucode \
   base-devel zsh neovim git stow dialog \
   grub efibootmgr \
-  networkmanager network-manager-applet \
+  iptables-nft networkmanager network-manager-applet \
   mtools dosfstools btrfs-progs inetutils \
   reflector
 
