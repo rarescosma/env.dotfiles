@@ -18,7 +18,7 @@
 # Run installation:
 #
 # - Connect to wifi via: `# iwctl station wlan0 connect WIFI-NETWORK`
-# - Run: `# bash <(curl -sL https://git.io/karelian-arch)`
+# - Run: `# bash <(curl -sL https://git.io/arch-karelian)`
 
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
