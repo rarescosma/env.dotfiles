@@ -11,6 +11,8 @@ floating_modifier $mod
 for_window [window_role="pop-up" instance="^(?!roamresearch).*"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [title="^rofi-scratch:" ] floating enable
+for_window [title="^rofi-scratch:" ] border 1px
 assign [instance="^roamresearch.*$"] 7
 
 # terminals
@@ -25,8 +27,9 @@ bindsym $mod+Shift+slash exec firefox --private-window
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi in combi mode
+# rofi, rofi, rofi
 bindsym $alt+space exec --no-startup-id rofi -show combi
+bindsym $mod+backslash exec --no-startup-id ~/bin/rofi-scratch
 
 # focus on a specific task
 bindsym $mod+space exec --no-startup-id ~/.i3/focus.sh

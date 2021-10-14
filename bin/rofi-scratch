@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# pick a command with rofi and run it in a disposable terminal
+# waiting for a keypress
+
+rofi -modi run -show run \
+  -kb-accept-entry '' -kb-accept-alt Return \
+  -run-shell-command '{terminal} --title="rofi-scratch: {cmd}" -e zsh -ic "{cmd}; read"'
