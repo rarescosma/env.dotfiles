@@ -32,6 +32,8 @@
 [mergetool]
 	keepBackup = false
 	prompt = false
+[mergetool "meld"]
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [push]
 	default = current
 [rebase]
