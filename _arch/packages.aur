@@ -29,6 +29,7 @@ pandoc-bin
 paru-bin
 pkgtools
 python-pulsectl
+raiseorlaunch
 realvnc-vnc-server
 rmtrash
 snapper-gui-git
