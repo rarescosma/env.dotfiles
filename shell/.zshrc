@@ -21,6 +21,8 @@ fi
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec systemd-cat -t startx startx -- -dpi 110
-else
-  source ~/.zsh/fortune.zsh
+else 
+  if (( ${+TMUX} )); then
+    source ~/.zsh/fortune.zsh
+  fi
 fi
