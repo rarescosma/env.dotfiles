@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -x
+
+_coffee() {
+  xset -dpms
+  xset s off
+  touch /tmp/caffeine
+}
+
+_coffee

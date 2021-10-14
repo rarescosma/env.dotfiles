@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -x
+
+_melatonin() {
+  rm -f /tmp/caffeine
+  xset +dpms
+  xset s default
+}
+
+_melatonin
