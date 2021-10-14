@@ -76,5 +76,6 @@ tx_rate=$(( $tx_diff / $time_diff ))
 # 1024^2 = 1048576, then display MiB/s instead
 rx_kib=$(( $rx_rate >> 10 ))
 tx_kib=$(( $tx_rate >> 10 ))
-echo -n " "
-printf '%sM\n' "`echo "scale=1; $tx_kib / 1024 + $rx_kib / 1024" | bc`"
+total=$(echo "scale=1;$tx_kib / 1024 + $rx_kib / 1024" \
+  | bc | awk '{printf "%.1f", $0}')
+printf '%+4sM\n' "$total"
