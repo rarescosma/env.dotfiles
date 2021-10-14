@@ -17,7 +17,7 @@ packages: /usr/bin/paru ## Install arch packages
 
 .PHONY: aur
 aur: /usr/bin/paru ## Install AUR packages
-	paru -Syu --needed --noconfirm \
+	paru -Syu --needed --noconfirm --pgpfetch \
 	$(shell cat _arch/packages.aur | grep -v '#')
 
 .PHONY: help
