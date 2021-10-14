@@ -78,8 +78,8 @@ setup::var() {
   profile=$(head -n4 "$HOME/.mozilla/firefox/profiles.ini" | grep -E 'Default=' | sed s/^Default=//)
   [[ -z "$profile" ]] || {
     _dest="${HOME}/.mozilla/firefox/$profile/chrome"
-    rm -rf "$dest"
-    ln -sf "${dotfiles_dir}/_vendor/firefox-css" "$dest"
+    rm -rf "$_dest"
+    ln -sf "${dotfiles_dir}/_vendor/firefox-css" "$_dest"
   }
 }
 
