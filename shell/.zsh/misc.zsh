@@ -12,6 +12,9 @@ fi
 # -- disable hosts completion --------------------------------------------------
 zstyle ':completion:*:*:*' hosts off
 
+# -- moc config ----------------------------------------------------------------
+alias mocp="mocp -O MOCDir=${XDG_CONFIG_HOME}/moc"
+
 # -- Midnight Commander --------------------------------------------------------
 export MC_SKIN=$HOME/.config/mc/solarized.ini
 
