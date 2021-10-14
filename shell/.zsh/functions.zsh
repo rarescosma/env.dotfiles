@@ -61,21 +61,9 @@ vpn() {
 
   to || return
 
-  # pre-hooks
   old_name=$(trename "vpn-${1}")
-  {
-    tail -f "$log_path" | sed '/Initialization Sequence Completed/ q';
-    sudo systemctl restart https_dns_proxy;
-  } &
-
-  sudo openvpn \
-    --config "/tomb/${vpn_config}" \
-    --mute-replay-warnings | tee "$log_path"
-
-  # post-hooks
-  wait
+  sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings
   trename "${old_name}"
-  sudo systemctl restart https_dns_proxy
 }
 
 ## pass + fzf integration
