@@ -44,6 +44,7 @@ _kindle_backup () {
 }
 
 # Mount -> dispatch -> paranoia -> unmount
+mkdir -p "$MOUNTPOINT"
 (mount | grep "$MOUNTPOINT") || mount "$PARTITION_PATH" "$MOUNTPOINT"
 "_${DEV_TYPE}_backup"
 sync
