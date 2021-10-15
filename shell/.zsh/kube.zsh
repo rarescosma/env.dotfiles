@@ -4,7 +4,6 @@ _join_by() {
   echo "$*"
 }
 
-unset KUBECONFIG
 alias k='kubectl'
 
 ksn() {
