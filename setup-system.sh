@@ -27,6 +27,7 @@ setup::etc() {
 
   copy "etc/NetworkManager/conf.d/20-connectivity.conf"
   copy "etc/conf.d/snapper"
+  copy "etc/containers/registries.conf"
   copy "etc/default/grub"
   copy "etc/depmod.d/00-extra.conf"
   copy "etc/dns-over-https/doh-client.conf"
@@ -114,6 +115,7 @@ setup::services() {
 
     systemctl_enable_start "libvirtd.service" || true
     systemctl_enable_start "lxd.service" || true
+    systemctl_enable_start "podman.service" || true
   fi
 }
 

@@ -130,6 +130,7 @@ pipewire-jack
 pipewire-pulse
 pkgfile
 playerctl
+podman-docker
 powertop
 progress
 pv
