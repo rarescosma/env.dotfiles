@@ -27,7 +27,6 @@ setup::etc() {
 
   copy "etc/NetworkManager/conf.d/20-connectivity.conf"
   copy "etc/conf.d/snapper"
-  copy "etc/default/docker"
   copy "etc/default/grub"
   copy "etc/depmod.d/00-extra.conf"
   copy "etc/dns-over-https/doh-client.conf"
@@ -45,7 +44,6 @@ setup::etc() {
   copy "etc/sysctl.d/99-sysctl.conf"
   copy "etc/systemd/logind.conf"
   copy "etc/systemd/system/closetomb.service"
-  copy "etc/systemd/system/docker.service.d"
   copy "etc/systemd/system/getty@tty1.service.d/override.conf"
   copy "etc/systemd/system/powertop.service"
   copy "etc/locale.nopurge"
@@ -114,7 +112,6 @@ setup::services() {
     echo "Enabling and starting turtles..."
     echo "================================"
 
-    systemctl_enable_start "docker.socket" || true
     systemctl_enable_start "libvirtd.service" || true
     systemctl_enable_start "lxd.service" || true
   fi
