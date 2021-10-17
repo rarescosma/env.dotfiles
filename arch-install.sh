@@ -120,6 +120,8 @@ mount "${part_root}" /mnt
 btrfs subvolume create /mnt/root
 btrfs subvolume create /mnt/home
 btrfs subvolume create /mnt/docker
+btrfs subvolume create /mnt/lxd
+btrfs subvolume create /mnt/libvirt
 btrfs subvolume create /mnt/logs
 btrfs subvolume create /mnt/temp
 btrfs subvolume create /mnt/swap
@@ -127,11 +129,13 @@ btrfs subvolume create /mnt/snapshots
 umount /mnt
 
 mount -o noatime,nodiratime,compress=zstd,subvol=root "${part_root}" /mnt
-mkdir -p /mnt/{mnt/btrfs-root,efi,home,var/{lib/docker,log,tmp},swap,.snapshots}
+mkdir -p /mnt/{mnt/btrfs-root,efi,home,var/{lib/{docker,lxd,libvirt},log,tmp},swap,.snapshots}
 mount "${part_boot}" /mnt/efi
 mount -o noatime,nodiratime,compress=zstd,subvol=/ "${part_root}" /mnt/mnt/btrfs-root
 mount -o noatime,nodiratime,compress=zstd,subvol=home "${part_root}" /mnt/home
 mount -o noatime,nodiratime,compress=zstd,subvol=docker "${part_root}" /mnt/var/lib/docker
+mount -o noatime,nodiratime,compress=zstd,subvol=lxd "${part_root}" /mnt/var/lib/lxd
+mount -o noatime,nodiratime,compress=zstd,subvol=libvirt "${part_root}" /mnt/var/lib/libvirt
 mount -o noatime,nodiratime,compress=zstd,subvol=logs "${part_root}" /mnt/var/log
 mount -o noatime,nodiratime,compress=zstd,subvol=temp "${part_root}" /mnt/var/tmp
 mount -o noatime,nodiratime,compress=zstd,subvol=swap "${part_root}" /mnt/swap
