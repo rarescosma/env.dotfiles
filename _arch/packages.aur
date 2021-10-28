@@ -27,11 +27,13 @@ obsidian
 pacman-cleanup-hook
 pandoc-bin
 paru-bin
+pipewire-jack-dropin
 pkgtools
 python-pulsectl
 raiseorlaunch
 realvnc-vnc-server
 rmtrash
+scream
 snapper-gui-git
 steghide
 tidal-hifi-git
