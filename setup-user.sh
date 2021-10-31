@@ -61,7 +61,7 @@ setup::services() {
 
   systemctl --user daemon-reload
   mkdir -p "${HOME}/.local/state/mpd"
-  systemctl_enable_start "mpd.service"
+  systemctl_enable_start "mpd@pulse.service"
   systemctl_enable_start "upmpdcli.service"
   systemctl_enable_start "espanso.service"
   systemctl_enable_start "mpDris2.service" || true
