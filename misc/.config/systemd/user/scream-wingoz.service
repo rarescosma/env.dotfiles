@@ -1,0 +1,15 @@
+[Unit]
+Description=Scream from the Wingoz VM on ALSA
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/systemctl --user stop "pipewire*"
+ExecStart=scream -v -o alsa -d "hw:0,0" -m /dev/shm/scream-ivshmem -t 150
+ExecStopPost=/usr/bin/systemctl --user start pipewire pipewire-media-session pipewire-pulse
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+
