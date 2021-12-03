@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+_host='seedbox'
+_prefix='/mnt/seedbox/fresh'
+_dest="$HOME/media/queue/"
+
+[[ $ZSH_EVAL_CONTEXT =~ :file$ ]] && sourced=1 || sourced=0
+
+if [[ "$sourced" == "1" ]]; then
+    _rpath_esc='[][(){}<>"'"'"',:;^&!$=?`\\|[:space:]]'
+
+    _ra() {
+        local rpath files
+        local IFS=$'\n'
+
+        # add prefix
+        rpath="$_prefix/${COMP_WORDS[@]:1}"
+
+        # unescape
+        rpath=$(command sed -e 's/\\\('$_rpath_esc'\)/\1/g' <<<"$rpath")
+
+        # escape problematic characters; remove prefix
+        files=$(ssh -o 'Batchmode yes' $_host \
+            command ls -aF1dL "\"$rpath\"*" 2>>/dev/null | \
+            command sed -e 's/'$_rpath_esc'/\\&/g' -e 's#^'$_prefix'/##g')
+
+        COMPREPLY+=($files)
+    }
+    complete -F _ra ra
+else
+    rsync -avP "$_host:$_prefix/\"${@}\"" $_dest
+fi
+
