@@ -3,5 +3,5 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
-LIBVA_DRIVER_NAME=i965
+LIBVA_DRIVER_NAME=iHD
 VPDAU_DRIVER=va_gl
