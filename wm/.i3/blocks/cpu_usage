@@ -46,17 +46,9 @@ close(MPSTAT);
 
 $cpu_usage eq -1 and die 'Can\'t find CPU information';
 
-$cpu_usage = pad(sprintf("%.2f\%\n", $cpu_usage), 7);
+$cpu_usage = pad(sprintf("%.2f", $cpu_usage), 7);
 
 # Print short_text, full_text
-print $cpu_usage;
-print $cpu_usage;
-
-# Print color, if needed
-if ($cpu_usage >= $t_crit) {
-    print "#bf616a\n";
-} elsif ($cpu_usage >= $t_warn) {
-    print "#ebcb8b\n";
-}
+print $cpu_usage . "%\n";
 
 exit 0;
