@@ -75,6 +75,7 @@ setup::_node() {
     copy_host "etc/modprobe.d/i915.conf"
     copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
     copy_host "etc/environment"
+    copy_host "etc/mkinitcpio.conf"
   fi
 
   if [[ $HOSTNAME == mac ]]; then

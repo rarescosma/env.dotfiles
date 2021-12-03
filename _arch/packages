@@ -83,9 +83,7 @@ klavaro
 libva-intel-driver
 libva-utils
 libvdpau-va-gl
-linux
 linux-firmware
-linux-headers
 linux-lts
 linux-lts-headers
 logrotate
