@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(kubectl python aws rust)
+[[ -v enable_devel ]] || enable_devel=(kubectl python aws rust nvm)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
