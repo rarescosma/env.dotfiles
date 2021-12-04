@@ -1,7 +1,5 @@
 [Unit]
 Description=borgmatic backup
-Wants=network-online.target
-After=network-online.target
 
 [Service]
 Type=oneshot
@@ -12,8 +10,6 @@ CPUSchedulingPolicy=batch
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
 IOWeight=100
-
-Restart=no
 
 LogRateLimitIntervalSec=0
 

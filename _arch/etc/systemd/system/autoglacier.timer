@@ -4,6 +4,7 @@ Description=Run mtglacier backup
 [Timer]
 OnCalendar=*-*-* 10:45
 Persistent=true
+AccuracySec=1s
 
 [Install]
 WantedBy=timers.target
