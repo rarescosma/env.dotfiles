@@ -9,11 +9,11 @@ xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x0 --rotate normal \
   --output HDMI1 --off \
   --output DP2 --off
 
-dpi::terminal 16
+dpi::terminal 9
 dpi::i3 10
 dpi::gtk 10
-dpi::idea 29 24
+dpi::idea 16 12
 dpi::x 144
-dpi::rofi 24
+dpi::rofi 20
 
 keyboard::setup
