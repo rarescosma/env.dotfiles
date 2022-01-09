@@ -1,6 +1,7 @@
 acpi
 alacritty
 alsa-utils
+anything-sync-daemon
 arandr
 arch-install-scripts
 audacity
@@ -133,6 +134,7 @@ pkgfile
 playerctl
 podman-docker
 powertop
+profile-sync-daemon
 progress
 pulseaudio
 pv

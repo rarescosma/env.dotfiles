@@ -26,6 +26,7 @@ setup::etc() {
   echo "=========================="
 
   copy "etc/NetworkManager/conf.d/20-connectivity.conf"
+  copy "etc/asd.conf"
   copy "etc/conf.d/snapper"
   copy "etc/containers/registries.conf"
   copy "etc/default/grub"
