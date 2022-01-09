@@ -96,7 +96,11 @@ s() {
   if test -w "$@"; then
     $VISUAL "$@"
   else
-    sudo $VISUAL "$@"
+    if test -f "$@"; then
+        sudo $VISUAL "$@"
+    else
+        $VISUAL "$@"
+    fi
   fi
 }
 
