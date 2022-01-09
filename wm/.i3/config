@@ -191,6 +191,11 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# i3-volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id i3-volume up 5
+bindsym XF86AudioLowerVolume exec --no-startup-id i3-volume down 5
+bindsym XF86AudioMute        exec --no-startup-id i3-volume mute
+
 # screenshots
 bindsym 0xff61 exec ~/bin/screenshot
 bindsym XF86LaunchA exec ~/bin/screenshot

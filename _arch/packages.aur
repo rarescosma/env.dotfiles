@@ -11,6 +11,7 @@ gconf
 git-test-git
 gnome-alsamixer
 gtk-theme-arc-gruvbox-git
+i3-volume
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
@@ -25,7 +26,6 @@ nvm
 obsidian
 pacman-cleanup-hook
 paru-bin
-pipewire-jack-dropin
 pkgtools
 python-pulsectl
 raiseorlaunch

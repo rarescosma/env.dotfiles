@@ -127,14 +127,12 @@ pass
 pavucontrol
 perl-lwp-protocol-https
 pigz
-pipewire-alsa
-pipewire-jack
-pipewire-pulse
 pkgfile
 playerctl
 podman-docker
 powertop
 progress
+pulseaudio
 pv
 pwgen
 pyenv
