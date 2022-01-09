@@ -21,7 +21,7 @@ bindsym $mod+0x27 exec --no-startup-id raiseorlaunch -c obsidian -e obsidian
 bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec firefox
-bindsym $mod+Shift+slash exec firefox --private-window
+bindsym $mod+Shift+slash exec chromium --incognito 
 
 # kill focused window
 bindsym $mod+Shift+q kill
