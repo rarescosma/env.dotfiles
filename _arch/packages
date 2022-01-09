@@ -45,6 +45,7 @@ expac
 fd
 feh
 firefox
+gdb
 git
 git-crypt
 gitg
@@ -89,6 +90,8 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-lts-headers
+lld
+llvm
 logrotate
 lsof
 lvm2
@@ -128,6 +131,7 @@ parallel
 parcellite
 pass
 pavucontrol
+perf
 perl-lwp-protocol-https
 pigz
 pkgfile
@@ -161,6 +165,7 @@ rng-tools
 rofi
 rofi-emoji
 rsync
+rustup
 scala
 scrot
 seahorse

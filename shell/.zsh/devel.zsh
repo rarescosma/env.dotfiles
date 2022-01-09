@@ -108,6 +108,7 @@ fi
 
 if [[ "$enable_devel" =~ "rust" ]]; then
   PATH="${PATH}:${CARGO_HOME}/bin"
+  export SCCACHE_CACHE_SIZE="1G"
 fi
 
 if [[ "$enable_devel" =~ "node" ]]; then
