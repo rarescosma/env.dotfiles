@@ -20,7 +20,7 @@ if [[ "$TTY" == /dev/tty* ]]; then
 fi
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec systemd-cat -t startx startx -- -dpi 144
+  exec systemd-cat -t startx startx -- -dpi 110
 else 
   if (( ${+TMUX} )); then
     source ~/.zsh/fortune.zsh

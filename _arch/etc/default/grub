@@ -1,7 +1,7 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=3
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 mitigations=off resume=/dev/vg0/lv0 resume_offset=55317760"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 mitigations=off video=3440x1440 resume=/dev/vg0/lv0 resume_offset=55317760"
 GRUB_CMDLINE_LINUX=""
 GRUB_PRELOAD_MODULES="part_gpt part_msdos lvm"
 GRUB_TIMEOUT_STYLE="menu"
