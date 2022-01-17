@@ -136,6 +136,10 @@ setup::var() {
   echo "Locking firefox settings"
   copy "usr/lib/firefox/defaults/pref/local-settings.js"
   copy "usr/lib/firefox/mozilla.cfg"
+
+  echo "Configuring sleep"
+  copy "etc/tlp.d/10-ac-governor.conf"
+  copy "usr/lib/systemd/system-sleep/udevm"
 }
 
 main() {
