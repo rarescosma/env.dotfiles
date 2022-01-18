@@ -40,7 +40,7 @@ matches:
       - name: "res"
         type: "shell"
         params:
-          cmd: "xsel -bo | tr '\n' ' ' | xargs findwiki"
+          cmd: "xsel -bo | tr '\n' ' ' | xargs -0 findwiki"
 
   # Misc
   - trigger: ":uuid"
