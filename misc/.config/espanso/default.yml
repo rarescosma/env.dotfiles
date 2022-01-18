@@ -42,6 +42,14 @@ matches:
         params:
           cmd: "xsel -bo | tr '\n' ' ' | xargs -0 findwiki"
 
+  - trigger: ":imdb"
+    replace: "{{res}}"
+    vars:
+      - name: "res"
+        type: "shell"
+        params:
+          cmd: "xsel -bo | tr '\n' ' ' | xargs -0 findimdb"
+
   # Misc
   - trigger: ":uuid"
     replace: "{{res}} foo"
