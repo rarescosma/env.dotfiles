@@ -4,6 +4,7 @@ alsa-utils
 anything-sync-daemon
 arandr
 arch-install-scripts
+arm-none-eabi-gcc
 audacity
 axel
 base
