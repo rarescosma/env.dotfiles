@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pomo_time="${1:-1200}"
+pomo_time="${1:-2400}"
 grace_time="${2:-30}"
 
 sleep "$pomo_time"
