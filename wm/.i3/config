@@ -21,7 +21,7 @@ bindsym $mod+0x27 exec --no-startup-id raiseorlaunch -c obsidian -e obsidian
 bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec firefox
-bindsym $mod+Shift+slash exec chromium --incognito 
+bindsym $mod+Shift+slash exec chromium --incognito
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -187,9 +187,13 @@ bindsym XF86KbdBrightnessUp exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight
 bindsym XF86KbdBrightnessDown exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -s10%
 
 # media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl -a play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym $mod+0xffc6 exec playerctl previous
+bindsym $mod+0xffc7 exec playerctl next
+bindsym $mod+0xffc8 exec playerctl -a pause
+bindsym $mod+0xffc9 exec playerctl -a play
 
 # i3-volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id i3-volume up 5
