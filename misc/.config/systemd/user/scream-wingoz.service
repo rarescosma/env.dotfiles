@@ -4,9 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/systemctl --user stop "pipewire*"
+ExecStartPre=-systemctl --user stop "pipewire*" "pulseaudio*" mpd@pulse
 ExecStart=scream -v -o alsa -d "plughw:1,0" -m /dev/shm/scream-ivshmem -t 150
-ExecStopPost=/usr/bin/systemctl --user start pipewire pipewire-media-session pipewire-pulse
+ExecStopPost=-systemctl --user start pipewire pipewire-media-session pipewire-pulse pulseaudio pulseaudio.socket
+ExecStopPost=-systemctl --user restart mpd@pulse
 Restart=on-failure
 RestartSec=5
 
