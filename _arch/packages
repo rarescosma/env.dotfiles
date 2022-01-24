@@ -215,7 +215,7 @@ xf86-video-intel
 xorg-fonts-misc
 xorg-xinit
 xsel
-youtube-dl
+yt-dlp
 zenity
 zip
 zsh
