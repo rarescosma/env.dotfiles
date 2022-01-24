@@ -73,6 +73,9 @@ nmap <leader>y :%w !xsel -b<CR><CR>
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
+" Bring back 'Y'
+nnoremap Y yy
+
 " Spacetab
 set expandtab
 set smarttab
