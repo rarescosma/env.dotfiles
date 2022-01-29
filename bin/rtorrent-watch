@@ -18,6 +18,8 @@ fi
 f="${WATCHEXEC_CREATED_PATH}"
 
 if ! test -z "$f"; then
+    f="${WATCH_DIR}/${WATCHEXEC_CREATED_PATH}"
+
     echo ">>> Processing new torrent file ${f}"
     while [[ $(stat -c %s "${f}") -eq 0 ]]; do sleep 1; done
     rsync -qP -e "ssh -i ${RWATCH_IDENTITY}" "${f}" "${RWATCH_UPLOAD_TO}/"
