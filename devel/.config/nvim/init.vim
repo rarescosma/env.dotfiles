@@ -2,96 +2,139 @@
 "
 " Referenced here: http://vimuniversity.com/samples/your-first-vimrc-should-be-nearly-empty
 "
+"
 " Original Author:       Bram Moolenaar <bram@vim.org>
 " Made more minimal by:  Ben Orenstein
-" Customized by:         Rares Cosma
+" Customized by:         Rareș Cosma
 "
-let mapleader = "\<Space>"
-nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Do not create .swp files
-set noswapfile
+filetype plugin indent on   " Enable file type detection and do language-dependent indenting.
+syntax on                   " Switch syntax highlighting on.
 
-" Make backspace behave in a sane manner.
-set backspace=indent,eol,start
+" Spacetab
+set autoindent              " Indent according to previous line.
+set expandtab               " Use spaces instead of tabs.
+set smarttab
+set softtabstop=2           " Tab key indents by 4 spaces.
+set shiftwidth=2            " >> indents by 4 spaces.
+set shiftround              " >> indents to next multiple of 'shiftwidth'.
+set smartindent             " Smart indent.
 
-" Switch syntax highlighting on
-syntax on
+set backspace=indent,eol,start " Make backspace behave in a sane manner.
+set hidden                  " Switch between buffers without having to save first.
 
-" Enable file type detection and do language-dependent indenting.
-filetype plugin indent on
-set paste
-
-" Type
-set background=dark
-set t_Co=8 t_md=
-
-" Navigation
-set relativenumber
-set nu
-nmap <F12> :set invrelativenumber<CR>:set invnu<CR>
-set ruler
-set scrolloff=3
+" Display
+set laststatus=2            " Always show statusline.
+set display=lastline        " Show as much as possible of the last line.
+set showmode                " Show current mode in command-line.
+set showcmd                 " Show already typed keys when more are expected.
+set lazyredraw              " Only redraw when necessary.
+set cursorline              " Find the current line quickly.
+set report=0                " Always report changed lines.
+set synmaxcol=200           " Only highlight the first 200 columns.
+set relativenumber          " Relative line numbers.
+set nu                      " Display line numbers.
+set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶   " Show those damn hidden characters
+set scrolloff=3             " Display a couple of lines of context.
+set nolinebreak
 
 " Search
-set ignorecase
-set smartcase
-set incsearch
-set gdefault
+set incsearch               " Highlight searches.
+set ignorecase              " Ignore case by default.
+set smartcase               " But make it count if sarch contains UPPERs.
 
-" Search results centered please
+" File handling
+set autoread                " Reread files changed outside of vim.
+set noswapfile              " Do not create .swp files.
+set backupdir=$XDG_DATA_HOME/vim/files/backup/
+set backupext=-vimbackup
+set backupskip=
+set updatecount=100
+set undofile
+set undodir=$XDG_DATA_HOME/vim/files/undo/
+set viminfo='100,n$XDG_DATA_HOME/vim/files/info/viminfo
+
+" Misc
+set gdefault                " Edits are global by default.
+
+" Keymap
+let mapleader = "\<Space>"
+nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
+
+" Ctrl+n to stop searching.
+vnoremap <C-n> :nohlsearch<cr>
+nnoremap <C-n> :nohlsearch<cr>
+
+" Very magic by default.
+nnoremap ? ?\v
+nnoremap / /\v
+cnoremap %s/ %sm/
+
+" Search results centered please.
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-" Very magic by default
-nnoremap ? ?\v
-nnoremap / /\v
-cnoremap %s/ %sm/
+" Toggle line numbers.
+nmap <F12> :set invrelativenumber<CR>:set invnu<CR>
 
-" Ctrl+n to stop searching
-vnoremap <C-n> :nohlsearch<cr>
-nnoremap <C-n> :nohlsearch<cr>
+" Toggle paste.
+set pastetoggle=<F5>
 
-" Sudo make me a sandwich
-set autoread
+" Sudo make me a sandwich.
 cmap w!! w !sudo tee > /dev/null %
 
-" Quick-save
+" Quick-save.
 nmap <leader>w :w<CR>
 
-" Quick-yank
+" Quick-yank.
 nmap <leader>y :%w !xsel -b<CR><CR>
 
-" Moving lines up & down
+" Move lines up & down.
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
-" Bring back 'Y'
+" Bring back 'Y'.
 nnoremap Y yy
 
-" Spacetab
-set expandtab
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-
-" Show those damn hidden characters
-" Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
-set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶
+" Show hidden chars.
 nnoremap <leader>h :set invlist<cr>
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
+" Visual block with <Alt+V>.
+nnoremap <M-v> <c-v>
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+" Visual, visual.
+xnoremap <  <gv
+xnoremap >  >gv
+onoremap gv  :<c-u>normal! gv<cr>
+
+" Line beginning + end.
+nnoremap L $
+vnoremap L $
+nnoremap H ^
+vnoremap H ^
+
+" Quicker commands.
+noremap ; :
+noremap \ ;
+
+" Move during insert.
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-o> <ESC>o
+
+" Center block nav please.
+nnoremap }   }zz
+nnoremap {   {zz
+nnoremap ]]  ]]zz
+nnoremap [[  [[zz
+nnoremap []  []zz
+nnoremap ][  ][zz
