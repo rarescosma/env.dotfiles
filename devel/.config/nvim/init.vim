@@ -65,21 +65,10 @@ set gdefault                " Edits are global by default.
 let mapleader = "\<Space>"
 nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
 
-" Ctrl+n to stop searching.
-vnoremap <C-n> :nohlsearch<cr>
-nnoremap <C-n> :nohlsearch<cr>
-
 " Very magic by default.
 nnoremap ? ?\v
 nnoremap / /\v
 cnoremap %s/ %sm/
-
-" Search results centered please.
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
 
 " Toggle line numbers.
 nmap <F12> :set invrelativenumber<CR>:set invnu<CR>
@@ -90,15 +79,8 @@ set pastetoggle=<F5>
 " Sudo make me a sandwich.
 cmap w!! w !sudo tee > /dev/null %
 
-" Quick-save.
-nmap <leader>w :w<CR>
-
 " Quick-yank.
 nmap <leader>y :%w !xsel -b<CR><CR>
-
-" Move lines up & down.
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
 
 " Bring back 'Y'.
 nnoremap Y yy
@@ -106,35 +88,4 @@ nnoremap Y yy
 " Show hidden chars.
 nnoremap <leader>h :set invlist<cr>
 
-" Visual block with <Alt+V>.
-nnoremap <M-v> <c-v>
-
-" Visual, visual.
-xnoremap <  <gv
-xnoremap >  >gv
-onoremap gv  :<c-u>normal! gv<cr>
-
-" Line beginning + end.
-nnoremap L $
-vnoremap L $
-nnoremap H ^
-vnoremap H ^
-
-" Quicker commands.
-noremap ; :
-noremap \ ;
-
-" Move during insert.
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-inoremap <C-o> <ESC>o
-
-" Center block nav please.
-nnoremap }   }zz
-nnoremap {   {zz
-nnoremap ]]  ]]zz
-nnoremap [[  [[zz
-nnoremap []  []zz
-nnoremap ][  ][zz
+source ~/.config/nvim/keymap.vim
