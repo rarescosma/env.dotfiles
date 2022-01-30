@@ -33,3 +33,6 @@ trap _usr2_rehash USR2
 
 # -- rsync autocomplete --------------------------------------------------------
 test -f $HOME/bin/ra && source $HOME/bin/ra
+
+# -- vim tutor -----------------------------------------------------------------
+alias vimtutor="nvim -c 'Tutor vim-01-beginner'"
