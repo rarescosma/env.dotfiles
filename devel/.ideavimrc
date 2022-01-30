@@ -1,0 +1,91 @@
+" Space is leader.
+let mapleader=" "
+
+" Reload config.
+nmap <silent> <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
+
+set number relativenumber
+set clipboard=unnamed,autoselect,ideaput
+set surround
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set visualbell
+
+" IDE smarts.
+set ideajoin
+set idearefactormode=keep
+
+" Common keymap.
+source ~/.config/nvim/keymap.vim
+
+" IDE one action to rule them all.
+nmap <leader>a <Action>(GotoAction)
+vmap <leader>a <Action>(GotoAction)
+
+" IDE file navigation.
+nmap <leader>s <Action>(FileStructurePopup)
+nmap <A-f> <Action>(AceAction)
+vmap <A-f> <Action>(AceAction)
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" IDE project navigation.
+nmap <leader>e <Action>(RecentFiles)
+nmap <leader>m <Action>(ShowBookmarks)
+nmap <leader>n <Action>(GotoFile)
+nmap gp <Action>(RecentProjectListGroup)
+nmap gc <Action>(GotoClass)
+nmap gi <Action>(GotoImplementation)
+nmap gd <Action>(GotoDeclaration)
+nmap gu <Action>(GotToSuperMethod)
+nmap gt <Action>(GotoTest)
+nmap gb <Action>(Back)
+nmap gf <Action>(Forward)
+
+" IDE search & replace.
+nmap <leader>f <Action>(Find)
+nmap <leader>F <Action>(Replace)
+nmap <leader>g <Action>(FindInPath)
+nmap <leader>G <Action>(ReplaceInPath)
+nmap <leader>u <Action>(FindUsages)
+
+" IDE refactor.
+nmap <leader>r <Action>(RenameElement)
+nmap <leader>R <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>v <Action>(IntroduceVariable)
+
+" Run, Forest, run!
+nmap R <Action>(ChooseRunConfiguration)
+
+" Distraction-free mode.
+nmap <C-z> <Action>(ToggleDistractionFreeMode)
+
+" Move method up/down.
+nmap <C-S-j> <Action>(MoveStatementDown)
+nmap <C-S-k> <Action>(MoveStatementUp)
+
+" Paragraph wrapping via 'Wrap Action' plugin.
+nmap gqq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
+vmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
+
+" Co-exist with the clipboard manager.
+sethandler <^v> a:ide
+
+" Visual block with <Alt+V>.
+nnoremap <A-v> <C-v>
+vnoremap <A-v> <C-v>
+
+" N00b mode: no arrows + key hints via the 'Which Key' plugin.
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+
+set which-key
+set timeoutlen=10000
+let g:WhichKeyDesc_commentray_prefix = "y"
+
+" Experimental: prefer IDE undo. (meh)
+" sethandler U a:ide
