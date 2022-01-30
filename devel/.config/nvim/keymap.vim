@@ -17,7 +17,7 @@ nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
 " Visual block with <Alt+V>.
-" nnoremap <M-v> <c-v>
+nnoremap <M-v> <c-v>
 
 " Visual, visual.
 xnoremap <  <gv
@@ -29,7 +29,7 @@ nnoremap L $
 vnoremap L $
 nnoremap H ^
 vnoremap H ^
- 
+
 " Quicker commands.
 noremap ; :
 noremap \ ;
