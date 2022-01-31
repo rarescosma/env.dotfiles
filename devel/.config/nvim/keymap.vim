@@ -5,9 +5,9 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-" Ctrl+n to stop searching.
-vnoremap <C-n> :nohlsearch<cr>
-nnoremap <C-n> :nohlsearch<cr>
+" Ctrl+l to stop searching.
+nnoremap <C-l> :nohl<CR><C-l>
+vnoremap <C-l> :nohl<CR><C-l>
 
 " Quick-save.
 nmap <leader>w :w<CR>
