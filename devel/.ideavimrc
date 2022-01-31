@@ -5,7 +5,7 @@ let mapleader=" "
 nmap <silent> <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
 
 set number relativenumber
-set clipboard=unnamed,autoselect,ideaput
+set clipboard=autoselect,ideaput
 set surround
 set hlsearch
 set incsearch
