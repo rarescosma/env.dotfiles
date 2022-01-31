@@ -26,8 +26,8 @@ vmap <leader>a <Action>(GotoAction)
 
 " IDE file navigation.
 nmap <leader>s <Action>(FileStructurePopup)
-nmap <A-f> <Action>(AceAction)
-vmap <A-f> <Action>(AceAction)
+nmap <C-f> <Action>(AceAction)
+vmap <C-f> <Action>(AceAction)
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
