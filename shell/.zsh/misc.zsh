@@ -34,5 +34,11 @@ trap _usr2_rehash USR2
 # -- rsync autocomplete --------------------------------------------------------
 test -f $HOME/bin/ra && source $HOME/bin/ra
 
-# -- vim tutor -----------------------------------------------------------------
+# -- vim katas -----------------------------------------------------------------
 alias vimtutor="nvim -c 'Tutor vim-01-beginner'"
+surroundtutor() {
+  local _tmp=$(mktemp)
+  cp ~/var/surround.practice $_tmp
+  i $_tmp
+}
+
