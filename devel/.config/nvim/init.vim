@@ -88,4 +88,7 @@ nnoremap Y yy
 " Show hidden chars.
 nnoremap <leader>h :set invlist<cr>
 
+" Insert mode for git commits.
+au FileType gitcommit startinsert
+
 source ~/.config/nvim/keymap.vim
