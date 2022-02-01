@@ -32,13 +32,13 @@ nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
 " IDE project navigation.
+nmap <leader>d <Action>(GotoDeclaration)
 nmap <leader>e <Action>(RecentFiles)
 nmap <leader>m <Action>(ShowBookmarks)
-nmap <leader>n <Action>(GotoFile)
+nmap <C-h> <Action>(RecentFiles)
 nmap gp <Action>(RecentProjectListGroup)
 nmap gc <Action>(GotoClass)
 nmap gi <Action>(GotoImplementation)
-nmap gd <Action>(GotoDeclaration)
 nmap gu <Action>(GotToSuperMethod)
 nmap gt <Action>(GotoTest)
 nmap gb <Action>(Back)
@@ -46,12 +46,14 @@ nmap gf <Action>(Forward)
 
 " IDE search & replace.
 nmap <leader>f <Action>(Find)
-nmap <leader>F <Action>(Replace)
-nmap <leader>g <Action>(FindInPath)
-nmap <leader>G <Action>(ReplaceInPath)
+nmap <leader>g <Action>(Replace)
+nmap <leader>pf <Action>(FindInPath)
+nmap <leader>pg <Action>(ReplaceInPath)
 nmap <leader>u <Action>(FindUsages)
 
 " IDE refactor.
+nmap <leader>n <Action>(Inline)
+nmap <leader>q <Action>(QuickJavaDoc)
 nmap <leader>r <Action>(RenameElement)
 nmap <leader>R <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>v <Action>(IntroduceVariable)
@@ -60,6 +62,7 @@ nmap <leader>v <Action>(IntroduceVariable)
 nmap R <Action>(ChooseRunConfiguration)
 
 " Distraction-free mode.
+nmap <leader>l <Action>(HideAllWindows)
 nmap <C-z> <Action>(ToggleDistractionFreeMode)
 
 " Move method up/down.
