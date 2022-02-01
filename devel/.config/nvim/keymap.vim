@@ -12,6 +12,11 @@ vnoremap <C-l> :nohl<CR><C-l>
 " Quick-save.
 nmap <leader>w :w<CR>
 
+" Register-preserving paste + delete.
+xnoremap <leader>p "_dP
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
 " Full file yank.
 nnoremap <leader>Y gg"+yG
 
