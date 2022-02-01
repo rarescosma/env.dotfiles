@@ -79,11 +79,9 @@ set pastetoggle=<F5>
 " Sudo make me a sandwich.
 cmap w!! w !sudo tee > /dev/null %
 
-" Quick-yank.
-nmap <leader>y :%w !xsel -b<CR><CR>
-
-" Bring back 'Y'.
-nnoremap Y yy
+" System clipboard yank.
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
 
 " Show hidden chars.
 nnoremap <leader>h :set invlist<cr>
