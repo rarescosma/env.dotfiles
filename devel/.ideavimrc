@@ -80,15 +80,22 @@ sethandler <^v> a:ide
 nnoremap <A-v> <C-v>
 vnoremap <A-v> <C-v>
 
-" N00b mode: no arrows + key hints via the 'Which Key' plugin.
+" N00b mode: no arrows.
 noremap <Left> <nop>
 noremap <Right> <nop>
 noremap <Up> <nop>
 noremap <Down> <nop>
 
-set which-key
-set timeoutlen=10000
-let g:WhichKeyDesc_commentray_prefix = "y"
+" Plugins galore
+set highlightedyank
+let g:highlightedyank_highlight_duration = "650"
+set argtextobj
+set exchange
+
+" N00b mode: key hints via the 'Which Key' plugin.
+" set which-key
+" set timeoutlen=10000
+" let g:WhichKeyDesc_commentray_prefix = "y"
 
 " Experimental: prefer IDE undo. (meh)
 " sethandler U a:ide
