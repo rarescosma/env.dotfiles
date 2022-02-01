@@ -56,7 +56,3 @@ nnoremap ]]  ]]zz
 nnoremap [[  [[zz
 nnoremap []  []zz
 nnoremap ][  ][zz
-
-" Swap mark jump modes.
-nnoremap '  `
-nnoremap `  '
