@@ -12,6 +12,9 @@ vnoremap <C-l> :nohl<CR><C-l>
 " Quick-save.
 nmap <leader>w :w<CR>
 
+" Full file yank.
+nnoremap <leader>Y gg"+yG
+
 " Move lines up & down.
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
