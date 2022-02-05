@@ -25,7 +25,7 @@ set shiftwidth=4            " >> indents by 4 spaces.
 set backspace=indent,eol,start " Make backspace behave in a sane manner.
 set hidden                  " Switch between buffers without having to save first.
 
-" Display
+" GUI.
 set laststatus=2            " Always show statusline.
 set display=lastline        " Show as much as possible of the last line.
 set showcmd                 " Show already typed keys when more are expected.
@@ -37,7 +37,7 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶   " Show those dam
 set scrolloff=3             " Display a couple of lines of context.
 set nolinebreak
 
-" File handling
+" File handling.
 set autoread                " Reread files changed outside of vim.
 set noswapfile              " Do not create .swp files.
 set backupdir=$XDG_DATA_HOME/vim/files/backup/
@@ -51,7 +51,6 @@ set viminfo='100,n$XDG_DATA_HOME/vim/files/info/viminfo
 " Misc
 set gdefault                " Edits are global by default.
 
-" Keymap
 let mapleader = "\<Space>"
 nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
 
