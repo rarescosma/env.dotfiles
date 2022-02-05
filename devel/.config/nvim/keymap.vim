@@ -10,7 +10,7 @@ nnoremap <C-l> :nohl<CR><C-l>
 vnoremap <C-l> :nohl<CR><C-l>
 
 " Quick-save.
-nmap <leader>w :w<CR>
+nnoremap <leader>w :w<CR>
 
 " Register-preserving paste + delete.
 xnoremap <leader>p "_dP
