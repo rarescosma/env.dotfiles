@@ -23,16 +23,13 @@ vmap <leader>a <Action>(GotoAction)
 
 " IDE file navigation.
 nmap <leader>s <Action>(FileStructurePopup)
-nmap <C-f> <Action>(AceAction)
-vmap <C-f> <Action>(AceAction)
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
 " IDE project navigation.
 nmap <leader>d <Action>(GotoDeclaration)
-nmap <leader>e <Action>(RecentFiles)
 nmap <leader>m <Action>(ShowBookmarks)
-nmap <C-h> <Action>(RecentFiles)
+nmap <C-f> <Action>(RecentFiles)
 nmap <C-h> <Action>(Back)
 nmap <C-l> <Action>(Forward)
 nmap gp <Action>(RecentProjectListGroup)
