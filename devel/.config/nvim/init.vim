@@ -15,17 +15,13 @@ set nocompatible
 filetype plugin indent on   " Enable file type detection and do language-dependent indenting.
 syntax on                   " Switch syntax highlighting on.
 
-" Spacetab
-set autoindent              " Indent according to previous line.
 " Common settings.
 source ~/.config/nvim/common.vim
 
 set expandtab               " Use spaces instead of tabs.
-set smarttab
-set softtabstop=2           " Tab key indents by 4 spaces.
-set shiftwidth=2            " >> indents by 4 spaces.
 set smartindent             " Smart indent.
-
+set tabstop=4 softtabstop=4 " Tab key indents by 4 spaces.
+set shiftwidth=4            " >> indents by 4 spaces.
 set backspace=indent,eol,start " Make backspace behave in a sane manner.
 set hidden                  " Switch between buffers without having to save first.
 
