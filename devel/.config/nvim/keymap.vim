@@ -42,7 +42,7 @@ vnoremap H ^
 
 " Quicker commands.
 noremap ; :
-noremap \ ;
+noremap : ;
 
 " Move during insert.
 inoremap <C-h> <Left>
