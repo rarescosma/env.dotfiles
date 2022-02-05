@@ -17,8 +17,10 @@ xnoremap <leader>p "_dP
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
-" Full file yank.
 nnoremap <leader>Y gg"+yG
+" Clobbering yanks.
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
 
 " Move lines up & down.
 nnoremap <C-j> :m .+1<CR>==

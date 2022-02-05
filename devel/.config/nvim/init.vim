@@ -79,14 +79,11 @@ set pastetoggle=<F5>
 " Sudo make me a sandwich.
 cmap w!! w !sudo tee > /dev/null %
 
-" System clipboard yank.
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-
 " Show hidden chars.
 nnoremap <leader>h :set invlist<cr>
 
 " Insert mode for git commits.
 au FileType gitcommit startinsert
 
+" Keymap.
 source ~/.config/nvim/keymap.vim
