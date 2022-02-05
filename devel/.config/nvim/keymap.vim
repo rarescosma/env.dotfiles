@@ -5,6 +5,9 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
+" Incremental change.
+nnoremap cn *Ncgn
+
 " Ctrl+B to stop searching.
 nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
