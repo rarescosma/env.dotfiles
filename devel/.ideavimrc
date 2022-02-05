@@ -4,20 +4,17 @@ let mapleader=" "
 " Reload config.
 nmap <silent> <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
 
-set number relativenumber
 set clipboard=autoselect,ideaput
 set surround
 set hlsearch
-set incsearch
-set ignorecase
-set smartcase
 set visualbell
 
 " IDE smarts.
 set ideajoin
 set idearefactormode=keep
 
-" Common keymap.
+" Common + keymap.
+source ~/.config/nvim/common.vim
 source ~/.config/nvim/keymap.vim
 
 " IDE one action to rule them all.

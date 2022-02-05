@@ -17,11 +17,13 @@ syntax on                   " Switch syntax highlighting on.
 
 " Spacetab
 set autoindent              " Indent according to previous line.
+" Common settings.
+source ~/.config/nvim/common.vim
+
 set expandtab               " Use spaces instead of tabs.
 set smarttab
 set softtabstop=2           " Tab key indents by 4 spaces.
 set shiftwidth=2            " >> indents by 4 spaces.
-set shiftround              " >> indents to next multiple of 'shiftwidth'.
 set smartindent             " Smart indent.
 
 set backspace=indent,eol,start " Make backspace behave in a sane manner.
@@ -30,22 +32,14 @@ set hidden                  " Switch between buffers without having to save firs
 " Display
 set laststatus=2            " Always show statusline.
 set display=lastline        " Show as much as possible of the last line.
-set showmode                " Show current mode in command-line.
 set showcmd                 " Show already typed keys when more are expected.
 set lazyredraw              " Only redraw when necessary.
 set cursorline              " Find the current line quickly.
 set report=0                " Always report changed lines.
 set synmaxcol=200           " Only highlight the first 200 columns.
-set relativenumber          " Relative line numbers.
-set nu                      " Display line numbers.
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶   " Show those damn hidden characters
 set scrolloff=3             " Display a couple of lines of context.
 set nolinebreak
-
-" Search
-set incsearch               " Highlight searches.
-set ignorecase              " Ignore case by default.
-set smartcase               " But make it count if sarch contains UPPERs.
 
 " File handling
 set autoread                " Reread files changed outside of vim.
