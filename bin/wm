@@ -10,7 +10,7 @@ IDEA_VERSION=${IDEA_VERSION:-"2021.2"}
 # /_____/\___/|___/_/\___/\___/____/
 
 function keyboard::setup() {
-  xset r rate 300 25
+  xset r rate 300 50
   setxkbmap -layout ro
   if [ -f "$XDG_CONFIG_HOME/keymap.xkb" ]; then
       xkbcomp "$XDG_CONFIG_HOME/keymap.xkb" $DISPLAY 2>/dev/null
