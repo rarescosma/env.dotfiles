@@ -4,8 +4,12 @@ if [[ "$@" == "" ]]; then
     # no args - listing
     cat $XDG_DATA_HOME/cht.sh/list
 else
-    i3-msg '[title="^tmux base"] focus' >/dev/null 2>&1
-    # no italics - thank you
-    tmux new-window -n "cht: $@" "curl -s cht.sh/$@ | less --tabs=4 -RX"
+    # focus or create tmux base session
+    cmd="curl -s cht.sh/$@ | less --tabs=4 -RX"
+    if i3-msg '[title="^tmux base"] focus' >/dev/null 2>&1; then
+        tmux new-window -t base -n "cht: $@" "$cmd"
+    else
+        i3-msg -t "run_command" exec "alacritty -e tmux new -s base -n 'cht: $@' '$cmd'" >/dev/null 2>&1
+    fi  
 fi
 
