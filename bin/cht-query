@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+out=$(zenity --entry --title="Cht.sh query" --text="Enter query: ")
+
+if [[ "$?" == "0" ]];
+then
+    out=$(echo $out | tr ' ' '+')
+    cht-rofi $out
+fi
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ "$@" == "" ]]; then
+    # no args - listing
+    cat $XDG_DATA_HOME/cht.sh/list
+else
+    i3-msg '[title="^tmux base"] focus' >/dev/null 2>&1
+    # no italics - thank you
+    tmux new-window -n "cht: $@" "curl -s cht.sh/$@ | less --tabs=4 -RX"
+fi
+
