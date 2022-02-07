@@ -60,7 +60,7 @@ nnoremap / /\v
 cnoremap %s/ %sm/
 
 " Toggle line numbers.
-nmap <F12> :set invrelativenumber<CR>:set invnu<CR>
+nnoremap <F12> :set invrelativenumber<CR>:set invnu<CR>
 
 " Toggle paste.
 set pastetoggle=<F5>
