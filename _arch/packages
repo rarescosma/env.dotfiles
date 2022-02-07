@@ -47,6 +47,7 @@ fd
 feh
 firefox
 gdb
+gimp
 git
 git-crypt
 gitg
@@ -66,6 +67,7 @@ gst-plugins-ugly
 gstreamer-vaapi
 gtk-engine-murrine
 gvfs
+handbrake
 htop
 httpie
 i3-wm
