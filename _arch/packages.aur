@@ -1,4 +1,5 @@
 64gram-desktop-bin
+android-sdk-platform-tools
 apache-tools
 bindfs
 ddgr
@@ -28,6 +29,7 @@ pacman-cleanup-hook
 paru-bin
 pkgtools
 python-pulsectl
+qemu-arm-static-bin
 raiseorlaunch
 realvnc-vnc-server
 rmtrash
