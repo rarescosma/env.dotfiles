@@ -36,6 +36,9 @@ set synmaxcol=200           " Only highlight the first 200 columns.
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶   " Show those damn hidden characters
 set scrolloff=3             " Display a couple of lines of context.
 set nolinebreak
+set termguicolors
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 " File handling.
 set autoread                " Reread files changed outside of vim.
