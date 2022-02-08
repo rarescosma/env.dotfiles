@@ -38,6 +38,7 @@ set scrolloff=3             " Display a couple of lines of context.
 set nolinebreak
 set termguicolors
 let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection = '0'
 colorscheme gruvbox
 
 " File handling.
