@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -xe
+
+PROJECT_PATH="$@"
+PROJECT="$(basename "$PROJECT_PATH")"
+
+# focus or create tmux tig session
+cmd="tig -C $PROJECT_PATH"
+if i3-msg '[title="^tmux tig"] focus' >/dev/null 2>&1; then
+    tmux new-window -t tig -a -n "tig: $PROJECT" "$cmd"
+else
+    i3-msg -t "run_command" exec "alacritty -e tmux new -s tig -n 'tig: $PROJECT' '$cmd'" >/dev/null 2>&1
+fi
+
