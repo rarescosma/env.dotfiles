@@ -27,7 +27,6 @@ compsize
 cowsay
 cpupower
 debootstrap
-dfrs
 dhcpcd
 dialog
 diff-so-fancy
@@ -127,6 +126,7 @@ noto-fonts-emoji
 ntfs-3g
 nvme-cli
 oath-toolkit
+obsidian
 openldap
 openssh
 otf-font-awesome
@@ -211,7 +211,6 @@ wdiff
 whois
 xautolock
 xclip
-xdg-utils
 xf86-input-synaptics
 xf86-video-intel
 xorg-fonts-misc

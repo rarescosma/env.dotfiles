@@ -7,7 +7,6 @@ dropbox
 espanso-bin
 flexo-git
 fortune-mod-southpark
-freetube-bin
 gconf
 git-test-git
 gnome-alsamixer
@@ -19,12 +18,12 @@ inxi
 libhugetlbfs
 libnpupnp
 libupnpp
+libxcrypt-compat
 localepurge
 masterpdfeditor-free
 mpdris2
 mtaws
 nvm
-obsidian
 pacman-cleanup-hook
 paru-bin
 pkgtools
