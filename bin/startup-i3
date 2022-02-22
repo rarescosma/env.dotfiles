@@ -29,15 +29,16 @@ thunar --daemon &
 syndaemon -i 1 -t -k &
 
 # Special Eds
-if ! pgrep redshift-gtk; then
-  redshift-gtk -t 5500:4800 -l 59.32:18.06 &
-fi
+killall -w -9 redshift >/dev/null 2>&1
+killall -w -9 redshift-gtk >/dev/null 2>&1
+redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
 
 cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 
 if test -x "${HOME}/bin/rtorrent-watch"; then
+    pgrep -f "watchexec.+rtorrent-watch" | xargs kill --timeout 300 KILL --signal TERM
     "${HOME}/bin/rtorrent-watch" --trampoline &
 fi
 
