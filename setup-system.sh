@@ -71,14 +71,15 @@ setup::backup() {
 
 setup::_node() {
   copy_host "etc/environment"
+  local hostname=$(head -1 /etc/hostname)
 
-  if [[ $HOSTNAME == shrewd ]]; then
+  if [[ $hostname == shrewd ]]; then
     copy_host "etc/modprobe.d/i915.conf"
     copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
     copy_host "etc/mkinitcpio.conf"
   fi
 
-  if [[ $HOSTNAME == mac ]]; then
+  if [[ $hostname == mac ]]; then
     copy_host "etc/modprobe.d/hid_apple.conf"
     copy_host "etc/X11/xorg.conf.d/20-intel.conf"
     copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
