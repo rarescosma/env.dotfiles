@@ -1,0 +1,18 @@
+[build]
+rustc-wrapper = "sccache"
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "link-args=-fuse-ld=lld", "-C", "target-cpu=native"]
+
+# cross compiling for linux@android
+[target.armv7-unknown-linux-musleabihf]
+linker = "rust-lld"
+
+# for statically linked glibc
+#rustflags = ["-C", "target-feature=+crt-static"]
+
+# using rust-lld as the linker
+#rustflags = ["-C", "link-args=-fuse-ld=lld"]
+
+# targeting native CPU extensions
+#rustflags = ["-C", "target-cpu=native"]
