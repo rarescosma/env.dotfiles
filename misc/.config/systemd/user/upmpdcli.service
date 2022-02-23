@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/upmpdcli -c ${HOME}/.config/upmpdcli.conf
+ExecStart=/usr/bin/upmpdcli -c ${HOME}/.config/upmpdcli.conf -f %H-upnp
 
 [Install]
 WantedBy=default.target
