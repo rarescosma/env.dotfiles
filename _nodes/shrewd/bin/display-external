@@ -13,7 +13,7 @@ xrandr --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
 
 dpi::terminal 12
 dpi::i3 8
-dpi::gtk 10
+dpi::gtk 11
 dpi::idea 18 14
 dpi::x 110
 dpi::rofi 12
