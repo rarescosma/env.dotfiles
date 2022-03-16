@@ -90,6 +90,7 @@ klavaro
 libva-intel-driver
 libva-utils
 libvdpau-va-gl
+libxcrypt-compat
 linux-firmware
 linux-lts
 linux-lts-headers
