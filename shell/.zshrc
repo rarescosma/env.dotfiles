@@ -19,7 +19,7 @@ if [[ "$TTY" == /dev/tty* ]]; then
   systemctl --user import-environment GPG_TTY SSH_AUTH_SOCK
 fi
 
-if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ "$TTY" == "/dev/tty1" ]]; then
   exec systemd-cat -t startx startx -- -dpi 110
 else 
   if (( ${+TMUX} )); then
