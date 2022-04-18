@@ -41,7 +41,7 @@ to() {
     temp_key="$(mktemp)"
     cp "$TOMB_KEY" "$temp_key"
     tomb open $TOMB_FILE -k $temp_key -f && \
-      ln -sf /tomb/espanso/*.yml ~/.config/espanso/user/
+      ln -sf /tomb/espanso/tomb_*.yml ~/.config/espanso/match/
     rm "$temp_key"
   }
 }
@@ -49,7 +49,7 @@ to() {
 tc() {
   tomb list && {
     sudo -E pkill -f openvpn
-    command rm -f ~/.config/espanso/user/*.yml
+    command rm -f ~/.config/espanso/match/tomb_*.yml
     tomb close
   }
 }
