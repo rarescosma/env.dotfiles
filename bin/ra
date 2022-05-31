@@ -29,6 +29,6 @@ if [[ "$sourced" == "1" ]]; then
     complete -F _ra ra
 else
     test -f $HOME/.local/env && source $HOME/.local/env
-    rsync -avP -e "ssh -i ${RWATCH_IDENTITY}" "$_host:$_prefix/\"${@}\"" $_dest
+    rsync -avP -e "ssh -i ${RWATCH_IDENTITY}" "$_host:$_prefix/${@}" $_dest
 fi
 
