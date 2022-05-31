@@ -29,7 +29,6 @@ setup::etc() {
   copy "etc/asd.conf"
   copy "etc/conf.d/snapper"
   copy "etc/containers/registries.conf"
-  copy "etc/default/grub"
   copy "etc/depmod.d/00-extra.conf"
   copy "etc/dns-over-https/doh-client.conf"
   copy "etc/fonts/conf.d/75-noto-color-emoji.conf"
@@ -89,6 +88,8 @@ setup::_node() {
     copy_host "etc/X11/xinit/xinitrc.d/10-nvidia-modeset.sh"
     copy_host "etc/mkinitcpio.conf"
     copy_host "etc/default/grub"
+  else
+      copy "etc/default/grub"
   fi
 
   if [[ $hostname == mac ]]; then
