@@ -1,4 +1,3 @@
-64gram-desktop-bin
 android-sdk-platform-tools
 apache-tools
 bindfs
@@ -15,7 +14,6 @@ i3-volume
 intellij-idea-ultimate-edition
 intellij-idea-ultimate-edition-jre
 inxi
-libhugetlbfs
 libnpupnp
 libupnpp
 localepurge
@@ -34,6 +32,7 @@ rmtrash
 scream
 snapper-gui-git
 steghide
+systemd-suspend-modules
 tidal-hifi-git
 tomb
 tor-browser
@@ -44,4 +43,4 @@ upmpdcli
 vim-gruvbox-community
 volctl
 wasabi-wallet-bin
-zotero
+zotero-bin

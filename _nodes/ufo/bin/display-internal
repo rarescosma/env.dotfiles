@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+source "${HOME}/bin/wm"
+
+xrandr --output eDP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
+  --output VIRTUAL1 --off  \
+  --output DP1 --off \
+  --output HDMI2 --off \
+  --output HDMI1 --off \
+  --output DP2 --off \
+  --output DP-0 --off
+
+dpi::terminal 9
+dpi::i3 10
+dpi::gtk 10
+dpi::idea 16 12
+dpi::x 144
+dpi::rofi 20
+
+keyboard::setup

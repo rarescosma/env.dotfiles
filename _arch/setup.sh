@@ -10,7 +10,7 @@ pac::list_aur() {
 
 pac::list_non_group() {
   # packages from groups
-  comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg $PACKAGE_GROUPS; expac -l '\n' '%E' base; } | sort | uniq)
+  comm -23 <(pacman -Qqe | sort | grep -v "firmware") <({ pacman -Qqg $PACKAGE_GROUPS; expac -l '\n' '%E' base; } | sort | uniq)
 }
 
 pac::list_non_group_non_aur() {

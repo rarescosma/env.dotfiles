@@ -148,6 +148,7 @@ bar {
     separator_symbol "·"
 
     output eDP1
+    output eDP-1-1
     output DP1
     output DP2
     output HDMI2

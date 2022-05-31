@@ -70,13 +70,25 @@ setup::backup() {
 }
 
 setup::_node() {
-  copy_host "etc/environment"
   local hostname=$(head -1 /etc/hostname)
+  export HOSTNAME="$hostname"
+
+  copy_host "etc/environment"
 
   if [[ $hostname == shrewd ]]; then
     copy_host "etc/modprobe.d/i915.conf"
     copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
     copy_host "etc/mkinitcpio.conf"
+  fi
+
+  if [[ $hostname == ufo ]]; then
+    copy_host "etc/modprobe.d/i915.conf"
+    copy_host "etc/modprobe.d/nouveau.conf"
+    copy_host "etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
+    copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
+    copy_host "etc/X11/xinit/xinitrc.d/10-nvidia-modeset.sh"
+    copy_host "etc/mkinitcpio.conf"
+    copy_host "etc/default/grub"
   fi
 
   if [[ $hostname == mac ]]; then
