@@ -2,7 +2,11 @@
 
 _host='robuntu@seedbox'
 _prefix='/mnt/seedbox/fresh'
-_dest="$HOME/media/queue/"
+if [[ -z $RA_DEST ]]; then
+    _dest="$HOME/media/queue/"
+else
+    _dest="$RA_DEST"
+fi
 
 [[ $ZSH_EVAL_CONTEXT =~ :file$ ]] && sourced=1 || sourced=0
 
