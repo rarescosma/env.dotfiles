@@ -29,6 +29,7 @@ setup::etc() {
   copy "etc/asd.conf"
   copy "etc/conf.d/snapper"
   copy "etc/containers/registries.conf"
+  copy "etc/default/grub-btrfs/config"
   copy "etc/depmod.d/00-extra.conf"
   copy "etc/dns-over-https/doh-client.conf"
   copy "etc/fonts/conf.d/75-noto-color-emoji.conf"

@@ -60,6 +60,7 @@ gnu-netcat
 gparted
 graphviz
 grub
+grub-btrfs
 gst-libav
 gst-plugins-base
 gst-plugins-good
