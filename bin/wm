@@ -74,8 +74,8 @@ function dpi::idea() {
 
   $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
   $options_dir/editor.xml
-  $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$ui_font_size\"/g" \
-  $options_dir/ui.lnf.xml
+  $SED -e "s/\"fontSize\" value=\"[[:digit:]]\+\"/\"fontSize\" value=\"$ui_font_size\"/g" \
+  $options_dir/other.xml
 }
 
 function dpi::x() {
