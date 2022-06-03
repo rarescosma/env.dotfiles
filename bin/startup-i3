@@ -35,6 +35,7 @@ redshift-gtk -t 5500:4800 -l 59.32:18.06 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
 
+killall -w -9 cloudy
 cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 
 if test -x "${HOME}/bin/rtorrent-watch"; then
