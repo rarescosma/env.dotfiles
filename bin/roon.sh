@@ -42,7 +42,7 @@ _get_ip() {
   | sed 's/[^0-9.]*//g'
 }
 
-main() {
+start() {
   _log_call "$*"
 
   set -e
@@ -59,6 +59,13 @@ main() {
   echo
   echo "> forwarding ports..."
   port_forward
+}
+
+stop() {
+  _log_call "$*"
+
+  port_forward clear
+  lxc stop $VM_NAME
 }
 
 show_profile() {
@@ -130,7 +137,7 @@ port_forward() {
 }
 
 if [[ "$@" == "" ]]; then
-    main
+    start
 else
     $@
 fi
