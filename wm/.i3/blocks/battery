@@ -1,74 +1,36 @@
-#!/usr/bin/perl
-#
-# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
-# Copyright 2014 Vivien Didelot <vivien@didelot.org>
-#
-# Licensed under the terms of the GNU GPL v3, or any later version.
-#
-# This script is meant to use with i3blocks. It parses the output of the "acpi"
-# command (often provided by a package of the same name) to read the status of
-# the battery, and eventually its remaining time (to full charge or discharge).
-#
-# The color will gradually change for a percentage below 85%, and the urgency
-# (exit code 33) is set if there is less that 5% remaining.
+#!/bin/bash
 
-use strict;
-use warnings;
-use utf8;
+BAT=$(acpi -b | grep -v "unavailable")
+PERC=$(echo $BAT | grep -E -o '1?[0-9][0-9]?%')
+DIS=$(echo $BAT | grep remaining)
 
-my $acpi;
-my $status;
-my $percent;
-my $full_text;
-my $short_text;
-my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+if [[ -z "$BAT" ]]; then
+    echo
+    exit 0
+fi
 
-# read the first line of the "acpi" command output
-open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
-$acpi = <ACPI>;
-close(ACPI);
+if [[ -z "$DIS" ]]; then
+    STAT="⚡"
+else
+    if [ ${PERC%?} -le 20 ]; then
+        STAT="🪫"
+    else
+        STAT="🔋"
+    fi
+fi
 
-# fail on unexpected output
-if ($acpi !~ /: (\w+), (\d+)%/) {
-	die "$acpi\n";
+# Full and short texts
+echo "$STAT $PERC"
+echo "$STAT $PERC"
+
+# Set urgent flag below 5% or use orange below 20%
+[ ${PERC%?} -le 5 ] && {
+    echo "#FF0000"
+    exit 0
+}
+[ ${PERC%?} -le 20 ] && {
+    echo "#FF8000"
+    exit 0
 }
 
-$status = $1;
-$percent = $2;
-$full_text = "$percent%";
-
-if ($status eq 'Discharging') {
-	$full_text .= ' DIS';
-} elsif ($status eq 'Charging') {
-	$full_text .= ' CHR';
-}
-
-$short_text = $full_text;
-
-if ($acpi =~ /(\d\d:\d\d):/) {
-	$full_text .= " ($1)";
-}
-
-# print text
-print "$full_text\n";
-print "$short_text\n";
-
-# consider color and urgent flag only on discharge
-if ($status eq 'Discharging') {
-
-	if ($percent < 20) {
-		print "#CC162F\n";
-	} elsif ($percent < 40) {
-		print "#CC8B00\n";
-	} elsif ($percent < 60) {
-		print "#CCC500\n";
-	} elsif ($percent < 85) {
-		print "#86CC00\n";
-	}
-
-	if ($percent < 10) {
-		exit(33);
-	}
-}
-
-exit(0);
+exit 0

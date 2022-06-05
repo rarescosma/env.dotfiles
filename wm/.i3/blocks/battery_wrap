@@ -1,8 +1,0 @@
-#!/bin/bash
-
-out=$(~/.i3/blocks/battery 2>/dev/null)
-if [[ -z "$out" ]]; then
-    echo
-else
-    echo "⚡$out"
-fi
