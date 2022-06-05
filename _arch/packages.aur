@@ -1,3 +1,4 @@
+64gram-desktop-bin
 android-sdk-platform-tools
 apache-tools
 bindfs
@@ -17,6 +18,7 @@ inxi
 libnpupnp
 libupnpp
 localepurge
+lxc-git
 masterpdfeditor-free
 mpdris2
 mtaws
