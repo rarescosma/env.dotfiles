@@ -55,7 +55,11 @@ start() {
 
   echo
   echo "> start LXC container..."
-  lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || lxc start $VM_NAME || true
+  if lxc ls --format json | jq -e '.[] | select(.name == "roon")' >/dev/null; then 
+    lxc start $VM_NAME || true
+  else
+    lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || true
+  fi
   _vm_exec install_roon
   set +e
 
