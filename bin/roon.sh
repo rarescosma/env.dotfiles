@@ -50,6 +50,9 @@ start() {
   lxc profile create ${VM_PROFILE} || true
   show_profile | lxc profile edit ${VM_PROFILE}
 
+  echo "> stopping upmpd"
+  systemctl --user stop upmpdcli.service
+
   echo
   echo "> start LXC container..."
   lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || lxc start $VM_NAME || true
@@ -66,6 +69,10 @@ stop() {
 
   port_forward clear
   lxc stop $VM_NAME
+
+  echo "> restarting upmpd"
+  sleep 1
+  systemctl --user start upmpdcli.service
 }
 
 show_profile() {
