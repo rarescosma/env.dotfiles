@@ -8,6 +8,7 @@ axel
 base
 bat
 bc
+bind
 borg
 borgmatic
 browserpass
@@ -27,6 +28,7 @@ dmenu
 dmidecode
 docker-compose
 dosfstools
+drone-cli
 dunst
 easy-rsa
 efibootmgr
@@ -56,6 +58,7 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 gstreamer-vaapi
+gtk-engine-murrine
 gvfs
 handbrake
 helm
@@ -89,6 +92,7 @@ logrotate
 lsof
 lvm2
 lxappearance
+lxc
 lxd
 man-db
 man-pages
@@ -96,6 +100,7 @@ mc
 mediainfo
 meld
 mesa-utils
+minio-client
 mkvtoolnix-cli
 mlocate
 mpd
@@ -115,6 +120,7 @@ nginx
 nmap
 noto-fonts-emoji
 ntfs-3g
+nvidia-dkms
 nvidia-prime
 nvme-cli
 oath-toolkit
@@ -143,6 +149,7 @@ python-gobject
 python-llfuse
 python-nox
 python-pip
+python-pipenv
 python-pylint
 python-pyxdg
 realtime-privileges
@@ -194,6 +201,7 @@ vlc
 wdiff
 whois
 wine
+wireshark-qt
 xautolock
 xclip
 xf86-input-synaptics
