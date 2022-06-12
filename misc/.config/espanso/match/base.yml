@@ -15,6 +15,9 @@ matches:
   - trigger: "g@"
     replace: "rares@getbetter.ro"
 
+  - trigger: "o@"
+    replace: "oppy.fug@gmail.com"
+
   # Markdown
   - trigger: ":a"
     replace: "[$|$]({{clip}})"
