@@ -18,6 +18,22 @@ matches:
   - trigger: "o@"
     replace: "oppy.fug@gmail.com"
 
+  # Base64
+  - trigger: ":be"
+    replace: "{{res}}"
+    vars:
+      - name: "res"
+        type: "shell"
+        params:
+          cmd: "xsel -bo | tr -d '\n' | base64 -w0"
+  - trigger: ":bd"
+    replace: "{{res}}"
+    vars:
+      - name: "res"
+        type: "shell"
+        params:
+          cmd: "xsel -bo | tr -d '\n' | base64 -d"
+
   # Markdown
   - trigger: ":a"
     replace: "[$|$]({{clip}})"
@@ -26,7 +42,6 @@ matches:
         type: "shell"
         params:
           cmd: "xsel -bo | tr -d '\n'"
-
   - trigger: ":img"
     replace: "![$|$]({{clip}})"
     vars:
@@ -34,7 +49,6 @@ matches:
         type: "shell"
         params:
           cmd: "xsel -bo | tr -d '\n'"
-
   - trigger: ":wiki"
     replace: "{{res}}"
     vars:
@@ -42,7 +56,6 @@ matches:
         type: "shell"
         params:
           cmd: "xsel -bo | tr '\n' ' ' | xargs -0 findwiki"
-
   - trigger: ":imdb"
     replace: "{{res}}"
     vars:
