@@ -12,7 +12,7 @@ xrandr --output DP-0 --primary --mode 3440x1440 --rate 165 --pos 0x0 --rotate no
   --output DP2 --off \
   --output eDP-1-1 --off
 
-dpi::terminal 13
+dpi::terminal 11
 dpi::i3 10 
 dpi::gtk 10
 dpi::idea 18 16
