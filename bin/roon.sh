@@ -16,12 +16,17 @@ _log_call() {
   src="$(basename "${BASH_SOURCE[1]}")"
   [[ "$src" =~ ^"$HOME"(/|$) ]] && src="~${src#$HOME}"
   printf "%s | %s | %s(%s) @ %s:%s\\n" "$(date +%F@%T)" "${HOSTNAME}" \
-    "${FUNCNAME[1]}" "$kwargs" "$src" "${BASH_LINENO[0]}" >&2
+    "${FUNCNAME[1]}" "$kwargs" "$src" "${BASH_LINENO[0]}" >&4
 }
 
 _vm_exec() {
   _log_call "$*"
   lxc exec "$VM_NAME" -- "/dot/${ME}" "$@"
+}
+
+_vm_status() {
+  _log_call "$*"
+  lxc list "$VM_NAME" --format json | jq -r ".[] | select(.name == \"$VM_NAME\") .state.status"
 }
 
 _wait_ip() {
@@ -36,47 +41,52 @@ _wait_ip() {
 }
 
 _get_ip() {
+  set +e
   ip addr show dev "$VM_IFACE" \
   | grep -v inet6 | grep inet \
   | cut -d"/" -f1 \
   | sed 's/[^0-9.]*//g'
+  set -e
 }
 
 start() {
-  _log_call "$*"
+  local vm_status
 
-  set -e
-  echo "> create/update LXD profile..."
+  printf "> create/update LXD profile...\n"
   lxc profile create ${VM_PROFILE} || true
   show_profile | lxc profile edit ${VM_PROFILE}
 
-  echo "> stopping upmpd"
-  systemctl --user stop upmpdcli.service
+  printf "\n> get exclusive access...\n"
+  systemctl --user stop upmpdcli mpd pulseaudio.socket pulseaudio
 
-  echo
   echo "> start LXC container..."
-  if lxc ls --format json | jq -e '.[] | select(.name == "roon")' >/dev/null; then 
-    lxc start $VM_NAME || true
-  else
-    lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || true
-  fi
-  _vm_exec install_roon
-  set +e
+  vm_status=$(_vm_status)
 
-  echo
-  echo "> forwarding ports..."
+  if [[ -z "$vm_status" ]]; then 
+    lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || true
+  elif [[ "Running" != "$vm_status" ]]; then
+    lxc start $VM_NAME || true
+  fi
+
+  _vm_exec install_roon
+
+  printf "\n> forward ports...\n"
   port_forward
 }
 
 stop() {
   _log_call "$*"
 
-  port_forward clear
-  lxc stop $VM_NAME
+  local vm_status
+  vm_status=$(_vm_status)
+  if [[ "Running" == "$vm_status" ]]; then
+      port_forward clear
+      lxc stop $VM_NAME
+  fi
 
-  echo "> restarting upmpd"
+  echo "> restart sound services"
   sleep 1
-  systemctl --user start upmpdcli.service
+  systemctl --user start upmpdcli mpd pulseaudio.socket pulseaudio
 }
 
 show_profile() {
@@ -134,7 +144,7 @@ port_forward() {
   tcp_1="PREROUTING -t nat -p tcp --dport 9100:9200 -j DNAT --to-destination $ip:9100-9200"
   tcp_2="PREROUTING -t nat -p tcp --dport 9300:9339 -j DNAT --to-destination $ip:9300-9339"
 
-  if [[ "$1" == "clear" ]]; then
+  if [[ "${1:-}" == "clear" ]]; then
     sudo iptables -D $forward_acc
     sudo iptables -D $udp
     sudo iptables -D $tcp_1
@@ -147,8 +157,37 @@ port_forward() {
   fi
 }
 
+_err_trap() {
+  if [ "$1" != "0" ]; then
+    local tmp_file
+    tmp_file="$3"
+
+    printf "<---\nError on line $2, spilling STDERR:\n" >&4
+    cat $tmp_file >&4
+    echo "--->"
+  fi
+}
+
+_exit_trap() {
+  local tmp_file
+  tmp_file="$1"
+  rm -f $tmp_file
+  exec 2>&3
+}
+
+tmp_file=$(mktemp -u)
+exec 4>&2 3>&2 2>"$tmp_file"
+
+set -o errexit
+set -o errtrace
+set -o nounset
+
+trap '_err_trap $? $LINENO $tmp_file' ERR
+trap '_exit_trap $tmp_file' TERM QUIT KILL EXIT
+
 if [[ "$@" == "" ]]; then
-    start
+  start
 else
-    $@
+  $@
 fi
+
