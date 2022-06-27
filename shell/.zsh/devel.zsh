@@ -122,7 +122,3 @@ if [[ "$enable_devel" =~ "nvm" ]]; then
 fi
 
 [[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
-
-glue() {
-  rg --line-number --no-heading --color=always --smart-case "$@" | fzf -d ':' -n 2.. --ansi --no-sort --preview-window 'down:20%:+{2}' --preview 'bat --style=numbers --color=always --highlight-line {2} {1}'
-}

@@ -111,16 +111,22 @@ svii() {
   sudo chattr +i "${1}"
 }
 
-## grep for line content and edit the selected file(s)
-srg() {
-  local file_list
-  file_list=$(rg $* | fzf_cmd)
-  [[ ! -z $file_list ]] && s $file_list
-}
-
 ## open file in Vim at specified line
 vil() {
-  vi "${1}" +$(< "${1}" | nl -ba -nln | fzf_cmd | cut -d' ' -f1)
+  nvim "${1}" +$(< "${1}" | nl -ba -nln | fzf_cmd | cut -d' ' -f1)
+}
+
+## glue rg + fzf + bat + vim
+vig() {
+    local r f l
+    r=$(rg --line-number --no-heading --color=always --smart-case "$@" \
+        | fzf -d ':' -n 2.. --ansi --no-sort --preview-window 'down:20%:+{2}' \
+          --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+        | tail -n1)
+    f=$(echo "$r" | cut -d":" -f1)
+    l=$(echo "$r" | cut -d":" -f2)
+    echo "nvim $f +$l"
+    nvim $f +$l
 }
 
 ## open dir in IntelliJ
@@ -140,10 +146,8 @@ dps() {
 }
 
 # -- Z / Misc ------------------------------------------------------------------
-alias ccat='pygmentize -g'
 (( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
 alias t="t -t ${HOME}/Dropbox/apps/t"
-alias tlro="t -l ro"
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias o='xdg-open'
 
