@@ -15,8 +15,7 @@ source ~/.zsh/misc.zsh
 
 if [[ "$TTY" == /dev/tty* ]]; then
   export GPG_TTY="$TTY"
-  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
-  systemctl --user import-environment GPG_TTY SSH_AUTH_SOCK
+  systemctl --user import-environment GPG_TTY
 fi
 
 if [[ "$TTY" == "/dev/tty1" ]]; then

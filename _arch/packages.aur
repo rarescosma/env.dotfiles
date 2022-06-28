@@ -36,6 +36,7 @@ scream
 snap-pac-grub
 snapper-gui-git
 steghide
+systemd-ssh-agent
 systemd-suspend-modules
 tomb
 tor-browser
