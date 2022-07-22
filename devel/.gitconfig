@@ -47,3 +47,5 @@
 	useConfigOnly = true
 [pull]
 	ff = only
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
