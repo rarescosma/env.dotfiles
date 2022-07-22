@@ -36,6 +36,7 @@
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [push]
 	default = current
+	autoSetupRemote = true
 [rebase]
 	autosquash = true
 	autostash = true
