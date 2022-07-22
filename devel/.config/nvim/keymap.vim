@@ -38,10 +38,8 @@ xnoremap >  >gv
 onoremap gv  :<c-u>normal! gv<cr>
 
 " Line beginning + end.
-nnoremap L $
-vnoremap L $
-nnoremap H ^
-vnoremap H ^
+noremap L $
+noremap H ^
 
 " Quicker commands.
 noremap ; :
