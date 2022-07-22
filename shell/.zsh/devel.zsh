@@ -7,12 +7,18 @@ alias vim="$EDITOR"
 # -- Turtles -------------------------------------------------------------------
 dscum() {
     # scum a docker image off
+    local entrypoint
+    if [[ "$1" == "sh" ]]; then
+        entrypoint="/bin/sh"
+        shift
+    else
+        entrypoint="/bin/bash"
+    fi
     docker run \
         --rm -it \
         --name="dscum-$(pwgen -A01)" \
-        --entrypoint="/bin/bash" "$@"
+        --entrypoint="$entrypoint" "$@"
 }
-
 
 if [[ "$enable_devel" =~ "kubectl" ]]; then
   source "${HOME}/.zsh/kube.zsh"
