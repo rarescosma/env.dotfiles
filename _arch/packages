@@ -2,7 +2,6 @@ acpi
 alacritty
 alsa-utils
 arandr
-arm-none-eabi-gcc
 audacity
 axel
 base
@@ -78,6 +77,7 @@ iptables-nft
 ipython
 iw
 jq
+k9s
 kernel-modules-hook
 keybase-gui
 keychain
@@ -92,7 +92,6 @@ logrotate
 lsof
 lvm2
 lxappearance
-lxc
 lxd
 man-db
 man-pages
@@ -128,7 +127,6 @@ obsidian
 openssh
 os-prober
 otf-font-awesome
-pandoc
 parallel
 parcellite
 pass
@@ -166,14 +164,12 @@ rustup
 scala
 sccache
 scrot
-seahorse
 siege
 sl
 smartmontools
 snap-pac
 snapper
 sox
-speedtest-cli
 stow
 strace
 stress
@@ -201,11 +197,11 @@ usbutils
 vdpauinfo
 vim
 vlc
+watchexec
 wdiff
 whois
 wine
 wireguard-tools
-wireshark-qt
 xautolock
 xclip
 xf86-input-synaptics

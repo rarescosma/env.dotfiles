@@ -2,8 +2,6 @@
 android-sdk-platform-tools
 apache-tools
 bindfs
-camlpdf
-cpdf
 ddgr
 dropbox
 espanso-bin
@@ -12,6 +10,7 @@ fortune-mod-southpark
 gconf
 git-test-git
 gnome-alsamixer
+gnome-ssh-askpass3
 gtk-theme-arc-gruvbox-git
 i3-volume
 intellij-idea-ultimate-edition
