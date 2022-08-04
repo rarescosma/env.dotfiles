@@ -56,7 +56,7 @@ tc() {
 
 vpn() {
   local vpn_config log_path old_name
-  vpn_config="vpn/${1}/$(hostname -s).ovpn"
+  vpn_config="var/ovpn/${1}/$(hostname -s).ovpn"
   log_path="/tmp/vpn-${1}.log"; echo -n > "$log_path"
 
   to || return
