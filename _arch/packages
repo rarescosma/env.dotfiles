@@ -178,6 +178,7 @@ sysstat
 terminus-font
 thunar
 thunar-archive-plugin
+thunar-volman
 tig
 tlp
 tmux
