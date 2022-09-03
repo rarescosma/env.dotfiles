@@ -1,4 +1,5 @@
 acpi
+acpid
 alacritty
 alsa-utils
 arandr
@@ -32,6 +33,7 @@ dunst
 easy-rsa
 efibootmgr
 eog
+espeak-ng
 exa
 expac
 fd
@@ -151,6 +153,7 @@ python-pip
 python-pipenv
 python-pylint
 python-pyxdg
+qt5ct
 realtime-privileges
 redshift
 reflector
