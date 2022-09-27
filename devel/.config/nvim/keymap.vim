@@ -50,7 +50,6 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-inoremap <C-o> <ESC>o
 
 " Center block nav please.
 nnoremap }   }zz
