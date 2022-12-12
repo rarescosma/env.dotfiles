@@ -5,7 +5,7 @@ location:
 
   repositories:
     - /home/karelian/backup/shrewd/root_borg
-    - vps:/home/karelian/backup/shrewd/root_borg
+    - karelian@vps:/home/karelian/backup/shrewd/root_borg
 
   one_file_system: true
 
