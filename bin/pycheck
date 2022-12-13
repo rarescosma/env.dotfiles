@@ -7,6 +7,7 @@ export -f locat
 
 PYLINT_ARGS=""
 test -f setup.cfg && PYLINT_ARGS="--rcfile=setup.cfg"
+test -f pylintrc && PYLINT_ARGS="--rcfile=pylintrc"
 
 # clean & sort imports
 pycln "${@}"
