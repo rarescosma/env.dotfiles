@@ -41,7 +41,6 @@ def _is_valid(entry: dict[str, str]) -> bool:
 def _real_query(query: str) -> str:
     args = [
         "ddgr",
-        "--noua",
         "--reg",
         '"us"',
         "-w",
