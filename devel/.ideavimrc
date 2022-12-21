@@ -54,6 +54,7 @@ nmap <leader>v <Action>(IntroduceVariable)
 
 " Run, Forest, run!
 nmap R <Action>(ChooseRunConfiguration)
+nmap <leader>b <Action>(Tool_External Tools_black80)
 
 " Distraction-free mode.
 nmap <leader>l <Action>(HideAllWindows)
