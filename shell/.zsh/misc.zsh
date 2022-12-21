@@ -42,7 +42,7 @@ alias rp=rename_partials
 alias vimtutor="nvim -c 'Tutor vim-01-beginner'"
 surroundtutor() {
   local _tmp=$(mktemp)
-  cp ~/var/surround.practice $_tmp
+  cp ~/Dropbox/areas/vim/surround.practice $_tmp
   i $_tmp
 }
 
