@@ -10,16 +10,30 @@ test -f setup.cfg && PYLINT_ARGS="--rcfile=setup.cfg"
 test -f pylintrc && PYLINT_ARGS="--rcfile=pylintrc"
 
 # clean & sort imports
+echo
+echo ">>>>>> pycln <<<<<<"
 pycln "${@}"
+echo
+echo ">>>>>> isort <<<<<<"
 isort -l80 -m3 --tc "${@}"
 
 # format
+echo
+echo ">>>>>> black <<<<<<"
 black -l 80 "${@}"
 
 # types are good
-(mypy --ignore-missing-imports --disallow-untyped-defs "${@}" | locat) &
+({
+    echo
+    echo ">>>>>> mypy <<<<<<"
+    mypy --ignore-missing-imports --disallow-untyped-defs "${@}" 
+} | locat) &
 
 # messy code is bad
-(pylint "${PYLINT_ARGS}" "${@}" | locat) &
+({
+    echo
+    echo ">>>>>> pylint <<<<<<"
+    pylint "${PYLINT_ARGS}" "${@}"
+} | locat) &
 
 wait
