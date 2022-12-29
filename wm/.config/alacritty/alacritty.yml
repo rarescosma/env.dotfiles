@@ -9,7 +9,6 @@ font:
   normal:
     family: "Iosevka"
   size: 12 #fontsize
-  use_thin_strokes: true
 
 colors:
   primary:
