@@ -48,7 +48,7 @@ surroundtutor() {
 
 # -- ssh-agent -----------------------------------------------------------------
 if [ -z "$(pgrep ssh-agent)" ]; then
-   /sbin/rm -rf /tmp/ssh-* >/dev/null
+   /sbin/rm -rf /tmp/ssh-* 2>/dev/null
    eval $(ssh-agent -s) > /dev/null
 else
    export SSH_AGENT_PID=$(pgrep ssh-agent)
