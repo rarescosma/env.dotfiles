@@ -1,13 +1,14 @@
 [Unit]
 Description=Rest In Peace
-User=karelian
-Group=karelian
+DefaultDependencies=no
 
 [Service]
+User=karelian
+Group=karelian
 Type=oneshot
 RemainAfterExit=true
-ExecStop=/usr/bin/tomb close
+ExecStart=/usr/bin/zsh -c "source /home/karelian/.zsh/functions.zsh; tc || true"
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=umount.target
 
