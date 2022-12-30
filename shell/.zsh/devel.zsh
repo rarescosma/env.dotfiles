@@ -73,7 +73,9 @@ if [[ "$enable_devel" =~ "python" ]]; then
 
     deactivate 2>/dev/null
 
-    if [ -f Pipfile ]; then
+    if [ -f pyproject.toml ]; then
+      poetry install
+    elif [ -f Pipfile ]; then
       pipenv install --dev --skip-lock "$@"
     else
       [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
