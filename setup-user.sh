@@ -68,30 +68,14 @@ setup::services() {
   systemctl_enable_start "ssh-agent.service"
 }
 
-setup::var() {
-  echo ""
-  echo "========================================"
-  echo "Finishing various user configurations..."
-  echo "========================================"
-
-  echo "Customizing firefox css"
-  profile=$(head -n4 "$HOME/.mozilla/firefox/profiles.ini" | grep -E 'Default=' | sed s/^Default=//)
-  [[ -z "$profile" ]] || {
-    _dest="${HOME}/.mozilla/firefox/$profile/chrome"
-    rm -rf "$_dest"
-    ln -sf "${dotfiles_dir}/_vendor/firefox-css" "$_dest"
-  }
-}
-
 main() {
   stow::bin
   stow::dotfiles
 
   if is_chroot; then
-    echo >&2 "=== Running in chroot, skipping services + var..."
+    echo >&2 "=== Running in chroot, skipping services..."
   else
     setup::services
-    setup::var
   fi
 }
 

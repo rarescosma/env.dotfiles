@@ -16,6 +16,3 @@
 [submodule "_vendor/autoenv"]
 	path = _vendor/autoenv
 	url = https://github.com/zpm-zsh/autoenv
-[submodule "_vendor/firefox-css"]
-	path = _vendor/firefox-css
-	url = https://github.com/rarescosma/userChrome.css.git
