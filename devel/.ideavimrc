@@ -42,9 +42,13 @@ nmap gt <Action>(GotoTest)
 
 " IDE search & replace.
 nmap <leader>f <Action>(Find)
+vmap <leader>f <Action>(Find)
 nmap <leader>g <Action>(Replace)
+vmap <leader>g <Action>(Replace)
 nmap <leader>pf <Action>(FindInPath)
+vmap <leader>pf <Action>(FindInPath)
 nmap <leader>pg <Action>(ReplaceInPath)
+vmap <leader>pg <Action>(ReplaceInPath)
 nmap <leader>u <Action>(FindUsages)
 
 " IDE refactor.
