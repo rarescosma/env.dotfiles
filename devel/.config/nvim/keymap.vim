@@ -45,10 +45,6 @@ onoremap gv  :<c-u>normal! gv<cr>
 noremap L $
 noremap H ^
 
-" Quicker commands.
-noremap ; :
-noremap : ;
-
 " Move during insert.
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
