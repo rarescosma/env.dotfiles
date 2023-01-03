@@ -25,6 +25,8 @@ vmap <leader>a <Action>(GotoAction)
 nmap <leader>s <Action>(FileStructurePopup)
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
+nmap <leader><leader> <Action>(AceAction)
+vmap <leader><leader> <Action>(AceAction)
 
 " IDE project navigation.
 nmap <leader>q <Action>(CloseContent)
