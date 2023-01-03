@@ -91,6 +91,8 @@ set highlightedyank
 let g:highlightedyank_highlight_duration = "650"
 set argtextobj
 set exchange
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " N00b mode: key hints via the 'Which Key' plugin.
 " set which-key
