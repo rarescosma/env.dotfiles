@@ -27,6 +27,7 @@ nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 nmap <leader><leader> <Action>(AceAction)
 vmap <leader><leader> <Action>(AceAction)
+nmap <leader>l <Action>(RecentLocations)
 
 " IDE project navigation.
 nmap <leader>q <Action>(CloseContent)
