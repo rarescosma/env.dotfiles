@@ -54,8 +54,8 @@ nmap <leader>u <Action>(FindUsages)
 " IDE refactor.
 nmap <leader>n <Action>(Inline)
 nmap <leader>r <Action>(RenameElement)
-nmap <leader>R <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>v <Action>(IntroduceVariable)
+map <leader>R <Action>(Refactorings.QuickListPopupAction)
+map <leader>v <Action>(IntroduceVariable)
 
 " Run, Forest, run!
 nmap R <Action>(ChooseRunConfiguration)
