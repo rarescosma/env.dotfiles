@@ -2,7 +2,7 @@
 let mapleader=" "
 
 " Reload config.
-nmap <silent> <leader><leader> <Action>(IdeaVim.ReloadVimRc.reload)
+nmap <silent> <leader>V <Action>(IdeaVim.ReloadVimRc.reload)
 
 set clipboard=autoselect,ideaput
 set surround
