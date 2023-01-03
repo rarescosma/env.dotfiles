@@ -8,7 +8,7 @@
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    width = 400
+    width = 500
     height = 250
     origin = top-right
     offset = 10x50
