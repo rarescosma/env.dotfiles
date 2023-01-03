@@ -38,9 +38,6 @@ nnoremap <leader>Y mzgg"+yG`z
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
-" Visual block with <Alt+V>.
-nnoremap <M-v> <c-v>
-
 " Indents.
 nnoremap > >>
 nnoremap < <<

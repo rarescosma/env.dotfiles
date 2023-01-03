@@ -62,7 +62,7 @@ nmap R <Action>(ChooseRunConfiguration)
 nmap <leader>b <Action>(Tool_External Tools_black80)
 
 " Distraction-free mode.
-nmap <leader>l <Action>(HideAllWindows)
+nmap <leader>h <Action>(ToggleInlineHintsAction)
 nmap <C-z> <Action>(ToggleDistractionFreeMode)
 
 " Move method up/down.
@@ -75,10 +75,6 @@ vmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
 
 " Co-exist with the clipboard manager.
 sethandler <^v> a:ide
-
-" Visual block with <Alt+V>.
-nnoremap <A-v> <C-v>
-vnoremap <A-v> <C-v>
 
 " N00b mode: no arrows.
 noremap <Left> <nop>
