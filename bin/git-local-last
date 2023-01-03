@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+COMMITS=$(cat "$@" | grep -vE "^#" | grep -v '^[[:blank:]]*$')
+(
+  printf "$COMMITS" | grep -v "#local"
+  printf "$COMMITS" | grep "#local"
+  echo
+) | tee "$@"
+
