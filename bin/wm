@@ -73,8 +73,10 @@ function dpi::idea() {
   local ui_font_size="${2}"
 
   $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
-  $options_dir/editor.xml
-  $SED -e "s/\"fontSize\" value=\"[[:digit:]]\+\"/\"fontSize\" value=\"$ui_font_size\"/g" \
+  $options_dir/editor-font.xml
+  $SED -e "s/\"FONT_SIZE_2D\" value=\"[[:digit:]\.]\+\"/\"FONT_SIZE_2D\" value=\"${editor_font_size}.0\"/g" \
+  $options_dir/editor-font.xml
+  $SED -e "s/\"fontSize\" value=\"[[:digit:]\.]\+\"/\"fontSize\" value=\"${ui_font_size}.0\"/g" \
   $options_dir/other.xml
 }
 
