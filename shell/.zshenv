@@ -44,7 +44,7 @@ FZ_SUBDIR_CMD=jj
 FZF_CTRL_T_COMMAND="fd --type file --follow --hidden --exclude .git"
 FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse --bind change:top --bind ctrl-e:accept --expect=enter"
 FZF_TMUX=1
-IDEA_VERSION=2021.2
+IDEA_VERSION=2022.3
 
 # zsh
 _VENDOR=${HOME}/src/env.dotfiles/_vendor
