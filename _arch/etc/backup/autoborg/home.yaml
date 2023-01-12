@@ -3,8 +3,8 @@ location:
     - /home/karelian
 
   repositories:
-    - /home/karelian/backup/shrewd/home_borg
-    - karelian@vps:/home/karelian/backup/shrewd/home_borg
+    - /home/karelian/backup/{hostname}/home_borg
+    - karelian@vps:/home/karelian/backup/{hostname}/home_borg
 
   one_file_system: true
 
@@ -32,5 +32,5 @@ retention:
 
 hooks:
   after_everything:
-    - "chown -R karelian: /home/karelian/backup/shrewd/home_borg"
+    - "chown -R karelian: /home/karelian/backup/*/home_borg"
     - "chown -R karelian: /home/karelian/.config/borg"
