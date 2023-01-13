@@ -24,9 +24,6 @@
 + /home/karelian/media/books
 - /home/karelian/media/books/_Collections.tgz
 ! /home/karelian/mnt
-! /home/karelian/src/ops.kube/core/.git
-! /home/karelian/src/ops.kube/share/.pv
-! /home/karelian/src/ops.kube/share/.registry
-! /home/karelian/src/_pkg
+! /home/karelian/src/pkg
 ! /home/karelian/var
 ! /home/karelian/Tomb
