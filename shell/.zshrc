@@ -18,7 +18,7 @@ if [[ "$TTY" == /dev/tty* ]]; then
   systemctl --user import-environment GPG_TTY
 fi
 
-if [[ "$TTY" == "/dev/tty2" ]]; then
+if [[ "$TTY" == "/dev/tty1" ]]; then
   exec systemd-cat -t startx startx -- -dpi 110
 else 
   if (( ${+TMUX} )); then

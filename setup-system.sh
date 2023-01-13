@@ -46,7 +46,7 @@ setup::etc() {
   copy "etc/sysctl.d/99-sysctl.conf"
   copy "etc/systemd/logind.conf"
   copy "etc/systemd/system/closetomb.service"
-  copy "etc/systemd/system/getty@tty2.service.d/override.conf"
+  copy "etc/systemd/system/getty@tty1.service.d/override.conf"
   copy "etc/systemd/system/powertop.service"
   copy "etc/locale.nopurge"
   copy "etc/pacman.conf"
