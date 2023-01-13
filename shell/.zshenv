@@ -47,7 +47,7 @@ FZF_TMUX=1
 IDEA_VERSION=2022.3
 
 # zsh
-_VENDOR=${HOME}/src/env.dotfiles/_vendor
+_VENDOR=${HOME}/src/env/dotfiles/_vendor
 DISABLE_AUTO_UPDATE=true
 TERMINFO=/usr/share/terminfo
 ZSH=${_VENDOR}/oh-my-zsh
