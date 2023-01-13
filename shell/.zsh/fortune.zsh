@@ -1,4 +1,3 @@
-clear
 if (( $+commands[fortune] )); then
   read -r -d '' OK_COWS <<'EOF'
 moose
