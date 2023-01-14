@@ -18,6 +18,7 @@ calibre
 cantata
 cfssl
 chromium
+clang
 cowsay
 cpupower
 dhcpcd
@@ -105,6 +106,7 @@ mesa-utils
 minio-client
 mkvtoolnix-cli
 mlocate
+mold
 mpd
 mpv
 mtools
