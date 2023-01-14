@@ -13,6 +13,11 @@ _copy_from() {
   root="$1"
   shift
 
+  if [ -z "$1" ]; then
+    echo "you might have forgottent to quote some args, I'm not removing /"
+    exit 1
+  fi
+
   if [ -z "$reverse" ]; then
     orig_file="$root/$1"
     dest_file="/$1"
