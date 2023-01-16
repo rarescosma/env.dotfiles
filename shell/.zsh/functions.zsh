@@ -15,9 +15,9 @@ fi
 if (( $+commands[exa] )); then
   alias l="exa -lhg --git --group-directories-first"
 else
-  alias l='ls -l'
+  alias l='ls -lh'
 fi
-alias la="l -a"
+alias la="l -ah"
 alias lk="l -s=size"                # Sorted by size
 alias lm="l -s=modified"            # Sorted by modified date
 alias lc="l --created -s=created"   # Sorted by created date
