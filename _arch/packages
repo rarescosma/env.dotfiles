@@ -203,6 +203,7 @@ usbutils
 vdpauinfo
 vim
 vlc
+wasm-pack
 watchexec
 wdiff
 whois
