@@ -3,7 +3,8 @@
 
 set -x
 
-LXC_ROOT=/srv/lxc/seedbox/rootfs
+LXC_ROOT=/srv/lxc/seedbox_v2/rootfs
+LXC_USER=karelian
 
 mount_ext4() {
   local dev="${1}"
@@ -30,12 +31,12 @@ cycle_samba() {
 bind_seedbox() {
   mount --bind /mnt/seedbox/lxc /srv/lxc
   mount --bind /mnt/seedbox ${LXC_ROOT}/mnt/seedbox
-  mount --bind /root/src ${LXC_ROOT}/home/ubuntu/src
+  mount --bind /root/src ${LXC_ROOT}/home/${LXC_USER}/src
   mount --bind /mnt/media ${LXC_ROOT}/mnt/media
 }
 
 start_seedbox() {
-  /usr/bin/lxc-start -n seedbox
+  /usr/bin/lxc-start -n seedbox_v2
 }
 
 main() {
