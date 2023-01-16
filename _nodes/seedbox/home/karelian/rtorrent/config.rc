@@ -27,6 +27,7 @@ trackers.numwant.set = 40
 trackers.use_udp.set = no
 
 # Misc
+method.set_key = event.download.finished,notify_pushover,"execute.raw=/home/karelian/bin/pushover,\"Finished pirating the s*** out of\",$d.name="
 session.path.set = ~/rtorrent/session_2
 schedule2 = watch_directory,5,5,load.start=/mnt/seedbox/candy/*.torrent
 
