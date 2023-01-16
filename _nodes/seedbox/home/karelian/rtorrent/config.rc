@@ -1,0 +1,32 @@
+# Connection settings
+directory.default.set = /mnt/seedbox/fresh
+network.port_random.set = no
+network.port_range.set = 51413-51413
+network.scgi.open_port = 127.0.0.1:5000
+dht.port.set = 6881
+dht.mode.set = auto
+protocol.pex.set = yes
+
+# Network limits
+network.http.max_open.set = 50
+network.max_open_files.set = 600
+network.max_open_sockets.set = 100
+throttle.global_down.max_rate.set_kb = 30720
+throttle.global_up.max_rate.set_kb = 4096
+
+# Peer settings
+throttle.min_peers.normal.set = 39
+throttle.max_peers.normal.set = 40
+throttle.min_peers.seed.set = -1
+throttle.max_peers.seed.set = -1
+throttle.max_downloads.global.set = 100
+throttle.max_uploads.global.set = 100
+throttle.max_downloads.set = 20
+throttle.max_uploads.set = 20
+trackers.numwant.set = 40
+trackers.use_udp.set = no
+
+# Misc
+session.path.set = ~/rtorrent/session_2
+schedule2 = watch_directory,5,5,load.start=/mnt/seedbox/candy/*.torrent
+
