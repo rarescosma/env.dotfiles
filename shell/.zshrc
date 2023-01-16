@@ -6,7 +6,7 @@ if [[ "$TTY" == /dev/tty* ]]; then
 fi
 
 if ! test -z "$SSH_CLIENT"; then
-  export GPG_TTY=$(tty)
+  command -v tty >/dev/null && export GPG_TTY=$(tty)
   export DBUS_SESSION_BUS_ADDRESS=/dev/null
   export XDG_SESSION_TYPE=pts
 fi

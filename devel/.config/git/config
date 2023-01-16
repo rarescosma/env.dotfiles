@@ -20,13 +20,10 @@
     excludesfile = ~/.config/git/excludes
     pager = diff-so-fancy | less --tabs=4 -RFX
     untrackedCache = true
-[commit]
-    gpgsign = true
-    template = ~/.config/git-template/commit
 [init]
     defaultBranch = main
 [interactive]
-    diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+    diffFilter = "/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
 [merge]
     tool = meld
 [mergetool]
