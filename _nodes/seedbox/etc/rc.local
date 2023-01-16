@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+mkdir /dev/net || true
+mknod /dev/net/tun c 10 200 || true
+chmod 666 /dev/net/tun
+
+systemctl start openvpn-server@server
+sleep 2
+
+/sbin/iptables-legacy -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+
+exit 0
