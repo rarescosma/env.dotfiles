@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+AFTER="$1"
+if [[ -z "$AFTER" ]]; then
+    echo -e "need an after date as the only argument (format YYYY-MM-DD)"
+    exit 1
+fi
+
+comm -12 \
+    <(grep -e " install " -e " upgrade " </var/log/dpkg.log \
+        | awk -F ":a" '{print $1 " :a" $2}' \
+        | awk '{if ($1<after) next; else print $4}' after="$AFTER" \
+        | sort) \
+    <(aptitude -q search '~i !~M' -F '%p' --disable-columns)
+
