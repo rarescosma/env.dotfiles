@@ -49,8 +49,21 @@ _get_ip() {
   set -e
 }
 
+_ensure_lxd() {
+  # restart lxd and wait for it
+  sudo systemctl is-active --quiet lxd || {
+    sudo systemctl restart lxd
+    while ! lxc list 1>/dev/null; do
+      sleep 1
+    done
+  }
+}
+
 start() {
   local vm_status
+
+  printf "> ensuring LXD is up...\n"
+  _ensure_lxd
 
   printf "> create/update LXD profile...\n"
   lxc profile create ${VM_PROFILE} || true
