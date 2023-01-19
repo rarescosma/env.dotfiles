@@ -20,7 +20,6 @@ for pid in $(pidof -x $_MY_NAME); do
    fi
 done
 
-dropbox &
 nm-applet &
 volctl &
 parcellite &
