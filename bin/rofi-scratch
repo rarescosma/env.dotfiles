@@ -5,4 +5,4 @@
 
 rofi -modi run -show run \
   -kb-accept-entry '' -kb-accept-alt Return \
-  -run-shell-command '{terminal} --title="rofi-scratch: {cmd}" -e zsh -ic "{cmd}; read"'
+  -run-shell-command '{terminal} --title="rofi-scratch: {cmd}" -e zsh -ic "{cmd} | tee -a /tmp/scratch.log; printf \"\n\nHit any key or wait 5 seconds...\"; read -t 5"'
