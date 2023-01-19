@@ -44,5 +44,7 @@ fi
 
 ${HOME}/bin/startup-xinit
 ${HOME}/.i3/wallpaper.sh
+source "${HOME}/bin/wm"
+keyboard::setup
 
 wait
