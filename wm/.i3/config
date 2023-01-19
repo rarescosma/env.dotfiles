@@ -29,7 +29,7 @@ bindsym $mod+Shift+q kill
 # rofi, rofi, rofi
 bindsym $alt+space exec --no-startup-id rofi -show combi
 bindsym $mod+backslash exec --no-startup-id ~/bin/rofi-scratch
-bindsym $mod+u exec --no-startup-id rofi -show cht -modi cht:cht-rofi
+bindsym $mod+u exec --no-startup-id rofi -show cht -modi cht:cht-rofi -matching prefix
 bindsym $mod+Shift+u exec --no-startup-id cht-query
 
 # focus on a specific task
