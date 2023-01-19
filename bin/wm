@@ -16,6 +16,7 @@ function keyboard::setup() {
   if [ -f "$XDG_CONFIG_HOME/keymap.xkb" ]; then
       xkbcomp "$XDG_CONFIG_HOME/keymap.xkb" $DISPLAY 2>/dev/null
   fi
+  systemctl --user start espanso
 }
 
 function _usb::dispatch() {
