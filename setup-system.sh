@@ -86,6 +86,8 @@ setup::_node() {
     copy_host "etc/mkinitcpio.conf"
     copy_host "etc/modprobe.d/i915.conf"
     copy_host "etc/modprobe.d/nouveau.conf"
+    copy_host "etc/systemd/system/getty@tty1.service.d/override.conf"
+    copy_host "etc/udev/rules.d/99-systemd-dri-devices.rules"
     copy_host "etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
     copy_host "etc/X11/xorg.conf.d/20-synaptics.conf"
     copy_host "etc/X11/xinit/xinitrc.d/10-nvidia-modeset.sh"
