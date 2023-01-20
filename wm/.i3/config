@@ -10,9 +10,11 @@ floating_modifier $mod
 # specific window configuration
 for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
-for_window [title="^rofi-scratch:" ] floating enable
-for_window [title="^rofi-scratch:" ] border 1 pixel
+for_window [title="^rofi-scratch:"] floating enable
+for_window [title="^rofi-scratch:"] border pixel 1
+for_window [class="Alacritty"] border pixel 1
 assign [class="obsidian"] 7
+smart_borders on
 
 # terminals
 bindsym $mod+Return exec alacritty
