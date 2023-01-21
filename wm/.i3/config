@@ -14,12 +14,14 @@ for_window [title="^rofi-scratch:"] floating enable
 for_window [title="^rofi-scratch:"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 assign [class="obsidian"] 7
+assign [class="Zotero"] 7
 smart_borders on
 
 # terminals
 bindsym $mod+Return exec alacritty
 bindsym $mod+0x60 exec alacritty -e sh -c "tmux attach -d -t base || exec tmux new -s base"
 bindsym $mod+0x27 exec --no-startup-id raiseorlaunch -c obsidian -e obsidian
+bindsym $mod+Shift+0x27 exec --no-startup-id raiseorlaunch -c zotero
 bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec firefox
