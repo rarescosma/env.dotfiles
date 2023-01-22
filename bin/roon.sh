@@ -87,6 +87,10 @@ start() {
   port_forward
 }
 
+gui() {
+  gtk-launch roon-on-wine
+}
+
 stop() {
   _log_call "$*"
 

@@ -15,6 +15,7 @@ for_window [title="^rofi-scratch:"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 assign [class="obsidian"] 7
 assign [class="Zotero"] 7
+assign [class="roon.exe"] 7
 smart_borders on
 
 # terminals
