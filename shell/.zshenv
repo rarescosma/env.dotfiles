@@ -46,6 +46,10 @@ FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse --bind change:top --bind 
 FZF_TMUX=1
 IDEA_VERSION=2022.3
 
+# pkm
+VAULT_DIR="${HOME}/Dropbox/_pkm/rar"
+VAULT_MEDIA="_Media"
+
 # zsh
 _VENDOR=${HOME}/src/env/dotfiles/_vendor
 DISABLE_AUTO_UPDATE=true

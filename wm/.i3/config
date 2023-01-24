@@ -210,6 +210,7 @@ bindsym XF86AudioMute        exec --no-startup-id i3-volume mute
 
 # screenshots
 bindsym 0xff61 exec ~/bin/screenshot
+bindsym Shift+0xff61 exec "~/bin/,snap"
 bindsym XF86LaunchA exec ~/bin/screenshot
 
 # system menu
