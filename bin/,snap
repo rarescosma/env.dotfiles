@@ -10,6 +10,7 @@ _deps=(
   "scrot"
   "zenity"
   "xsel"
+  "i3-msg"
 )
 for _dep in "${_deps[@]}"; do
   command -v "${_dep}" >/dev/null || (
@@ -34,4 +35,7 @@ mv --no-clobber --verbose "${path}" "${MEDIA}/${new_path}.png"
 
 # copy the figure markup to clipboard
 echo -n "![[${VAULT_MEDIA}/${new_path}.png|${caption}]]" | xsel -b
+
+# refocus obsidian
+i3-msg '[class="^obsidian"] focus'
 
