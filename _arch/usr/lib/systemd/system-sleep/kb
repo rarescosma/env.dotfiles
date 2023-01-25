@@ -1,0 +1,17 @@
+#!/bin/bash
+
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>/tmp/system-sleep-kb.log 2>&1
+
+USER="karelian"
+
+case "$1" in
+    post)
+        until pgrep -f startup-i3; do sleep 1; done
+        export DISPLAY=:0
+        export XAUTHORITY="/home/$USER/.Xauthority"
+        export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$USER")/bus"
+        /usr/bin/sudo -E -u "$USER" /home/$USER/bin/wm keyboard::setup
+        ;;
+esac

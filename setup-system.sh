@@ -159,6 +159,7 @@ setup::var() {
   echo "Configuring sleep"
   copy "etc/tlp.d/10-ac-governor.conf"
   copy "usr/lib/systemd/system-sleep/udevm"
+  copy "usr/lib/systemd/system-sleep/kb"
 }
 
 main() {
