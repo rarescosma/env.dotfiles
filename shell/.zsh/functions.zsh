@@ -93,13 +93,25 @@ ssh-add() {
 
 # -- Editors -------------------------------------------------------------------
 s() {
-  if test -w "$@"; then
-    $VISUAL "$@"
+  local f
+  f="$(readlink -f "$@")"
+  if test -w "$f"; then
+      $VISUAL "$@"
   else
-    if test -f "$@"; then
+    if test -f "$f"; then
         sudo $VISUAL "$@"
     else
+      if ! test -e "$f"; then
+        local p
+        p="$(dirname "$@")"
+        if test -w "$p"; then
+          $VISUAL "$@"
+        else
+          sudo $VISUAL "$@"
+        fi
+      else
         $VISUAL "$@"
+      fi
     fi
   fi
 }
