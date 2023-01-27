@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# displays the USB device id of a connected kindle
+# sample usage:
+# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(kindle_id)" | tee -a ~/.local/env
+
+kindle_dev="/dev/$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
+test -z "$kindle_dev" && (echo -e "could not find kindle device; aborting..."; exit 1)
+
+usb_id="$(udevadm info -q path -n $kindle_dev | awk '{split($0, arr, "/host"); print arr[1]}' | awk -F'/' '{print $NF}' | cut -d":" -f1)"
+test -z "$usb_id" && (echo -e "could not find kindle usb id; aborting..."; exit 1)
+
+echo $usb_id
+

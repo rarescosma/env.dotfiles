@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+test -z "$KINDLE_ID" || (
+    source $HOME/bin/wm
+    wm usb::detach $KINDLE_ID
+)
+
