@@ -29,6 +29,7 @@ dmenu
 dmidecode
 docker-compose
 dosfstools
+dpkg
 drone-cli
 dunst
 easy-rsa
