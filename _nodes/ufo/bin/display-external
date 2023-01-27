@@ -4,14 +4,7 @@
 cmd="$@"; shift $#
 source "${HOME}/bin/wm"
 
-xrandr --output DP-0 --primary --mode 3440x1440 --rate 165 --pos 0x0 --rotate normal \
-  --output eDP1 --off \
-  --output VIRTUAL1 --off  \
-  --output HDMI2 --off \
-  --output HDMI1 --off \
-  --output DP2 --off \
-  --output eDP-1-1 --off \
-  --output eDP-1-2 --off
+xrandr --auto --output eDP-1-2 --off --output eDP-1-1 --off
 
 dpi::terminal 11
 dpi::i3 10 
