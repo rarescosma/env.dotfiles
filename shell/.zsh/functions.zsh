@@ -1,7 +1,7 @@
 alias sudo='sudo -E '
 
 # -- Fs ------------------------------------------------------------------------
-unalias z
+unalias z 2>/dev/null
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias rg="rg --hidden --follow --smart-case"
@@ -137,8 +137,10 @@ vig() {
         | tail -n1)
     f=$(echo "$r" | cut -d":" -f1)
     l=$(echo "$r" | cut -d":" -f2)
-    echo "nvim $f +$l"
-    nvim $f +$l
+    if ! test -z "$f"; then
+        echo "nvim $f +$l"
+        nvim $f +$l
+    fi
 }
 
 ## open dir in IntelliJ
