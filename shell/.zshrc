@@ -9,6 +9,7 @@ source ~/.zsh/keybindings.zsh
 source ~/.zsh/functions.zsh
 
 source ~/.zsh/devel.zsh
+test -f ~/.zsh/gcloud.zsh && source ~/.zsh/gcloud.zsh
 source ~/.zsh/misc.zsh
 
 [[ -f ~/.local/functions ]] && source ~/.local/functions
