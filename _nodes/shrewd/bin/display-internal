@@ -18,5 +18,5 @@ dpi::rofi 20
 
 keyboard::setup
 
-${HOME}/.i3/wallpaper.sh
+${XDG_CONFIG_HOME}/i3/wallpaper.sh
 

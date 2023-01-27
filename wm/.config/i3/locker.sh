@@ -6,7 +6,7 @@ if test -f /tmp/caffeine; then
 fi
 
 if [[ -z "$(pidof i3lock)" ]]; then
-  i3lock -i ~/.i3/congruent_outline.png --tiling && sleep 1
+  i3lock -i "${XDG_CONFIG_HOME}/i3/congruent_outline.png" --tiling && sleep 1
 else
   echo "i3lock is already running"
 fi

@@ -11,5 +11,5 @@ xrandr --output DP1 --mode 1920x1080 --pos 0x0 --rotate normal \
 
 keyboard::setup
 
-${HOME}/.i3/wallpaper.sh
+${XDG_CONFIG_HOME}/i3/wallpaper.sh
 
