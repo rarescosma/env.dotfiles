@@ -19,20 +19,12 @@ function keyboard::setup() {
   systemctl --user start espanso
 }
 
-function _usb::dispatch() {
-  local action port
-  action=$1; shift; port="$*"
-  cd /sys/bus/usb/drivers/usb || return
-  sudo tee "$action" <<< "$port"
-  cd - || return
-}
-
 function usb::detach() {
-  _usb::dispatch unbind "$*"
+  sudo tee "/sys/bus/usb/drivers/usb/unbind" <<< "$*"
 }
 
 function usb::attach() {
-  _usb::dispatch bind "$*"
+  sudo tee "/sys/bus/usb/drivers/usb/bind" <<< "$*"
 }
 
 #     ____  ____  ____
