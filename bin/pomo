@@ -7,4 +7,4 @@ sleep "$pomo_time"
 notify-send "Time for a break. Locking in ${grace_time}s ..."
 sleep "$grace_time"
 playerctl -a pause
-${HOME}/.i3/locker.sh
+${XDG_CONFIG_HOME}/i3/locker.sh
