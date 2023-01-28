@@ -1,7 +1,8 @@
 configuration {
     font: "iosevka 12";
-    combi-modi: "rfh: rfh,window,ssh,drun,display: display";
+    combi-modi: "xrun: xrun,rfh: rfh,window,ssh,drun";
     ssh-command: "tmux new-window -n '@{host}' 'ssh {host}'";
+    sorting-method: "fzf";
 }
 
 @theme "/usr/share/rofi/themes/glue_pro_blue.rasi"

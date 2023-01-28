@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+errored=0
+
+_err_trap() {
+  local tmp_file
+  tmp_file="$2"
+
+  printf "\n[WARN] exit code was $1, here's STDERR:\n" >&4
+  printf "<---\n"
+  cat $tmp_file >&4
+  echo "--->"
+  errored=1
+}
+
+_exit_trap() {
+  local tmp_file
+  tmp_file="$1"
+  rm -f $tmp_file
+  exec 2>&3
+
+  if [[ "$errored" == "1" ]]; then
+    read
+  else
+    echo "[INFO] done; hit return or chill for 3 seconds..."
+    read -t 3 || true
+  fi
+}
+
+# no args - listing
+if [[ "$@" == "" ]]; then
+  # all scripts starting with ","
+  find -L ~/bin -type f -name ",*" -executable -print0 | xargs -0l basename
+
+  # all aliases and functions starting with ","
+  # alias | awk -F'[ =]' '{print $1}'
+  dispatchers="wm roon ,display"
+  for _dis in $dispatchers; do
+    (source ~/bin/$_dis; declare -F | awk '{print "'"$_dis"' " $3;}' | grep -E ' ,')
+  done
+
+elif [[ "$1" == "_dispatch" ]]; then
+  shift
+  cmd="$*"
+  shift 1 || exit
+
+  tmp_file=$(mktemp -u)
+  exec 4>&2 3>&2 2>"$tmp_file"
+  trap '_err_trap $? $tmp_file' ERR
+  trap '_exit_trap $tmp_file' TERM QUIT KILL EXIT
+
+  $cmd
+else
+  nohup alacritty --title="rofi-xrun: $cmd" \
+    -e zsh -c "~/bin/xrun _dispatch $@" 1>/dev/null 2>&1 &
+  disown
+fi

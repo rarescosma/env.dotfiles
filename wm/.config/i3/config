@@ -10,6 +10,8 @@ floating_modifier $mod
 # specific window configuration
 for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [title="^rofi-xrun:"] floating enable
+for_window [title="^rofi-xrun:"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 assign [class="obsidian"] 7
 assign [class="Zotero"] 7
