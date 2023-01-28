@@ -75,7 +75,7 @@ start() {
   echo "> start LXC container..."
   vm_status=$(_vm_status)
 
-  if [[ -z "$vm_status" ]]; then 
+  if [[ -z "$vm_status" ]]; then
     lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || true
   elif [[ "Running" != "$vm_status" ]]; then
     lxc start $VM_NAME || true
@@ -174,37 +174,24 @@ port_forward() {
   fi
 }
 
-_err_trap() {
-  if [ "$1" != "0" ]; then
-    local tmp_file
-    tmp_file="$3"
-
-    printf "<---\nError on line $2, spilling STDERR:\n" >&4
-    cat $tmp_file >&4
-    echo "--->"
-  fi
-}
-
-_exit_trap() {
-  local tmp_file
-  tmp_file="$1"
-  rm -f $tmp_file
-  exec 2>&3
-}
-
-tmp_file=$(mktemp -u)
-exec 4>&2 3>&2 2>"$tmp_file"
-
-set -o errexit
-set -o errtrace
-set -o nounset
-
-trap '_err_trap $? $LINENO $tmp_file' ERR
-trap '_exit_trap $tmp_file' TERM QUIT KILL EXIT
-
-if [[ "$@" == "" ]]; then
+function ,on() {
   start
-else
+  sleep 3
+  gui
+}
+
+function ,off() {
+  stop
+  pkill -SIGKILL -f Roon.exe || true
+}
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  set -o errexit
+  set -o errtrace
+  set -o nounset
+
   $@
 fi
-
