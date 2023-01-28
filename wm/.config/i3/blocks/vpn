@@ -11,7 +11,7 @@ if [[ -e "${OVPN_PATH}" ]]; then
 fi
 
 # check wireguard
-WG_DEV="$(find /proc/sys/net/ipv4/conf/wg0*)"
+WG_DEV="$(find /proc/sys/net/ipv4/conf/wg0* 2>/dev/null)"
 if ! test -z "$WG_DEV"; then
   VPN_CONFIG="$(printf $WG_DEV | awk -F"/wg0" '{$0=$2}1')"
   VPN_TYPE="wg"
