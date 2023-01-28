@@ -47,8 +47,8 @@ _split_cmd() {
 if [[ "$@" == "" ]]; then
   # all scripts starting with "," are dispatchers
   dispatchers=$(\
-    find -L ~/bin -type f -name ",*" -executable -print0 \
-    | xargs -0l basename)
+    find -L ~/bin -type f -name ",*" -executable \
+    | sort | xargs -l basename)
 
   # all functions starting with "," withing dispatchers are public
   # alias | awk -F'[ =]' '{print $1}'
