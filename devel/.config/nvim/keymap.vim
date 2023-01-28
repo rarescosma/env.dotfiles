@@ -21,8 +21,9 @@ nnoremap cn *Ncgn
 nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
 
-" Quick-save.
+" Quick-save (and quit).
 nnoremap <leader>w :w<CR>
+inoremap <C-z> <C-o>ZZ
 
 " Register-preserving paste + delete.
 xnoremap <leader>p "_dP
