@@ -10,8 +10,6 @@ floating_modifier $mod
 # specific window configuration
 for_window [class="Pinentry"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
-for_window [title="^rofi-scratch:"] floating enable
-for_window [title="^rofi-scratch:"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 assign [class="obsidian"] 7
 assign [class="Zotero"] 7
@@ -33,7 +31,6 @@ bindsym $mod+Shift+q kill
 
 # rofi, rofi, rofi
 bindsym $alt+space exec --no-startup-id rofi -show combi
-bindsym $mod+space exec --no-startup-id ~/bin/rofi-scratch
 bindsym $mod+u exec --no-startup-id rofi -show cht -modi cht:cht-rofi -matching prefix
 bindsym $mod+Shift+u exec --no-startup-id cht-query
 
