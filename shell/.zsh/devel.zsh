@@ -5,8 +5,8 @@ alias vi="$EDITOR"
 alias vim="$EDITOR"
 
 # -- Turtles -------------------------------------------------------------------
+## scum a docker image
 dscum() {
-    # scum a docker image off
     local entrypoint
     if [[ "$1" == "sh" ]]; then
         entrypoint="/bin/sh"
@@ -18,6 +18,13 @@ dscum() {
         --rm -it \
         --name="dscum-$(pwgen -A01)" \
         --entrypoint="$entrypoint" "$@"
+}
+
+## docker ps with port information
+dps() {
+  docker ps $@ \
+    --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
+    | grep -v pause
 }
 
 if [[ "$enable_devel" =~ "kubectl" ]]; then

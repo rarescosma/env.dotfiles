@@ -9,7 +9,7 @@ source ~/.zsh/keybindings.zsh
 source ~/.zsh/functions.zsh
 
 source ~/.zsh/devel.zsh
-test -f ~/.zsh/gcloud.zsh && source ~/.zsh/gcloud.zsh
+[[ -f ~/.zsh/gcloud.zsh ]] && source ~/.zsh/gcloud.zsh
 source ~/.zsh/misc.zsh
 
 [[ -f ~/.local/functions ]] && source ~/.local/functions
@@ -21,7 +21,7 @@ fi
 
 if [[ "$TTY" == "/dev/tty1" ]]; then
   exec systemd-cat -t startx startx -- -dpi 110
-else 
+else
   if (( ${+TMUX} )); then
     source ~/.zsh/fortune.zsh
   fi

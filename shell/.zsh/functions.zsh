@@ -9,7 +9,7 @@ alias locate='locate -i'
 
 if (( $+commands[rmtrash] )); then
   alias rm='rmtrash'
-  alias rm!='trash-put'
+  alias rm!='/sbin/rm'
 fi
 
 if (( $+commands[exa] )); then
@@ -24,6 +24,7 @@ alias lc="l --created -s=created"   # Sorted by created date
 
 ## own all files/directories passed as arguments
 own() {
+  test -z "$@" && exit 1
   sudo chown -R "$(id -un):" "$@"
 }
 
@@ -86,11 +87,6 @@ alias sshfs="\
   sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
 uid=$(id -u),gid=$(id -g),umask=113"
 
-## shmoded ssh-add
-ssh-add() {
-  chmod 400 "$@" && command ssh-add "$@"
-}
-
 # -- Editors -------------------------------------------------------------------
 s() {
   local f
@@ -145,18 +141,10 @@ vig() {
 
 ## open dir in IntelliJ
 i() {
-  nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh $* >/dev/null 2>&1 &
+  local dir
+  dir="${*:-./}"
+  nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh "$dir" >/dev/null 2>&1 &
   disown
-}
-
-# -- Turtles -------------------------------------------------------------------
-alias dk='docker-compose'
-
-## docker ps with port information
-dps() {
-  docker ps $@ \
-    --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
-    | grep -v pause
 }
 
 # -- Z / Misc ------------------------------------------------------------------

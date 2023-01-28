@@ -10,6 +10,5 @@ else
         tmux new-window -t base -n "cht: $@" "$cmd"
     else
         i3-msg -t "run_command" exec "alacritty -e tmux new -s base -n 'cht: $@' '$cmd'" >/dev/null 2>&1
-    fi  
+    fi
 fi
-
