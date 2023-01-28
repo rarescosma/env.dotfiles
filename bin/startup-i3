@@ -43,7 +43,6 @@ if test -x "${HOME}/bin/rtorrent-watch"; then
 fi
 
 ${HOME}/bin/startup-xinit
-${XDG_CONFIG_HOME}/i3/wallpaper.sh
 source "${HOME}/bin/wm"
 keyboard::setup
 
