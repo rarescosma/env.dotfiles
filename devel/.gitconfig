@@ -22,6 +22,7 @@
 	untrackedCache = true
 [commit]
 	gpgsign = true
+    template = ~/.config/git-template/commit
 [init]
 	templatedir = ~/.config/git-template
 	defaultBranch = main
