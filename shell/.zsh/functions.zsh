@@ -37,6 +37,10 @@ permfix() {
 }
 
 # -- Crypto --------------------------------------------------------------------
+alias x509='openssl x509 -noout -text -in '
+alias sshfs="\
+  sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
+uid=$(id -u),gid=$(id -g),umask=113"
 
 ## pass + fzf integration
 _fzf_pass() {
@@ -52,11 +56,6 @@ alias _pass='command pass'
 pass() {
   _pass show $(_fzf_pass "$@") | head -1
 }
-
-alias x509='openssl x509 -noout -text -in '
-alias sshfs="\
-  sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
-uid=$(id -u),gid=$(id -g),umask=113"
 
 # -- Editors -------------------------------------------------------------------
 s() {
