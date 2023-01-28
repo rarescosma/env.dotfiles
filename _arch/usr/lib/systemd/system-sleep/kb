@@ -8,7 +8,7 @@ USER="karelian"
 
 case "$1" in
     post)
-        until pgrep -f startup-i3; do sleep 1; done
+        until pgrep -f i3-startup; do sleep 1; done
         export DISPLAY=:0
         export XAUTHORITY="/home/$USER/.Xauthority"
         export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$USER")/bus"
