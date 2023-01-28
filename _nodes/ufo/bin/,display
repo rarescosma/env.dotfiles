@@ -7,12 +7,12 @@
 ,external() {
   xrandr --auto --output eDP-1-2 --off --output eDP-1-1 --off
 
-  wm dpi::terminal 11
-  wm dpi::i3 10
-  wm dpi::gtk 10
-  wm dpi::idea 18 16
-  wm dpi::x 110
-  wm dpi::rofi 12
+  ,wm dpi::terminal 11
+  ,wm dpi::i3 10
+  ,wm dpi::gtk 10
+  ,wm dpi::idea 18 16
+  ,wm dpi::x 110
+  ,wm dpi::rofi 12
 }
 
 ,internal() {
@@ -24,10 +24,10 @@
     --output DP2 --off \
     --output DP-0 --off
 
-  wm dpi::terminal 12
-  wm dpi::i3 9
-  wm dpi::gtk 10
-  wm dpi::idea 16 12
-  wm dpi::x 144
-  wm dpi::rofi 18
+  ,wm dpi::terminal 12
+  ,wm dpi::i3 9
+  ,wm dpi::gtk 10
+  ,wm dpi::idea 16 12
+  ,wm dpi::x 144
+  ,wm dpi::rofi 18
 }
