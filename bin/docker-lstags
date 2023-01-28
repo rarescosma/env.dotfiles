@@ -1,8 +1,23 @@
 #!/usr/bin/env bash
+# 
+# list all available tags for the given docker image(s)
+# prefix well-known images with "library/", e.g. "library/debian"
+# 
+# source: https://gist.github.com/robv8r/fa66f5e0fdf001f425fe9facf2db6d49?permalink_comment_id=3896063#gistcomment-3896063
+token_uri="https://auth.docker.io/token"
+list_uri="https://registry-1.docker.io/v2/###IMAGE###/tags/list"
 
-REPO="${1}"
+images=($@)
 
-wget -q "https://registry.hub.docker.com/v1/repositories/${1}/tags" -O - \
-  | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' \
-  | tr '}' '\n'  \
-  | awk -F: '{print $3}'
+scope=''
+for image in "${images[@]}"; do
+    scope+="scope=repository:${image}:pull&"
+done
+
+token=$( curl -Ss "${token_uri}?service=registry.docker.io&${scope}" | jq -r .token )
+
+for image in "${images[@]}"; do
+    this_uri=$( echo -n "${list_uri}" | sed -e "s^###IMAGE###^${image}^" )
+    curl -Ss -H "Accept: application/json" -H "Authorization: Bearer $token" "${this_uri}" | jq .
+done
+
