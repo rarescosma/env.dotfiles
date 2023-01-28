@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-base="${1:-origin/master}"
+base="${1:-origin/main}"
 
 git rebase "${base}" -x "git test -o .git/test-output HEAD~1..HEAD || (cat .git/test-output/latest/0000_fail && git test --clear HEAD~1..HEAD && false)"

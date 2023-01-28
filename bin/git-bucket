@@ -4,7 +4,7 @@ set -euo pipefail
 
 echo '# Changes'
 
-base="${1:-origin/master}"
+base="${1:-origin/main}"
 
 git --no-pager log                                              \
     --abbrev-commit                                             \
