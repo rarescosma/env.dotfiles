@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IDEA_VERSION=${IDEA_VERSION:-"2021.2"}
+IDEA_VERSION=${IDEA_VERSION:-"2022.3"}
 
 configure() {
   rm -rf ~/.config/JetBrains/IntelliJIdea*/eval
