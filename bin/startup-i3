@@ -43,6 +43,6 @@ if test -x "${HOME}/bin/rtorrent-watch"; then
 fi
 
 ${HOME}/bin/,display ,default
-${HOME}/bin/,wm keyboard::setup
+${HOME}/bin/,wm ,keyboard::setup
 
 wait

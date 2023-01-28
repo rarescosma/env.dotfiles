@@ -12,6 +12,6 @@ case "$1" in
         export DISPLAY=:0
         export XAUTHORITY="/home/$USER/.Xauthority"
         export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$USER")/bus"
-        /usr/bin/sudo -E -u "$USER" /home/$USER/bin/,wm keyboard::setup
+        /usr/bin/sudo -E -u "$USER" /home/$USER/bin/,wm ,keyboard::setup
         ;;
 esac
