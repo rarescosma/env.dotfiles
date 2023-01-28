@@ -17,6 +17,12 @@ nnoremap <silent> g* g*zz
 " Incremental change.
 nnoremap cn *Ncgn
 
+" Quick templating
+" 1) :let @t=@/ to copy the old search reg to a temp reg (so we don't clobber)
+" 2) :let &ul=&ul to start a new change
+" 3) search for '+>' and (ab)use visual mode to replace inside '<+ ... +>'
+inoremap <C-t> <Esc>:let @t=@/<CR>:let &ul=&ul<CR>/\v\+\><CR>:nohl<CR>:let @/=@t<CR>lvF+;hc
+
 " Ctrl+B to stop searching.
 nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
