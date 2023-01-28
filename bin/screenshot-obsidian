@@ -1,0 +1,41 @@
+#!/bin/bash
+
+MEDIA="${VAULT_DIR}/${VAULT_MEDIA}"
+if ! test -d "${MEDIA}"; then
+  >&2 echo "invalid vault media dir: ${MEDIA}; exiting..."
+  exit 1
+fi
+
+_deps=(
+  "scrot"
+  "zenity"
+  "xsel"
+  "i3-msg"
+)
+for _dep in "${_deps[@]}"; do
+  command -v "${_dep}" >/dev/null || (
+    >&2 echo "missing command ${_dep} - please make sure it's installed and in PATH"
+    exit 1
+  )
+done
+
+# capture screen portion
+sleep 0.2
+path="${MEDIA}/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+scrot -s "${path}" || exit
+
+# ask for subpath + caption
+path_caption=$(zenity --entry --title="Snap details" --text="Format: <path>|<caption>")
+new_path="$(printf "$path_caption" | cut -d"|" -f1 | xargs)"
+caption="$(printf "$path_caption" | cut -d"|" -f2 | xargs)"
+
+# move it to the correct location
+mkdir -p $(dirname "${MEDIA}/${new_path}")
+mv --no-clobber --verbose "${path}" "${MEDIA}/${new_path}.png"
+
+# copy the figure markup to clipboard
+echo -n "![[${VAULT_MEDIA}/${new_path}.png|${caption}]]" | xsel -b
+
+# refocus obsidian
+i3-msg '[class="^obsidian"] focus'
+
