@@ -155,23 +155,6 @@ tn() {
   tmux attach -t "$s_name" || tmux new -s "$s_name"
 }
 
-## rename tmux pane
-trename() {
-  local p_name
-  p_name=${*:-zsh}
-  echo >&2 "Renaming tmux pane to: \"${p_name}\""
-
-  local old_name
-  old_name=""
-
-  if [ -n "$TMUX_PANE" ]; then
-    old_name=$(tmux display-message -p '#W')
-    tmux rename-window -t"${TMUX_PANE}" "$p_name"
-  fi
-
-  echo "$old_name"
-}
-
 ## user-friendly ps | grep
 psgrep() {
   local pids
