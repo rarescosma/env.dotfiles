@@ -19,6 +19,14 @@ function ,keyboard::setup() {
   systemctl --user start espanso
 }
 
+function ,kindle::on() {
+  test -z "$KINDLE_ID" || usb::attach $KINDLE_ID
+}
+
+function ,kindle::off() {
+  test -z "$KINDLE_ID" || usb::detach $KINDLE_ID
+}
+
 function usb::detach() {
   sudo tee "/sys/bus/usb/drivers/usb/unbind" <<< "$*"
 }
@@ -95,3 +103,36 @@ function dpi::rofi() {
 }
 
 "$@"
+#    _  __
+#   | |/ /___  _________ _
+#   |   / __ \/ ___/ __ `/
+#  /   / /_/ / /  / /_/ /
+# /_/|_\____/_/   \__, /
+#                /____/
+
+function ,xorg::freeze() {
+  export DISPLAY=:0
+  sleep 2
+  xset dpms force off
+  pkill -TSTP -f Xorg
+}
+
+function ,xorg::thaw() {
+  export DISPLAY=:0
+  pkill -CONT -f Xorg
+  sleep 1
+  xset -dpms
+}
+
+function ,melatonin() {
+  rm -f /tmp/caffeine
+  xset +dpms
+  xset s default
+}
+
+function ,caffeine() {
+  xset -dpms
+  xset s off
+  touch /tmp/caffeine
+}
+

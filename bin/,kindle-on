@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-test -z "$KINDLE_ID" || (
-    source $HOME/bin/wm
-    wm usb::attach $KINDLE_ID
-)
-
