@@ -8,7 +8,7 @@ KERNEL_VER='kernel-qemu-4.4.34-jessie'
 # 0. Prep
 prep() {
   wget https://github.com/rarescosma/qemu-rpi-kernel/raw/master/$KERNEL_VER
-  wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz
+  wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-armv7-latest.tar.gz
 }
 
 # 1. Image setup
@@ -25,10 +25,10 @@ create_base_image() {
   sudo mkfs.ext4 "$lodev"p2
 
   mkdir boot root || true
-  sudo mount /dev/loop0p1 boot
-  sudo mount /dev/loop0p2 root
+  sudo mount "$lodev"p1 boot
+  sudo mount "$lodev"p2 root
 
-  sudo bsdtar -xpf ArchLinuxARM-rpi-latest.tar.gz -C root/
+  sudo bsdtar -xpf ArchLinuxARM-rpi-armv7-latest.tar.gz -C root/
   sudo mv root/boot/* boot/
 
   sudo cp root/etc/fstab root/etc/fstab.orig
