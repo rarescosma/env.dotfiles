@@ -102,7 +102,6 @@ function dpi::rofi() {
   $SED -E "s/iosevka [[:digit:]]+/iosevka $font_size/" $roficonf
 }
 
-"$@"
 #    _  __
 #   | |/ /___  _________ _
 #   |   / __ \/ ___/ __ `/
@@ -136,3 +135,9 @@ function ,caffeine() {
   touch /tmp/caffeine
 }
 
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  $@
+fi
