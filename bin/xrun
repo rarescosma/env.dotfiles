@@ -6,10 +6,11 @@ _err_trap() {
   local tmp_file
   tmp_file="$2"
 
-  printf "\n[WARN] exit code was $1, here's STDERR:\n" >&4
-  printf "<---\n"
-  cat $tmp_file >&4
-  echo "--->"
+  (
+    printf "[WARN] exit code was $1, here's STDERR:\n\n<---\n"
+    cat $tmp_file
+    echo "--->"
+  ) | less --tabs=4 -RX >&4
   errored=1
 }
 
@@ -19,30 +20,44 @@ _exit_trap() {
   rm -f $tmp_file
   exec 2>&3
 
-  if [[ "$errored" == "1" ]]; then
-    read
-  else
+  if [[ "$errored" == "0" ]]; then
     echo "[INFO] done; hit return or chill for 3 seconds..."
     read -t 3 || true
   fi
 }
 
+_read_pub() {
+  local dispatch; dispatch="$1"; shift 1 || return
+  (
+    source "${HOME}/bin/${dispatch}"
+    for fn in $(declare -F | grep -E ' ,' | cut -d"," -f2-); do
+      echo "${dispatch:1} ${fn}"
+    done
+  )
+}
+
+_split_cmd() {
+  local cmd dispatch fn; cmd="$1"; shift 1 || return
+  dispatch=",$(echo $cmd | cut -d" " -f1)"
+  fn=",$(echo $cmd | cut -d" " -f2-)"
+  echo "$dispatch $fn"
+}
+
 # no args - listing
 if [[ "$@" == "" ]]; then
-  # all scripts starting with ","
-  find -L ~/bin -type f -name ",*" -executable -print0 | xargs -0l basename
+  # all scripts starting with "," are dispatchers
+  dispatchers=$(\
+    find -L ~/bin -type f -name ",*" -executable -print0 \
+    | xargs -0l basename)
 
-  # all aliases and functions starting with ","
+  # all functions starting with "," withing dispatchers are public
   # alias | awk -F'[ =]' '{print $1}'
-  dispatchers="wm roon ,display"
   for _dis in $dispatchers; do
-    (source ~/bin/$_dis; declare -F | awk '{print "'"$_dis"' " $3;}' | grep -E ' ,')
+    _read_pub $_dis
   done
-
 elif [[ "$1" == "_dispatch" ]]; then
   shift
-  cmd="$*"
-  shift 1 || exit
+  cmd="$(_split_cmd "$*")"; shift 1 || exit
 
   tmp_file=$(mktemp -u)
   exec 4>&2 3>&2 2>"$tmp_file"
