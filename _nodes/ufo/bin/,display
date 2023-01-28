@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+,default() {
+  ,external
+}
+
+,external() {
+  xrandr --auto --output eDP-1-2 --off --output eDP-1-1 --off
+
+  wm dpi::terminal 11
+  wm dpi::i3 10
+  wm dpi::gtk 10
+  wm dpi::idea 18 16
+  wm dpi::x 110
+  wm dpi::rofi 12
+}
+
+,internal() {
+  xrandr --output eDP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
+    --output VIRTUAL1 --off  \
+    --output DP1 --off \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off \
+    --output DP-0 --off
+
+  wm dpi::terminal 12
+  wm dpi::i3 9
+  wm dpi::gtk 10
+  wm dpi::idea 16 12
+  wm dpi::x 144
+  wm dpi::rofi 18
+}

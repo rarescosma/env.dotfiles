@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+,default() {
+  ,internal
+}
+
+,internal() {
+  xrandr --output eDP1 --primary --mode 2880x1800 --pos 0x0 --rotate normal \
+    --output VIRTUAL1 --off \
+    --output DP1 --off \
+    --output HDMI3 --off \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off \
+    --output DP2-8 --off \
+    --output DP1-8 --off
+
+  wm dpi::terminal 10
+  wm dpi::i3 11
+  wm dpi::gtk 15
+  wm dpi::idea 27 26
+  wm dpi::x 110
+  wm dpi::rofi 18
+}
+
+,dual() {
+  EXTERNAL="DP1"
+
+  xrandr --output eDP1 --primary --mode 2880x1800 --pos 3440x0 --rotate normal \
+    --output ${EXTERNAL} --mode 3440x1440 --pos 0x0 --rotate normal \
+    --output VIRTUAL1 --off \
+    --output DP1 --off \
+    --output HDMI3 --off \
+    --output HDMI2 --off \
+    --output HDMI1 --off
+
+  wm dpi::terminal 10
+  wm dpi::i3 7
+  wm dpi::gtk 9
+  wm dpi::idea 18 15
+}
+
+,proj() {
+  xrandr --output eDP1 --primary --mode 2880x1800 --pos 0x1080 --rotate normal \
+    --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal \
+    --output HDMI3 --off \
+    --output HDMI1 --off \
+    --output DP1 --off \
+    --output DP2 --off \
+    --output DP2-8 --off \
+    --output DP1-8 --off
+
+  pkill -f autolock
+  pkill -f redshift-gtk
+  lux -S1%
+}

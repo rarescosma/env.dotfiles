@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+,default() {
+  xrandr --output Virtual-1 --primary --mode 1600x1200 --pos 0x0 --rotate normal
+
+  wm dpi::terminal 14
+  wm dpi::i3 8
+  wm dpi::gtk 10
+  wm dpi::idea 16 14
+  wm dpi::x 110
+  wm dpi::rofi 12
+}

@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+,default() {
+  ,internal
+}
+
+,internal() {
+  xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x0 --rotate normal \
+    --output VIRTUAL1 --off  \
+    --output DP1 --off \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off
+
+  wm dpi::terminal 9
+  wm dpi::i3 10
+  wm dpi::gtk 10
+  wm dpi::idea 16 12
+  wm dpi::x 144
+  wm dpi::rofi 20
+}
+
+,both() {
+  xrandr --output DP1 --mode 1920x1080 --pos 0x0 --rotate normal \
+    --output eDP1 --primary --mode 3200x1800 --pos 0x1080 --rotate normal \
+    --output VIRTUAL1 --off  \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off
+}
+
+,external() {
+  xrandr --output DP1 --primary --mode 3440x1440 --pos 0x0 --rotate normal \
+    --output eDP1 --off \
+    --output VIRTUAL1 --off  \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off
+
+  wm dpi::terminal 12
+  wm dpi::i3 8
+  wm dpi::gtk 11
+  wm dpi::idea 18 14
+  wm dpi::x 110
+  wm dpi::rofi 12
+}
+
+,proj() {
+  xrandr --output eDP1 --primary --mode 3200x1800 --pos 0x1080 --rotate normal \
+    --output DP1 --mode 1920x1080 --pos 0x0 --rotate normal \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off \
+    --output VIRTUAL1 --off
+
+  pkill -f autolock
+  pkill -f redshift-gtk
+  lux -S1%
+}
+
+,tv() {
+  xrandr --output DP1 --mode 1920x1080 --pos 0x0 --rotate normal \
+    --output eDP1 --off \
+    --output VIRTUAL1 --off  \
+    --output HDMI2 --off \
+    --output HDMI1 --off \
+    --output DP2 --off
+}
