@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+,open() {
+  tomb list 2>/dev/null || {
+    set -e
+    test -f ~/.local/env && source ~/.local/env
+
+    temp_key="$(mktemp)"; cp "$TOMB_KEY" "$temp_key"
+    tomb open $TOMB_FILE -k $temp_key -f
+    ln -sf /tomb/espanso/tomb_*.yml ~/.config/espanso/match/
+    rm "$temp_key"
+  }
+}
+
+,close() {
+  tomb list 2>/dev/null && {
+    ,vpn ,off
+    command rm -f ~/.config/espanso/match/tomb_*.yml
+    tomb close
+  }
+}
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  $@
+fi

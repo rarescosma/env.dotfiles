@@ -37,35 +37,6 @@ permfix() {
 }
 
 # -- Crypto --------------------------------------------------------------------
-to() {
-  tomb list || {
-    temp_key="$(mktemp)"
-    cp "$TOMB_KEY" "$temp_key"
-    tomb open $TOMB_FILE -k $temp_key -f && \
-      ln -sf /tomb/espanso/tomb_*.yml ~/.config/espanso/match/
-    rm "$temp_key"
-  }
-}
-
-tc() {
-  tomb list && {
-    sudo -E pkill -f openvpn
-    command rm -f ~/.config/espanso/match/tomb_*.yml
-    tomb close
-  }
-}
-
-vpn() {
-  local vpn_config log_path old_name
-  vpn_config="var/ovpn/${1}/$(hostname -s).ovpn"
-  log_path="/tmp/vpn-${1}.log"; echo -n > "$log_path"
-
-  to || return
-
-  old_name=$(trename "vpn-${1}")
-  sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings
-  trename "${old_name}"
-}
 
 ## pass + fzf integration
 _fzf_pass() {

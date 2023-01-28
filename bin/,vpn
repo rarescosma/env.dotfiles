@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+,vps() {
+  ,tomb ,open || exit 1
+  sudo rm -f /etc/wireguard/wg0vps.conf
+  sudo ln -sf /tomb/wireguard/$(hostname -s).conf /etc/wireguard/wg0vps.conf
+  sudo wg-quick up wg0vps
+  CLUSTER=apollo kdo dns::configure_resolvconf
+}
+
+,turris() {
+  ,tomb ,open || exit 1
+  local vpn_config log_path old_name
+  vpn_config="var/ovpn/turris/$(hostname -s).ovpn"
+  log_path="/tmp/vpn-turris.log"; echo -n > "$log_path"
+
+  nohup sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings >"$log_path" 2>&1 &
+  disown
+}
+
+,off() {
+  sudo -E pkill -f openvpn
+  sudo wg-quick down wg0vps || true
+}
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  CLUSTER=ufo kdo dns::restore_resolvconf
+  $@
+fi
