@@ -44,7 +44,7 @@ uid=$(id -u),gid=$(id -g),umask=113"
 
 ## pass + fzf integration
 _fzf_pass() {
-  local pwdir="${HOME}/.password-store/"
+  local pwdir="${HOME}/.local/share/pass/"
   local stringsize="${#pwdir}"
   ((stringsize+=1))
   find "$pwdir" -name "*.gpg" -print \

@@ -17,7 +17,7 @@
 	untracked = blue
 [core]
 	autocrlf = input
-	excludesfile = ~/.gitexcludes
+	excludesfile = ~/.config/git/excludes
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	untrackedCache = true
 [commit]

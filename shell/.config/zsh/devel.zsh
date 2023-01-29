@@ -28,7 +28,7 @@ dps() {
 }
 
 if [[ "$enable_devel" =~ "kubectl" ]]; then
-  source "${HOME}/.zsh/kube.zsh"
+  source ~/.config/zsh/kube.zsh
 fi
 
 if [[ "$enable_devel" =~ "aws" ]]; then

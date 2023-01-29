@@ -1,16 +1,16 @@
 [[ -f ~/.local/env ]] && source ~/.local/env
-source ~/.zsh/oh-my-vendor.zsh
-source ~/.zsh/fzf.zsh
+source ~/.config/zsh/oh-my-vendor.zsh
+source ~/.config/zsh/fzf.zsh
 
-source ~/.zsh/prompt.zsh
+source ~/.config/zsh/prompt.zsh
 
-source ~/.zsh/opts.zsh
-source ~/.zsh/keybindings.zsh
-source ~/.zsh/functions.zsh
+source ~/.config/zsh/opts.zsh
+source ~/.config/zsh/keybindings.zsh
+source ~/.config/zsh/functions.zsh
 
-source ~/.zsh/devel.zsh
-[[ -f ~/.zsh/gcloud.zsh ]] && source ~/.zsh/gcloud.zsh
-source ~/.zsh/misc.zsh
+source ~/.config/zsh/devel.zsh
+[[ -f ~/.config/zsh/gcloud.zsh ]] && source ~/.config/zsh/gcloud.zsh
+source ~/.config/zsh/misc.zsh
 
 [[ -f ~/.local/functions ]] && source ~/.local/functions
 
@@ -23,6 +23,6 @@ if [[ "$TTY" == "/dev/tty1" ]]; then
   exec systemd-cat -t startx startx -- -dpi 110
 else
   if (( ${+TMUX} )); then
-    source ~/.zsh/fortune.zsh
+    source ~/.config/zsh/fortune.zsh
   fi
 fi

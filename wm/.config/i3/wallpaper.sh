@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-feh --bg-fill --geometry +0+640 ~/media/wallpapers/mac/Mountain\ Range.jpg
+feh --no-fehbg --bg-fill --geometry +0+640 ~/media/wallpapers/mac/Mountain\ Range.jpg

@@ -86,7 +86,7 @@ function dpi::x() {
   local font_size xres zshrc
   font_size="${1}"
 
-  xres="${HOME}/.Xresources"
+  xres="${HOME}/.config/X11/Xresources"
   zshrc="${HOME}/.zshrc"
 
   $SED -E "s/dpi: [[:digit:]]+/dpi: $font_size/" $xres

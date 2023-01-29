@@ -11,8 +11,8 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
-if [ -s ~/.Xresources ]; then
-  xrdb -merge ~/.Xresources
+if [ -s ~/.config/X11/Xresources ]; then
+  xrdb -merge ~/.config/X11/Xresources
 fi
 
 dbus-update-activation-environment --systemd DISPLAY
