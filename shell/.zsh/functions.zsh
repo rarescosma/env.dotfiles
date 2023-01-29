@@ -119,7 +119,7 @@ i() {
 
 # -- Z / Misc ------------------------------------------------------------------
 (( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
-alias t="t -t ${HOME}/Dropbox/apps/t"
+alias t="t -t ${HOME}/sync/apps/t"
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias o='xdg-open'
 

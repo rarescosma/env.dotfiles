@@ -14,8 +14,6 @@
 ! /home/karelian/.rsync_mirror
 ! /home/karelian/.rustup
 ! /home/karelian/Desktop
-! /home/karelian/Dropbox/.dropbox
-! /home/karelian/Dropbox/.dropbox.cache
 + /home/karelian/backup/kindle
 + /home/karelian/backup/mtglacier
 - /home/karelian/backup

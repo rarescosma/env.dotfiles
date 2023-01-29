@@ -47,7 +47,7 @@ FZF_TMUX=1
 IDEA_VERSION=2022.3
 
 # pkm
-VAULT_DIR="${HOME}/Dropbox/_pkm/rar"
+VAULT_DIR="${HOME}/sync/pkm/rar"
 VAULT_MEDIA="_Media"
 
 # zsh
