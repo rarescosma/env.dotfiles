@@ -16,13 +16,13 @@
 ! /home/karelian/Desktop
 ! /home/karelian/Dropbox/.dropbox
 ! /home/karelian/Dropbox/.dropbox.cache
-- /home/karelian/backup
 + /home/karelian/backup/kindle
 + /home/karelian/backup/mtglacier
+- /home/karelian/backup
 ! /home/karelian/kube
-- /home/karelian/media
-+ /home/karelian/media/books
 - /home/karelian/media/books/_Collections.tgz
++ /home/karelian/media/books
+- /home/karelian/media
 ! /home/karelian/mnt
 ! /home/karelian/src/pkg
 ! /home/karelian/var
