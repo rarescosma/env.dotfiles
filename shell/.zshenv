@@ -18,6 +18,7 @@ XDG_CACHE_HOME=$HOME/.cache
 PATH=${HOME}/.local/bin:${HOME}/bin:${PATH}
 
 # clean home
+AUTOENV_AUTH_FILE=$XDG_STATE_HOME/autoenv/authorized_list
 AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
 CARGO_HOME=$XDG_DATA_HOME/cargo
