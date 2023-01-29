@@ -7,7 +7,7 @@ do_packages() {
   pacman-key --init
   pacman-key --populate archlinuxarm
   pacman -Syu --noconfirm
-  pacman -Sy --noconfirm --needed base-devel sudo git alsa-utils
+  pacman -Sy --noconfirm --needed base-devel sudo git alsa-utils libunistring
 }
 
 # 1. User
@@ -52,7 +52,8 @@ do_gmrender() {
 
   mkdir -p $tmppath
   git clone https://aur.archlinux.org/gmrender-resurrect-git.git $tmppath
-  sed -i -E 's|arch=(.+)|arch=("armv6h")|' "$tmppath/PKGBUILD"
+  sed -i -E 's|arch=(.+)|arch=("armv7h")|' "$tmppath/PKGBUILD"
+  sed -i -E 's|./configure --|./configure --disable-dependency-tracking --|' "$tmppath/PKGBUILD"
   chown -R "$user": $tmppath
   su "$user" -c "cd $tmppath && makepkg -si --noconfirm"
 }
