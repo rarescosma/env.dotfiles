@@ -10,5 +10,5 @@ comm -12 \
         | awk -F ":a" '{print $1 " :a" $2}' \
         | awk '{if ($1<after) next; else print $4}' after="$AFTER" \
         | sort) \
-    <(aptitude -q search '~i !~M' -F '%p' --disable-columns)
+    <(aptitude -q search '~i !~M' -F '%p' --disable-columns | sort)
 
