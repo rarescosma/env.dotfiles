@@ -35,9 +35,10 @@ echo -e 'Acquire::http { Proxy "http://10.0.17.1:3142"; }' > /etc/apt/apt.conf.d
 echo -e "\n### Installing essential packages"
 apt update
 apt install --yes \
-  sudo curl wget git neovim mc \
-  snapd net-tools golang-cfssl \
+  sudo curl wget git rsync iptables neovim mc ncdu htop screen \
+  snapd dnsutils net-tools golang-cfssl uuid-runtime make \
   zsh stow dialog \
+  borgbackup rclone \
   fzf ripgrep fd-find
 
 snap install lxd
