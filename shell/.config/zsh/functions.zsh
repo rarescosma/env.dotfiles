@@ -42,6 +42,9 @@ alias sshfs="\
   sshfs -o idmap=user,allow_other,reconnect,no_readahead,\
 uid=$(id -u),gid=$(id -g),umask=113"
 
+alias to=",tomb ,open"
+alias tc=",tomb ,close"
+
 ## pass + fzf integration
 _fzf_pass() {
   local pwdir="${HOME}/.local/share/pass/"
