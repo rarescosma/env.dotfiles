@@ -124,12 +124,14 @@ function ,xorg::thaw() {
 }
 
 function ,melatonin() {
+  export DISPLAY=:0
   rm -f /tmp/caffeine
   xset +dpms
   xset s default
 }
 
 function ,caffeine() {
+  export DISPLAY=:0
   xset -dpms
   xset s off
   touch /tmp/caffeine
