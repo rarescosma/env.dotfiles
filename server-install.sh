@@ -72,7 +72,8 @@ dotfiles_setup=(
   "echo -e \"enable_devel=(kubectl python)\nenable_ssh_agent=0\n\" > /home/$user/.local/env;"
   "echo -e 'PATH=\$PATH:/snap/bin' >> /home/$user/.local/env;"
   "mkdir -p /home/$user/.ssh;"
-  "wget https://static.getbetter.ro/$user.pub -O /home/$user/.ssh/authorized_keys"
+  "wget https://static.getbetter.ro/$user.pub -O /home/$user/.ssh/authorized_keys;"
+  "mkdir -p /home/$user/.local/share/vim/files/backup"
 )
 sudo -u $user bash -c "${dotfiles_setup[*]}"
 chsh -s /bin/zsh $user
