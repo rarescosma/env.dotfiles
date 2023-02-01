@@ -22,7 +22,7 @@
 
 ,off() {
   sudo -E pkill -f openvpn
-  sudo wg-quick down wg0vps || true
+  sudo wg-quick down wg0vps 2>/dev/null || true
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
