@@ -155,7 +155,8 @@ tsh() {
 tn() {
   local s_name
   s_name=${*:-base}
-  tmux attach -t "$s_name" || tmux new -s "$s_name"
+  tmux new-session -A -s "$s_name" \
+    -e "SSH_CLIENT=$SSH_CLIENT" \; setenv SSH_CLIENT "$SSH_CLIENT"
 }
 
 ## user-friendly ps | grep

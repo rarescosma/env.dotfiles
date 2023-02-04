@@ -19,6 +19,12 @@ if [[ "$TTY" == /dev/tty* ]]; then
   systemctl --user import-environment GPG_TTY
 fi
 
+if ! test -z "$SSH_CLIENT"; then
+  export GPG_TTY=$(tty)
+  export DBUS_SESSION_BUS_ADDRESS=/dev/null
+  export XDG_SESSION_TYPE=pts
+fi
+
 if [[ "$TTY" == "/dev/tty1" ]]; then
   exec systemd-cat -t startx startx -- -dpi 110
 else
