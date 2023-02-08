@@ -22,6 +22,7 @@ smart_borders on
 bindsym $mod+Return exec alacritty
 bindsym $mod+0x60 exec alacritty -e sh -c "tmux attach -d -t base || exec tmux new -s base"
 bindsym $mod+0x27 exec --no-startup-id raiseorlaunch -c obsidian -e obsidian
+bindsym $mod+p exec --no-startup-id $HOME/src/pkm/link_page.py
 bindsym $mod+Shift+0x27 exec --no-startup-id raiseorlaunch -c zotero
 bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+t exec thunar
