@@ -7,7 +7,7 @@ User=karelian
 Group=karelian
 Type=oneshot
 RemainAfterExit=true
-ExecStart=/usr/bin/zsh -c "source /home/karelian/.zsh/functions.zsh; tc || true"
+ExecStart=bash -c "/home/karelian/bin/,tomb ,close || true"
 
 [Install]
 WantedBy=umount.target
