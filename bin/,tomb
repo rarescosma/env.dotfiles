@@ -6,7 +6,8 @@
     test -f ~/.local/env && source ~/.local/env
 
     temp_key="$(mktemp)"; cp "$TOMB_KEY" "$temp_key"
-    tomb open $TOMB_FILE -k $temp_key -f
+    tomb open -p -o ro,noatime,nodev $TOMB_FILE -k $temp_key -f 2>&1 \
+      | grep --color=always -vi 'read-only'
     ln -sf /tomb/espanso/tomb_*.yml ~/.config/espanso/match/
     rm "$temp_key"
   }
