@@ -29,6 +29,6 @@
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
-  CLUSTER=ufo kdo dns::restore_resolvconf
+  CLUSTER=apollo kdo dns::restore_resolvconf
   $@
 fi
