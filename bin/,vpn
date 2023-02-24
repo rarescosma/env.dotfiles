@@ -6,7 +6,6 @@
   sudo rm -f /etc/wireguard/wg0vps.conf
   sudo ln -sf /tomb/wireguard/$(hostname -s).conf /etc/wireguard/wg0vps.conf
   sudo wg-quick up wg0vps
-  CLUSTER=apollo kdo dns::configure_resolvconf
 }
 
 ,turris() {
@@ -29,6 +28,5 @@
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
-  CLUSTER=apollo kdo dns::restore_resolvconf
   $@
 fi
