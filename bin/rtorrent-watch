@@ -11,7 +11,8 @@ fi
 
 if test "${1}" = "--trampoline"; then
     echo ">>> Starting watchexec"
-    exec watchexec --no-project-ignore --no-vcs-ignore --project-origin "${WATCH_DIR}" -w "${WATCH_DIR}" -e "torrent" -W -p "$0"
+    exec watchexec --no-project-ignore --no-vcs-ignore --project-origin \
+      "${WATCH_DIR}" -w "${WATCH_DIR}" -e "torrent" -W -p "$0"
     exit 0
 fi
 
