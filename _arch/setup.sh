@@ -2,7 +2,7 @@
 
 set -e
 
-PACKAGE_GROUPS="base-devel xorg"
+PACKAGE_GROUPS="xorg"
 
 pac::list_aur() {
   pacman -Qqm | sort
