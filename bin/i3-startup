@@ -44,5 +44,6 @@ fi
 
 ${HOME}/bin/,display ,default
 ${HOME}/bin/,wm ,keyboard::setup
+${XDG_CONFIG_HOME}/i3/wallpaper.sh
 
 wait
