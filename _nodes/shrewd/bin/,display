@@ -66,3 +66,11 @@
     --output HDMI1 --off \
     --output DP2 --off
 }
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  exec 2> >(tee -a /dev/stderr)
+  $@
+fi

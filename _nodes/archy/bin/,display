@@ -10,3 +10,11 @@
   ,wm dpi::x 110
   ,wm dpi::rofi 12
 }
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  exec 2> >(tee -a /dev/stderr)
+  $@
+fi
