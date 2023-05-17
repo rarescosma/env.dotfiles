@@ -50,7 +50,7 @@ function dpi::terminal() {
 
 function dpi::i3() {
   local i3_config font_size
-  i3_config="${HOME}/.i3/config"
+  i3_config="${HOME}/.config/i3/config"
   font_size="${1}"
 
   $SED -E "s/Iosevka [[:digit:]]+/Iosevka $font_size/" $i3_config
