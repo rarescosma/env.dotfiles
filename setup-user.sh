@@ -5,6 +5,16 @@ exec 2> >(while read line; do echo -e "\e[01;31m$line\e[0m"; done)
 
 dotfiles_dir="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+_host() {
+  set +e
+  if test -f /etc/hostname; then
+    head -1 /etc/hostname
+  elif command -v hostname &>/dev/null; then
+    hostname | cut -d- -f1
+  fi
+  set -e
+}
+
 stow() {
   if [ -n "$2" ]; then
     target="$HOME/$2"
@@ -31,7 +41,7 @@ stow::bin() {
 
   mkdir -p "$HOME/bin"; stow bin bin
 
-  host_dir="$dotfiles_dir/_nodes/$(head -1 /etc/hostname)"
+  host_dir="$dotfiles_dir/_nodes/$(_host)"
   if test -d "$host_dir"; then
     echo "========================"
     echo "Stowing node binaries..."
