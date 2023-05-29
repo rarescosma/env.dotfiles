@@ -18,6 +18,9 @@ matches:
   - trigger: "o@"
     replace: "oppy.fug@gmail.com"
 
+  - trigger: "t@"
+    replace: "rares.cosma@tocaboca.com"
+
   # Base64
   - trigger: ":be"
     replace: "{{res}}"
