@@ -26,7 +26,7 @@
 [init]
     defaultBranch = main
 [interactive]
-    diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+    diffFilter = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight
 [merge]
     tool = meld
 [mergetool]

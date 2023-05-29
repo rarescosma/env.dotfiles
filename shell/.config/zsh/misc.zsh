@@ -57,7 +57,6 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
      eval $(ssh-agent -s) > /dev/null
   else
      export SSH_AGENT_PID=$(pgrep ssh-agent)
-     export SSH_AUTH_SOCK="$(find /run/user/$(id -u)/ssh-* -name "ssh-agent.*" 2>/dev/null)"
   fi
 fi
 
