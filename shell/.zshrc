@@ -15,6 +15,10 @@ source ~/.config/zsh/misc.zsh
 
 [[ -f ~/.local/functions ]] && source ~/.local/functions
 
+if [[ $(uname) == "Darwin" ]] && [[ -f ~/.config/zsh/mac.zsh ]]; then
+ source ~/.config/zsh/mac.zsh
+fi
+
 if [[ "$TTY" == /dev/tty* ]]; then
   export GPG_TTY="$TTY"
   systemctl --user import-environment GPG_TTY
