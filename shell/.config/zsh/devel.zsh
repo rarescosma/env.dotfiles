@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(kubectl python aws rust nvm)
+[[ -v enable_devel ]] || enable_devel=(kubectl python aws rust nvm gcloud)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
@@ -137,3 +137,11 @@ if [[ "$enable_devel" =~ "nvm" ]]; then
 fi
 
 [[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+
+if [[ "$enable_devel" =~ "gcloud" ]]; then
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f "${HOME}/var/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/var/google-cloud-sdk/path.zsh.inc"; fi
+
+  # The next line enables shell command completion for gcloud.
+  if [ -f "${HOME}/var/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/var/google-cloud-sdk/completion.zsh.inc"; fi
+fi
