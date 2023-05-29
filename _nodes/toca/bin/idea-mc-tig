@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -xe
+
+PROJECT_PATH="$@"
+PROJECT="$(basename "$PROJECT_PATH")"
+
+# focus or create tmux tig session
+cmd="tig -C $PROJECT_PATH"
+if yabai -m query --windows | jq -e '.[].title | select(test("^tmux tig"))' >/dev/null; then
+    tmux new-window -t tig -a -n "tig: $PROJECT" "$cmd"
+else
+    open -na /Applications/Alacritty.app --args -e sh -c "exec tmux new -s tig -n 'tig: $PROJECT' $cmd"
+fi
+

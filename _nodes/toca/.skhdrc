@@ -1,0 +1,63 @@
+# modes
+:: default : osascript -e 'display notification "Normal mode" with title "skhd"'
+:: resize : osascript -e 'display notification "Resize mode" with title "skhd"'
+shift + alt - r ; resize
+resize < escape; default
+
+# resize
+resize < h : yabai -m window --resize right:-20:0 
+resize < j : yabai -m window --resize right:20:0
+resize < k : yabai -m window --resize left:-20:0 
+resize < l : yabai -m window --resize left:20:0
+
+# apps
+fn - 0x32 : open -na /Applications/Alacritty.app --args -e sh -c "tmux attach -d -t base || exec tmux new -s base"
+shift + fn - 0x32 : open -na /Applications/Alacritty.app
+fn - 0x2C : open -na /Applications/Firefox.app
+shift + fn - 0x2C : open -na /Applications/Google\ Chrome.app
+
+# focus window
+fn - h : yabai -m window --focus west
+fn - j : yabai -m window --focus south
+fn - k : yabai -m window --focus north
+fn - l : yabai -m window --focus east
+
+# focus space
+fn - 1 : yabai-switch-space 1
+fn - 2 : yabai-switch-space 2
+fn - 3 : yabai-switch-space 3
+fn - 5 : yabai-switch-space 5
+fn - 4 : yabai-switch-space 4
+fn - 6 : yabai-switch-space 6
+
+# move window
+shift + fn - h : yabai -m window --warp west
+shift + fn - j : yabai -m window --warp south
+shift + fn - k : yabai -m window --warp north
+shift + fn - l : yabai -m window --warp east
+
+# move window to space
+shift + fn - 1 : yabai -m window --space 1 
+shift + fn - 2 : yabai -m window --space 2
+shift + fn - 3 : yabai -m window --space 3
+shift + fn - 4 : yabai -m window --space 4
+shift + fn - 5 : yabai -m window --space 5
+shift + fn - 6 : yabai -m window --space 6
+
+# destroy space
+shift + fn - w : yabai -m space --destroy
+
+# create desktop and follow focus - uses jq for parsing json (brew install jq)
+shift + fn - n : yabai -m space --create && \
+                index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                yabai -m space --focus "${index}"
+
+# float / unfloat
+shift + fn - space : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
+
+# change layout
+shift + fn - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" elif .type == "stack" then "float" else "bsp" end')
+
+# toggle window native fullscreen
+shift + fn - f : yabai-fs
+fn - f : yabai -m window --toggle zoom-fullscreen

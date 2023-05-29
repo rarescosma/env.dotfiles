@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+source "${HOME}/.local/env"
+
+check_env () {
+  local var="${1}"
+  test -z "${!var}" && {
+    echo "!!! Must set ${var}"
+    exit 1
+  }
+}
+
+gen_file () {
+  echo "$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+}
+
+shorten () {
+  local url="${1}"
+  curl -s \
+    -H "Authorization: Bearer ${BITLY_TOKEN}" \
+    -H 'Content-Type: application/json' \
+    -X POST \
+    -d "{ \"long_url\": \"${url}\", \"domain\": \"j.mp\"}" \
+    https://api-ssl.bitly.com/v4/shorten \
+  | jq -r '.link'
+}
+
+notify () {
+  local url="${1}"
+  echo "${url}" | pbcopy
+  osascript -e "display notification \"${url}\" with title \"New screenshot\""
+}
+
+check_env "SWATCH_DIR"
+check_env "SWATCH_IDENTITY"
+check_env "SWATCH_UPLOAD_TO"
+check_env "SWATCH_WEB_PREFIX"
+
+if test "${1}" = "--trampoline"; then
+  echo ">>> Starting watchexec on ${SWATCH_DIR}"
+  watchexec -w "${SWATCH_DIR}" -e "png" -r -p "$0"
+  exit 0
+fi
+
+if test -n "${WATCHEXEC_RENAMED_PATH}"; then
+  f="${WATCHEXEC_RENAMED_PATH}"
+elif test -n "${WATCHEXEC_CREATED_PATH}"; then
+  f="${WATCHEXEC_CREATED_PATH}"
+fi
+
+f="${SWATCH_DIR}/$(basename "${f#.}")"
+sleep 1
+
+if test -f "$f"; then
+  set -e
+  NEW_FILE="$(gen_file)"
+  echo ">>> Processing new screenshot file ${f} -> ${NEW_FILE}"
+  scp -i "${SWATCH_IDENTITY}" "${f}" "${SWATCH_UPLOAD_TO}/${NEW_FILE}"
+  notify "$(shorten "${SWATCH_WEB_PREFIX}/${NEW_FILE}")"
+  rm -f "${f}"
+fi

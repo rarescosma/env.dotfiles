@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Unlock the SSH and GPG keys in one fell swoop
+unlock_keys () {
+  SSH_KEY="${HOME}/.ssh/id_rsa"
+  ssh-add -l \
+    | grep -q $(ssh-keygen -lf $SSH_KEY | awk '{print $2}')  \
+    || ssh-add $SSH_KEY
+  pass show bogus.site > /dev/null
+}
+
+# Inter VPN routing
+inter_vpn () {
+  sudo sysctl -w net.inet.ip.forwarding=1
+  globalprotect-on
+  tunnelblick-on
+  sudo pfctl -d; sudo pfctl -e -f /etc/pf.conf; sudo pfctl -sn
+}
+
+# Totally Stockholm-originating traffic
+sthlm_vpn () {
+  sudo sysctl -w net.inet.ip.forwarding=1
+  sudo route change default 192.168.5.140
+  curl icanhazip.com
+  globalprotect-on
+  sudo pfctl -d; sudo pfctl -e -f /etc/pf.conf; sudo pfctl -sn
+}
+
+# Disable snitches
+disable_snitches () {
+   xargs sudo launchctl unload <${HOME}/.disabled_svcs 2>/dev/null
+   xargs launchctl unload <${HOME}/.disabled_svcs 2>/dev/null
+}
+
+main () {
+  unlock_keys
+  disable_snitches
+  sthlm_vpn
+}
+
+# Verbatim, yeah!
+if test -z "${1:-}"; then
+  main
+else
+  for target in "${@}"; do
+    $target
+  done
+fi
+

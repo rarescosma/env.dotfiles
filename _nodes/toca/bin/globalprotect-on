@@ -1,0 +1,30 @@
+#!/usr/bin/env osascript
+
+on run 
+	set uiScript to "click menu bar item 1 of menu bar 2 of application process \"GlobalProtect\""
+	my doWithTimeout( uiScript )
+
+	delay 1.5
+	set uiScript to "click UI Element \"Connect\" of window 1 of application process \"GlobalProtect\""
+	my doWithTimeout( uiScript )
+
+	delay 1
+	set uiScript to "click menu bar item 1 of menu bar 2 of application process \"GlobalProtect\""
+	my doWithTimeout( uiScript )
+end run
+
+on doWithTimeout(uiScript)
+	set endDate to (current date) + 1
+	repeat
+		try
+			run script "tell application \"System Events\"
+" & uiScript & "
+end tell"
+			exit repeat
+		on error errorMessage
+			if ((current date) > endDate) then
+				error "Can not " & uiScript
+			end if
+		end try
+	end repeat
+end doWithTimeout
