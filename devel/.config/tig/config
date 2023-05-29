@@ -25,7 +25,7 @@ set status-show-untracked-dirs = yes
 set status-show-untracked-files = yes
 set ignore-space = no
 set show-notes = yes
-set diff-highlight = /usr/share/git/diff-highlight/diff-highlight
+set diff-highlight = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight
 
 set refresh-mode = auto
 set refresh-interval = 5

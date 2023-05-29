@@ -93,7 +93,6 @@ if [[ "$enable_devel" =~ "node" ]]; then
   NODE_PATH="${XDG_DATA_HOME}/npm/lib/node_modules:${NODE_PATH}"
 fi
 
-if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
-  source /usr/share/nvm/nvm.sh --no-use
-  source /usr/share/nvm/install-nvm-exec
+if [[ "$enable_devel" =~ "nvm" ]] && test -d /opt/homebrew/opt/nvm; then
+  source /opt/homebrew/opt/nvm/nvm.sh --no-use
 fi
