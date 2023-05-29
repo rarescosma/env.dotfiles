@@ -21,7 +21,7 @@ ksc() {
   config="$1"
 
   if test -z "$config"; then
-    configs=($(find "$kube_dir" -maxdepth 1 ! -type d | grep -v "/config$"))
+    configs=($(find "$kube_dir" -maxdepth 1 ! -type d | grep -v "/config$" | grep -v "cache"))
 
     for ((i=1; i <= ${#configs}; i++)); do
       configs[i]="${configs[i]/$kube_dir\/}"
