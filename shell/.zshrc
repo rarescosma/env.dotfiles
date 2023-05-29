@@ -21,7 +21,9 @@ fi
 
 if [[ "$TTY" == /dev/tty* ]]; then
   export GPG_TTY="$TTY"
-  systemctl --user import-environment GPG_TTY
+  if command -v systemctl &>/dev/null; then
+    systemctl --user import-environment GPG_TTY
+  fi
 fi
 
 if ! test -z "$SSH_CLIENT"; then
