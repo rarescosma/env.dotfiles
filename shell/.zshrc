@@ -2,6 +2,7 @@
 source ~/.config/zsh/oh-my-vendor.zsh
 source ~/.config/zsh/fzf.zsh
 
+source ~/.config/zsh/aws.zsh
 source ~/.config/zsh/prompt.zsh
 
 source ~/.config/zsh/opts.zsh
