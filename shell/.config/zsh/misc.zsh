@@ -58,3 +58,7 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
      export SSH_AUTH_SOCK="$(find /run/user/$(id -u)/ssh-* -name "ssh-agent.*" 2>/dev/null)"
   fi
 fi
+
+# -- vim mode ------------------------------------------------------------------
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+zvm_after_init_commands+=('source ~/.config/zsh/fzf.zsh')
