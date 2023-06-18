@@ -41,6 +41,9 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y mzgg"+yG`z
 
+" Select most recently modified text
+nnoremap gV `[v`]
+
 " Move lines up & down.
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
