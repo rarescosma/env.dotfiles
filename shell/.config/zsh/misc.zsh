@@ -61,4 +61,8 @@ fi
 
 # -- vim mode ------------------------------------------------------------------
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-zvm_after_init_commands+=('source ~/.config/zsh/fzf.zsh')
+function after_zvm_init() {
+    source ~/.config/zsh/fzf.zsh
+    bindkey '^[^?' backward-kill-word
+}
+zvm_after_init_commands+=(after_zvm_init)
