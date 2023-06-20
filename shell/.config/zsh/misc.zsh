@@ -64,5 +64,6 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 function after_zvm_init() {
     source ~/.config/zsh/fzf.zsh
     bindkey '^[^?' backward-kill-word
+    __fz_init_zsh_completion
 }
 zvm_after_init_commands+=(after_zvm_init)
