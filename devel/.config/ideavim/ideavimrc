@@ -31,7 +31,7 @@ nmap <leader>l <Action>(RecentLocations)
 
 " IDE project navigation.
 nmap <leader>q <Action>(CloseContent)
-nmap <leader>Q <Action>(ReopenClosedTab)
+nmap <leader>Q <Action>(CloseProject)
 nmap <leader>d <Action>(GotoDeclaration)
 nmap <leader>m <Action>(ShowBookmarks)
 nmap <C-f> <Action>(RecentFiles)
