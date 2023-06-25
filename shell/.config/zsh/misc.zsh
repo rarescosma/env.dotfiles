@@ -60,10 +60,13 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
 fi
 
 # -- vim mode ------------------------------------------------------------------
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-function after_zvm_init() {
+if test -f /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh; then
+  source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+  function after_zvm_init() {
     source ~/.config/zsh/fzf.zsh
     bindkey '^[^?' backward-kill-word
     __fz_init_zsh_completion
-}
-zvm_after_init_commands+=(after_zvm_init)
+  }
+  zvm_after_init_commands+=(after_zvm_init)
+fi
+
