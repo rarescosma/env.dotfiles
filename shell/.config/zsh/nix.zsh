@@ -13,14 +13,14 @@ prompt_nix_shell() {
       for package in $packages; do
         package_names+=" ${package##*.}"
       done
-      _prompt_segment black cyan "{$package_names }"
+      echo "{$package_names } "
     elif [[ -n $name ]]; then
       local cleanName=${name#interactive-}
       cleanName=${cleanName#lorri-keep-env-hack-}
       cleanName=${cleanName%-environment}
-      _prompt_segment black cyan "{ $cleanName }"
+      echo "{ $cleanName } "
     else # This case is only reached if the nix-shell plugin isn't installed or failed in some way
-      _prompt_segment black cyan "nix-shell {}"
+      echo "nix-shell {} "
     fi
   fi
 }
