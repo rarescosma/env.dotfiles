@@ -53,6 +53,9 @@ bind main P !git push -u
 # Quick commit
 bind status C !>git commit -v
 
+# Wrap
+bind stage W :toggle wrap-lines
+
 # Quick (F)ixup, (R)eword, (E)dit and (D)rop
 bind main F !>sh -c "git commit --fixup=%(commit) && GIT_SEQUENCE_EDITOR=true git rebase -i %(commit)^ --autostash --autosquash"
 bind main R !>sh -c "GIT_SEQUENCE_EDITOR=\"sed -i -e '1 s/^pick /reword /'\" git rebase -i %(commit)^ --autostash"
