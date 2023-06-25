@@ -1,10 +1,10 @@
-aws_prompt() {
+prompt_aws() {
   local _aws_prompt
   _aws_prompt=""
   if test -n "$AWS_PROFILE" && [[ "$AWS_PROFILE" != "default" ]]; then
-    _aws_prompt="(${AWS_PROFILE}) "
+    _aws_prompt="[${AWS_PROFILE}] "
   fi
-  echo $_aws_prompt
+  _prompt_segment black yellow "$_aws_prompt"
 }
 
 # change the AWS profile
