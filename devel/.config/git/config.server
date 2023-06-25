@@ -1,39 +1,39 @@
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [color]
-	ui = true
+    ui = true
 [color "branch"]
-	current = green reverse
-	local = green
-	remote = yellow
+    current = green reverse
+    local = green
+    remote = yellow
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [color "status"]
-	added = green
-	changed = yellow
-	untracked = blue
+    added = green
+    changed = yellow
+    untracked = blue
 [core]
-	autocrlf = input
-	excludesfile = ~/.config/git/excludes
-	pager = less --tabs=4 -RFX
-	untrackedCache = true
+    autocrlf = input
+    excludesfile = ~/.config/git/excludes
+    pager = less --tabs=4 -RFX
+    untrackedCache = true
 [interactive]
-	diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
+    diffFilter = "/usr/share/git/diff-highlight/diff-highlight"
 [merge]
-	tool = meld
+    tool = meld
 [mergetool]
-	keepBackup = false
-	prompt = false
+    keepBackup = false
+    prompt = false
 [push]
-	default = current
+    default = current
 [rebase]
-	autosquash = true
-	autostash = true
+    autosquash = true
+    autostash = true
 [user]
-	name = Rareș Cosma
-	email = rares@getbetter.ro
-	signingkey = 0xD00EC1BBBA4D3352
-	useConfigOnly = true
+    name = Rareș Cosma
+    email = rares@getbetter.ro
+    signingkey = 0xD00EC1BBBA4D3352
+    useConfigOnly = true
