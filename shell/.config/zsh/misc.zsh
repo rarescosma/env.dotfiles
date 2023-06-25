@@ -60,8 +60,9 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
 fi
 
 # -- vim mode ------------------------------------------------------------------
-if test -f /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh; then
-  source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+_zsh_vi=/usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+if test -f $_zsh_vi && [[ "${DESKTOP_STARTUP_ID}" != "IDEA"* ]]; then
+  source $_zsh_vi
   function after_zvm_init() {
     source ~/.config/zsh/fzf.zsh
     bindkey '^[^?' backward-kill-word
