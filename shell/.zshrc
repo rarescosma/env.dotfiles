@@ -1,4 +1,6 @@
 [[ -f ~/.local/env ]] && source ~/.local/env
+plugins=()
+[[ -f ~/.config/zsh/nix.zsh ]] && source ~/.config/zsh/nix.zsh
 source ~/.config/zsh/oh-my-vendor.zsh
 source ~/.config/zsh/fzf.zsh
 

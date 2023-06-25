@@ -70,3 +70,7 @@ if test -f /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh; then
   zvm_after_init_commands+=(after_zvm_init)
 fi
 
+# -- nix stuff -----------------------------------------------------------------
+if (( $+commands[nix-env] )); then
+  export LOCALE_ARCHIVE="${HOME}/.nix-profile/lib/locale/locale-archive"
+fi

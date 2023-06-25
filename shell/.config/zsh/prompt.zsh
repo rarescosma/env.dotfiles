@@ -21,6 +21,6 @@ _prompt_segment() {
   [[ -n $3 ]] && echo -n $3
 }
 
-PROMPT='%{$fg[magenta]%}@%m%{$reset_color%}\
+PROMPT='%{$fg[magenta]%}@%m%{$reset_color%}$(prompt_nix_shell)%{$reset_color%}\
 $(prompt_aws)%{$reset_color%}%{$fg[green]%}$ZSH_KUBECTL_PROMPT%{$fg[blue]%}%~%{$fg[default]%} $(git_prompt_info)
 %130(?..%(?..[%{$fg[red]%}%?%{$reset_color%}] ))%{$reset_color%}# '
