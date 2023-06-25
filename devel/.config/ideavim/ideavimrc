@@ -17,6 +17,9 @@ set idearefactormode=keep
 source ~/.config/nvim/common.vim
 source ~/.config/nvim/keymap.vim
 
+" Clear the search pattern on cancel
+noremap <silent> <C-b> :nohl<CR>:let @/ = ""<CR><C-l>
+
 " IDE one action to rule them all.
 nmap <leader>a <Action>(GotoAction)
 vmap <leader>a <Action>(GotoAction)
