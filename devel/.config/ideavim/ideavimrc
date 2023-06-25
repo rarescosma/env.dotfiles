@@ -25,8 +25,7 @@ vmap <leader>a <Action>(GotoAction)
 nmap <leader>s <Action>(FileStructurePopup)
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
-nmap <leader><leader> <Action>(AceAction)
-vmap <leader><leader> <Action>(AceAction)
+map <leader>j <Plug>(easymotion-bd-f)
 nmap <leader>l <Action>(RecentLocations)
 
 " IDE project navigation.
@@ -92,8 +91,11 @@ let g:highlightedyank_highlight_duration = "650"
 set argtextobj
 set exchange
 set quickscope
-set multiple-cursors
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+set multiple-cursors
+set easymotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_override_acejump = 0
 
 " N00b mode: key hints via the 'Which Key' plugin.
 " set which-key
