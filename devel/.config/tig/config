@@ -51,7 +51,7 @@ bind main L !git pull --tags -f
 bind main P !git push -u
 
 # Quick commit
-bind status C !git commit -v
+bind status C !>git commit -v
 
 # Quick (F)ixup, (R)eword, (E)dit and (D)rop
 bind main F !>sh -c "git commit --fixup=%(commit) && GIT_SEQUENCE_EDITOR=true git rebase -i %(commit)^ --autostash --autosquash"
