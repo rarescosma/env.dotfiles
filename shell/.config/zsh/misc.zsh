@@ -77,3 +77,8 @@ fi
 if (( $+commands[nix-env] )); then
   export LOCALE_ARCHIVE="${HOME}/.nix-profile/lib/locale/locale-archive"
 fi
+
+# -- atuin ftw -----------------------------------------------------------------
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow; atuin gen-completions --shell zsh)"
+fi
