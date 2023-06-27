@@ -94,7 +94,6 @@ mesa-utils
 minio-client
 mkvtoolnix-cli
 mlocate
-mold
 mpd
 mpv
 mtools
@@ -111,7 +110,6 @@ nmap
 noto-fonts-emoji
 ntfs-3g
 nvme-cli
-oath-toolkit
 obsidian
 os-prober
 otf-font-awesome
@@ -128,6 +126,7 @@ pkgfile
 playerctl
 powertop
 progress
+pv
 pwgen
 pyenv
 python-black
@@ -136,6 +135,7 @@ python-nox
 python-pipenv
 python-pylint
 python-pyxdg
+qt5ct
 realtime-privileges
 redshift
 reflector
@@ -157,6 +157,7 @@ sysfsutils
 sysstat
 terminus-font
 thunar-archive-plugin
+thunar-volman
 tig
 tlp
 tmuxp
@@ -176,12 +177,14 @@ wdiff
 whois
 wireguard-tools
 xautolock
+xautomation
 xf86-input-synaptics
 xf86-video-intel
 xfce4-settings
 xorg-fonts-misc
 xorg-xinit
 xsel
+xterm
 yt-dlp
 zenity
 zip
