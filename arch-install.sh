@@ -98,8 +98,10 @@ echo -e "\n### Setting up fastest mirrors"
 mirrorlist="/etc/pacman.d/mirrorlist"
 reflector -c Sweden --latest 30 --sort rate --save "$mirrorlist"
 
-echo -e "\n### Prepending flexo mirror"
-echo -e "Server = http://192.168.122.1:7878/\$repo/os/\$arch\n$(cat "$mirrorlist")" > "$mirrorlist"
+if [[ -n "$FLEXO_IP" ]]; then
+    echo -e "\n### Prepending flexo mirror"
+    echo -e "Server = http://${FLEXO_IP}:7878/\$repo/os/\$arch\n$(cat "$mirrorlist")" > "$mirrorlist"
+fi
 
 echo -e "\n### Setting up partitions"
 umount -R /mnt 2> /dev/null || true
@@ -147,7 +149,7 @@ pacstrap -i /mnt base linux linux-firmware linux-headers intel-ucode \
   grub efibootmgr \
   iptables-nft networkmanager network-manager-applet \
   mtools dosfstools btrfs-progs inetutils \
-  reflector
+  reflector openssl-1.1
 
 genfstab -L /mnt >> /mnt/etc/fstab
 echo "${hostname}" > /mnt/etc/hostname
@@ -165,7 +167,6 @@ arch-chroot /mnt mkinitcpio -p linux
 echo -e "\n### Configuring swap file"
 truncate -s 0 /mnt/swap/swapfile
 chattr +C /mnt/swap/swapfile
-btrfs property set /mnt/swap/swapfile compression none
 dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=2048
 chmod 600 /mnt/swap/swapfile
 mkswap /mnt/swap/swapfile
