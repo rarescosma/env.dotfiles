@@ -69,6 +69,10 @@ if test -f $_zsh_vi && [[ "${DESKTOP_STARTUP_ID}" != "IDEA"* ]]; then
     bindkey '^[f'  forward-word
     bindkey '^[b'  backward-word
     __fz_init_zsh_completion
+    # -- atuin ftw -------------------------------------------------------------
+    if type atuin >/dev/null; then
+      eval "$(atuin init zsh --disable-up-arrow; atuin gen-completions --shell zsh)"
+    fi
   }
   zvm_after_init_commands+=(after_zvm_init)
 fi
@@ -76,9 +80,4 @@ fi
 # -- nix stuff -----------------------------------------------------------------
 if (( $+commands[nix-env] )); then
   export LOCALE_ARCHIVE="${HOME}/.nix-profile/lib/locale/locale-archive"
-fi
-
-# -- atuin ftw -----------------------------------------------------------------
-if (( $+commands[atuin] )); then
-  eval "$(atuin init zsh --disable-up-arrow; atuin gen-completions --shell zsh)"
 fi
