@@ -25,3 +25,10 @@ prompt_nix_shell() {
   fi
 }
 
+if test -f "$HOME/.nix-profile/lib/locale/locale-archive"; then
+    export LOCALE_ARCHIVE="$HOME/.nix-profile/lib/locale/locale-archive"
+fi
+
+if type direnv >/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
