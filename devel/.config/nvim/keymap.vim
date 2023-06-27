@@ -17,6 +17,9 @@ nnoremap <silent> g* g*zz
 " Incremental change.
 nnoremap cn *Ncgn
 
+" Markdown link.
+vnoremap <C-k> c[<C-r>"](<Esc>"*pa)<Esc>
+
 " Quick templating
 " 1) :let @t=@/ to copy the old search reg to a temp reg (so we don't clobber)
 " 2) :let &ul=&ul to start a new change
