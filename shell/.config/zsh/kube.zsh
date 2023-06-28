@@ -20,7 +20,7 @@ ksc() {
   kube_dir="${HOME}/.kube"
   config="$1"
 
-  if test -z "$config"; then
+  if ! test -f "${kube_dir}/${config}"; then
     configs=($(find "$kube_dir" -maxdepth 1 ! -type d | grep -v "/config$" | grep -v "cache"))
 
     for ((i=1; i <= ${#configs}; i++)); do

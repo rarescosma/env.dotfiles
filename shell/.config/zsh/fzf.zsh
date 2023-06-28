@@ -15,6 +15,6 @@ fzf_cmd() {
   if [[ -z $q ]]; then
     cat | $fzf_bin --multi | tail -n +2
   else
-    cat | grep -i "$q" | $fzf_bin -1 $* | tail -n +2
+    cat | $fzf_bin -1 $* | tail -n +2
   fi
 }
