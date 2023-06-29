@@ -50,7 +50,7 @@ if [[ "$@" == "" ]]; then
     find -L ~/bin -type f -name ",*" -executable \
     | sort | xargs -l basename)
 
-  # all functions starting with "," withing dispatchers are public
+  # all functions starting with "," within dispatchers are public
   # alias | awk -F'[ =]' '{print $1}'
   for _dis in $dispatchers; do
     _read_pub $_dis
