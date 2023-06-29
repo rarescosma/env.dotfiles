@@ -68,4 +68,6 @@ TERMINFO=/usr/share/terminfo
 ZSH=${_VENDOR}/oh-my-zsh
 ZSH_DISABLE_COMPFIX=true
 
+[[ -f ~/.local/env ]] && source ~/.local/env
+
 set +a
