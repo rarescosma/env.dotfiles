@@ -19,9 +19,26 @@
   disown
 }
 
+,toca() {
+  ,off
+  source $HOME/.local/env
+  echo $GP_COOKIE | base64 -d > /run/user/$(id -u)/tocavpn.stdin
+}
+
 ,off() {
   sudo -E pkill -f openvpn
   sudo wg-quick down wg0vps 2>/dev/null || true
+
+  sudo chattr -i /etc/resolv.conf
+  if test -n "$(pgrep openconnect)"; then
+    systemctl --user stop tocavpn.service
+    sleep 1
+  else
+    cat << __EOF__ | sudo tee /etc/resolv.conf >/dev/null
+nameserver ${DEFAULT_DNS}
+__EOF__
+  fi
+  sudo chattr +i /etc/resolv.conf
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0

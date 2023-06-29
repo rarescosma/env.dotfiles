@@ -1,0 +1,6 @@
+[Socket]
+ListenFIFO=%t/tocavpn.stdin
+Service=tocavpn.service
+
+[Install]
+WantedBy=default.target

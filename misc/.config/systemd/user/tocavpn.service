@@ -1,0 +1,11 @@
+[Unit]
+Description=Toca Boca VPN
+
+[Service]
+EnvironmentFile=%h/.local/env
+ExecStartPre=sudo chattr -i /etc/resolv.conf
+ExecStart=sudo openconnect --protocol=gp --cookie-on-stdin ${GP_SERVER}
+Sockets=tocavpn.socket
+StandardInput=socket
+StandardOutput=journal
+StandardError=journal
