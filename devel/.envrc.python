@@ -1,0 +1,14 @@
+ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+
+export GIT_TEST_VERIFY="make test"
+
+export VIRTUAL_ENV="$ROOT/.venv"
+export VIRTUAL_ENV_PROMPT="$(basename $ROOT)"
+layout python
+
+test -z $TMUX_PANE || tmux rename-window -t${TMUX_PANE} "$VIRTUAL_ENV_PROMPT"
+
+python -c "import sys; print(sys.executable); print(sys.version)"
+
+source_env_if_exists .envrc.install
+source_env_if_exists .envrc.private

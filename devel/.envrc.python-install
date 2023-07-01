@@ -1,0 +1,9 @@
+if has poetry && test -f pyproject.toml; then
+  poetry install
+elif has pipenv && test -f Pipfile; then
+  pipenv install --dev --skip-lock
+elif has pip && test -f requirements.txt; then
+  pip install -r requirements.txt
+fi
+
+rm .envrc.install

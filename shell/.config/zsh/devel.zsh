@@ -63,58 +63,19 @@ if [[ "$enable_devel" =~ "python" ]]; then
   alias pipu='pip install -U pip'
   alias pe='pipenv'
 
-  ## create pipenv-based .venv
+  ## create a direnv powered virtualenv
   nvenv() {
-    local prompt
-    local root
-    if [ ! -d ".venv" ]; then
-      root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-      if [ -z "$1" ]; then
-        prompt=$(basename $root)
-      else
-        prompt="${1}"
-        shift
-      fi
-      python -mvenv .venv --prompt "${prompt}"
-    fi
-
-    deactivate 2>/dev/null
-
-    if [ -f pyproject.toml ]; then
-      poetry install
-    elif [ -f Pipfile ]; then
-      pipenv install --dev --skip-lock "$@"
-    else
-      [ -f requirements.txt ] && pipenv install -r requirements.txt --skip-lock "$@"
-    fi
-
-    source .venv/bin/activate
-
-    ln -sf "$_VENDOR/../devel/.pythonenv" .autoenv
-    echo "deactivate" > .autoout
-    touch .env
+    ln -sf "$_VENDOR/../devel/.envrc.python" .envrc
+    ln -sf "$_VENDOR/../devel/.envrc.python-install" .envrc.install
+    direnv allow
   }
 
   ## delete/cleanup .venv
   rvenv() {
-    deactivate 2>/dev/null
-    rm -rf .venv .env Pipfile Pipfile.lock .python-version
+    sudo /sbin/rm -rf .venv .envrc .envrc.install
   }
 
-  revenv() {
-    local _prompt
-    local _root
-    _root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-    if [ -z "$1" ]; then
-      _prompt=$(basename $_root)
-    else
-      _prompt="${1}"
-      shift
-    fi
-    deactivate 2>/dev/null
-    rm -rf .venv
-    python -mvenv .venv --prompt "${_prompt}"
-  }
+  alias revenv="rvenv; nvenv"
 fi
 
 if [[ "$enable_devel" =~ "golang" ]]; then
