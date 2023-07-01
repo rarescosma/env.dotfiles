@@ -1,11 +1,10 @@
 # Macs...
 .DS_Store
 
-# Autoenv
+# Direnv
 /.env
-/.envlocal
-/.autoenv
-/.autoout
+/.envrc
+/.envrc.*
 
 # IntelliJ
 /.idea
