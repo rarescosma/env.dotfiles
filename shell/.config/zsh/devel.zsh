@@ -63,6 +63,16 @@ if [[ "$enable_devel" =~ "python" ]]; then
   alias pipu='pip install -U pip'
   alias pe='pipenv'
 
+  # restore old virtualenv prompt when using direnv
+  # https://github.com/direnv/direnv/wiki/Python#restoring-the-ps1
+  setopt PROMPT_SUBST
+  show_virtual_env() {
+    if [[ -n "$VIRTUAL_ENV_PROMPT" && -n "$DIRENV_DIR" ]]; then
+      echo "($VIRTUAL_ENV_PROMPT) "
+    fi
+  }
+  PS1='$(show_virtual_env)'$PS1
+
   ## create a direnv powered virtualenv
   nvenv() {
     ln -sf "$_VENDOR/../devel/.envrc.python" .envrc
