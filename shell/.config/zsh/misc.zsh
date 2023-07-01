@@ -60,8 +60,13 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
 fi
 
 # -- vim mode ------------------------------------------------------------------
-_zsh_vi=/usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+_zsh_vi=$_VENDOR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 if test -f $_zsh_vi && [[ "${DESKTOP_STARTUP_ID}" != "IDEA"* ]]; then
+  function zvm_config() {
+    ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+    bindkey -M vicmd "H" vi-beginning-of-line
+    bindkey -M vicmd "L" vi-end-of-line
+  }
   source $_zsh_vi
   function after_zvm_init() {
     source ~/.config/zsh/fzf.zsh
