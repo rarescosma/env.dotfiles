@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(kubectl python aws rust nvm gcloud)
+[[ -v enable_devel ]] || enable_devel=(kube python aws rust gcloud)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
@@ -38,7 +38,7 @@ dps() {
     | grep -v pause
 }
 
-if [[ "$enable_devel" =~ "kubectl" ]]; then
+if [[ "$enable_devel" =~ "kube" ]]; then
   source ~/.config/zsh/kube.zsh
 fi
 
