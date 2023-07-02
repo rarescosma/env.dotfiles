@@ -32,7 +32,7 @@ map <leader>j <Plug>(easymotion-bd-f)
 nmap <leader>l <Action>(RecentLocations)
 
 " IDE project navigation.
-nmap <leader>q <Action>(CloseContent)
+map <C-q> <Action>(CloseContent)
 nmap <leader>Q <Action>(CloseProject)
 nmap <leader>d <Action>(GotoDeclaration)
 nmap <leader>m <Action>(ShowBookmarks)

@@ -31,10 +31,11 @@ nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
 
 " Quick-save (and quit).
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :wq<CR>
-inoremap <C-z> <Esc><C-z>
+command! QS normal! :wq<CR>
+map <C-q> <Esc>:QS<CR>
 inoremap <C-q> <C-o>ZZ
+nnoremap <leader>w :w<CR>
+inoremap <C-z> <Esc><C-z>
 
 " Register-preserving paste + delete.
 xnoremap <leader>p "_dP
