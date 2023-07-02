@@ -72,7 +72,6 @@ if [[ "$enable_devel" =~ "python" ]]; then
   export PIPENV_NOSPIN=1
 
   alias pipu='pip install -U pip'
-  alias pe='pipenv'
 
   # restore old virtualenv prompt when using direnv
   # https://github.com/direnv/direnv/wiki/Python#restoring-the-ps1
@@ -121,8 +120,6 @@ if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
   source /usr/share/nvm/nvm.sh --no-use
   source /usr/share/nvm/install-nvm-exec
 fi
-
-[[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
 
 if [[ "$enable_devel" =~ "gcloud" ]]; then
   # The next line updates PATH for the Google Cloud SDK.
