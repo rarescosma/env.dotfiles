@@ -93,7 +93,7 @@ if [[ "$enable_devel" =~ "python" ]]; then
 
   ## delete/cleanup .venv
   rvenv() {
-    sudo /sbin/rm -rf .venv .envrc .envrc.install
+    sudo command rm -rf .venv .envrc .envrc.install
   }
 
   alias revenv="rvenv; nvenv"
