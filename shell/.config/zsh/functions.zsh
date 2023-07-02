@@ -12,11 +12,14 @@ if (( $+commands[rmtrash] )); then
   alias rm!='/sbin/rm'
 fi
 
-if (( $+commands[exa] )); then
-  alias l="exa -lhg --git --group-directories-first"
-else
-  alias l='ls -lh'
-fi
+unalias l
+function l() {
+  if (( $+commands[exa] )); then
+    exa -lhg --git --group-directories-first $*
+  else
+    ls -lh $*
+  fi
+}
 alias la="l -ah"
 alias lk="l -s=size"                # Sorted by size
 alias lm="l -s=modified"            # Sorted by modified date
