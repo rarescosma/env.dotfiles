@@ -13,6 +13,3 @@
 [submodule "_vendor/z"]
 	path = _vendor/z
 	url = https://github.com/rupa/z
-[submodule "_vendor/zsh-vi-mode"]
-	path = _vendor/zsh-vi-mode
-	url = https://github.com/rarescosma/env.zsh-vi-mode.git
