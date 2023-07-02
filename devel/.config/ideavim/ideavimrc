@@ -88,6 +88,9 @@ noremap <Right> <nop>
 noremap <Up> <nop>
 noremap <Down> <nop>
 
+" Visual block.
+nnoremap <A-v> <C-q>
+
 " Plugins galore
 set highlightedyank
 let g:highlightedyank_highlight_duration = "650"

@@ -79,3 +79,8 @@ nnoremap ]]  ]]zz
 nnoremap [[  [[zz
 nnoremap []  []zz
 nnoremap ][  ][zz
+
+" Visual block.
+command! VB normal! <C-v>
+nnoremap <A-v> :VB<CR>
+vnoremap <A-v> <Esc>
