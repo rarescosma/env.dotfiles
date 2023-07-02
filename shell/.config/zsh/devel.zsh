@@ -8,12 +8,23 @@ alias vim="$EDITOR"
 ## scum a docker image
 dscum() {
     local entrypoint
+    local unit="docker"
     if [[ "$1" == "sh" ]]; then
         entrypoint="/bin/sh"
         shift
     else
         entrypoint="/bin/bash"
     fi
+
+    # ensure docker is up
+    sudo systemctl is-active --quiet ${unit} || {
+        sudo systemctl restart ${unit}
+        while true; do
+            docker ps 1>/dev/null && break
+            sleep 1
+        done
+    }
+
     docker run \
         --rm -it \
         --name="dscum-$(pwgen -A01)" \
