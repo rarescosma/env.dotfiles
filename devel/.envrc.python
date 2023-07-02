@@ -1,3 +1,5 @@
+source_env_if_exists ~/src/.envrc
+
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 
 export GIT_TEST_VERIFY="make test"
