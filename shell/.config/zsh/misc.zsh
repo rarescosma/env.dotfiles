@@ -60,8 +60,9 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
 fi
 
 # -- nix stuff -----------------------------------------------------------------
-if (( $+commands[nix-env] )); then
-  export LOCALE_ARCHIVE="${HOME}/.nix-profile/lib/locale/locale-archive"
+_locale_archive="${HOME}/.nix-profile/lib/locale/locale-archive"
+if (( $+commands[nix-env] )) && test -f "$_locale_archive"; then
+  export LOCALE_ARCHIVE="$_locale_archive"
 fi
 
 # -- vim cmd edit --------------------------------------------------------------
