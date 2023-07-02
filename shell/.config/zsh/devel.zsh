@@ -7,28 +7,28 @@ alias vim="$EDITOR"
 # -- Turtles -------------------------------------------------------------------
 ## scum a docker image
 dscum() {
-    local entrypoint
-    local unit="docker"
-    if [[ "$1" == "sh" ]]; then
-        entrypoint="/bin/sh"
-        shift
-    else
-        entrypoint="/bin/bash"
-    fi
+  local unit="docker"
+  local entrypoint
+  if [[ "$1" == "sh" ]]; then
+    entrypoint="/bin/sh"
+    shift
+  else
+    entrypoint="/bin/bash"
+  fi
 
-    # ensure docker is up
+  # ensure docker is up
+  if type systemctl >/dev/null; then
     sudo systemctl is-active --quiet ${unit} || {
-        sudo systemctl restart ${unit}
-        while true; do
-            docker ps 1>/dev/null && break
-            sleep 1
-        done
+      sudo systemctl restart ${unit}
+      while true; do
+        docker ps 1>/dev/null && break
+        sleep 1
+      done
     }
+  fi
 
-    docker run \
-        --rm -it \
-        --name="dscum-$(pwgen -A01)" \
-        --entrypoint="$entrypoint" "$@"
+  docker run --rm -it --name="dscum-$(pwgen -A01)" \
+    --entrypoint="$entrypoint" "$@"
 }
 
 ## docker ps with port information
