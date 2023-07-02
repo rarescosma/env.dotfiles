@@ -65,6 +65,17 @@ if (( $+commands[nix-env] )) && test -f "$_locale_archive"; then
   export LOCALE_ARCHIVE="$_locale_archive"
 fi
 
+# -- fancy ctrl-z --------------------------------------------------------------
+very-fancy-ctrl-z () {
+  if [[ $- != *i* ]]; then return; fi     # not interactive, bail
+  if fg %1 2>/dev/null; then return; fi   # foreground succeeded, bail
+
+  # line stash/pop mode; credit: https://superuser.com/questions/378018
+  if [[ $#BUFFER -eq 0 ]]; then zle redisplay; else zle push-input; fi
+}
+zle -N very-fancy-ctrl-z
+bindkey '^Z' very-fancy-ctrl-z
+
 # -- vim cmd edit --------------------------------------------------------------
 autoload edit-command-line; zle -N edit-command-line
 bindkey "^[v" edit-command-line
