@@ -13,6 +13,7 @@
             argocd
             awscli2
             exa
+            gh
             graphviz
             jsonnet
             k9s
