@@ -56,7 +56,6 @@ gstreamer-vaapi
 gtk-engine-murrine
 gvfs
 handbrake
-helm
 htop
 httpie
 i3-wm
@@ -72,7 +71,6 @@ iotop
 iptables-nft
 ipython
 jq
-k9s
 kernel-modules-hook
 keychain
 libva-utils
@@ -146,7 +144,6 @@ rlwrap
 rmlint
 rofi-emoji
 rustup
-sccache
 scrot
 siege
 sl
