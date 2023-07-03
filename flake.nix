@@ -23,8 +23,7 @@
             nodejs_20
             sccache
             skaffold
-            watch
-          ] ++ (if stdenv.isDarwin then [darwin.libiconv] else []);
+          ] ++ (if stdenv.isDarwin then [darwin.libiconv watch] else []);
           shellHook = ''unset PYTHONPATH'';
         };
       }
