@@ -11,6 +11,7 @@ KUBE_PS1_DIVIDER="%{$fg[green]%}/%{$reset_color%}"
 KUBE_PS1_CTX_COLOR="green"
 KUBE_PS1_NS_COLOR="green"
 KUBE_PS1_PREFIX_COLOR="green"
+KUBE_PS1_SUFFIX_COLOR="green"
 
 PROMPT='%{$fg[magenta]%}@%m%{$reset_color%} %{$fg[cyan]%}$(prompt_nix_shell)%{$reset_color%}\
 %{$fg[yellow]%}$(prompt_aws)%{$reset_color%}%{$fg[green]%}$(kube_ps1)%{$fg[blue]%}%~%{$fg[default]%} $(git_prompt_info)
