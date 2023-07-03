@@ -1,6 +1,6 @@
-plugins=()
-[[ -f ~/.config/zsh/nix.zsh ]] && source ~/.config/zsh/nix.zsh
 source ~/.config/zsh/oh-my-vendor.zsh
+
+[[ -f ~/.config/zsh/nix.zsh ]] && source ~/.config/zsh/nix.zsh
 source ~/.config/zsh/fzf.zsh
 
 source ~/.config/zsh/aws.zsh

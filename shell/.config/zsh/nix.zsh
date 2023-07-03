@@ -1,9 +1,6 @@
 if test -d "$ZSH/custom/plugins/nix-shell"; then
     plugins+=(nix-shell)
 fi
-if test -d "$ZSH/custom/plugins/nix-zsh-completions"; then
-    plugins+=(nix-zsh-completions)
-fi
 
 prompt_nix_shell() {
   if [[ -n "$IN_NIX_SHELL" ]]; then
@@ -30,5 +27,5 @@ if test -f "$HOME/.nix-profile/lib/locale/locale-archive"; then
 fi
 
 if type direnv >/dev/null; then
-    eval "$(direnv hook zsh)"
+    _evalcache direnv hook zsh
 fi
