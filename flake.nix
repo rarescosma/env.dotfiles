@@ -24,7 +24,10 @@
             sccache
             skaffold
           ] ++ (if stdenv.isDarwin then [darwin.libiconv watch] else []);
-          shellHook = ''unset PYTHONPATH'';
+          shellHook = ''
+            unset PYTHONPATH
+            export _NIX_PROMPT=.flake
+          '';
         };
       }
     );
