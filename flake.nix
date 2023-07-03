@@ -15,6 +15,7 @@
             exa
             graphviz
             jsonnet
+            k9s
             kubectl
             kubernetes-helm
             kubeseal
