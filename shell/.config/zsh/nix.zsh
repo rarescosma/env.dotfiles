@@ -1,7 +1,3 @@
-if test -d "$ZSH/custom/plugins/nix-shell"; then
-    plugins+=(nix-shell)
-fi
-
 prompt_nix_shell() {
   if [[ -n "$_NIX_PROMPT" ]]; then
     echo "{$_NIX_PROMPT} "
