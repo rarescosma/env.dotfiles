@@ -27,7 +27,7 @@
             sccache
             skaffold
           ]
-          ++ (if stdenv.isDarwin then [darwin.libiconv watch] else [])
+          ++ (if stdenv.isDarwin then [ darwin.libiconv watch ] else [ ])
           ++ (if stdenv.isLinux then [ openssl_legacy ] else [ ]);
           shellHook = ''
             unset PYTHONPATH
