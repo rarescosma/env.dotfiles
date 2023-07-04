@@ -82,11 +82,11 @@ vmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
 " Co-exist with the clipboard manager.
 sethandler <^v> a:ide
 
-" N00b mode: no arrows.
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <Up> <nop>
-noremap <Down> <nop>
+" Do something useful with the arrows.
+nmap <Left> <Action>(NextSplitter)
+nmap <Right> <Action>(PrevSplitter)
+nmap <Up> <Action>(MethodUp)
+nmap <Down> <Action>(MethodDown)
 
 " Visual block.
 nnoremap <A-v> <C-q>
