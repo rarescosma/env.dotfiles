@@ -13,3 +13,6 @@
 [submodule "_vendor/z"]
 	path = _vendor/z
 	url = https://github.com/rupa/z
+[submodule "_vendor/evalcache"]
+	path = _vendor/evalcache
+	url = https://github.com/mroth/evalcache.git
