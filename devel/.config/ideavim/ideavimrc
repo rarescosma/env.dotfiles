@@ -28,7 +28,7 @@ vmap <leader>a <Action>(GotoAction)
 nmap <leader>s <Action>(FileStructurePopup)
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
-map <leader>j <Plug>(easymotion-bd-f)
+map <C-;> <Plug>(easymotion-bd-f)
 nmap <leader>l <Action>(RecentLocations)
 
 " IDE project navigation.
