@@ -12,6 +12,7 @@
           buildInputs = with pkgs; [
             argocd
             awscli2
+            dive
             exa
             gh
             graphviz
@@ -25,7 +26,7 @@
             nodejs_20
             sccache
             skaffold
-          ] 
+          ]
           ++ (if stdenv.isDarwin then [darwin.libiconv watch] else [])
           ++ (if stdenv.isLinux then [ openssl_legacy ] else [ ]);
           shellHook = ''
