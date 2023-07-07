@@ -127,7 +127,11 @@ i() {
 (( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
 alias t="t -t ${HOME}/sync/apps/t"
 alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
-alias o='xdg-open'
+if command -v xdg-open >/dev/null; then
+  alias o='xdg-open'
+else
+  alias o='open'
+fi
 
 ## kill and restart process
 kick() {
