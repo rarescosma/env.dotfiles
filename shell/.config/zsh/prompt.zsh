@@ -13,6 +13,6 @@ KUBE_PS1_NS_COLOR="green"
 KUBE_PS1_PREFIX_COLOR="green"
 KUBE_PS1_SUFFIX_COLOR="green"
 
-PROMPT='%{$fg[magenta]%}@%m%{$reset_color%} %{$fg[cyan]%}$(prompt_nix_shell)%{$reset_color%}\
+PROMPT='%{$fg[magenta]%}@%m%{$reset_color%} $(prompt_nix_shell)\
 %{$fg[yellow]%}$(prompt_aws)%{$reset_color%}%{$fg[green]%}$(kube_ps1)%{$fg[blue]%}%~%{$fg[default]%} $(git_prompt_info)
 %130(?..%(?..[%{$fg[red]%}%?%{$reset_color%}] ))%{$reset_color%}# '

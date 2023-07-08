@@ -1,7 +1,8 @@
 prompt_nix_shell() {
-  if [[ -n "$_NIX_PROMPT" ]]; then
-    echo "{$_NIX_PROMPT} "
-  fi
+  local prompt=""
+  test -n "$_NIX_PROMPT" && prompt="$_NIX_PROMPT"
+  test -n "$VIRTUAL_ENV" && prompt="$prompt 🐍"
+  test -n "$prompt" && echo "$prompt "
 }
 
 if test -f "$HOME/.nix-profile/lib/locale/locale-archive"; then

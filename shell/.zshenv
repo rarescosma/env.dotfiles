@@ -58,6 +58,7 @@ VAULT_MEDIA="_Media"
 
 # zsh
 _VENDOR=${HOME}/src/env/dotfiles/_vendor
+_DIRENV=${HOME}/src/env/dotfiles/direnv
 DISABLE_AUTO_UPDATE=true
 TERMINFO=/usr/share/terminfo
 ZSH=${_VENDOR}/oh-my-zsh

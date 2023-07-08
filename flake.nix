@@ -6,7 +6,7 @@
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let 
+      let
         pkgs = import nixpkgs { inherit system; };
         inherit (pkgs.lib.lists) optionals;
       in {
@@ -33,7 +33,7 @@
           ++ optionals stdenv.isLinux [ openssl_legacy ];
           shellHook = ''
             unset PYTHONPATH
-            export _NIX_PROMPT=.flake
+            export _NIX_PROMPT="🧊️"
           '';
         };
       }
