@@ -12,13 +12,13 @@ matches:
   - trigger: "@nolabel"
     replace: "-has:userlabels -in:sent -in:chat -in:draft -in:inbox"
 
-  - trigger: "g@"
+  - trigger: "g@@"
     replace: "rares@getbetter.ro"
 
-  - trigger: "o@"
+  - trigger: "o@@"
     replace: "oppy.fug@gmail.com"
 
-  - trigger: "t@"
+  - trigger: "t@@"
     replace: "rares.cosma@tocaboca.com"
 
   # Base64
@@ -38,7 +38,7 @@ matches:
           cmd: "xsel -bo | tr -d '\n' | base64 -d"
 
   # Markdown
-  - trigger: ":a"
+  - trigger: ":<>"
     replace: "[$|$]({{clip}})"
     vars:
       - name: "clip"
@@ -69,7 +69,7 @@ matches:
 
   # Misc
   - trigger: ":uuid"
-    replace: "{{res}} foo"
+    replace: "{{res}}"
     vars:
       - name: "res"
         type: "shell"
