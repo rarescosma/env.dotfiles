@@ -132,6 +132,7 @@ python-black
 python-llfuse
 python-nox
 python-pipenv
+python-poetry
 python-pylint
 python-pyxdg
 qt5ct
@@ -170,6 +171,7 @@ unrar
 unzip
 vdpauinfo
 vlc
+vulture
 watchexec
 wdiff
 whois
