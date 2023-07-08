@@ -17,9 +17,6 @@ XDG_DATA_HOME=$HOME/.local/share
 XDG_STATE_HOME=$HOME/.local/state
 XDG_CACHE_HOME=$HOME/.cache
 
-# path
-PATH=${HOME}/.local/bin:${HOME}/bin:${PATH}
-
 # clean home
 AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config

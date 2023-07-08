@@ -64,8 +64,6 @@ fi
 
 # -- Python --------------------------------------------------------------------
 if [[ "$enable_devel" =~ "python" ]]; then
-  export PATH="${PYENV_ROOT}/shims:$PATH"
-
   export PIPENV_VENV_IN_PROJECT=1
   export PIPENV_IGNORE_VIRTUALENVS=0
   export PIPENV_HIDE_EMOJIS=1
@@ -124,9 +122,8 @@ if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
 fi
 
 if [[ "$enable_devel" =~ "gcloud" ]]; then
-  # The next line updates PATH for the Google Cloud SDK.
-  if [ -f "${HOME}/var/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/var/google-cloud-sdk/path.zsh.inc"; fi
-
   # The next line enables shell command completion for gcloud.
-  if [ -f "${HOME}/var/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/var/google-cloud-sdk/completion.zsh.inc"; fi
+  if [ -f "${HOME}/var/google-cloud-sdk/completion.zsh.inc" ]; then
+    . "${HOME}/var/google-cloud-sdk/completion.zsh.inc";
+  fi
 fi

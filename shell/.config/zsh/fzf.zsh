@@ -1,4 +1,3 @@
-PATH="$PATH:$_VENDOR/fzf/bin"
 source "$_VENDOR/fzf/shell/key-bindings.zsh"
 
 ## wrapper for fzf to allow partial queries
