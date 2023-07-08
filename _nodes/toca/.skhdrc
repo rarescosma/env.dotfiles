@@ -11,7 +11,7 @@ resize < k : yabai -m window --resize left:-20:0
 resize < l : yabai -m window --resize left:20:0
 
 # apps
-fn - 0x32 : open -na /Applications/Alacritty.app --args -e sh -c "tmux attach -d -t base || exec tmux new -s base"
+fn - 0x32 : open -na /Applications/Alacritty.app --args -e tmux new-session -A -D -s base
 shift + fn - 0x32 : open -na /Applications/Alacritty.app
 fn - 0x2C : open -na /Applications/Firefox.app
 shift + fn - 0x2C : open -na /Applications/Google\ Chrome.app
