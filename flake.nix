@@ -6,7 +6,9 @@
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
+      let 
+        pkgs = import nixpkgs { inherit system; };
+        inherit (pkgs.lib.lists) optionals;
       in {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
@@ -27,8 +29,8 @@
             sccache
             skaffold
           ]
-          ++ (if stdenv.isDarwin then [ darwin.libiconv watch ] else [ ])
-          ++ (if stdenv.isLinux then [ openssl_legacy ] else [ ]);
+          ++ optionals stdenv.isDarwin [ darwin.libiconv watch ]
+          ++ optionals stdenv.isLinux [ openssl_legacy ];
           shellHook = ''
             unset PYTHONPATH
             export _NIX_PROMPT=.flake
