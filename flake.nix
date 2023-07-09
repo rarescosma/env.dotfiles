@@ -17,6 +17,7 @@
             dive
             exa
             gh
+            google-cloud-sdk
             graphviz
             jsonnet
             k9s

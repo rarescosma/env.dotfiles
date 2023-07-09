@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(kube python aws rust gcloud)
+[[ -v enable_devel ]] || enable_devel=(kube python rust)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
@@ -40,26 +40,6 @@ dps() {
 
 if [[ "$enable_devel" =~ "kube" ]]; then
   source ~/.config/zsh/kube.zsh
-fi
-
-if [[ "$enable_devel" =~ "aws" ]]; then
-  export AWS_CREDENTIAL_FILE="${HOME}/.aws/credentials"
-  export AWS_PROFILE="default"
-  export EC2_REGION="eu-west-1"
-  _aws_zsh_completer_path="${HOME}/.local/bin/aws_zsh_completer.sh"
-  [ -f "$_aws_zsh_completer_path" ] && source "$_aws_zsh_completer_path"
-  unset _aws_zsh_completer_path
-
-  ## list ec2 instances belonging to team
-  ec2-list() {
-    local team="$1"; shift
-    ec2-toys list --filters "Name=instance-state-name,Values=running Name=tag:Team,Values=$team" | grep linux
-  }
-
-  ## output instance IP after filtering
-  ec2-ip() {
-    memoize ec2-list $TEAM_TAG | fzf_cmd --query "$*" | awk '{print $2}'
-  }
 fi
 
 # -- Python --------------------------------------------------------------------
@@ -110,11 +90,4 @@ fi
 if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
   source /usr/share/nvm/nvm.sh --no-use
   source /usr/share/nvm/install-nvm-exec
-fi
-
-if [[ "$enable_devel" =~ "gcloud" ]]; then
-  # The next line enables shell command completion for gcloud.
-  if [ -f "${HOME}/var/google-cloud-sdk/completion.zsh.inc" ]; then
-    . "${HOME}/var/google-cloud-sdk/completion.zsh.inc";
-  fi
 fi
