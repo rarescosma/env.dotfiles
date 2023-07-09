@@ -9,8 +9,9 @@ if (( $+commands[env_parallel.zsh] )); then
   . $(which env_parallel.zsh)
 fi
 
-# -- disable hosts completion --------------------------------------------------
-zstyle ':completion:*:*:*' hosts off
+# -- completion config  --------------------------------------------------------
+zstyle ':completion:*:*:*' hosts off      # disable host-based
+zstyle ":completion:*:commands" rehash 1  # always rehash
 
 # -- moc config ----------------------------------------------------------------
 alias mocp="mocp -O MOCDir=${XDG_CONFIG_HOME}/moc"

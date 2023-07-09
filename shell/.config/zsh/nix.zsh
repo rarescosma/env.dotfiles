@@ -5,8 +5,28 @@ prompt_nix_shell() {
   test -n "$prompt" && echo "$prompt "
 }
 
-if test -f "$HOME/.nix-profile/lib/locale/locale-archive"; then
-    export LOCALE_ARCHIVE="$HOME/.nix-profile/lib/locale/locale-archive"
+# while this is open: https://github.com/direnv/direnv/issues/443
+# we have to make due with the below curse to force zsh
+# to load all the custom site-functions of nix packages
+_fpath_orig=("${fpath[@]}")
+
+_nix_fpath_hook() {
+    local nix_fpath
+    if [[ -n "$_NIX_FPATH" ]] && [[ "$fpath" == "$_fpath_orig" ]]; then
+        # turn ":"-separated string into array
+        nix_fpath=("${(@s/:/)_NIX_FPATH}")
+        
+        # prepend it to fpath and reload completions
+        fpath=( "${nix_fpath[@]}" "${fpath[@]}" )
+        compinit -u
+    fi
+    if [[ -z "$_NIX_FPATH" ]] && [[ "$fpath" != "$_fpath_orig" ]]; then
+        fpath=( "${_fpath_orig[@]}" )
+    fi
+}
+typeset -ag precmd_functions;
+if [[ -z "${precmd_functions[(r)_nix_fpath_hook]+1}" ]]; then
+  precmd_functions=( _nix_fpath_hook ${precmd_functions[@]} )
 fi
 
 if type direnv >/dev/null; then

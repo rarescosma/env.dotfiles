@@ -34,6 +34,16 @@
           shellHook = ''
             unset PYTHONPATH
             export _NIX_PROMPT="🧊️"
+            
+            # nicked from https://github.com/direnv/direnv/issues/443#issuecomment-642275550
+            # and adapted for zsh use
+            _nix_fpath_inputs=( "''${buildInputs[@]}" )
+            for p in ''${_nix_fpath_inputs[@]}; do
+            if [[ -d "$p/share/zsh/site-functions" ]]; then
+                _NIX_FPATH="''${_NIX_FPATH}''${_NIX_FPATH+:}$p/share/zsh/site-functions"
+            fi
+            done
+            export _NIX_FPATH
           '';
         };
       }
