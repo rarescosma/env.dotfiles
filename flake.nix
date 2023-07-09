@@ -1,27 +1,32 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/23.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem
+    (system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        overlays = [(_: prev: {
+          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        })];
+        pkgs = import nixpkgs { inherit system overlays; };
         inherit (pkgs.lib.lists) optionals;
       in {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             argocd
-            awscli2
+            unstable.awscli2
             dive
             exa
             gh
-            google-cloud-sdk
+            unstable.google-cloud-sdk
             graphviz
             jsonnet
             k9s
-            kubectl
+            unstable.kubectl
             kubernetes-helm
             kubeseal
             kustomize
@@ -35,7 +40,7 @@
           shellHook = ''
             unset PYTHONPATH
             export _NIX_PROMPT="🧊️"
-            
+
             # nicked from https://github.com/direnv/direnv/issues/443#issuecomment-642275550
             # and adapted for zsh use
             _nix_fpath_inputs=( "''${buildInputs[@]}" )
