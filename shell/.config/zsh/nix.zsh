@@ -30,7 +30,15 @@ if [[ -z "${precmd_functions[(r)_nix_fpath_hook]+1}" ]]; then
 fi
 
 if type direnv >/dev/null; then
-    _evalcache direnv hook zsh
+  _evalcache direnv hook zsh
+
+  test -n "$(declare -f "_direnv_hook")" || return
+  eval "${_/_direnv_hook/_direnv_hook_orig}"
+
+  _direnv_hook() {
+    _direnv_hook_orig "$@" 2> >(egrep -v '^direnv: (export)')
+    wait
+  }
 fi
 
 function meltdown() {

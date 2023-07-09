@@ -52,7 +52,7 @@
                 fi
             done
             export _NIX_FPATH
-            echo -e "\n\033[1m>> loading zsh site-functions for:\033[0;32m''${_report}\033[0m\n"
+            echo -e "\n\033[1m>> loading zsh site-functions for:\033[0;32m''${_report}\033[0m"
           '';
         };
       }
