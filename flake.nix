@@ -14,6 +14,7 @@
         })];
         pkgs = import nixpkgs { inherit system overlays; };
         inherit (pkgs.lib.lists) optionals;
+        gcloud = pkgs.unstable.google-cloud-sdk;
       in {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
@@ -22,7 +23,7 @@
             dive
             exa
             gh
-            unstable.google-cloud-sdk
+            (gcloud.withExtraComponents [gcloud.components.gke-gcloud-auth-plugin])
             graphviz
             jsonnet
             k9s
