@@ -15,7 +15,7 @@ _nix_fpath_hook() {
     if [[ -n "$_NIX_FPATH" ]] && [[ "$fpath" == "$_fpath_orig" ]]; then
         # turn ":"-separated string into array
         nix_fpath=("${(@s/:/)_NIX_FPATH}")
-        
+
         # prepend it to fpath and reload completions
         fpath=( "${nix_fpath[@]}" "${fpath[@]}" )
         compinit -u
