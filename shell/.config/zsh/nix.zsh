@@ -29,6 +29,7 @@ if [[ -z "${precmd_functions[(r)_nix_fpath_hook]+1}" ]]; then
   precmd_functions=( _nix_fpath_hook ${precmd_functions[@]} )
 fi
 
+# hook the direnv hook to turn down the verbosity a bit
 if type direnv >/dev/null; then
   _evalcache direnv hook zsh
 
@@ -41,11 +42,13 @@ if type direnv >/dev/null; then
   }
 fi
 
-alias nr='bash -c "~/src/.direnv/bin/nix-direnv-reload && touch --date=@0 ~/src/.envrc"'
+# create / refresh nix shell
+alias nnix='bash -c "~/src/.direnv/bin/nix-direnv-reload && touch --date=@0 ~/src/.envrc"'
 
-function meltdown() {
-  bash -c "cd $HOME/src; source $XDG_CONFIG_HOME/direnv/direnvrc; _nix_clean_old_gcroots .direnv"
+# delete (+ optional gc) the nix shell
+function rnix() {
+  bash -c "source $XDG_CONFIG_HOME/direnv/direnvrc; _nix_clean_old_gcroots ~/src/.direnv"
   if [[ "$@" == "gc" ]]; then nix-collect-garbage; fi
 }
 
-alias renix="meltdown gc; nr"
+alias renix="rnix gc; nnix"
