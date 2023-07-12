@@ -41,13 +41,11 @@ if type direnv >/dev/null; then
   }
 fi
 
+alias nr='bash -c "~/src/.direnv/bin/nix-direnv-reload && touch --date=@0 ~/src/.envrc"'
+
 function meltdown() {
   bash -c "cd $HOME/src; source $XDG_CONFIG_HOME/direnv/direnvrc; _nix_clean_old_gcroots .direnv"
-
   if [[ "$@" == "gc" ]]; then nix-collect-garbage; fi
-
-  local _pwd="$(pwd)";
-  cd $HOME/src
-  touch .envrc && nix-direnv-reload && touch --date=@0 .envrc
-  cd "$_pwd"
 }
+
+alias renix="meltdown gc; nr"
