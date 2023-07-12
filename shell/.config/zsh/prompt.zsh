@@ -5,6 +5,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[red]%}?"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}!"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
+export KUBE_PS1_ENABLED=off
 KUBE_PS1_SYMBOL_ENABLE=false
 KUBE_PS1_SUFFIX=") "
 KUBE_PS1_DIVIDER="%{$fg[green]%}/%{$reset_color%}"
