@@ -30,13 +30,14 @@
 
     inherit (builtins) getAttr filter pathExists toString;
     inherit (pkgs.lib.strings) concatStringsSep;
+    inherit (pkgs.lib.lists) naturalSort;
 
     mkZshSf = pkg: {
       path = pkg + "/share/zsh/site-functions";
       name = pkg.name;
     };
     ZshSfs = filter (p: pathExists p.path) (map mkZshSf nativeBuildInputs);
-    Zconcat = sep: key: concatStringsSep sep (map (getAttr key) ZshSfs);
+    Zconcat = sep: key: concatStringsSep sep (naturalSort (map (getAttr key) ZshSfs));
   in
     pkgs.mkShell {
       inherit nativeBuildInputs;
