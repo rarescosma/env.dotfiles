@@ -23,3 +23,15 @@ awc() {
 
   export AWS_PROFILE="${profile}"
 }
+
+# change the toca profile
+tcc() {
+  local root cluster
+  root="${XDG_DATA_HOME}/toca/clusters"
+  cluster="$(fd -t f --base-directory "$root" | fzf_cmd --query "$*")"
+  test -z "$cluster" && return
+
+  echo "Switching to the $cluster cluster"
+
+  ln -sf $root/$cluster $root/current
+}
