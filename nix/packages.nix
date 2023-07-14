@@ -36,15 +36,15 @@
       name = pkg.name;
     };
     ZshSfs = filter (p: pathExists p.path) (map mkZshSf nativeBuildInputs);
-    concat' = sep: key: concatStringsSep sep (map (getAttr key) ZshSfs);
+    Zconcat = sep: key: concatStringsSep sep (map (getAttr key) ZshSfs);
   in
     pkgs.mkShell {
       inherit nativeBuildInputs;
       shellHook = ''
         unset PYTHONPATH
         export _NIX_PROMPT="🧊️"
-        export _NIX_FPATH="${concat' ":" "path"}"
-        echo -e "\n\033[1m>> loading zsh site-functions for: \033[0;32m${concat' " " "name"}\033[0m"
+        export _NIX_FPATH="${Zconcat ":" "path"}"
+        echo -e "\n\033[1m>> loading zsh site-functions for: \033[0;32m${Zconcat " " "name"}\033[0m"
       '';
     };
 }
