@@ -21,6 +21,7 @@
         mariadb-connector-c
         minikube
         nodejs_20
+        nodePackages_latest.yarn
         sccache
         skaffold
       ]
