@@ -47,6 +47,7 @@
         export _NIX_PROMPT="🧊️"
         export _NIX_FPATH="${Zconcat ":" "path"}"
         echo -e "\n\033[1m>> loading zsh site-functions for: \033[0;32m${Zconcat " " "name"}\033[0m"
+        export XDG_DATA_DIRS="$XDG_DATA_DIRS:/usr/local/share:/usr/share"
       '';
     };
 }
