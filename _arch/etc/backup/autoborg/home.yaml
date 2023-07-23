@@ -1,36 +1,33 @@
-location:
-  source_directories:
-    - /home/karelian
+source_directories:
+  - /home/karelian
 
-  repositories:
-    - /home/karelian/backup/{hostname}/home_borg
-    - karelian@vps:/home/karelian/backup/{hostname}/home_borg
+repositories:
+  - path: ssh://karelian@vps/home/karelian/backup/{hostname}/home_borg
+    label: vps
+  - path: /home/karelian/backup/{hostname}/home_borg
+    label: local
 
-  one_file_system: true
+one_file_system: true
 
-  patterns_from:
-    - /etc/backup/autoborg/home_patterns
+patterns_from:
+  - /etc/backup/autoborg/home_patterns
 
-  exclude_caches: true
+exclude_caches: true
 
-  exclude_if_present:
-    - .nobackup
+exclude_if_present:
+  - .nobackup
 
-storage:
-  encryption_passcommand: cat /root/.borg_pass
-  compression: auto,zstd
-  relocated_repo_access_is_ok: true
+encryption_passcommand: cat /root/.borg_pass
+compression: auto,zstd
+relocated_repo_access_is_ok: true
 
-consistency:
-  checks: ["disabled"]
+keep_daily: 7
+keep_weekly: 4
+keep_monthly: 24
 
-retention:
-  keep_daily: 7
-  keep_weekly: 4
-  keep_monthly: 24
-  prefix: "{hostname}-"
+checks:
+  - name: disabled
 
-hooks:
-  after_everything:
-    - "chown -R karelian: /home/karelian/backup/*/home_borg"
-    - "chown -R karelian: /home/karelian/.config/borg"
+after_everything:
+  - "bash -c 'chown -R karelian: /home/karelian/backup/*/home_borg || true'"
+  - "bash -c 'chown -R karelian: /home/karelian/.config/borg || true'"
