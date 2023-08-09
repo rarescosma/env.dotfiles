@@ -26,7 +26,7 @@
         skaffold
       ]
       ++ [unstable.awscli2 unstable_gcloud unstable.kubectl]
-      ++ optionals stdenv.isDarwin [darwin.libiconv watch]
+      ++ optionals stdenv.isDarwin [darwin.apple_sdk.frameworks.Security pkgconfig openssl darwin.libiconv watch]
       ++ optionals stdenv.isLinux [openssl_legacy];
 
     inherit (builtins) getAttr filter pathExists toString;
