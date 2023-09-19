@@ -10,6 +10,7 @@
       [
         argocd
         dive
+        eksctl
         eza
         gh
         graphviz
