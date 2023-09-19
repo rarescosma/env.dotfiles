@@ -3,7 +3,7 @@
 
 # Direnv
 /.env
-/.envrc
+.envrc
 /.envrc.*
 
 # IntelliJ
@@ -16,7 +16,7 @@
 /.mypy_cache
 /.build-venv
 /.pytest_cache
-/*.egg-info/
+*.egg-info/
 */.coverage
 /.coverage.*
 .coverage
