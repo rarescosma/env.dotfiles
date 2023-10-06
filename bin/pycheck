@@ -21,12 +21,12 @@ echo ">>>>>> pycln <<<<<<"
 pycln "${@}"
 echo
 echo ">>>>>> isort <<<<<<"
-isort -l80 -m3 --tc "${@}"
+isort -l100 -m3 --tc "${@}"
 
 # format
 echo
 echo ">>>>>> black <<<<<<"
-black -l 80 "${@}"
+black -l 100 "${@}"
 
 # dead code is bad
 echo
