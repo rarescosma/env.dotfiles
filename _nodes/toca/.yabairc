@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# auto-clean empty spaces
+# tracking issue: https://github.com/koekeishiya/yabai/issues/213
+yabai -m signal --add event=space_changed action="sh ~/bin/yabai-clean-empty-spaces"
+
 # go eat a hamburger, big sur
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
