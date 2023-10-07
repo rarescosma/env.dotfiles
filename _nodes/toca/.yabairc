@@ -48,4 +48,4 @@ yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="any preference dialogs" title="[Pp]reference" manage=off
 yabai -m rule --add label="Intellij Welcome" title="Welcome to IntelliJ" manage=off
 yabai -m rule --add label="iStat popups" app="iStat Menus.*" manage=off
-yabai -m rule --add label="meld windows" title="Meld" manage=off native-fullscreen=on
+yabai -m rule --add label="meld windows" title="Meld" manage=off
