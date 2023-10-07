@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(rust python kube aws)
+[[ -v enable_devel ]] || enable_devel=(rust python kube aws nvm)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
