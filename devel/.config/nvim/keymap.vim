@@ -30,7 +30,9 @@ inoremap <C-t> <Esc>:let @t=@/<CR>:let &ul=&ul<CR>/\v\+\><CR>:nohl<CR>:let @/=@t
 nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
 
-" Quick-save (and quit).
+" Ctrl+Q to quick-save and quit
+" leader+w to quick-save
+" Ctrl+z to suspend from insert
 command! QS normal! :wq<CR>
 map <C-q> <Esc>:QS<CR>
 inoremap <C-q> <C-o>ZZ
