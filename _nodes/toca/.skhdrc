@@ -49,7 +49,7 @@ shift + fn - w : yabai -m space --destroy
 
 # create desktop and follow focus - uses jq for parsing json (brew install jq)
 shift + fn - n : yabai -m space --create && \
-                index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
                 yabai -m space --focus "${index}"
 
 # float / unfloat
