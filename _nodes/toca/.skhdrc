@@ -49,11 +49,16 @@ shift + fn - w : yabai -m space --destroy
 
 # create desktop and follow focus - uses jq for parsing json (brew install jq)
 shift + fn - n : yabai -m space --create && \
-                index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-                yabai -m space --focus "${index}"
+  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+  yabai -m space --focus "${index}"
 
 # float / unfloat
 shift + fn - space : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
+
+# breakout window
+shift + fn - b : yabai -m space --create && \
+  index="$(yabai -m query --spaces --display | jq 'map(select(."windows" == []))[-1].index')" && \
+  yabai -m window --space "${index}" && yabai -m space --focus "${index}"
 
 # change layout
 shift + fn - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" elif .type == "stack" then "float" else "bsp" end')
