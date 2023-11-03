@@ -1,5 +1,5 @@
 SHELL := bash
-PARU_VER := 1.8.2
+PARU_VER := 1.11.2
 PARU_RELEASE := paru-v$(PARU_VER)-x86_64.tar.zst
 
 all: help
@@ -12,7 +12,7 @@ all: help
 
 .PHONY: packages
 packages: /usr/bin/paru ## Install arch packages
-	paru -Sy --needed --noconfirm base-devel xorg \
+	paru -Sy --needed base-devel xorg \
 	$(shell cat _arch/packages | grep -v '#')
 
 .PHONY: aur
