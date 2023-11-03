@@ -37,7 +37,7 @@ if type direnv >/dev/null; then
   eval "${_/_direnv_hook/_direnv_hook_orig}"
 
   _direnv_hook() {
-    _direnv_hook_orig "$@" 2> >(egrep -v '^direnv: (export)')
+    _direnv_hook_orig "$@" 2> >(grep -v -E '^direnv: (export)')
     wait
   }
 fi
