@@ -85,6 +85,7 @@ if [[ "$enable_devel" =~ "rust" ]]; then
   if test -f ${XDG_DATA_HOME}/cargo/env; then
     source ${XDG_DATA_HOME}/cargo/env
   fi
+  PATH="${PATH}:${HOME}/.local/share/cargo/bin"
 fi
 
 if [[ "$enable_devel" =~ "node" ]]; then
