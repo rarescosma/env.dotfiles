@@ -1,6 +1,6 @@
 configuration {
     font: "iosevka 12";
-    combi-modi: "xrun: xrun,rfh: rfh,window,ssh,drun";
+    combi-modi: "xrun:~/bin/xrun,rfh:~/bin/rfh,window,ssh,drun";
     ssh-command: "tmux new-window -n '@{host}' 'ssh {host}'";
     sorting-method: "fzf";
 }
