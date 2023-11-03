@@ -86,6 +86,17 @@ nmap <Right> <Action>(PrevSplitter)
 nmap <Up> <Action>(MethodUp)
 nmap <Down> <Action>(MethodDown)
 
+" Conflict-avoidance mode
+map <C-\> <Action>(EditorSelectWord)
+map <C-f> <Action>(RecentFiles)
+map <M-l> <Action>(NextSplitter)
+map <M-h> <Action>(PrevSplitter)
+map <M-e> <Action>(SplitVertically)
+map <M-o> <Action>(SplitHorizontally)
+map <C-g> <Action>(Tool_External Tools_idea_tig)
+map <C-m> <Action>(HideAllWindows)
+map <F10> <Action>(ToggleBookmarkWithMnemonic)
+
 " Visual block.
 nnoremap <A-v> <C-q>
 
