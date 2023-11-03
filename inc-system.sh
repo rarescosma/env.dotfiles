@@ -14,7 +14,7 @@ _copy_from() {
   shift
 
   if [ -z "$1" ]; then
-    echo "you might have forgottent to quote some args, I'm not removing /"
+    echo "you might have forgotten to quote some args, I'm not removing /"
     exit 1
   fi
 
