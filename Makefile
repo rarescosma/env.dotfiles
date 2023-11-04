@@ -1,6 +1,7 @@
 SHELL := bash
+ARCH ?= x86_64
 PARU_VER := 1.11.2
-PARU_RELEASE := paru-v$(PARU_VER)-x86_64.tar.zst
+PARU_RELEASE := paru-v$(PARU_VER)-$(ARCH).tar.zst
 
 all: help
 
