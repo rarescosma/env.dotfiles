@@ -21,7 +21,7 @@
         })
       ];
     in {
-      systems = ["x86_64-linux" "aarch64-darwin"];
+      systems = ["x86_64-linux" "aarch64-darwin" "aarch64-linux"];
       perSystem = {system, ...}: {
         config._module.args.pkgs = import nixpkgs {inherit system overlays;};
         imports = [./packages.nix];
