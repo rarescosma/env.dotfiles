@@ -45,8 +45,6 @@
     email = rares@getbetter.ro
     signingkey = 0xD00EC1BBBA4D3352
     useConfigOnly = true
-[includeIf "gitdir:~/src/toca/"]
-    path = config.toca
 [pull]
     ff = only
 [credential]
