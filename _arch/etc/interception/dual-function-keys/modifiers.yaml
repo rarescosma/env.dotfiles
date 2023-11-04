@@ -1,12 +1,15 @@
 MAPPINGS:
+      # Caps -> Esc / Ctrl
     - KEY: KEY_CAPSLOCK
       TAP: KEY_ESC
       HOLD: KEY_LEFTCTRL
       HOLD_START: BEFORE_CONSUME_OR_RELEASE
+      # right Alt -> right Alt / Backspace
     - KEY: KEY_RIGHTALT
       TAP: KEY_BACKSPACE
       HOLD: KEY_RIGHTALT
       HOLD_START: BEFORE_CONSUME_OR_RELEASE
+      # extra Ctrl when holding ";"
     - KEY: KEY_SEMICOLON
       TAP: KEY_SEMICOLON
       HOLD: KEY_RIGHTCTRL
