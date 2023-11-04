@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font "pango:Iosevka 8"
+font "pango:Iosevka 11"
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -157,6 +157,7 @@ bar {
     i3bar_command i3bar -t
     separator_symbol "·"
 
+    output None-1
     output eDP1
     output eDP-1-1
     output DP1

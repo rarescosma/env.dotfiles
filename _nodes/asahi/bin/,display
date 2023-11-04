@@ -5,7 +5,7 @@
 }
 
 ,internal() {
-  ,wm dpi::terminal 16
+  ,wm dpi::terminal 14
   ,wm dpi::i3 11
   ,wm dpi::gtk 10
   ,wm dpi::idea 27 26

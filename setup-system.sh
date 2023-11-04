@@ -26,22 +26,14 @@ setup::etc() {
   echo "=========================="
 
   copy "etc/NetworkManager/conf.d/20-connectivity.conf"
-  copy "etc/asd.conf"
-  copy "etc/conf.d/snapper"
   copy "etc/containers/registries.conf"
-  copy "etc/default/grub-btrfs/config"
   copy "etc/depmod.d/00-extra.conf"
-  copy "etc/dns-over-https/doh-client.conf"
   copy "etc/fonts/conf.d/75-noto-color-emoji.conf"
   copy "etc/fonts/conf.d/30-font-aliases.conf"
   copy "etc/interception/udevmon.yaml"
   copy "etc/interception/dual-function-keys/modifiers.yaml"
-  copy "etc/libvirt/qemu.conf"
-  copy "etc/pacman.d/hooks"
   copy "etc/profile.d/freetype2.sh"
   copy "etc/profile.d/jre.sh"
-  copy "etc/snap-pac.ini"
-  copy "etc/snapper/configs/root"
   copy "etc/sudoers.d/override"
   copy "etc/sysctl.d/99-sysctl.conf"
   copy "etc/systemd/logind.conf"
@@ -53,6 +45,8 @@ setup::etc() {
 }
 
 setup::backup() {
+  return 0
+
   echo ""
   echo "===================="
   echo "Setting up backup..."
@@ -73,7 +67,7 @@ setup::_node() {
   local hostname=$(head -1 /etc/hostname)
   export HOSTNAME="$hostname"
 
-  copy_host "etc/environment"
+  copy_host "etc/environment" || true
 
   if [[ $hostname == shrewd ]]; then
     copy_host "etc/modprobe.d/i915.conf"
@@ -112,30 +106,7 @@ setup::services() {
 
   systemctl daemon-reload
   systemctl_enable_start "NetworkManager.service"
-  systemctl_enable_start "autoborg@home.timer"
-  systemctl_enable_start "autoborg@root.timer"
-  systemctl_enable_start "autoglacier.timer"
-  systemctl_enable_start "btrfs-scrub@-.timer"
-  systemctl_enable_start "btrfs-scrub@home.timer"
-  systemctl_enable_start "btrfs-scrub@snapshots.timer"
-  systemctl_enable_start "btrfs-scrub@var_log.timer"
-  systemctl_enable_start "doh-client.service"
-  systemctl_enable_start "fstrim.timer"
-  systemctl_enable_start "snapper-cleanup.timer"
   systemctl_enable_start "udevmon.service"
-
-  if is_chroot; then
-    echo >&2 "=== Running in chroot, skipping turtles..."
-  else
-    echo ""
-    echo "================================"
-    echo "Enabling and starting turtles..."
-    echo "================================"
-
-    systemctl_enable_start "libvirtd.service" || true
-    systemctl_enable_start "lxd.service" || true
-    systemctl_enable_start "podman.service" || true
-  fi
 }
 
 setup::var() {

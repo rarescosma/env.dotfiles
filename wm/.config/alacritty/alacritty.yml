@@ -8,7 +8,7 @@ scrolling:
 font:
   normal:
     family: "Iosevka"
-  size: 12 #fontsize
+  size: 14 #fontsize
 
 colors:
   primary:
