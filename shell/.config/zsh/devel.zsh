@@ -80,7 +80,7 @@ if [[ "$enable_devel" =~ "golang" ]]; then
 fi
 
 if [[ "$enable_devel" =~ "rust" ]]; then
-  export SCCACHE_CACHE_SIZE="2G"
+  export SCCACHE_CACHE_SIZE="8G"
 
   if test -f ${XDG_DATA_HOME}/cargo/env; then
     source ${XDG_DATA_HOME}/cargo/env
