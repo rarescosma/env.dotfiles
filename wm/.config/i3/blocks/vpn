@@ -8,11 +8,6 @@ OVPN_PATH="/proc/sys/net/ipv4/conf/tun0"
 if [[ -e "${OVPN_PATH}" ]]; then
   VPN_CONFIG=$(pgrep -a openvpn | head -1 | awk -F"/ovpn/" '{$0=$2}1' | cut -d/ -f1)
   VPN_TYPE="ovpn"
-
-  if test -z "$VPN_CONFIG" && pgrep openconnect >/dev/null; then
-    VPN_CONFIG="toca"
-    VPN_TYPE="gp"
-  fi
 fi
 
 # check wireguard

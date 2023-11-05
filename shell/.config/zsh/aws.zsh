@@ -7,7 +7,7 @@ prompt_aws() {
   echo "$_aws_prompt"
 }
 
-# change the AWS profile
+# change the AWS credentials
 awc() {
   local profile maybe_kubeconfig
   profile="$(cat $AWS_SHARED_CREDENTIALS_FILE | grep -o '\[[^]]*\]' | tr -d '[]' | fzf_cmd --query "$*")"
@@ -24,10 +24,10 @@ awc() {
   export AWS_PROFILE="${profile}"
 }
 
-# change the toca profile
-tcc() {
+# change the AWS profile
+apc() {
   local root cluster
-  root="${XDG_DATA_HOME}/toca/clusters"
+  root="${XDG_DATA_HOME}/apc/clusters"
   cluster="$(fd -t f --base-directory "$root" | fzf_cmd --query "$*")"
   test -z "$cluster" && return
 
