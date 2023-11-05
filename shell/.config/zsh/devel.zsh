@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(rust python kube aws nvm)
+[[ -v enable_devel ]] || enable_devel=(rust python kube aws node)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
@@ -89,8 +89,8 @@ if [[ "$enable_devel" =~ "rust" ]]; then
 fi
 
 if [[ "$enable_devel" =~ "node" ]]; then
-  PATH="${PATH}:${NPM_PACKAGES}/bin"
-  NODE_PATH="${NPM_PACKAGES}/lib/node_modules:${NODE_PATH}"
+  PATH="${PATH}:${XDG_DATA_HOME}/npm/bin"
+  NODE_PATH="${XDG_DATA_HOME}/npm/lib/node_modules:${NODE_PATH}"
 fi
 
 if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
