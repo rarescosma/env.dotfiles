@@ -10,7 +10,6 @@ mount_ext4() {
   local dev="${1}"
   local mp="${2}"
 
-  # try a direct mount first
   mount ${dev} ${mp} -o noatime,nobarrier,data=writeback
 }
 
@@ -42,10 +41,10 @@ start_seedbox() {
 main() {
   mount_external_hdds
   sleep 2
-  cycle_samba
 
   if [[ -d /mnt/seedbox/fresh ]]; then
     bind_seedbox
+    swapon /mnt/seedbox/swap
     sleep 2
     start_seedbox
   fi
