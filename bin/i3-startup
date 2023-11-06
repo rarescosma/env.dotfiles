@@ -30,7 +30,8 @@ syndaemon -i 1 -t -k &
 # Special Eds
 killall -w -9 redshift >/dev/null 2>&1
 killall -w -9 redshift-gtk >/dev/null 2>&1
-redshift-gtk -t 5500:4800 -l 59.32:18.06 &
+#redshift-gtk -t 5500:4800 -l 59.32:18.06 &
+redshift-gtk -t 5500:4800 -l 46.77:23.62 &
 # Stockholm 59.32:18.06
 # Cluj-Napoca 46.77:23.62
 
