@@ -1,14 +1,13 @@
 [Unit]
-Description=Rest In Peace
-DefaultDependencies=no
+Description=Close tomb before shutdown
+Requires=local-fs.target
+After=local-fs.target
 
 [Service]
-User=karelian
-Group=karelian
 Type=oneshot
+ExecStart=true
 RemainAfterExit=true
-ExecStart=bash -c "/home/karelian/bin/,tomb ,close || true"
+ExecStop=bash -c "tomb slam || true"
 
 [Install]
-WantedBy=umount.target
-
+WantedBy=multi-user.target
