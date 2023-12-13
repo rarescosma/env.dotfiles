@@ -90,7 +90,7 @@ fi
 
 if [[ "$enable_devel" =~ "node" ]]; then
   PATH="${PATH}:${XDG_DATA_HOME}/npm/bin"
-  NODE_PATH="${XDG_DATA_HOME}/npm/lib/node_modules:${NODE_PATH}"
+  export NODE_PATH="${XDG_DATA_HOME}/npm/lib/node_modules:${NODE_PATH}"
 fi
 
 if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
