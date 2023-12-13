@@ -22,11 +22,10 @@
         minikube
         nodejs_20
         nodePackages_latest.yarn
-        sccache
         skaffold
       ]
       ++ [unstable.awscli2 unstable_gcloud unstable.kubectl]
-      ++ optionals stdenv.isDarwin [darwin.apple_sdk.frameworks.Security pkgconfig openssl darwin.libiconv watch]
+      ++ optionals stdenv.isDarwin [darwin.apple_sdk.frameworks.Security pkgconfig openssl darwin.libiconv watch sccache]
       ++ optionals stdenv.isLinux [openssl_legacy];
 
     inherit (builtins) getAttr filter pathExists toString;
