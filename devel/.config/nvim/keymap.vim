@@ -26,6 +26,12 @@ vnoremap <C-k> c[<C-r>"](<Esc>"*pa)<Esc>
 " 3) search for '+>' and (ab)use visual mode to replace inside '<+ ... +>'
 inoremap <C-t> <Esc>:let @t=@/<CR>:let &ul=&ul<CR>/\v\+\><CR>:nohl<CR>:let @/=@t<CR>lvF+;hc
 
+" Insert mode jumps
+" L -> end of line
+" J -> out of )]}"'> (without clobbering the search reg)
+inoremap <C-l> <C-o>$
+inoremap <C-j> <Esc>:let @t=@/<CR>/[)}"'\]>]<CR>:<C-u>nohlsearch<CR>:let @/=@t<CR>a
+
 " Ctrl+B to stop searching.
 nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
@@ -70,10 +76,8 @@ noremap L $
 noremap H ^
 
 " Move during insert.
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
+" inoremap <C-h> <Left>
+" inoremap <C-k> <Up>
 
 " Center block nav please.
 nnoremap }   }zz
