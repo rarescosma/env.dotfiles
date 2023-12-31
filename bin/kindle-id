@@ -2,7 +2,7 @@
 
 # displays the USB device id of a connected kindle
 # sample usage:
-# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(kindle_id)" | tee -a ~/.local/env
+# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(kindle-id)" | tee -a ~/.local/env
 
 kindle_dev="/dev/$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
 test -z "$kindle_dev" && (echo -e "could not find kindle device; aborting..."; exit 1)
