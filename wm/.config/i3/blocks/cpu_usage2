@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+import psutil
+import time
+
+while True:
+    usage = str(psutil.cpu_percent(interval=None)) + "%"
+    print(usage.rjust(7), flush=True)
+    time.sleep(3)
+
