@@ -81,3 +81,4 @@ bindkey '^Z' very-fancy-ctrl-z
 # -- vim cmd edit --------------------------------------------------------------
 autoload edit-command-line; zle -N edit-command-line
 bindkey "^[v" edit-command-line
+WORDCHARS=${WORDCHARS/\/}
