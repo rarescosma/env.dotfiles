@@ -14,8 +14,8 @@ fi
 
 unalias l
 function l() {
-  if (( $+commands[exa] )); then
-    exa -lhg --git --group-directories-first $*
+  if (( $+commands[eza] )); then
+    eza -lhg --git --group-directories-first $*
   else
     ls -lh $*
   fi

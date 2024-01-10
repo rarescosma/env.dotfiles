@@ -10,7 +10,7 @@
       [
         argocd
         dive
-        exa
+        eza
         gh
         graphviz
         jsonnet
