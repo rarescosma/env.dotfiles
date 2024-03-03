@@ -32,15 +32,19 @@ _replica_backup() {
   rsync -avP --delete /home/karelian/backup/ "${MOUNTPOINT}/backup/"
 }
 
-_kindle_backup () {
-  local ts
+_kindle_backup() {
+  local ts backup_dir
+
   ts="$(date "+%F@%T")"
+  backup_dir="/home/karelian/backup/kindle"
+
   echo "Grabbing kindle notes at ${ts}"
+  mkdir -p "$backup_dir"
   cp \
     "${MOUNTPOINT}/documents/My Clippings.txt" \
-    "/home/karelian/backup/kindle/notes-${ts}.txt"
-  chown -R karelian: /home/karelian/backup/kindle
-  chmod -R 644 /home/karelian/backup/kindle/*
+    "${backup_dir}/notes-${ts}.txt"
+  chown -R karelian: "$backup_dir"
+  chmod -R 644 "${backup_dir}"/*
 }
 
 # Mount -> dispatch -> paranoia -> unmount
