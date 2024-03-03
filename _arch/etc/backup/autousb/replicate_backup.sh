@@ -27,6 +27,11 @@ PARTITION_PATH="/dev/disk/by-uuid/${UUID}"
 MOUNTPOINT="/mnt/${DEV_TYPE}"
 DRIVE=$(lsblk --inverse --noheadings --list --paths --output name "${PARTITION_PATH}" | head --lines 1)
 
+_umount_on_err() {
+  umount -f $MOUNTPOINT
+}
+trap _umount_on_err ERR
+
 _replica_backup() {
   mkdir -p "${MOUNTPOINT}/backup"
   rsync -avP --delete /home/karelian/backup/ "${MOUNTPOINT}/backup/"
