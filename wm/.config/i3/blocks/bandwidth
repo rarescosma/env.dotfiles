@@ -17,6 +17,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Use the provided interface, otherwise the device used for the default route.
+TREAT_UNKNOWN_AS_UP=1
+
 if [[ -z $INTERFACE ]] && [[ -n $BLOCK_INSTANCE ]]; then
   INTERFACE=$BLOCK_INSTANCE
 elif [[ -z $INTERFACE ]]; then
