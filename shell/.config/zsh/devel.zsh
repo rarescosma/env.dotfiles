@@ -97,3 +97,7 @@ if [[ "$enable_devel" =~ "nvm" ]] && test -d /usr/share/nvm; then
   source /usr/share/nvm/nvm.sh --no-use
   source /usr/share/nvm/install-nvm-exec
 fi
+
+if [[ "$enable_devel" =~ "sdk" ]] && test -d $HOME/.sdkman/bin; then
+    source "${HOME}/.sdkman/bin/sdkman-init.sh"
+fi
