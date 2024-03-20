@@ -75,7 +75,6 @@ kernel-modules-hook
 keychain
 libnpupnp
 libupnpp
-libva-nvidia-driver
 libva-utils
 libvdpau-va-gl
 libxcrypt-compat
@@ -114,6 +113,7 @@ nmap
 noto-fonts-emoji
 ntfs-3g
 nvidia
+nvidia-prime
 nvidia-settings
 nvme-cli
 nvtop
@@ -134,6 +134,7 @@ pkgfile
 playerctl
 powertop
 progress
+pulseaudio
 pv
 pwgen
 pyenv
