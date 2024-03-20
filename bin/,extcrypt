@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+NAME="extcrypt"
+ARRAY="/dev/md/${NAME}"
+DISK="/dev/sda"
+
+,mount() {
+    ,tomb ,open
+    sudo mdadm --assemble "$ARRAY" "$DISK"
+    sudo cryptsetup luksOpen "$ARRAY" "$NAME" -d /tomb/luks/"${NAME}.keyfile" -v
+    sudo vgchange -a y
+    sudo mount "/dev/${NAME}-vg0/lvol0" "/mnt/${NAME}"
+}
+
+,umount() {
+    sudo umount "/mnt/${NAME}"
+    sudo cryptsetup luksClose /dev/mapper/"${NAME}--vg0-lvol0"
+    sudo cryptsetup luksClose /dev/mapper/"${NAME}"
+    sudo mdadm --stop "$ARRAY"
+}
+
+,force-umount() {
+    set +e
+    ,umount
+    set -e
+}
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  exec 2>&1
+  $@
+fi
