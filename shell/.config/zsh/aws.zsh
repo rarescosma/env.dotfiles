@@ -24,7 +24,7 @@ awc() {
   export AWS_PROFILE="${profile}"
 }
 
-# change the AWS profile
+# change the current cluster
 apc() {
   local root cluster
   root="${XDG_DATA_HOME}/apc/clusters"
