@@ -8,6 +8,17 @@
   sudo wg-quick up wg0vps
 }
 
+,vps-ovpn() {
+  ,off
+  ,tomb ,open || exit 1
+  local vpn_config log_path old_name
+  vpn_config="var/ovpn/vps/$(hostname -s).ovpn"
+  log_path="/tmp/vpn-vps.log"; echo -n > "$log_path"
+
+  nohup sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings >"$log_path" 2>&1 &
+  disown
+}
+
 ,turris() {
   ,off
   ,tomb ,open || exit 1
