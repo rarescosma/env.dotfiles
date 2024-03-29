@@ -11,6 +11,8 @@ _deps=(
   "zenity"
   "xsel"
   "i3-msg"
+  "date"
+  "openssl"
 )
 for _dep in "${_deps[@]}"; do
   command -v "${_dep}" >/dev/null || (
