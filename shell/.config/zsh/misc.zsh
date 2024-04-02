@@ -82,3 +82,9 @@ bindkey '^Z' very-fancy-ctrl-z
 autoload edit-command-line; zle -N edit-command-line
 bindkey "^[v" edit-command-line
 WORDCHARS=${WORDCHARS/\/}
+
+## -- highlight func -----------------------------------------------------------
+hl() {
+    local st="$(echo "$@" | tr ' ' '|')"
+    grep --color -E "$st|$"
+}
