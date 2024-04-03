@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Vault: triage
+Exec=/usr/bin/obsidian "obsidian://open?vault=triage"
+Type=Application

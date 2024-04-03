@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Vault: rar
+Exec=/usr/bin/obsidian "obsidian://open?vault=rar"
+Type=Application
