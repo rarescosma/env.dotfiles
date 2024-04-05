@@ -65,6 +65,7 @@ setup::backup() {
   copy "etc/systemd/system/autoborg@root.service"
   copy "etc/systemd/system/autoglacier.timer"
   copy "etc/systemd/system/autoglacier.service"
+  copy "etc/systemd/system/ec_io_wheel.service"
   link "etc/backup/autousb/replicate_backup@.service" "etc/systemd/system/replicate_backup@.service"
   link "etc/backup/autousb/65-replicate_backup.rules" "etc/udev/rules.d/65-replicate_backup.rules"
 }

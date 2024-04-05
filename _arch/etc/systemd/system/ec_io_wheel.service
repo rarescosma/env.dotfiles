@@ -1,0 +1,10 @@
+[Unit]
+Description=Set ec_io writable to wheel
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/bin/bash -c "/bin/chgrp wheel -R /sys/kernel/debug; /bin/chmod g+rwx /sys/kernel/debug; /bin/chmod -R g+rw /sys/kernel/debug"
+
+[Install]
+WantedBy=multi-user.target

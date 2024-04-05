@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import time
+
+CPU_TEMP_ADDR: int = 0x68
+EC_IO_FILE: str = "/sys/kernel/debug/ec/ec0/io"
+
+
+def read_byte(address: int) -> int:
+    with open(EC_IO_FILE, 'r+b') as file:
+        file.seek(address)
+        return int(file.read(1).hex(), 16)
+
+
+while True:
+    temp = read_byte(CPU_TEMP_ADDR)
+    print(f"{temp}°C".rjust(5), flush=True)
+    time.sleep(3)
