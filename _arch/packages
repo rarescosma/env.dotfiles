@@ -11,6 +11,7 @@ bc
 bind
 borgmatic
 browserpass-firefox
+caddy
 calibre
 cfssl
 chromium

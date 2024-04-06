@@ -1,0 +1,21 @@
+{
+	admin "unix//run/caddy/admin.socket"
+}
+
+# hifi-rs
+http://hifi.getbetter.ro {
+    reverse_proxy 127.0.0.1:9888
+}
+https://hifi.getbetter.ro {
+    reverse_proxy 127.0.0.1:9888
+    tls /etc/caddy/tls/hifi.crt /etc/caddy/tls/hifi.key
+}
+
+# ooba
+http://ooba.getbetter.ro {
+    reverse_proxy 127.0.0.1:7860
+}
+https://ooba.getbetter.ro {
+    reverse_proxy 127.0.0.1:7860
+    tls /etc/caddy/tls/ooba.crt /etc/caddy/tls/ooba.key
+}
