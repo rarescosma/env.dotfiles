@@ -10,7 +10,7 @@ IDEA_VERSION=${IDEA_VERSION:-"2022.3"}
 # /_____/\___/|___/_/\___/\___/____/
 
 function ,keyboard::setup() {
-  command -v udevadm && udevadm settle
+  command -v udevadm >/dev/null 2>&1 && udevadm settle
   xset r rate 300 50
   setxkbmap -layout ro
   if [ -f "$XDG_CONFIG_HOME/keymap.xkb" ]; then
