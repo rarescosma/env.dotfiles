@@ -1,50 +1,42 @@
 #!/usr/bin/env bash
 
-exec 3>&1 4>&2
-trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>/tmp/i3-startup.log 2>&1
+REDSHIFT_COORDS="59.32:18.6" # 46.77:23.62 (Cluj)
 
-# Commit sudoku
-list_descendants() {
-    local children=$(ps -o pid= --ppid "$1")
-    for pid in $children; do
-        list_descendants "$pid"
-    done
-    echo "$children"
-}
-
-_MY_NAME=${BASH_SOURCE[0]}
-for pid in $(pidof -x $_MY_NAME); do
-   if [ $pid != $$ ]; then
-       kill $(list_descendants $pid)
-   fi
-done
-
+# NetworkManager applet
 nm-applet &
-volctl &
+
+# clipboard manager
 parcellite &
+
+# hide cursor if unused
 unclutter &
+
+# speed up thunar by keeping summoning its demon
 thunar --daemon &
+
+# inhibit touchboard while keyboard is in use
 syndaemon -i 1 -t -k &
 
-# Special Eds
-killall -w -9 redshift >/dev/null 2>&1
-killall -w -9 redshift-gtk >/dev/null 2>&1
-redshift-gtk -t 5500:4800 -l 59.32:18.06 &
-#redshift-gtk -t 5500:4800 -l 46.77:23.62 &
-# Stockholm 59.32:18.06
-# Cluj-Napoca 46.77:23.62
+# make things red at sunset
+redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
 
-killall -w -9 cloudy
+# push screenshots to server & get a short URL
 cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 
-if test -x "${HOME}/bin/rtorrent-watch"; then
-    pgrep -f "watchexec.+rtorrent-watch" | xargs kill --timeout 300 KILL --signal TERM
-    "${HOME}/bin/rtorrent-watch" --trampoline &
-fi
+# push torrents to seedbox
+rtorrent-watch --trampoline &
 
-${HOME}/bin/,display ,default
-${HOME}/bin/,wm ,keyboard::setup
-${XDG_CONFIG_HOME}/i3/wallpaper.sh
+# notifications
+dunst &
+
+# keyboard expansions manager
+find "${HOME}/.config/espanso/match" -name "tomb_*" -xtype l -delete
+espanso service start --unmanaged &
+
+# display + keyboard + fans
+,display ,default
+,wm ,keyboard::setup
+ofc="${HOME}/var/repos/OpenFreezeCenter"
+test -d $ofc && $ofc/.venv/bin/python3 $ofc/set_fans.py auto
 
 wait

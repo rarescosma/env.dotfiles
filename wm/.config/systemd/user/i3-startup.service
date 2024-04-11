@@ -1,0 +1,10 @@
+[Unit]
+Description=i3 startup wrapper
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=%h/bin/i3-startup
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

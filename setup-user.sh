@@ -75,6 +75,7 @@ setup::services() {
   systemctl_enable_start "upmpdcli.service"
   systemctl_enable_start "mpDris2.service" || true
   systemctl_enable_start "ssh-agent.service"
+  systemctl_enable_start "i3-startup.service"
 }
 
 main() {
