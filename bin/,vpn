@@ -19,12 +19,12 @@
   disown
 }
 
-,turris() {
+,seedbox() {
   ,off
   ,tomb ,open || exit 1
   local vpn_config log_path old_name
-  vpn_config="var/ovpn/turris/$(hostname -s).ovpn"
-  log_path="/tmp/vpn-turris.log"; echo -n > "$log_path"
+  vpn_config="var/ovpn/seedbox/$(hostname -s).ovpn"
+  log_path="/tmp/vpn-seedbox.log"; echo -n > "$log_path"
 
   nohup sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings >"$log_path" 2>&1 &
   disown
