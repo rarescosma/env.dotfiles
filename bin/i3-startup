@@ -26,9 +26,6 @@ cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 # push torrents to seedbox
 rtorrent-watch --trampoline &
 
-# notifications
-dunst &
-
 # keyboard expansions manager
 find "${HOME}/.config/espanso/match" -name "tomb_*" -xtype l -delete
 espanso service start --unmanaged &
