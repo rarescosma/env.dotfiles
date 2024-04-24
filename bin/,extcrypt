@@ -3,12 +3,12 @@
 set -e
 
 NAME="extcrypt"
-ARRAY="/dev/md/${NAME}"
+ARRAY="/dev/md/0"
 DISK="/dev/sda"
 
 ,mount() {
     ,tomb ,open
-    sudo mdadm --assemble "$ARRAY" "$DISK"
+    sudo mdadm --assemble "$ARRAY" "$DISK" || true
     sudo cryptsetup luksOpen "$ARRAY" "$NAME" -d /tomb/luks/"${NAME}.keyfile" -v
     sudo vgchange -a y
     sudo mount "/dev/${NAME}-vg0/lvol0" "/mnt/${NAME}"
