@@ -2,7 +2,7 @@ acpi
 alacritty
 alsa-utils
 arandr
-atuin
+audacity
 axel
 base
 base-devel
@@ -72,6 +72,7 @@ iptables-nft
 ipython
 jq
 kernel-modules-hook
+keybase
 keychain
 libnpupnp
 libupnpp
@@ -158,6 +159,7 @@ scrot
 siege
 sl
 smartmontools
+socat
 sox
 stow
 strace
@@ -170,7 +172,8 @@ thunar-volman
 tig
 tlp
 tmate
-tmuxp
+tmux
+transmission-qt
 ttc-iosevka
 ttf-dejavu
 ttf-droid
@@ -189,8 +192,8 @@ vulture
 watchexec
 wdiff
 whois
-wine-staging
 wireguard-tools
+wireshark-qt
 xautolock
 xautomation
 xf86-input-synaptics
