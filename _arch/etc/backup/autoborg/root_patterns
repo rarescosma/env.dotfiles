@@ -2,9 +2,12 @@
 - **/.venv
 - **/.cache
 ! /home/karelian
+! /opt/zoom
+! /usr/lib/modules
 ! /var/cache
 ! /var/lib/lxd/storage-pools
 ! /var/lib/libvirt/images
+! /var/lib/systemd/coredump
 ! /var/log
 ! /dev
 ! /proc
