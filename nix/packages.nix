@@ -15,7 +15,7 @@
         gh
         graphviz
         jsonnet
-        k9s
+        unstable.k9s
         kubernetes-helm
         kubeseal
         kustomize
@@ -26,7 +26,7 @@
         skaffold
       ]
       ++ [unstable.awscli2 unstable_gcloud unstable.kubectl]
-      ++ optionals stdenv.isDarwin [darwin.apple_sdk.frameworks.Security pkgconfig openssl darwin.libiconv watch sccache]
+      ++ optionals stdenv.isDarwin [darwin.apple_sdk.frameworks.Security pkg-config openssl darwin.libiconv watch sccache]
       ++ optionals stdenv.isLinux [openssl_legacy];
 
     inherit (builtins) getAttr filter pathExists toString;
