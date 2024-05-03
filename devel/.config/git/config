@@ -43,7 +43,7 @@
 [user]
     name = Rareș Cosma
     email = rares@getbetter.ro
-    signingkey = 0xD00EC1BBBA4D3352
+    signingkey = 0xB36842BFB2F1EBA8
     useConfigOnly = true
 [pull]
     ff = only
