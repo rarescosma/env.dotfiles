@@ -18,7 +18,7 @@ nnoremap <silent> g* g*zz
 nnoremap cn *Ncgn
 
 " Markdown link.
-vnoremap <C-k> c[<C-r>"](<Esc>"*pa)<Esc>
+vnoremap <C-k> c[<C-r>"](<Esc>"+pa)<Esc>
 
 " Quick templating
 " 1) :let @t=@/ to copy the old search reg to a temp reg (so we don't clobber)
