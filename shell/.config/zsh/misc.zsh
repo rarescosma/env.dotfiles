@@ -88,3 +88,5 @@ hl() {
     local st="$(echo "$@" | tr ' ' '|')"
     grep --color -E "$st|$"
 }
+
+alias disablehistory="function zshaddhistory() {  return 1 }"
