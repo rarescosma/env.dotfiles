@@ -1,5 +1,5 @@
 # Sane defaults
-[[ -v enable_devel ]] || enable_devel=(rust python kube aws node)
+[[ -v enable_devel ]] || enable_devel=(rust python kube node)
 
 alias vi="$EDITOR"
 alias vim="$EDITOR"
@@ -40,12 +40,6 @@ dps() {
 
 if [[ "$enable_devel" =~ "kube" ]]; then
   source ~/.config/zsh/kube.zsh
-fi
-
-if [[ "$enable_devel" =~ "aws" ]]; then
-  _aws_zsh_completer_path="${HOME}/.local/bin/aws_zsh_completer.sh"
-  [ -f "$_aws_zsh_completer_path" ] && source "$_aws_zsh_completer_path"
-  unset _aws_zsh_completer_path
 fi
 
 # -- Python --------------------------------------------------------------------
