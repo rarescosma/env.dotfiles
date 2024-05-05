@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-,vps() {
+,vps-wg() {
   ,off
   ,tomb ,open || exit 1
   sudo rm -f /etc/wireguard/wg0vps.conf
@@ -8,26 +8,24 @@
   sudo wg-quick up wg0vps
 }
 
-,vps-ovpn() {
-  ,off
-  ,tomb ,open || exit 1
-  local vpn_config log_path old_name
-  vpn_config="var/ovpn/vps/$(hostname -s).ovpn"
-  log_path="/tmp/vpn-vps.log"; echo -n > "$log_path"
+openvpn() {
+  local to_who vpn_config tmp_path log_path
+  test -z "$1" && return 1
+  to_who="$1"
 
-  nohup sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings >"$log_path" 2>&1 &
-  disown
+  ,off
+  vpn_config="${XDG_DATA_HOME}/openvpn/$(hostname -s)-${to_who}.sec"
+  log_path="/tmp/ovpn-${to_who}.log"
+
+  sudo bash -c "openvpn --config <(gpg --decrypt --no-symkey-cache - <'${vpn_config}') --mute-replay-warnings --daemon '${to_who}' --log '${log_path}'"
+}
+
+,vps() {
+  openvpn vps
 }
 
 ,seedbox() {
-  ,off
-  ,tomb ,open || exit 1
-  local vpn_config log_path old_name
-  vpn_config="var/ovpn/seedbox/$(hostname -s).ovpn"
-  log_path="/tmp/vpn-seedbox.log"; echo -n > "$log_path"
-
-  nohup sudo openvpn --config "/tomb/${vpn_config}" --mute-replay-warnings >"$log_path" 2>&1 &
-  disown
+  openvpn seedbox
 }
 
 ,off() {
