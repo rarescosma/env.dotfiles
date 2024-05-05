@@ -23,6 +23,7 @@
         minikube
         nodejs_20
         nodePackages_latest.yarn
+        s3cmd
         skaffold
       ]
       ++ [unstable.awscli2 unstable_gcloud unstable.kubectl]
