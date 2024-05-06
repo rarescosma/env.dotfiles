@@ -101,6 +101,9 @@ map <F10> <Action>(ToggleBookmarkWithMnemonic)
 " Visual block.
 nnoremap <A-v> <C-q>
 
+" Blame
+nmap <leader>B <Action>(Annotate)
+
 " Plugins galore
 set highlightedyank
 let g:highlightedyank_highlight_duration = "650"
