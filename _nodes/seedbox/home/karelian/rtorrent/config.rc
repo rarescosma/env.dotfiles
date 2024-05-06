@@ -26,6 +26,9 @@ throttle.max_uploads.set = 20
 trackers.numwant.set = 40
 trackers.use_udp.set = no
 
+# Skip hash
+pieces.hash.on_completion.set = no
+
 # Misc
 method.set_key = event.download.finished,notify_pushover,"execute.raw=/home/karelian/bin/pushover,\"Finished pirating the s*** out of\",$d.name="
 session.path.set = ~/rtorrent/session_2
