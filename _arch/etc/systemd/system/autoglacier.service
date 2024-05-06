@@ -15,4 +15,4 @@ LogRateLimitIntervalSec=0
 
 ExecStart=systemd-inhibit \
   --who="rclone" --why="Prevents interrupting scheduled glaciation" \
-  /sbin/sudo -H -u karelian /etc/backup/autoglacier/autoglacier.sh -vv
+  sudo -H -u karelian /etc/backup/autoglacier/autoglacier.sh -v
