@@ -67,6 +67,7 @@ nmap <leader>b <Action>(Tool_External Tools_black100)
 
 " Distraction-free mode.
 nmap <leader>h <Action>(ToggleInlineHintsAction)
+nmap <leader>H <Action>(ToggleInlayHintsGloballyAction)
 nmap <C-z> <Action>(ToggleDistractionFreeMode)
 
 " Move method up/down.
