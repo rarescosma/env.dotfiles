@@ -41,6 +41,7 @@ feh
 firefox
 gdb
 git-crypt
+git-delta
 gitg
 gnome-calculator
 gnome-disk-utility
@@ -72,7 +73,6 @@ iptables-nft
 ipython
 jq
 kernel-modules-hook
-keybase
 keychain
 libnpupnp
 libupnpp
@@ -95,6 +95,7 @@ mariadb-libs
 mc
 meld
 mesa-utils
+minio
 minio-client
 mkvtoolnix-cli
 mlocate
@@ -110,6 +111,7 @@ netctl
 network-manager-applet
 networkmanager-openvpn
 networkmanager-pptp
+nextcloud-client
 nmap
 noto-fonts-emoji
 ntfs-3g
@@ -147,6 +149,8 @@ python-poetry
 python-pylint
 python-pyxdg
 qt5ct
+rclone
+rdfind
 realtime-privileges
 redshift
 reflector
@@ -155,12 +159,14 @@ rlwrap
 rmlint
 rofi-emoji
 rustup
+sccache
 scrot
 siege
 sl
 smartmontools
 socat
 sox
+sqlitebrowser
 stow
 strace
 stress
@@ -187,6 +193,7 @@ upmpdcli
 vdpauinfo
 vector
 vidcutter
+vinagre
 vlc
 vulture
 watchexec
