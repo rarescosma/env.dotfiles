@@ -1,5 +1,5 @@
 [Unit]
-Description=mtglacier backup
+Description=rclone glacier backup
 
 [Service]
 Type=oneshot
@@ -14,5 +14,5 @@ IOWeight=100
 LogRateLimitIntervalSec=0
 
 ExecStart=systemd-inhibit \
-  --who="mtglacier" --why="Prevents interrupting scheduled glaciation" \
+  --who="rclone" --why="Prevents interrupting scheduled glaciation" \
   /sbin/sudo -H -u karelian /etc/backup/autoglacier/autoglacier.sh

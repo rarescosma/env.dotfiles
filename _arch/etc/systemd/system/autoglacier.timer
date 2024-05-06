@@ -1,5 +1,5 @@
 [Unit]
-Description=Run mtglacier backup
+Description=Run rclone glacier backup
 
 [Timer]
 OnCalendar=*-*-* 10:45
