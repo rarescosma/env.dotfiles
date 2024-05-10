@@ -37,6 +37,7 @@ apt update
 apt install --yes \
   sudo curl wget git rsync iptables neovim mc ncdu htop screen \
   snapd dnsutils net-tools golang-cfssl uuid-runtime make \
+  openvpn fail2ban tig \
   zsh stow dialog \
   borgbackup rclone \
   fzf ripgrep fd-find
