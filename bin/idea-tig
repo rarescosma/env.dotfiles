@@ -2,6 +2,8 @@
 
 set -xe
 
+export I3SOCK="/run/user/$(id -u)/i3/ipc-socket.$(pidof i3)"
+
 PROJECT_PATH="$@"
 PROJECT="$(basename "$PROJECT_PATH")"
 
