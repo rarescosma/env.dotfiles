@@ -92,5 +92,7 @@ main() {
 if test -z "${1:-}"; then
   main
 else
-  ${@}
+  for instr in "${@}"; do
+    $instr
+  done
 fi
