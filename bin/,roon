@@ -4,7 +4,7 @@ VM_NAME="roon"
 VM_PROFILE="roon"
 HOSTNAME=$(hostname -s)
 VM_IFACE="eth0"
-LXD_BRIDGE="lxdbr0"
+INCUS_BRIDGE="incusbr0"
 
 DOT=$(cd -P "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
 ME="${0##*/}"
@@ -21,12 +21,12 @@ _log_call() {
 
 _vm_exec() {
   _log_call "$*"
-  lxc exec "$VM_NAME" -- "/dot/${ME}" "$@"
+  incus exec "$VM_NAME" -- "/dot/${ME}" "$@"
 }
 
 _vm_status() {
   _log_call "$*"
-  lxc list "$VM_NAME" --format json | jq -r ".[] | select(.name == \"$VM_NAME\") .state.status"
+  incus list "$VM_NAME" --format json | jq -r ".[] | select(.name == \"$VM_NAME\") .state.status"
 }
 
 _wait_ip() {
@@ -49,11 +49,11 @@ _get_ip() {
   set -e
 }
 
-_ensure_lxd() {
-  # restart lxd and wait for it
-  sudo systemctl is-active --quiet lxd || {
-    sudo systemctl restart lxd
-    while ! lxc list 1>/dev/null; do
+_ensure_incus() {
+  # restart incus and wait for it
+  sudo systemctl is-active --quiet incus || {
+    sudo systemctl restart incus
+    while ! incus list 1>/dev/null; do
       sleep 1
     done
   }
@@ -62,23 +62,23 @@ _ensure_lxd() {
 start() {
   local vm_status
 
-  printf "> ensuring LXD is up...\n"
-  _ensure_lxd
+  printf "> ensuring INCUS is up...\n"
+  _ensure_incus
 
-  printf "> create/update LXD profile...\n"
-  lxc profile create ${VM_PROFILE} || true
-  show_profile | lxc profile edit ${VM_PROFILE}
+  printf "> create/update INCUS profile...\n"
+  incus profile create ${VM_PROFILE} || true
+  show_profile | incus profile edit ${VM_PROFILE}
 
   printf "\n> get exclusive access...\n"
   systemctl --user stop upmpdcli mpd pulseaudio.socket pulseaudio
 
-  echo "> start LXC container..."
+  echo "> start INCUS container..."
   vm_status=$(_vm_status)
 
   if [[ -z "$vm_status" ]]; then
-    lxc launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || true
+    incus launch ubuntu:22.04 $VM_NAME --profile ${VM_PROFILE} || true
   elif [[ "Running" != "$vm_status" ]]; then
-    lxc start $VM_NAME || true
+    incus start $VM_NAME || true
   fi
 
   _vm_exec install_roon
@@ -98,7 +98,7 @@ stop() {
   vm_status=$(_vm_status)
   if [[ "Running" == "$vm_status" ]]; then
       port_forward clear
-      lxc stop $VM_NAME
+      incus stop $VM_NAME
   fi
 
   echo "> restart sound services"
@@ -111,7 +111,7 @@ show_profile() {
 
   cat << EOF
 name: ${VM_PROFILE}
-description: Roon LXD profile
+description: Roon INCUS profile
 config:
   security.nesting: "true"
   security.privileged: "true"
@@ -123,7 +123,7 @@ devices:
   ${VM_IFACE}:
     name: ${VM_IFACE}
     nictype: bridged
-    parent: ${LXD_BRIDGE}
+    parent: ${INCUS_BRIDGE}
     type: nic
   root:
     path: /

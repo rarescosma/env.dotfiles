@@ -6,6 +6,8 @@
 ! /usr/lib/modules
 ! /var/cache
 ! /var/lib/lxd/storage-pools
+! /var/lib/incus/storage-pools
+! /var/lib/incus/images
 ! /var/lib/libvirt/images
 ! /var/lib/systemd/coredump
 ! /var/log

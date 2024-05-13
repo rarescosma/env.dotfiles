@@ -135,6 +135,7 @@ setup::services() {
 
     systemctl_enable_start "libvirtd.service" || true
     systemctl_enable_start "lxd.service" || true
+    systemctl_enable_start "incus.service" || true
     systemctl_enable_start "podman.service" || true
   fi
 }
