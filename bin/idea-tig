@@ -4,14 +4,20 @@ set -xe
 
 export I3SOCK="/run/user/$(id -u)/i3/ipc-socket.$(pidof i3)"
 
-PROJECT_PATH="$@"
+PROJECT_PATH="$1"
+FILE_DIR="$2"
+if [[ ! -z "$FILE_DIR" ]]; then
+  pushd "$FILE_DIR" 2>/dev/null && {
+    SUB_PROJECT_PATH="$(git rev-parse --sq --show-toplevel || true)"
+    test -n "$SUB_PROJECT_PATH" && PROJECT_PATH="$SUB_PROJECT_PATH"
+  }
+fi
 PROJECT="$(basename "$PROJECT_PATH")"
 
 # focus or create tmux tig session
-cmd="tig -C $PROJECT_PATH"
+cmd="tig -C \"$PROJECT_PATH\""
 if i3-msg '[title="^tmux tig"] focus' >/dev/null 2>&1; then
     tmux new-window -t tig -a -n "tig: $PROJECT" "$cmd"
 else
     i3-msg -t "run_command" exec "alacritty -e tmux new -s tig -n 'tig: $PROJECT' '$cmd'" >/dev/null 2>&1
 fi
-
