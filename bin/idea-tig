@@ -20,7 +20,7 @@ fi
 PROJECT="$(basename "$PROJECT_PATH")"
 
 # focus or create tmux tig session
-cmd="tig -C \"$PROJECT_PATH\""
+cmd="tig -C \"$PROJECT_PATH\" status"
 if i3-msg '[title="^tmux tig"] focus' >/dev/null 2>&1; then
     tmux new-window -t tig -a -n "tig: $PROJECT" "$cmd"
 else
