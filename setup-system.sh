@@ -120,7 +120,6 @@ setup::services() {
   systemctl_enable_start "btrfs-scrub@home.timer"
   systemctl_enable_start "btrfs-scrub@snapshots.timer"
   systemctl_enable_start "btrfs-scrub@var_log.timer"
-  systemctl_enable_start "doh-client.service"
   systemctl_enable_start "fstrim.timer"
   systemctl_enable_start "snapper-cleanup.timer"
   systemctl_enable_start "udevmon.service"
