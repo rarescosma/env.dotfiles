@@ -8,26 +8,29 @@ echo picom[$(pidof picom)]: boot up le compositor
 i3wsr &
 echo i3wsr[$!]: rename workspaces based on content
 
-# NetworkManager applet
+volctl &
+echo volctl[$!]: Volume control widget
+
 nm-applet &
+echo nm-applet[$!]: NetworkManager applet
 
-# clipboard manager
 parcellite &
+echo parcellite[$!]: clipboard manager
 
-# hide cursor if unused
 unclutter &
+echo unclutter[$!]: hide cursor if unused
 
-# speed up thunar by keeping summoning its demon
 thunar --daemon &
+echo thunar[$!]: speed up thunar by summoning its daemon
 
-# inhibit touchboard while keyboard is in use
 syndaemon -i 1 -t -k &
+echo syndaemon[$!]: inhibit touchboard while keyboard is in use
 
-# make things red at sunset
 redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
+echo redshift-gtk[$!]: make things red at sunset
 
-# push screenshots to server & get a short URL
-cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
+cloudy watch &
+echo cloudy[$!]: push screenshots to server and get a short URL
 
 towa &
 echo towa[$!]: push torrents to seedbox
