@@ -8,6 +8,8 @@ OVPN_PATH="/proc/sys/net/ipv4/conf/tun0"
 if [[ -e "${OVPN_PATH}" ]]; then
   VPN_CONFIG=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2)
   VPN_TYPE=" (ovpn)"
+  echo "VPN: ${VPN_CONFIG}${VPN_TYPE}"
+  exit 0
 fi
 
 # check wireguard
@@ -15,20 +17,14 @@ WG_DEV="$(find /proc/sys/net/ipv4/conf/wg0* 2>/dev/null)"
 if ! test -z "$WG_DEV"; then
   VPN_CONFIG="$(printf $WG_DEV | awk -F"/wg0" '{$0=$2}1')"
   VPN_TYPE=" (wg)"
+  echo "VPN: ${VPN_CONFIG}${VPN_TYPE}"
+  exit 0
 fi
 
 # check proton
 PT_DEV="$(find /proc/sys/net/ipv4/conf/proton* 2>/dev/null)"
 if ! test -z "$PT_DEV"; then
   VPN_CONFIG="proton"
-  VPN_TYPE=""
-fi
-
-if ! test -z "$VPN_CONFIG"; then
-  echo "🔐 VPN: ${VPN_CONFIG}${VPN_TYPE}"
-  echo "🔐 VPN: ${VPN_CONFIG}${VPN_TYPE}"
-  echo "#A8FF00"
+  echo "VPN: ${VPN_CONFIG}"
   exit 0
-else
-  echo ""
 fi

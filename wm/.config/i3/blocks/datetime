@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-echo -n "📅 "
-date '+%Y-%m-%d <span color="#ffffff">%H:%M </span>'

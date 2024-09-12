@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-test -f /tmp/focus && cat /tmp/focus
-exit 0

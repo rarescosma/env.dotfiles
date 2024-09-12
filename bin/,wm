@@ -133,7 +133,7 @@ function ,xorg::thaw() {
 
 function ,melatonin() {
   export DISPLAY=:0
-  rm -f /tmp/caffeine
+  /sbin/rm -f /tmp/i3/caffeine
   xset +dpms
   xset s default
 }
@@ -142,7 +142,8 @@ function ,caffeine() {
   export DISPLAY=:0
   xset -dpms
   xset s off
-  touch /tmp/caffeine
+  mkdir -p /tmp/i3
+  touch /tmp/i3/caffeine
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0

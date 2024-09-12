@@ -3,5 +3,6 @@
 out=$(zenity --entry --title="Change focus" --text="Focus on: ")
 if [[ "$?" == "0" ]];
 then
-    echo "$out" > /tmp/focus
+  mkdir -p /tmp/i3
+  echo "$out" > /tmp/i3/focus
 fi

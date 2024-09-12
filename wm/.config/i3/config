@@ -153,9 +153,10 @@ bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 
 # i3blocks / i3bar
 bar {
-    status_command i3blocks -c $XDG_CONFIG_HOME/i3/i3blocks.conf
     i3bar_command i3bar -t
-    separator_symbol "·"
+    font "Font Awesome 6 Free"
+    font "pango:Iosevka Fixed Semibold 8"
+    status_command tendril -c c6cbd8 aio -j
 
     output eDP1
     output eDP-1-1

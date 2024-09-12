@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if test -f /tmp/caffeine; then
+if test -f /tmp/i3/caffeine; then
   echo "had caffeine, will not lock"
   exit 0
 fi
