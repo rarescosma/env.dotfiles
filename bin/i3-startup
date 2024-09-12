@@ -37,7 +37,9 @@ echo towa[$!]: push torrents to seedbox
 
 # keyboard expansions manager
 find "${HOME}/.config/espanso/match" -name "tomb_*" -xtype l -delete
-espanso service start --unmanaged &
+command -v espanso >/dev/null 2>&1 && {
+    espanso service start --unmanaged &
+}
 
 # display + keyboard + fans
 ,display ,default
