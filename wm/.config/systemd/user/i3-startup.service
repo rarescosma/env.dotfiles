@@ -4,6 +4,7 @@ PartOf=graphical-session.target
 
 [Service]
 ExecStart=%h/bin/i3-startup
+EnvironmentFile=%h/.config/systemd/user/xinitrc.env
 Restart=always
 
 [Install]
