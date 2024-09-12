@@ -26,8 +26,8 @@ redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
 # push screenshots to server & get a short URL
 cloudy watch "${HOME}/media/screenshots" -c "${HOME}/.config/cloudy.yaml" &
 
-# push torrents to seedbox
-rtorrent-watch --trampoline &
+towa &
+echo towa[$!]: push torrents to seedbox
 
 # keyboard expansions manager
 find "${HOME}/.config/espanso/match" -name "tomb_*" -xtype l -delete
