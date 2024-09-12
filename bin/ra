@@ -24,7 +24,7 @@ if [[ "$sourced" == "1" ]]; then
         rpath=$(command sed -e 's/\\\('$_rpath_esc'\)/\1/g' <<<"$rpath")
 
         # escape problematic characters; remove prefix
-        files=$(ssh -i ${RWATCH_IDENTITY} -o 'Batchmode yes' ${_host} \
+        files=$(ssh -i ${TOWA_KEY} -o 'Batchmode yes' ${_host} \
             command ls -aF1dL "\"$rpath\"*" 2>>/dev/null | \
             command sed -e 's/'$_rpath_esc'/\\&/g' -e 's#^'$_prefix'/##g')
 
@@ -33,6 +33,6 @@ if [[ "$sourced" == "1" ]]; then
     complete -F _ra ra
 else
     test -f $HOME/.local/env && source $HOME/.local/env
-    rsync -avP -e "ssh -i ${RWATCH_IDENTITY}" "$_host:$_prefix/${@}" $_dest
+    rsync -avP -e "ssh -i ${TOWA_KEY}" "$_host:$_prefix/${@}" $_dest
 fi
 
