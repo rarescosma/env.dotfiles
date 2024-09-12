@@ -2,5 +2,9 @@
 
 sleep 0.2
 mkdir -p "${HOME}/media/screenshots"
-scrot -s "${HOME}/media/screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
+
+# freeze + unclutter => no cursor during screenshot, so insert an artificial move...
+xdotool mousemove_relative 1 0 mousemove_relative -1 0
+
+scrot --freeze -s "${HOME}/media/screenshots/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
 
