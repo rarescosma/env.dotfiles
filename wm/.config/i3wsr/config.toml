@@ -1,0 +1,12 @@
+[icons]
+# font awesome
+TelegramDesktop = ""
+firefox = ""
+Alacritty = ""
+jetbrains-idea = ""
+mpv = ""
+
+[options]
+remove_duplicates = true
+no_names = false
+no_icon_names = true
