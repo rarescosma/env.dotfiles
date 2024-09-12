@@ -2,9 +2,6 @@
 
 ,vps-wg() {
   ,off
-  ,tomb ,open || exit 1
-  sudo rm -f /etc/wireguard/wg0vps.conf
-  sudo ln -sf /tomb/wireguard/$(hostname -s).conf /etc/wireguard/wg0vps.conf
   sudo wg-quick up wg0vps
 }
 
