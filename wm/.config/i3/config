@@ -203,8 +203,8 @@ new_window pixel 1
 bindsym XF86Tools exec --no-startup-id $Locker
 
 # brightness controls
-bindsym XF86MonBrightnessUp exec ~/bin/lux -a10%
-bindsym XF86MonBrightnessDown exec ~/bin/lux -s10%
+bindsym XF86MonBrightnessUp exec ~/bin/lux up
+bindsym XF86MonBrightnessDown exec ~/bin/lux down
 bindsym XF86KbdBrightnessUp exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -a10%
 bindsym XF86KbdBrightnessDown exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -s10%
 
