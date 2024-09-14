@@ -69,6 +69,16 @@ is_percentage() {
     echo "${1}" | grep -E '%$' > /dev/null && return 0; return 1
 }
 
+is_close() {
+    local up down epsilon
+    up="$(( ${1} - ${2} ))"
+    down="$(( ${2} - ${1} ))"
+    epsilon="${3}"
+    [ "$up" -gt 0 ] && [ "$up" -lt "$epsilon" ] && return 0;
+    [ "$down" -gt 0 ] && [ "$down" -lt "$epsilon" ] && return 0;
+    return 1
+}
+
 main() {
     mFlag=false
     MFlag=false
@@ -156,6 +166,8 @@ main() {
 
     brightness=$(cat "${file}")
     best_max=$((best_max - 1))
+    thresh=$(( best_max / 10 ))
+    epsilon=$(( best_max / 100 )) # if we're within 1% of thresh
 
     # Needs to display the choosen controler
     if [ "$#" -eq 0 ] ; then
@@ -184,6 +196,9 @@ main() {
     [ "$brightness" -lt "$own_min" ] && brightness="${own_min}"
     [ "$brightness" -gt "$own_max" ] && brightness="${own_max}"
 
+    if is_close $brightness $thresh $epsilon || [ "$brightness" -lt "$thresh" ]; then
+        valArg=1
+    fi
     ${percent_mode} && valArg=$(( (own_max - own_min) * valArg / 100 ))
 
     if ${aFlag} ; then
