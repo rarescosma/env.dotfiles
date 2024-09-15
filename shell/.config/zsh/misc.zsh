@@ -80,11 +80,5 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey "^[v" edit-command-line
 WORDCHARS=${WORDCHARS/\/}
 
-## -- highlight func -----------------------------------------------------------
-hl() {
-    local st="$(echo "$@" | tr ' ' '|')"
-    grep --color -E "$st|$"
-}
-
 alias disablehistory="function zshaddhistory() {  return 1 }"
 alias yt-dlpl="yt-dlp --format 'bestvideo[height<=?1080][vcodec!^=vp]+bestaudio' --yes-playlist -o '%(playlist_index)02d - %(title)s.%(ext)s'"

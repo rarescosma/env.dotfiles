@@ -167,9 +167,15 @@ tn() {
 ## user-friendly ps | grep
 psgrep() {
   local pids
-  pids=$(pgrep -f $@)
+  pids=$(pgrep -f "$@")
   if ! [[ $pids ]]; then
     echo "No processes found." >&2; return 1
   fi
-  ps up $(pgrep -f $@)
+  ps up $(pgrep -f "$@") | hl "$@"
+}
+
+## highlight func
+hl() {
+    local st="$(echo "$@" | tr ' ' '|')"
+    grep --color -E "$st|$"
 }
