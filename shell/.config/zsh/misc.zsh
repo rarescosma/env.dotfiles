@@ -14,9 +14,6 @@ zstyle ':completion:*:*:*' hosts off      # disable host-based
 zstyle ":completion:*:commands" rehash 1  # always rehash
 autoload -Uz compinit
 
-# -- moc config ----------------------------------------------------------------
-alias mocp="mocp -O MOCDir=${XDG_CONFIG_HOME}/moc"
-
 # -- Midnight Commander --------------------------------------------------------
 export MC_SKIN=$HOME/.config/mc/solarized.ini
 

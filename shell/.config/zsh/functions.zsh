@@ -124,14 +124,13 @@ vig() {
 i() {
   local dir
   dir="${*:-./}"
-  nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh "$dir" >/dev/null 2>&1 &
+  nohup /opt/intellij-idea-ultimate-edition/bin/idea "$dir" >/dev/null 2>&1 &
   disown
 }
 
 # -- Z / Misc ------------------------------------------------------------------
 (( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
 alias t="t -t ${XDG_STATE_HOME}/t"
-alias tnm='tmuxp load -y ~/.tmuxp/misc.yaml'
 alias o='open_command'
 
 ## kill and restart process

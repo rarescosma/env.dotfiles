@@ -1,8 +1,0 @@
-session_name: misc
-windows:
-- window_name: moc
-  panes: ['mocp']
-- window_name: dot
-  start_directory: ~/src/env/dotfiles
-  panes:
-  - shell_command: tmux select-window -t dot; clear

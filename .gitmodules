@@ -7,9 +7,6 @@
 [submodule "_vendor/fz"]
 	path = _vendor/fz
 	url = https://github.com/rarescosma/env.fz
-[submodule "_vendor/memoize"]
-	path = _vendor/memoize
-	url = https://github.com/rarescosma/memoize
 [submodule "_vendor/z"]
 	path = _vendor/z
 	url = https://github.com/rupa/z
