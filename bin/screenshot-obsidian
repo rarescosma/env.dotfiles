@@ -21,10 +21,13 @@ for _dep in "${_deps[@]}"; do
   )
 done
 
+set -e
+
 # capture screen portion
 sleep 0.2
 path="${MEDIA}/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
-scrot -s "${path}" || exit
+xdotool mousemove_relative 1 0 mousemove_relative --sync -- -1 0
+scrot --freeze -s "${path}" || exit
 
 # ask for subpath + caption
 path_caption=$(zenity --entry --title="Snap details" --text="Format: <path>|<caption>")
