@@ -100,22 +100,20 @@ svii() {
   sudo chattr +i "${1}"
 }
 
-## open file in Vim at specified line
-vil() {
-  nvim "${1}" +$(< "${1}" | nl -ba -nln | fzf_cmd | cut -d' ' -f1)
-}
-
 ## glue rg + fzf + bat + vim
-vig() {
-    local r f l
-    r=$(rg --line-number --no-heading --color=always --smart-case "$@" \
-        | fzf -d ':' -n 2.. --ansi --no-sort --preview-window 'down:20%:+{2}' \
-          --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+vil() {
+    local r f l rg_all="" c_style=""
+    if test -f "$1"; then
+      rg_all='.$'
+      c_style="--colors=match:none"
+    fi
+    r=$(rg --line-number --no-heading --color=always $c_style --smart-case -H $rg_all "$@" \
+        | fzf -d ':' -n 2.. --ansi --no-sort --preview-window 'down:80%:+{2}-5' \
+          --preview 'bat -f --style=numbers --highlight-line {2} {1}' \
         | tail -n1)
     f=$(echo "$r" | cut -d":" -f1)
     l=$(echo "$r" | cut -d":" -f2)
     if ! test -z "$f"; then
-        echo "nvim $f +$l"
         nvim $f +$l
     fi
 }
