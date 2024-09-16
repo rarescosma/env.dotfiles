@@ -13,12 +13,9 @@ for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [title="^rofi-xrun:"] floating enable
 for_window [title="^rofi-xrun:"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
-no_focus [class="Rustdesk"]
-for_window [class="Rustdesk"] floating enabled
-assign [class="Rustdesk"] 9
-assign [class="obsidian"] 7
-assign [class="Zotero"] 7
-assign [class="roon.exe"] 7
+assign [class="obsidian"] number 7
+assign [class="Zotero"] number 7
+assign [class="roon.exe"] number 7
 smart_borders on
 
 # terminals
