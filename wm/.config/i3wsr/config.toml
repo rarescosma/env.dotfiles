@@ -5,6 +5,7 @@ firefox = ""
 Alacritty = ""
 jetbrains-idea = ""
 mpv = ""
+obsidian =""
 
 [options]
 remove_duplicates = true
