@@ -30,7 +30,7 @@ nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 map <C-;> <Plug>(easymotion-bd-f)
 nmap <leader>l <Action>(RecentLocations)
-nmap gb <Action>(ShowBookmarks)
+nmap <M-b> <Action>(ShowBookmarks)
 
 " IDE project navigation.
 map <C-q> <Action>(CloseContent)
@@ -95,7 +95,7 @@ map <M-e> <Action>(SplitVertically)
 map <M-o> <Action>(SplitHorizontally)
 map <C-g> <Action>(Tool_External Tools_idea_tig)
 map <C-m> <Action>(HideAllWindows)
-map <M-b> <Action>(ToggleBookmarkWithMnemonic)
+map <leader>b <Action>(ToggleBookmarkWithMnemonic)
 map <C-t> <Action>(ActivateTerminalToolWindow)
 
 " Visual block.
