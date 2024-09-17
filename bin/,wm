@@ -18,31 +18,6 @@ function ,keyboard::setup() {
   fi
 }
 
-function ,kindle::on() {
-  test -z "$KINDLE_ID" || usb::attach $KINDLE_ID
-}
-
-function ,kindle::off() {
-  test -z "$KINDLE_ID" || usb::detach $KINDLE_ID
-}
-
-function usb::detach() {
-  sudo tee "/sys/bus/usb/drivers/usb/unbind" <<< "$*"
-}
-
-function usb::attach() {
-  sudo tee "/sys/bus/usb/drivers/usb/bind" <<< "$*"
-}
-
-function usb::id() {
-  local device id;
-  device="$1"
-  test -z "$device" && echo -e "pass me a device" && return 1
-  id="$(udevadm info -q path -n $device | grep -o -E '(/[0-9]+-[0-9]+)+' | cut -d"/" -f2)"
-  test -z "$id" && echo -e "cannot find usb ID for device ${device}" && return 1
-  echo "$id"
-}
-
 #     ____  ____  ____
 #    / __ \/ __ \/  _/
 #   / / / / /_/ // /

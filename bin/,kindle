@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+function ,on() {
+  test -z "$KINDLE_ID" || _usb_attach $KINDLE_ID
+}
+
+function ,off() {
+  local d
+  d="$(_get_dev)"
+  test -n "$d" && sudo umount "$d"
+  test -z "$KINDLE_ID" || _usb_detach $KINDLE_ID
+}
+
+# displays the USB device id of a connected kindle
+# sample usage:
+# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(,kindle ,usb_id)" | tee -a ~/.local/env
+function ,usb_id() {
+  local kindle_dev
+  kindle_dev="$(_get_dev)"
+  test -z "$kindle_dev" && (echo -e "could not find kindle dev; aborting..."; exit 1)
+
+  usb_id="$(udevadm info -q path -n $kindle_dev | awk '{split($0, arr, "/host"); print arr[1]}' | awk -F'/' '{print $NF}' | cut -d":" -f1)"
+  test -z "$usb_id" && (echo -e "could not find kindle usb id; aborting..."; exit 1)
+
+  echo $usb_id
+}
+
+function _get_dev() {
+  local kindle="$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
+  test -n "$kindle" && echo "/dev/${kindle}"
+}
+
+function _usb_detach() {
+  sudo tee "/sys/bus/usb/drivers/usb/unbind" <<< "$*"
+}
+
+function _usb_attach() {
+  sudo tee "/sys/bus/usb/drivers/usb/bind" <<< "$*"
+}
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  exec 2>&1
+  $@
+fi
