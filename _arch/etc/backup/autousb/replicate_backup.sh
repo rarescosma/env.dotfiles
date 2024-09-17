@@ -28,22 +28,39 @@ MOUNTPOINT="/mnt/${DEV_TYPE}"
 DRIVE=$(lsblk --inverse --noheadings --list --paths --output name "${PARTITION_PATH}" | head --lines 1)
 
 _umount_on_err() {
-  umount -f $MOUNTPOINT
+  umount -f "$MOUNTPOINT"
 }
 trap _umount_on_err ERR
 
-_replica_backup() {
+_update_env() {
+  local f var val
+  f="${1}"; shift
+  var="${1}"; shift
+  val="${@}"
+  if grep -qs "export $var" "$f" ; then
+    sed -i "s|^export $var=.*$|export $var=\"${val}\"|" "$f"
+  else
+    echo "export $var=\"$val\"" >> "$f"
+  fi
+}
+
+_handle_replica() {
   mkdir -p "${MOUNTPOINT}/backup"
   rsync -avP --delete /home/karelian/backup/ "${MOUNTPOINT}/backup/"
 }
 
-_kindle_backup() {
-  local ts backup_dir
+_handle_kindle() {
+  local ts backup_dir home_dir kindle_id
 
   ts="$(date "+%F@%T")"
-  backup_dir="/home/karelian/backup/kindle"
+  home_dir="/home/karelian"
+
+  kindle_id=$($home_dir/bin/,kindle ,usb_id)
+  echo "Updating kindle id to: ${kindle_id}"
+  _update_env "${home_dir}/.local/env" KINDLE_ID "${kindle_id}"
 
   echo "Grabbing kindle notes at ${ts}"
+  backup_dir="${home_dir}/backup/kindle"
   mkdir -p "$backup_dir"
   cp \
     "${MOUNTPOINT}/documents/My Clippings.txt" \
@@ -55,6 +72,6 @@ _kindle_backup() {
 # Mount -> dispatch -> paranoia -> unmount
 mkdir -p "$MOUNTPOINT"
 (mount | grep "$MOUNTPOINT") || mount "$PARTITION_PATH" "$MOUNTPOINT"
-"_${DEV_TYPE}_backup"
+"_handle_${DEV_TYPE}"
 sync
-umount "${DRIVE}"
+umount "$MOUNTPOINT"
