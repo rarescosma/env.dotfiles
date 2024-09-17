@@ -11,10 +11,47 @@ function ,off() {
   test -z "$KINDLE_ID" || _usb_detach $KINDLE_ID
 }
 
-# displays the USB device id of a connected kindle
+function ,update_id() {
+  _update_env "${HOME}/.local/env" KINDLE_ID "$(_usb_id)"
+}
+
+function ,backup() {
+  local ts kindle_dev mountpoint backup_dir
+
+  ts="$(date "+%F@%T")"
+  kindle_dev="$(_get_dev)"
+  mountpoint="$(findmnt -n -o target $kindle_dev)"
+  backup_dir="${HOME}/backup/kindle"
+
+  echo "Grabbing kindle notes at ${ts}"
+  mkdir -p "$backup_dir"
+  cp \
+    "${mountpoint}/documents/My Clippings.txt" \
+    "${backup_dir}/notes-${ts}.txt"
+
+  chmod -R 644 "${backup_dir}"/*
+}
+
+function ,pull_queue() {
+  local mountpoint kindle_dev
+
+  kindle_dev="$(_get_dev)"
+  mountpoint="$(findmnt -n -o target $kindle_dev)"
+  mkdir -p "${mountpoint}/documents/_Queue"
+  rsync -rvP -e "ssh -i $(yq -r .ssh.key <${XDG_CONFIG_HOME}/cloudy.yaml)" \
+    "$(yq -r .ssh.kindle_queue <${XDG_CONFIG_HOME}/cloudy.yaml)"/ \
+    "${mountpoint}/documents/_Queue/"
+}
+
+function _get_dev() {
+  local kindle="$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
+  test -n "$kindle" && echo "/dev/${kindle}"
+}
+
+# displays the USB id of a connected kindle
 # sample usage:
-# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(,kindle ,usb_id)" | tee -a ~/.local/env
-function ,usb_id() {
+# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(,kindle _usb_id)" | tee -a ~/.local/env
+function _usb_id() {
   local kindle_dev
   kindle_dev="$(_get_dev)"
   test -z "$kindle_dev" && (echo -e "could not find kindle dev; aborting..."; exit 1)
@@ -25,17 +62,24 @@ function ,usb_id() {
   echo $usb_id
 }
 
-function _get_dev() {
-  local kindle="$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
-  test -n "$kindle" && echo "/dev/${kindle}"
-}
-
 function _usb_detach() {
   sudo tee "/sys/bus/usb/drivers/usb/unbind" <<< "$*"
 }
 
 function _usb_attach() {
   sudo tee "/sys/bus/usb/drivers/usb/bind" <<< "$*"
+}
+
+function _update_env() {
+  local f var val
+  f="${1}"; shift
+  var="${1}"; shift
+  val="${@}"
+  if grep -qs "export $var" "$f" ; then
+    sed -i "s|^export $var=.*$|export $var=\"${val}\"|" "$f"
+  else
+    echo "export $var=\"$val\"" >> "$f"
+  fi
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
