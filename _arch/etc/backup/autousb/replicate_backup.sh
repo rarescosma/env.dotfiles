@@ -67,6 +67,11 @@ _handle_kindle() {
     "${backup_dir}/notes-${ts}.txt"
   chown -R karelian: "$backup_dir"
   chmod -R 644 "${backup_dir}"/*
+
+  if test -d "${home_dir}/src/pkm/kindle_read_queue"; then
+    mkdir -p "${MOUNTPOINT}/documents/_Queue"
+    rsync -rvP "${home_dir}/src/pkm/kindle_read_queue/" "${MOUNTPOINT}/documents/_Queue/"
+  fi
 }
 
 # Mount -> dispatch -> paranoia -> unmount
