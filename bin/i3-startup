@@ -30,12 +30,12 @@ redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
 echo redshift-gtk[$!]: make things red at sunset
 
 towa -d ${HOME}/media/screenshots -f "^.*\\.png$" \
-    --upload-to   "$(yq -r .ssh.dest    <${XDG_CONFIG_HOME}/cloudy.yaml)" \
-    --base-url    "$(yq -r .url_prefix  <${XDG_CONFIG_HOME}/cloudy.yaml)" \
-    --bitly-token "$(yq -r .bitly_token <${XDG_CONFIG_HOME}/cloudy.yaml)" &
+    --base-url    https://static.getbetter.ro/screenshots \
+    --upload-to   $TOWA_SCREENSHOTS \
+    --bitly-token $TOWA_BITLY &
 echo towa[$!]: push screenshots to static.getbetter
 
-towa &
+towa --upload-to $TOWA_TORRENTS &
 echo towa[$!]: push torrents to seedbox
 
 # keyboard expansions manager

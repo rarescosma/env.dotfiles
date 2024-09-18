@@ -37,6 +37,32 @@ function ,backup() {
   chmod -R 644 "${backup_dir}"/*
 }
 
+function ,upload_url() {
+  local clip url f_name
+
+  clip="$(xsel -b)"
+  test -z "$KINDLE_MOBILIZE" && return 1
+
+  if [[ "$clip" =~ ^http ]]; then
+    url="$clip"
+  else
+    url="$(zenity --entry --title="Kindle Mobilize" --text="Enter URL: " $default)"
+  fi
+  url="$(echo $url | tr -d '\n')"
+
+  if test -z "$url" || [[ "$url" != http* ]]; then
+    return 2
+  fi
+
+  f_name="$(hostname -s)-$(date "+%F@%T").url"
+  cat << __EOF__ > /tmp/$f_name
+[InternetShortcut]
+URL=${url}
+__EOF__
+  scp -i $TOWA_KEY /tmp/$f_name $KINDLE_MOBILIZE/ && notify-send "Sent ${url} to Mobilize"
+  /sbin/rm /tmp/$f_name
+}
+
 function ,pull_queue() {
   local mountpoint kindle_dev
 

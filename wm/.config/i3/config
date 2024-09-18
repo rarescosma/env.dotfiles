@@ -35,7 +35,7 @@ bindsym $mod+Shift+q kill
 # rofi, rofi, rofi
 bindsym $alt+space exec --no-startup-id rofi -show combi
 bindsym $mod+u exec --no-startup-id rofi -show cht -modi cht:cht-rofi -matching prefix
-bindsym $mod+Shift+u exec --no-startup-id cht-query
+bindsym $mod+Shift+u exec --no-startup-id mobilize-url
 
 # focus on a specific task
 bindsym $mod+backslash exec --no-startup-id $XDG_CONFIG_HOME/i3/focus.sh
