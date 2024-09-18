@@ -42,12 +42,34 @@ _handle_replica() {
 _handle_kindle() {
   local kindle_cmds
 
-  kindle_cmds=(
+  # backup first, then wait for net and pull read queue
+  _exec_kindle ",update_id; ,backup"
+  _wait_for_net 30
+  _exec_kindle ",pull_queue"
+}
+
+_exec_kindle() {
+  local script
+  script=(
     "source /home/${USER}/.zshenv;"
     "source /home/${USER}/bin/,kindle;"
-    ",update_id; ,backup; ,pull_queue"
+    "$@"
   )
-  sudo -H -u ${USER} bash -c "${kindle_cmds[*]}"
+  sudo -H -u ${USER} bash -c "${script[*]}"
+}
+
+_wait_for_net() {
+  local tries max_tries
+  tries=1
+  max_tries=${1:-10}
+
+  while ! ping -c1 www.google.com &>/dev/null; do
+    if [ $tries -ge $max_tries ]; then
+      return 1
+    fi
+    tries=$(( tries + 1 ))
+    sleep 1
+  done
 }
 
 # Mount -> dispatch -> paranoia -> unmount
