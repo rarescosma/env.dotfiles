@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 
 function ,on() {
-  test -z "$KINDLE_ID" || _usb_attach $KINDLE_ID
+  test -z "$KINDLE_ID" || _attach_usb $KINDLE_ID
 }
 
 function ,off() {
   local d
   d="$(_get_dev)"
   test -n "$d" && sudo umount "$d"
-  test -z "$KINDLE_ID" || _usb_detach $KINDLE_ID
+  test -z "$KINDLE_ID" || _detach_usb $KINDLE_ID
 }
 
 function ,update_id() {
-  _update_env "${HOME}/.local/env" KINDLE_ID "$(_usb_id)"
+  local usb_id
+  usb_id="$(_get_usb_id)"
+  test -n "$usb_id" && (
+    echo $usb_id
+    _update_env "${HOME}/.local/env" KINDLE_ID "$usb_id"
+  )
 }
 
 function ,backup() {
@@ -36,11 +41,15 @@ function ,pull_queue() {
   local mountpoint kindle_dev
 
   kindle_dev="$(_get_dev)"
+  test -z "${kindle_dev}" && return
+
   mountpoint="$(findmnt -n -o target $kindle_dev)"
+  test -z "${mountpoint}" && return
+
   mkdir -p "${mountpoint}/documents/_Queue"
-  rsync -rvP -e "ssh -i $(yq -r .ssh.key <${XDG_CONFIG_HOME}/cloudy.yaml)" \
-    "$(yq -r .ssh.kindle_queue <${XDG_CONFIG_HOME}/cloudy.yaml)"/ \
-    "${mountpoint}/documents/_Queue/"
+  test -z "${KINDLE_QUEUE}" && return
+
+  rsync -rvP -e "ssh -i ${TOWA_KEY}" "${KINDLE_QUEUE}"/ "${mountpoint}/documents/_Queue/"
 }
 
 function _get_dev() {
@@ -50,8 +59,8 @@ function _get_dev() {
 
 # displays the USB id of a connected kindle
 # sample usage:
-# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(,kindle _usb_id)" | tee -a ~/.local/env
-function _usb_id() {
+# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(,kindle _get_usb_id)" | tee -a ~/.local/env
+function _get_usb_id() {
   local kindle_dev
   kindle_dev="$(_get_dev)"
   test -z "$kindle_dev" && (echo -e "could not find kindle dev; aborting..."; exit 1)
@@ -62,11 +71,11 @@ function _usb_id() {
   echo $usb_id
 }
 
-function _usb_detach() {
+function _detach_usb() {
   sudo tee "/sys/bus/usb/drivers/usb/unbind" <<< "$*"
 }
 
-function _usb_attach() {
+function _attach_usb() {
   sudo tee "/sys/bus/usb/drivers/usb/bind" <<< "$*"
 }
 
