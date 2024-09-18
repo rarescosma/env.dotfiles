@@ -1,16 +1,49 @@
 #!/usr/bin/env bash
 
+_deps=(
+  "findmnt"
+  "lsblk"
+  "notify-send"
+  "rsync"
+  "scp"
+  "udevadm"
+  "xsel"
+  "zenity"
+)
+for _dep in "${_deps[@]}"; do
+  command -v "${_dep}" >/dev/null || (
+    >&2 echo "missing command ${_dep} - please make sure it's installed and in PATH"
+    exit 1
+  )
+done
+
+DEFAULT_MOUNTPOINT=/mnt/kindle
+
+# Turn the USB connection to the Kindle on.
+#
+# Relies on KINDLE_ID being present in the environment and correct.
+# See ,update_id() for an idea on how to update the KINDLE_ID.
 function ,on() {
   test -z "$KINDLE_ID" || _attach_usb $KINDLE_ID
 }
 
+# Turn the USB connection to the Kindle off.
+#
+# This is essentially equivalent to a cable pull.
+# It will try to unmount the Kindle from the system before disconnecting.
 function ,off() {
   local d
   d="$(_get_dev)"
-  test -n "$d" && sudo umount "$d"
-  test -z "$KINDLE_ID" || _detach_usb $KINDLE_ID
+  if test -n "$d" ; then
+    if sudo umount "$d" 2>&1 | grep "target is busy" ; then
+      >&2 echo "Kindle seems busy, I am not turning it off."
+      return 1
+    fi
+    test -z "$KINDLE_ID" || _detach_usb $KINDLE_ID
+  fi
 }
 
+# Update the 'export KINDLE_ID=...' stanza in ~/.local/env with the correct ID.
 function ,update_id() {
   local usb_id
   usb_id="$(_get_usb_id)"
@@ -20,12 +53,15 @@ function ,update_id() {
   )
 }
 
+# Grab the clippings file from the Kindle and save it under
+# ~/backup/kindle as a dated text file.
 function ,backup() {
-  local ts kindle_dev mountpoint backup_dir
+  local mountpoint ts backup_dir
+
+  mountpoint="$(_get_mountpoint)"
+  test -z "${mountpoint}" && return 1
 
   ts="$(date "+%F@%T")"
-  kindle_dev="$(_get_dev)"
-  mountpoint="$(findmnt -n -o target $kindle_dev)"
   backup_dir="${HOME}/backup/kindle"
 
   echo "Grabbing kindle notes at ${ts}"
@@ -37,6 +73,12 @@ function ,backup() {
   chmod -R 644 "${backup_dir}"/*
 }
 
+# If there's a valid URL in the clipboard => turn it into a .url file
+# and push the file to the mobilize queue on the server.
+# Otherwise, present a zenity pop-up where an URL can be entered.
+#
+# Relies on a valid KINDLE_MOBILIZE env var to be set.
+# Also relies on TOWA_KEY pointing to a valid ssh key.
 function ,upload_url() {
   local clip url f_name
 
@@ -59,33 +101,51 @@ function ,upload_url() {
 [InternetShortcut]
 URL=${url}
 __EOF__
-  scp -i $TOWA_KEY /tmp/$f_name $KINDLE_MOBILIZE/ && notify-send "Sent ${url} to Mobilize"
+  scp -i $TOWA_KEY /tmp/$f_name "${KINDLE_MOBILIZE}"/in/ && notify-send "Sent ${url} to Mobilize"
   /sbin/rm /tmp/$f_name
 }
 
+# Pull the generated .mobi files from the mobilize server
+#
+# Relies on a valid KINDLE_MOBILIZE env var to be set.
+# Also relies on TOWA_KEY pointing to a valid ssh key.
 function ,pull_queue() {
   local mountpoint kindle_dev
 
+  mountpoint="$(_get_mountpoint)"
+  test -z "${mountpoint}" && return 1
+
+  mkdir -p "${mountpoint}/documents/_Queue"
+  test -z "${KINDLE_MOBILIZE}" && return 2
+
+  rsync -rvP -e "ssh -i ${TOWA_KEY}" "${KINDLE_MOBILIZE}"/out/mobi/ "${mountpoint}/documents/_Queue/"
+}
+
+# Attempt get the mountpoint - if empty, attempt mounting, then try again.
+function _get_mountpoint() {
   kindle_dev="$(_get_dev)"
   test -z "${kindle_dev}" && return
 
   mountpoint="$(findmnt -n -o target $kindle_dev)"
-  test -z "${mountpoint}" && return
-
-  mkdir -p "${mountpoint}/documents/_Queue"
-  test -z "${KINDLE_QUEUE}" && return
-
-  rsync -rvP -e "ssh -i ${TOWA_KEY}" "${KINDLE_QUEUE}"/ "${mountpoint}/documents/_Queue/"
+  if test -z "${mountpoint}"; then
+    # got a device id, but not a mount point, let's attempt mounting
+    sudo mount "${kindle_dev}" $DEFAULT_MOUNTPOINT \
+      -o uid=$(id -u $USER),gid=$(id -g $USER),umask=002 \
+      && echo $DEFAULT_MOUNTPOINT
+  else
+    echo "${mountpoint}"
+  fi
 }
 
+
+# Display the /dev/{...} device of a connected Kindle.
 function _get_dev() {
-  local kindle="$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
+  local kindle
+  kindle="$(lsblk -r -o+label,name | grep -i kindle | awk '{print $NF}')"
   test -n "$kindle" && echo "/dev/${kindle}"
 }
 
-# displays the USB id of a connected kindle
-# sample usage:
-# grep KINDLE_ID ~/.local/env || echo "export KINDLE_ID=$(,kindle _get_usb_id)" | tee -a ~/.local/env
+# Display the USB id of a connected Kindle.
 function _get_usb_id() {
   local kindle_dev
   kindle_dev="$(_get_dev)"
@@ -121,6 +181,5 @@ function _update_env() {
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
-  exec 2>&1
   $@
 fi
