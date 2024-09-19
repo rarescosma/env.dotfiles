@@ -96,7 +96,7 @@ function ,upload_url() {
     return 2
   fi
 
-  f_name="$(hostname -s)-$(date "+%F@%T").url"
+  f_name="$(date "+%F@%T")_$(hostname -s).url"
   cat << __EOF__ > /tmp/$f_name
 [InternetShortcut]
 URL=${url}
