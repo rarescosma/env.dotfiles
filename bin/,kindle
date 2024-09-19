@@ -118,7 +118,9 @@ function ,pull_queue() {
   mkdir -p "${mountpoint}/documents/_Queue"
   test -z "${KINDLE_MOBILIZE}" && return 2
 
-  rsync -rvP -e "ssh -i ${TOWA_KEY}" "${KINDLE_MOBILIZE}"/out/mobi/ "${mountpoint}/documents/_Queue/"
+  rsync -rvP --checksum -e "ssh -i ${TOWA_KEY}" \
+    "${KINDLE_MOBILIZE}"/out/mobi/ \
+    "${mountpoint}/documents/_Queue/"
 }
 
 # Attempt get the mountpoint - if empty, attempt mounting, then try again.
