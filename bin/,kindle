@@ -116,7 +116,7 @@ __EOF__
 # Relies on a valid KINDLE_MOBILIZE env var to be set.
 # Also relies on TOWA_KEY pointing to a valid ssh key.
 function ,pull_queue() {
-  local mountpoint kindle_dev
+  local mountpoint kindle_dev exclude_str
 
   mountpoint="$(_get_mountpoint)"
   test -z "${mountpoint}" && return 1
@@ -124,7 +124,13 @@ function ,pull_queue() {
   mkdir -p "${mountpoint}/documents/_Queue"
   test -z "${KINDLE_MOBILIZE}" && return 2
 
+  # TODO ~/sync/pkm -> VAULT_ROOT + vault switcher script
+  exclude_str="$(find ~/sync/pkm -type f -name .kindle_done -print0 \
+      | xargs -0 cat \
+      | awk 'NF{print $0".mobi"}')"
+
   rsync -rvP --checksum -e "ssh -i ${TOWA_KEY}" \
+    --exclude-from=<(printf %s\\n $exclude_str) \
     "${KINDLE_MOBILIZE}"/out/mobi/ \
     "${mountpoint}/documents/_Queue/"
 }
