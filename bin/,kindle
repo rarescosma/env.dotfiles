@@ -56,21 +56,27 @@ function ,update_id() {
 # Grab the clippings file from the Kindle and save it under
 # ~/backup/kindle as a dated text file.
 function ,backup() {
-  local mountpoint ts backup_dir
+  local mountpoint ts backup_dir git_dir
 
   mountpoint="$(_get_mountpoint)"
   test -z "${mountpoint}" && return 1
 
   ts="$(date "+%F@%T")"
   backup_dir="${HOME}/backup/kindle"
+  git_dir="${HOME}/backup/kindle-git"
 
   echo "Grabbing kindle notes at ${ts}"
-  mkdir -p "$backup_dir"
-  cp \
-    "${mountpoint}/documents/My Clippings.txt" \
-    "${backup_dir}/notes-${ts}.txt"
+  mkdir -p "$backup_dir" "$git_dir"
+  cat "${mountpoint}/documents/My Clippings.txt" |
+    tee "${backup_dir}/notes-${ts}.txt" \
+    > "${git_dir}/notes.txt"
 
-  chmod -R 644 "${backup_dir}"/*
+  pushd "$git_dir" >/dev/null
+  if test -n "$(git diff)" ; then 
+    git add .
+    git commit -m "update at $ts"
+  fi
+  popd >/dev/null
 }
 
 # If there's a valid URL in the clipboard => turn it into a .url file
