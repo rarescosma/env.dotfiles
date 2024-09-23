@@ -35,7 +35,7 @@ nmap <M-b> <Action>(ShowBookmarks)
 " IDE project navigation.
 map <C-q> <Action>(CloseContent)
 nmap <leader>q <Action>(CloseProject)
-nmap <leader>d <Action>(GotoDeclaration)
+nmap <leader>x <Action>(GotoDeclaration)
 nmap <leader>u <Action>(FindUsages)
 nmap <C-h> <Action>(Back)
 nmap <C-l> <Action>(Forward)
@@ -115,6 +115,7 @@ set multiple-cursors
 set easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_override_acejump = 0
+set NERDTree
 
 " N00b mode: key hints via the 'Which Key' plugin.
 " set which-key
