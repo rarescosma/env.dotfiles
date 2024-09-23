@@ -124,8 +124,7 @@ function ,pull_queue() {
   mkdir -p "${mountpoint}/documents/_Queue"
   test -z "${KINDLE_MOBILIZE}" && return 2
 
-  # TODO ~/sync/pkm -> VAULT_ROOT + vault switcher script
-  exclude_str="$(find ~/sync/pkm -type f -name .kindle_done -print0 \
+  exclude_str="$(find "${VAULT_ROOT}" -type f -name .kindle_done -print0 \
       | xargs -0 cat \
       | awk 'NF{print $0".mobi"}')"
 

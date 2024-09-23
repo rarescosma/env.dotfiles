@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MEDIA="${VAULT_DIR}/${VAULT_MEDIA}"
+MEDIA="${VAULT_DIR}/_media"
 if ! test -d "${MEDIA}"; then
   >&2 echo "invalid vault media dir: ${MEDIA}; exiting..."
   exit 1
@@ -39,7 +39,7 @@ mkdir -p $(dirname "${MEDIA}/${new_path}")
 mv --no-clobber --verbose "${path}" "${MEDIA}/${new_path}.png"
 
 # copy the figure markup to clipboard
-echo -n "![[${VAULT_MEDIA}/${new_path}.png|${caption}]]" | xsel -b
+echo -n "![[_media/${new_path}.png|${caption}]]" | xsel -b
 
 # refocus obsidian
 i3-msg '[class="^obsidian"] focus'

@@ -82,3 +82,15 @@ WORDCHARS=${WORDCHARS/\/}
 
 alias disablehistory="function zshaddhistory() {  return 1 }"
 alias yt-dlpl="yt-dlp --format 'bestvideo[height<=?1080][vcodec!^=vp]+bestaudio' --yes-playlist -o '%(playlist_index)02d - %(title)s.%(ext)s'"
+
+# -- switch current vault ------------------------------------------------------
+scv() {
+  local vault
+  vault="$(fd -t d --base-directory "$VAULT_ROOT" --exact-depth 1 \
+    | fzf_cmd --query "$*" | sed 's/\/$//g')"
+  test -z "$vault" && return
+
+  echo "Switching to the $vault vault"
+
+  rm -f $VAULT_ROOT/current && ln -sf $VAULT_ROOT/$vault $VAULT_ROOT/current
+}

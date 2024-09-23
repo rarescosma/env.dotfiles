@@ -56,8 +56,8 @@ FZF_TMUX=1
 IDEA_VERSION=2024.1
 
 # pkm
-VAULT_DIR="${HOME}/sync/pkm/rar"
-VAULT_MEDIA="_Media"
+VAULT_ROOT="${HOME}/sync/pkm"
+VAULT_DIR="${VAULT_ROOT}/current"
 
 # zsh
 _VENDOR=${HOME}/src/env/dotfiles/_vendor
