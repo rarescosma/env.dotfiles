@@ -32,6 +32,9 @@ inoremap <C-t> <Esc>:let @t=@/<CR>:let &ul=&ul<CR>/\v\+\><CR>:nohl<CR>:let @/=@t
 inoremap <C-l> <C-o>$
 inoremap <C-j> <Esc>:let @t=@/<CR>/[)}"'\]>]<CR>:<C-u>nohlsearch<CR>:let @/=@t<CR>a
 
+" Search selection
+vnoremap // "zy/\V<C-R>z<CR>
+
 " Ctrl+B to stop searching.
 nnoremap <C-b> :nohl<CR><C-l>
 vnoremap <C-b> :nohl<CR><C-l>
