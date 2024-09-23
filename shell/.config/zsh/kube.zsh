@@ -37,5 +37,6 @@ ksc() {
   export KUBECONFIG="${kube_dir}/${config}"
   touch "$kube_dir"
   export CLUSTER="${config}"
+  export KUBE_PS1_ENABLED=on
 }
 
