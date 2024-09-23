@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+#
+# Simplified bash version of tig-pick - printing the commit ID of a picked
+# commit in tig (Enter key) to standard output, so it can be used in subsequent
+# commands, e. g. 'git rebase -i $(tig-pick)'
+#
+# Inspiration from:
+#
+# Sebastian Gniazdowski - https://github.com/z-shell/zsh-tig-plugin/blob/4413a3a8740072a66822dad0add6cd1abff61c6b/tig-pick
+# Ivan Shapovalov - https://github.com/intelfx/bin/blob/274e8337f4b429a533010319796cd5589ef9d335/wrappers/tig-pick
+#
+
+CONFIG="$(command mktemp --tmpdir "${0##*/}-config.XXXXXXXXXX")"
+trap "command rm -f '$CONFIG'" EXIT
+trap "command rm -f '$CONFIG'; return 1" INT TERM HUP
+
+# Prepare config file
+if [[ "$TIGRC_USER" ]]; then
+	echo "source $TIGRC_USER" >> "$CONFIG"
+elif [[ -f "$HOME/.tigrc" ]]; then
+	echo "source $HOME/.tigrc" >> "$CONFIG"
+elif [[ -f "$XDG_CONFIG_HOME/tig/config" ]]; then
+	echo "source $XDG_CONFIG_HOME/tig/config" >> "$CONFIG"
+fi
+
+# Bind Enter to print the selected commit ID to error output
+# and return after that. Rebind 'o' to enter.
+echo "bind main o enter" >> "$CONFIG"
+echo "bind main <Enter> <sh -c \"echo '%(commit)' >&2\"" >> "$CONFIG"
+echo "bind diff o enter" >> "$CONFIG"
+echo "bind diff <Enter> <sh -c \"echo '%(commit)' >&2\"" >> "$CONFIG"
+
+# Run tig with the standard and error output channels swapped.
+export TIGRC_USER=$CONFIG
+STDERR=$(command tig "$@" 3>&2 2>&1 1>&3 3>&-) || {
+  STATUS=$?
+  >&2 printf %s $STDERR
+  exit $STATUS
+}
+COMMIT="$(printf %s\\n $STDERR | tail -n1)"
+
+# Check for valid commit ID
+grep -qE '^[0-9a-f]{40}$' <<< $COMMIT || {
+  >&2 printf %s $STDERR
+  exit 1
+}
+
+# Check if the selection was done on a non-commit entry
+grep -qE '^0{40}$' <<< $COMMIT && {
+  >&2 printf %s "No commit selected"
+  exit 1
+}
+
+printf "%s\\n" $COMMIT
