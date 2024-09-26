@@ -27,8 +27,8 @@ function ,keyboard::setup() {
 function dpi::terminal() {
   local font_size="${1}"
 
-  config="${HOME}/.config/alacritty/alacritty.yml"
-  $SED -E "s/size: [0-9.]+ #fontsize/size: $font_size #fontsize/" "$config"
+  config="${HOME}/.config/alacritty/alacritty.toml"
+  $SED -E "s/size = [0-9.]+ #fontsize/size = $font_size #fontsize/" "$config"
 }
 
 function dpi::i3() {
