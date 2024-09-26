@@ -1,5 +1,5 @@
 [global]
-    font = Iosevka 12
+    font = IosevkaRar Nerd Font Propo 12
     markup = full
     format = "<b>%s</b>\n%b\n%p"
     sort = yes

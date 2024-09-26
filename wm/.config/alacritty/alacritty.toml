@@ -54,7 +54,7 @@ foreground = "#d5c4a1"
 size = 11 #fontsize
 
 [font.normal]
-family = "Iosevka"
+family = "IosevkaRar Nerd Font Propo"
 
 [[keyboard.bindings]]
 action = "Paste"

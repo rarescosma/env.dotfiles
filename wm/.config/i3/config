@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font "pango:Iosevka Fixed Semibold 8"
+font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -150,8 +150,7 @@ bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 
 # i3blocks / i3bar
 bar {
-    font "Font Awesome 6 Free"
-    font "pango:Iosevka Fixed Semibold 8"
+    font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
     status_command tendril -c c6cbd8 aio -j
     i3bar_command i3bar
 

@@ -1,5 +1,5 @@
 configuration {
-    font: "iosevka 12";
+    font: "IosevkaRar Nerd Font Propo 12";
     combi-modi: "xrun:~/bin/xrun,rfh:~/bin/rfh,window,ssh,drun";
     ssh-command: "tmux new-window -n '@{host}' 'ssh {host}'";
     sorting-method: "fzf";

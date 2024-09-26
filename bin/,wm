@@ -36,7 +36,7 @@ function dpi::i3() {
   i3_config="${HOME}/.config/i3/config"
   font_size="${1}"
 
-  $SED -E "s/Iosevka [[:digit:]]+/Iosevka $font_size/" $i3_config
+  $SED -E "s/Iosevka([^0-9]+)[[:digit:]]+/Iosevka\1$font_size/" $i3_config
   i3-msg reload 1>/dev/null
 }
 
