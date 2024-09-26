@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# see: https://bugzilla.redhat.com/show_bug.cgi?id=601853
+exec /usr/bin/X -keeptty -nolisten tcp -ardelay 300 -arinterval 50 "$@"

@@ -12,7 +12,7 @@ if ! test -z "$SSH_CLIENT"; then
 fi
 
 if [[ "$TTY" == "/dev/tty1" ]]; then
-  exec systemd-cat -t startx startx -- -dpi 110 && exit
+  exec startx -dpi 110 && exit
 fi
 
 source ~/.config/zsh/oh-my-vendor.zsh
