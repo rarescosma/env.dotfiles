@@ -28,7 +28,7 @@ vmap <leader>a <Action>(GotoAction)
 nmap <leader>s <Action>(FileStructurePopup)
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
-map <C-;> <Plug>(easymotion-bd-f)
+map <C-;> <Action>(EditorSelectWord)
 nmap <leader>l <Action>(RecentLocations)
 nmap <M-b> <Action>(ShowBookmarks)
 
@@ -87,7 +87,7 @@ nmap <Up> <Action>(MethodUp)
 nmap <Down> <Action>(MethodDown)
 
 " Conflict-avoidance mode
-map <C-\> <Action>(EditorSelectWord)
+map <C-\> <Plug>(easymotion-bd-f)
 map <C-f> <Action>(RecentFiles)
 map <M-l> <Action>(NextSplitter)
 map <M-h> <Action>(PrevSplitter)
