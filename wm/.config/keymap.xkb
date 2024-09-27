@@ -1242,10 +1242,12 @@ xkb_symbols "pc+robleh+inet(evdev)+ctrl(nocaps)" {
     };
     key <AD03> {
         type= "FOUR_LEVEL_SEMIALPHABETIC",
+        overlay1= <I251>,
         symbols[Group1]= [               e,               E,        EuroSign,        NoSymbol ]
     };
     key <AD04> {
         type= "ALPHABETIC",
+        overlay1= <I252>,
         symbols[Group1]= [               r,               R ]
     };
     key <AD05> {
@@ -1300,10 +1302,12 @@ xkb_symbols "pc+robleh+inet(evdev)+ctrl(nocaps)" {
     };
     key <AC03> {
         type= "FOUR_LEVEL_ALPHABETIC",
+        overlay1= <I249>,
         symbols[Group1]= [               d,               D,         dstroke,         Dstroke ]
     };
     key <AC04> {
         type= "ALPHABETIC",
+        overlay1= <I250>,
         symbols[Group1]= [               f,               F ]
     };
     key <AC05> {
@@ -1615,6 +1619,10 @@ xkb_symbols "pc+robleh+inet(evdev)+ctrl(nocaps)" {
     key <I246> {         [ aring, Aring ] };
     key <I247> {         [ odiaeresis, Odiaeresis ] };
     key <I248> {         [ adiaeresis, Adiaeresis ] };
+    key <I249> {         [ braceleft, bracketleft ] };
+    key <I250> {         [ braceright, bracketright ] };
+    key <I251> {         [ minus, underscore ] };
+    key <I252> {         [ equal, plus ] };
     modifier_map Control { <LCTL> };
     modifier_map Shift { <LFSH> };
     modifier_map Shift { <RTSH> };
