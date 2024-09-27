@@ -1,0 +1,9 @@
+#!/bin/bash
+
+test -z "$1" && {
+    >&2 printf %s\\n "neet a tag to work with"
+    exit 1
+}
+commit="${2:-$(tig-pick)}"
+
+GIT_COMMITTER_DATE="$(git show $2 --format=%aD | head -1)" git tag -f -s -a $1 $commit -m "$1"
