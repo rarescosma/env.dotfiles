@@ -32,6 +32,7 @@ dscum() {
 }
 
 ## docker ps with port information
+unalias dps 2>/dev/null
 dps() {
   docker ps $@ \
     --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}\t{{.Ports}}" \
