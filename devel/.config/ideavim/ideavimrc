@@ -26,16 +26,13 @@ vmap <leader>a <Action>(GotoAction)
 
 " IDE file navigation.
 nmap <leader>s <Action>(FileStructurePopup)
-nmap [[ <Action>(MethodUp)
-nmap ]] <Action>(MethodDown)
-map <C-;> <Action>(EditorSelectWord)
 nmap <leader>l <Action>(RecentLocations)
+nmap <leader>b <Action>(ToggleBookmarkWithMnemonic)
 nmap <M-b> <Action>(ShowBookmarks)
 
 " IDE project navigation.
 map <C-q> <Action>(CloseContent)
 nmap <leader>q <Action>(CloseProject)
-nmap <leader>x <Action>(GotoDeclaration)
 nmap <leader>u <Action>(FindUsages)
 nmap <C-h> <Action>(Back)
 nmap <C-l> <Action>(Forward)
@@ -67,6 +64,7 @@ nmap R <Action>(ChooseRunConfiguration)
 " Distraction-free mode.
 nmap <leader>h <Action>(ToggleInlineHintsAction)
 nmap <leader>H <Action>(ToggleInlayHintsGloballyAction)
+nmap <C-m> <Action>(HideAllWindows)
 nmap <C-z> <Action>(ToggleDistractionFreeMode)
 
 " Move method up/down.
@@ -81,28 +79,28 @@ vmap gq <Action>(com.andrewbrookins.idea.wrap.WrapAction)
 sethandler <^v> a:ide
 
 " Do something useful with the arrows.
-nmap <Left> <Action>(NextSplitter)
-nmap <Right> <Action>(PrevSplitter)
+nmap <Left> %
+nmap <Right> *
+vmap <Left> %
+vmap <Right> *
 nmap <Up> <Action>(MethodUp)
 nmap <Down> <Action>(MethodDown)
 
 " Conflict-avoidance mode
-map <C-\> <Plug>(easymotion-bd-f)
+map <C-;> <Action>(EditorSelectWord)
 map <C-f> <Action>(RecentFiles)
 map <M-l> <Action>(NextSplitter)
 map <M-h> <Action>(PrevSplitter)
 map <M-e> <Action>(SplitVertically)
 map <M-o> <Action>(SplitHorizontally)
 map <C-g> <Action>(Tool_External Tools_idea_tig)
-map <C-m> <Action>(HideAllWindows)
-map <leader>b <Action>(ToggleBookmarkWithMnemonic)
 map <C-t> <Action>(ActivateTerminalToolWindow)
 
 " Visual block.
 nnoremap <A-v> <C-q>
 
 " Blame
-nmap <leader>B <Action>(Annotate)
+nmap <leader>x <Action>(Annotate)
 
 " Plugins galore
 set highlightedyank
@@ -112,9 +110,6 @@ set exchange
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 set multiple-cursors
-set easymotion
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_override_acejump = 0
 set NERDTree
 
 " N00b mode: key hints via the 'Which Key' plugin.

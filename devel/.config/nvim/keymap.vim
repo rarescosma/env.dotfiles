@@ -78,10 +78,6 @@ onoremap gv  :<c-u>normal! gv<cr>
 noremap L $
 noremap H ^
 
-" Move during insert.
-" inoremap <C-h> <Left>
-" inoremap <C-k> <Up>
-
 " Center block nav please.
 nnoremap }   }zz
 nnoremap {   {zz
