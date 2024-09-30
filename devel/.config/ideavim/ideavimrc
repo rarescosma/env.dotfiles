@@ -103,12 +103,12 @@ nnoremap <A-v> <C-q>
 nmap <leader>x <Action>(Annotate)
 
 " Plugins galore
-set highlightedyank
 let g:highlightedyank_highlight_duration = "650"
+set highlightedyank
 set argtextobj
 set exchange
-set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+set quickscope
 set multiple-cursors
 set NERDTree
 
