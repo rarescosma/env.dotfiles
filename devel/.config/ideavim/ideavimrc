@@ -54,7 +54,7 @@ vmap <leader>pg <Action>(ReplaceInPath)
 
 " IDE refactor.
 nmap <leader>n <Action>(Inline)
-nmap <leader>r <Action>(RenameElement)
+nmap <leader>r <Action>(RenameElement)ciw
 map <leader>R <Action>(Refactorings.QuickListPopupAction)
 map <leader>v <Action>(IntroduceVariable)
 
