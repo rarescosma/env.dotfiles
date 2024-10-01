@@ -102,6 +102,9 @@ nnoremap <A-v> <C-q>
 " Blame
 nmap <leader>x <Action>(Annotate)
 
+" Swap arguments (argtextobj + exchange = ❤️)
+nmap <leader>S cxccxiaf,wcxia
+
 " Plugins galore
 let g:highlightedyank_highlight_duration = "650"
 set highlightedyank
