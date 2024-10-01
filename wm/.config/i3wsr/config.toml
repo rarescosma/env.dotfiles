@@ -6,6 +6,7 @@ Alacritty = ""
 jetbrains-idea = ""
 mpv = ""
 obsidian =""
+tidal-hifi = "󰝚"
 
 [options]
 remove_duplicates = true
