@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import sys
+from pathlib import Path
+from subprocess import check_output
+import json
+
+
+def main(args: [str]) -> None:
+    args = (str(Path(x)) for x in args if Path(x).exists() and Path(x).is_file())
+    z = json.loads(check_output(["vale", "--output", "JSON", "--no-exit", *args]))
+    for file, diags in z.items():
+        for diag in diags:
+            print(
+                f"file://{file}:{diag['Line']}:{diag['Span'][0]} {diag['Message']} ({diag['Severity']}{diag['Check']})",
+            )
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print(f"need at least one path")
+        sys.exit(1)
+    main(sys.argv[1:])

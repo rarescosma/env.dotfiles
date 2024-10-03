@@ -94,6 +94,7 @@ map <M-h> <Action>(PrevSplitter)
 map <M-e> <Action>(SplitVertically)
 map <M-o> <Action>(SplitHorizontally)
 map <C-g> <Action>(Tool_External Tools_idea_tig)
+map <C-,> <Action>(Tool_External Tools_idea_vale)
 map <C-t> <Action>(ActivateTerminalToolWindow)
 
 " Visual block.
