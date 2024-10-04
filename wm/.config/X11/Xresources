@@ -5,10 +5,10 @@ Xft.dpi: 110
 ! Fonts
 ! -----
 Xft.lcdfilter: lcddefault
-Xft.antialias:  true
-Xft.autohint:   false
-Xft.hinting:    true
-Xft.hintstyle:  hintslight
+Xft.antialias: true
+Xft.autohint:  false
+Xft.hinting:   true
+Xft.hintstyle: hintslight
 Xft.rgba: rgb
 
 ! Colors
