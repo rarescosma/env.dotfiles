@@ -26,11 +26,12 @@ vnoremap <C-k> c[<C-r>"](<Esc>"+pa)<Esc>
 " 3) search for '+>' and (ab)use visual mode to replace inside '<+ ... +>'
 inoremap <C-t> <Esc>:let @t=@/<CR>:let &ul=&ul<CR>/\v\+\><CR>:nohl<CR>:let @/=@t<CR>lvF+;hc
 
-" Insert mode jumps
+" Insert mode shenanigans
 " L -> end of line
 " J -> out of )]}"'> (without clobbering the search reg)
 inoremap <C-l> <C-o>$
 inoremap <C-j> <Esc>:let @t=@/<CR>/[)}"'\]>]<CR>:<C-u>nohlsearch<CR>:let @/=@t<CR>a
+inoremap <C-,> <C-r>"
 
 " Search selection
 vnoremap // "zy/\V<C-R>z<CR>
