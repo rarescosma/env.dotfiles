@@ -1,4 +1,4 @@
-plugins+=(evalcache gitalias archlinux docker git kubectl kube-ps1 zsh-autosuggestions aliases)
+plugins+=(evalcache gitalias archlinux docker direnv git kubectl kube-ps1 zsh-autosuggestions aliases)
 if test -d "$ZSH/custom/plugins/nix-zsh-completions"; then
     plugins+=(nix-zsh-completions)
 fi

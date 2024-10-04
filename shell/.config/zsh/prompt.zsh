@@ -21,6 +21,6 @@ __current_vault() {
   print -r -- "[v:${vault##*/}] "
 }
 
-PROMPT='%{$fg[magenta]%}@%m%{$reset_color%} \
+PROMPT='%{$fg[magenta]%}@%m%{$reset_color%} $(prompt_nix_shell)\
 %{$fg[yellow]%}$(prompt_aws)%{$reset_color%}%{$fg[green]%}$(kube_ps1)%{$fg[cyan]%}$(__current_vault)%{$fg[blue]%}%~%{$fg[default]%} $(git_prompt_info)
 %130(?..%(?..[%{$fg[red]%}%?%{$reset_color%}] ))%{$reset_color%}# '

@@ -68,6 +68,11 @@ if [[ "$enable_devel" =~ "python" ]]; then
   }
 
   alias revenv="rvenv; nvenv"
+
+  if command -v pyenv >/dev/null; then
+    export PYENV_ROOT="$HOME/.local/share/pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+  fi
 fi
 
 if [[ "$enable_devel" =~ "golang" ]]; then
