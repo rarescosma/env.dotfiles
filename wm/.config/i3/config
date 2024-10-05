@@ -18,24 +18,26 @@ assign [class="Zotero"] number 7
 assign [class="roon.exe"] number 7
 smart_borders on
 
-# terminals
+# apps
 bindsym $mod+Return exec alacritty
 bindsym $mod+0x60 exec alacritty -e tmux new-session -A -D -s base
-bindsym $mod+0x27 exec --no-startup-id raiseorlaunch -c obsidian -e obsidian
-bindsym $mod+p exec --no-startup-id $HOME/src/pkm/link_page.py
-bindsym $mod+Shift+0x27 exec --no-startup-id raiseorlaunch -c zotero
-bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+t exec thunar
 bindsym $mod+slash exec firefox
-bindsym $mod+Shift+slash exec chromium --incognito
+bindsym $mod+Shift+slash exec firefox --private-window
+
+# pkm
+bindsym $mod+0x27 exec --no-startup-id raiseorlaunch -c obsidian -e obsidian
+bindsym $mod+Shift+0x27 exec --no-startup-id raiseorlaunch -c zotero
+bindsym $mod+p exec --no-startup-id $HOME/src/pkm/link_page.py
+bindsym $mod+u exec --no-startup-id $HOME/src/pkm/kindle/mobilize-url.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # rofi, rofi, rofi
 bindsym $alt+space exec --no-startup-id rofi -show combi
-bindsym $mod+u exec --no-startup-id rofi -show cht -modi cht:cht-rofi -matching prefix
-bindsym $mod+Shift+u exec --no-startup-id mobilize-url
+bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
+bindsym $mod+c exec --no-startup-id rofi -show cht -modi cht:cht-rofi -matching prefix
 
 # focus on a specific task
 bindsym $mod+backslash exec --no-startup-id $XDG_CONFIG_HOME/i3/focus.sh
