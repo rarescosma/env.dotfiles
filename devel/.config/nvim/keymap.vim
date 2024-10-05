@@ -29,6 +29,7 @@ inoremap <C-t> <Esc>:let @t=@/<CR>:let &ul=&ul<CR>/\v\+\><CR>:nohl<CR>:let @/=@t
 " Insert mode shenanigans
 " L -> end of line
 " J -> out of )]}"'> (without clobbering the search reg)
+" , -> paste during insert
 inoremap <C-l> <C-o>$
 inoremap <C-j> <Esc>:let @t=@/<CR>/[)}"'\]>]<CR>:<C-u>nohlsearch<CR>:let @/=@t<CR>a
 inoremap <C-,> <C-r>"
@@ -50,7 +51,7 @@ nnoremap <leader>w :w<CR>
 inoremap <C-z> <Esc><C-z>
 
 " Register-preserving paste + delete.
-xnoremap <leader>p "_dP
+xnoremap <silent> p p:let @"=@0<CR>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
