@@ -34,8 +34,8 @@ nmap <M-b> <Action>(ShowBookmarks)
 map <C-q> <Action>(CloseContent)
 nmap <leader>q <Action>(CloseProject)
 nmap <leader>u <Action>(FindUsages)
-nmap <C-h> <Action>(Back)
-nmap <C-l> <Action>(Forward)
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
 nmap gp <Action>(RecentProjectListGroup)
 nmap gc <Action>(GotoClass)
 nmap gi <Action>(GotoImplementation)
@@ -64,7 +64,7 @@ nmap R <Action>(ChooseRunConfiguration)
 " Distraction-free mode.
 nmap <leader>h <Action>(ToggleInlineHintsAction)
 nmap <leader>H <Action>(ToggleInlayHintsGloballyAction)
-nmap <C-m> <Action>(HideAllWindows)
+nmap <C-h> <Action>(HideAllWindows)
 nmap <C-z> <Action>(ToggleDistractionFreeMode)
 
 " Move method up/down.
@@ -87,7 +87,7 @@ nmap <Up> <Action>(MethodUp)
 nmap <Down> <Action>(MethodDown)
 
 " Conflict-avoidance mode
-map <C-;> <Action>(EditorSelectWord)
+map <C-l> <Action>(EditorSelectWord)
 map <C-f> <Action>(RecentFiles)
 map <M-l> <Action>(NextSplitter)
 map <M-h> <Action>(PrevSplitter)
