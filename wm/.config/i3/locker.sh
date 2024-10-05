@@ -5,6 +5,11 @@ if test -f /tmp/i3/caffeine; then
   exit 0
 fi
 
+if [[ "$1" == "--start" ]]; then
+  i3lock -i "${XDG_CONFIG_HOME}/i3/leafy_green.png" --tiling
+  exit 0
+fi
+
 if [[ -z "$(pidof i3lock)" ]]; then
   i3lock -i "${XDG_CONFIG_HOME}/i3/leafy_green.png" --tiling && sleep 1
 else
