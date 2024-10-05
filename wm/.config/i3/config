@@ -189,6 +189,9 @@ exec --no-startup-id xautolock -corners 0-00 -cornersize 150 -time 10 -locker "$
 # startup
 exec --no-startup-id systemctl --user start i3-startup.service
 
+# polkit
+exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
+
 # no title bars
 new_window pixel 1
 
