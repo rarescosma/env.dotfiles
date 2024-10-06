@@ -32,7 +32,8 @@ echo redshift-gtk[$!]: make things red at sunset
 towa -d ${HOME}/media/screenshots -f "^.*\\.png$" \
     --base-url    https://static.getbetter.ro/screenshots \
     --upload-to   $TOWA_SCREENSHOTS \
-    --bitly-token $TOWA_BITLY &
+    --bitly-token $TOWA_BITLY \
+    --no-delete-src &
 echo towa[$!]: push screenshots to static.getbetter
 
 towa --upload-to $TOWA_TORRENTS &
