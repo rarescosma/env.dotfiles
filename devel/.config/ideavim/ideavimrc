@@ -65,7 +65,7 @@ nmap R <Action>(ChooseRunConfiguration)
 nmap <leader>h <Action>(ToggleInlineHintsAction)
 nmap <leader>H <Action>(ToggleInlayHintsGloballyAction)
 nmap <C-h> <Action>(HideAllWindows)
-nmap <C-z> <Action>(ToggleDistractionFreeMode)
+nmap <C-S-h> <Action>(ToggleDistractionFreeMode)
 
 " Move method up/down.
 nmap <C-S-j> <Action>(MoveStatementDown)
