@@ -70,11 +70,11 @@ nnoremap <C-k> :m .-2<CR>==
 " Indents.
 nnoremap > >>
 nnoremap < <<
-xnoremap <  <gv
-xnoremap >  >gv
+xnoremap < <gv
+xnoremap > >gv
 xnoremap <TAB> >gv
 xnoremap <S-TAB> <gv
-onoremap gv  :<c-u>normal! gv<cr>
+onoremap gv :<c-u>normal! gv<cr>
 
 " Line beginning + end.
 noremap L $
