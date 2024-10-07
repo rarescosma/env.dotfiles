@@ -6,4 +6,4 @@ test -z "$1" && {
 }
 commit="${2:-$(tig-pick)}"
 
-GIT_COMMITTER_DATE="$(git show $2 --format=%aD | head -1)" git tag -f -s -a $1 $commit -m "$1"
+GIT_COMMITTER_DATE="$(git show $commit --format=%aD | head -1)" git tag -f -s -a $1 $commit -m "$1"
