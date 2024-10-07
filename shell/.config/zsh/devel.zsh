@@ -1,8 +1,8 @@
 # Sane defaults
 [[ -v enable_devel ]] || enable_devel=(rust python kube node)
 
-alias vi="$EDITOR"
-alias vim="$EDITOR"
+command -v vi >/dev/null || alias vi="$EDITOR"
+command -v vim >/dev/null || alias vim="$EDITOR"
 
 # -- Turtles -------------------------------------------------------------------
 ## scum a docker image
