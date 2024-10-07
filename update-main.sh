@@ -5,7 +5,7 @@ IMMUS=""
 
 _stash_arch_packs() {
     git update-index --no-assume-unchanged _arch/package*
-    git stash
+    git stash || true
 }
 
 _unchange_arch_packs() {
@@ -13,6 +13,7 @@ _unchange_arch_packs() {
 }
 
 _restore_immus() {
+    test -z "$IMMUS" && return
     while IFS= read -r line; do
         test -n "$line" && sudo chattr +i "$line"
     done <<< "$IMMUS"
@@ -21,6 +22,7 @@ _restore_immus() {
 _rebase_pre() {
     _stash_arch_packs
     IMMUS="$(lsattr -laR . 2>/dev/null | grep Immutable | sed -e 's#\s*Immutable$##g')"
+    test -z "$IMMUS" && return
     while IFS= read -r line; do
         test -n "$line" && sudo chattr -i "$line"
     done <<< "$IMMUS"
