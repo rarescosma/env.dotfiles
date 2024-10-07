@@ -97,3 +97,9 @@ scv() {
 
   rm -f $VAULT_ROOT/current && ln -sf $VAULT_ROOT/$vault $VAULT_ROOT/current
 }
+
+# -- the good parts of pkgtools ------------------------------------------------
+whooneeds() {
+  echo "Packages that depend on [$1]"
+  comm -12 <(pactree -ru $1|sort) <(pacman -Qqe|sort) | grep -v ^$1$ | sed 's/^/  /'
+}
