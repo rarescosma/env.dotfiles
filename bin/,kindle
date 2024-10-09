@@ -94,7 +94,7 @@ function ,upload_url() {
   if [[ "$clip" =~ ^http ]]; then
     url="$clip"
   else
-    url="$(zenity --entry --title="Kindle Mobilize" --text="Enter URL: " $default)"
+    url="$(zenity --entry --title="Kindle Mobilize" --text="Enter URL: ")"
   fi
   url="$(echo $url | tr -d '\n')"
 
