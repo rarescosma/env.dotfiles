@@ -19,32 +19,38 @@ test -f pylintrc && MYPY_ARGS="--config-file=pylintrc"
 echo
 echo ">>>>>> pycln <<<<<<"
 pycln "${@}"
+echo "-------------------"
 echo
 echo ">>>>>> isort <<<<<<"
 isort -l100 -m3 --tc "${@}"
+echo "-------------------"
 
 # format
 echo
 echo ">>>>>> black <<<<<<"
 black -l 100 "${@}"
+echo "-------------------"
 
 # dead code is bad
 echo
-echo ">>>>>> vulture <<<<<<"
+echo ">>>>> vulture <<<<<"
 vulture "${@}"
+echo "-------------------"
 
 # types are good
 ({
     echo
-    echo ">>>>>> mypy <<<<<<"
+    echo ">>>>>> mypy <<<<<<<"
     mypy "${MYPY_ARGS}" --ignore-missing-imports --disallow-untyped-defs "${@}" 
+    echo "-------------------"
 } | locat) &
 
 # messy code is bad
 ({
     echo
-    echo ">>>>>> pylint <<<<<<"
+    echo ">>>>>> pylint <<<<<"
     pylint "${PYLINT_ARGS}" "${@}"
+    echo "-------------------"
 } | locat) &
 
 wait
