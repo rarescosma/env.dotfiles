@@ -49,6 +49,8 @@ tor-browser-bin
 ttf-courier-prime
 ttf-heuristica
 ttf-signika
+ttfautohint
+ungoogled-chromium-bin
 vim-gruvbox-community
 volctl
 xfce-polkit

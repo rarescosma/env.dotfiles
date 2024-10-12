@@ -46,6 +46,9 @@ gdb
 git-crypt
 git-delta
 gitg
+gifsicle
+git
+github-cli
 gnome-calculator
 gnome-disk-utility
 gnome-keyring
@@ -181,7 +184,7 @@ tig
 tlp
 tmate
 tmux
-transmission-qt
+tree
 ttc-iosevka
 ttf-dejavu
 ttf-droid
