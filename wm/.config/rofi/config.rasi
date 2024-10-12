@@ -3,6 +3,10 @@ configuration {
     combi-modi: "xrun:~/bin/xrun,rfh:~/bin/rfh,window,ssh,drun";
     ssh-command: "tmux new-window -n '@{host}' 'ssh {host}'";
     sorting-method: "fzf";
+
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: [ MousePrimary, MouseSecondary, MouseDPrimary ];
 }
 
 @theme "/usr/share/rofi/themes/glue_pro_blue.rasi"

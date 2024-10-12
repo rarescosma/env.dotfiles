@@ -15,6 +15,9 @@ caddy
 calibre
 cfssl
 chromium
+clang
+clipcat
+cmake
 cowsay
 cpupower
 ddgr
@@ -127,7 +130,6 @@ otf-font-awesome
 owncloud-client
 p7zip
 parallel
-parcellite
 pass
 pavucontrol
 perf

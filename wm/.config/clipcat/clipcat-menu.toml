@@ -1,0 +1,19 @@
+finder = "rofi"
+preview_length = 80
+
+[rofi]
+line_length = 80
+menu_length = 20
+menu_prompt = "📋"
+extra_arguments = [
+    "-theme-str",
+    '#window {  anchor: southeast; location: southeast; width: 500px; }',
+    "-xoffset", "-15",
+    "-yoffset", "-15"
+]
+
+[log]
+emit_journald = false
+emit_stdout = true
+emit_stderr = true
+level = "INFO"

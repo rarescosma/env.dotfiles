@@ -38,6 +38,7 @@ bindsym $mod+Shift+q kill
 bindsym $alt+space exec --no-startup-id rofi -show combi
 bindsym $mod+m exec --no-startup-id rofi -show emoji -modi emoji
 bindsym $mod+c exec --no-startup-id rofi -show cht -modi cht:cht-rofi -matching prefix
+bindsym $mod+v exec --no-startup-id clipcat-menu
 
 # focus on a specific task
 bindsym $mod+backslash exec --no-startup-id $XDG_CONFIG_HOME/i3/focus.sh

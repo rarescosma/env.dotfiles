@@ -14,8 +14,8 @@ echo volctl[$!]: Volume control widget
 nm-applet &
 echo nm-applet[$!]: NetworkManager applet
 
-parcellite &
-echo parcellite[$!]: clipboard manager
+clipcatd -r
+echo clipcatd[$!]: clipboard manager
 
 unclutter &
 echo unclutter[$!]: hide cursor if unused
