@@ -7,7 +7,7 @@ if ! test -d "${MEDIA}"; then
 fi
 
 _deps=(
-  "scrot"
+  "maim"
   "zenity"
   "xsel"
   "i3-msg"
@@ -24,10 +24,8 @@ done
 set -e
 
 # capture screen portion
-sleep 0.2
 path="${MEDIA}/$(date '+%y%m%d_%H%M%S')_$(openssl rand -hex 16).png"
-xdotool mousemove_relative 1 0 mousemove_relative --sync -- -1 0
-scrot --freeze -s "${path}" || exit
+maim --select --nodrag "${path}" || exit
 
 # ask for subpath + caption
 path_caption=$(zenity --entry --title="Snap details" --text="Format: <path>|<caption>")

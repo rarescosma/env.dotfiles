@@ -91,6 +91,7 @@ lsof
 lvm2
 lxappearance
 lxd
+maim
 man-db
 man-pages
 mariadb-clients
@@ -162,7 +163,6 @@ rmlint
 rofi-emoji
 rustup
 sccache
-scrot
 siege
 sl
 smartmontools
