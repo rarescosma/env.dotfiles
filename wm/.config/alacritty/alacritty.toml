@@ -66,11 +66,6 @@ action = "Copy"
 key = "C"
 mods = "Control|Shift"
 
-[[keyboard.bindings]]
-chars = "\u0001/"
-key = "F"
-mods = "Control"
-
 [scrolling]
 history = 0
 
