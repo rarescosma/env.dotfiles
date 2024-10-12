@@ -12,18 +12,17 @@ if (( $+commands[rmtrash] )); then
   alias rm!='/sbin/rm'
 fi
 
-unalias l
-function l() {
+unalias ls
+function ls() {
   if (( $+commands[eza] )); then
     eza -lhg --git --group-directories-first $*
   else
-    ls -lh $*
+    command ls -lh --color=tty $*
   fi
 }
-alias la="l -ah"
-alias lk="l -s=size"                # Sorted by size
-alias lm="l -s=modified"            # Sorted by modified date
-alias lc="l --created -s=created"   # Sorted by created date
+alias lk="ls -s=size"                # Sorted by size
+alias lm="ls -s=modified"            # Sorted by modified date
+alias lc="ls --created -s=created"   # Sorted by created date
 # last modified file in dir
 function lmf() {
     local dir="${1:-.}"
