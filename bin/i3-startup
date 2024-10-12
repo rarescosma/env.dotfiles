@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-REDSHIFT_COORDS="59.32:18.6" # 46.77:23.62 (Cluj)
+#REDSHIFT_COORDS="59.32:18.6"  # Sthlm
+REDSHIFT_COORDS="46.77:23.62" # Cluj
 
 picom -b
 echo picom[$(pidof picom)]: boot up le compositor
@@ -50,5 +51,9 @@ command -v espanso >/dev/null 2>&1 && {
 ,wm ,keyboard::setup
 ofc="${HOME}/var/repos/OpenFreezeCenter"
 test -d $ofc && $ofc/.venv/bin/python3 $ofc/set_fans.py auto
+
+# unconditionally start x11vnc
+pkill -f x11vnc; sleep 1
+x11vnc -display :0 -forever -repeat -loop -notruecolor -no6 -noipv6 -listen 0.0.0.0 2>&1 >/tmp/x11vnc.log
 
 wait

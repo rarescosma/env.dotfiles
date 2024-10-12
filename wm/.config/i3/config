@@ -187,7 +187,6 @@ bar {
 # locker
 set $Locker $XDG_CONFIG_HOME/i3/locker.sh
 exec --no-startup-id $Locker --start
-exec --no-startup-id xautolock -corners 0-00 -cornersize 150 -time 10 -locker "$Locker"
 
 # startup
 exec --no-startup-id systemctl --user start i3-startup.service
@@ -202,10 +201,8 @@ new_window pixel 1
 bindsym XF86Tools exec --no-startup-id $Locker
 
 # brightness controls
-bindsym XF86MonBrightnessUp exec ~/bin/loglux up
-bindsym XF86MonBrightnessDown exec ~/bin/loglux down
-bindsym XF86KbdBrightnessUp exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -a10%
-bindsym XF86KbdBrightnessDown exec ~/bin/lux -c /sys/class/leds/smc::kbd_backlight -s10%
+bindsym XF86MonBrightnessUp exec ~/bin/loglux up -p /sys/class/backlight/intel_backlight
+bindsym XF86MonBrightnessDown exec ~/bin/loglux down -p /sys/class/backlight/intel_backlight
 
 # media player controls
 bindsym XF86AudioPrev exec playerctl previous
