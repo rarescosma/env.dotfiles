@@ -2,12 +2,17 @@ finder = "rofi"
 preview_length = 80
 
 [rofi]
-line_length = 80
+line_length = 90
 menu_length = 20
 menu_prompt = "📋"
 extra_arguments = [
     "-theme-str",
-    '#window {  anchor: southeast; location: southeast; width: 500px; }',
+    """
+    #window {  anchor: southeast; location: southeast; width: 700px; }
+    #element { children: [element-index, element-text ]; }
+    #element-index { color: #5a75eb; padding: 0 5px 0 0; }
+    #element-index selected { color: #aaaaaa; }
+    """,
     "-xoffset", "-15",
     "-yoffset", "-15"
 ]
