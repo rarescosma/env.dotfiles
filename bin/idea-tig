@@ -9,7 +9,12 @@ FILE_DIR="$2"
 if [[ ! -z "$FILE_DIR" ]]; then
   pushd "$FILE_DIR" 2>/dev/null && {
     SUB_PROJECT_PATH="$(git rev-parse --sq --show-toplevel || true)"
-    test -n "$SUB_PROJECT_PATH" && PROJECT_PATH="$SUB_PROJECT_PATH"
+    if test -n "$SUB_PROJECT_PATH"; then
+      PROJECT_PATH="$SUB_PROJECT_PATH"
+      pushd "$PROJECT_PATH"
+    else
+      popd
+    fi
   }
 fi
 PROJECT="$(basename "$PROJECT_PATH")"
