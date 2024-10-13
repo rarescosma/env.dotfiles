@@ -11,9 +11,9 @@ emit_stderr = true
 level = "INFO"
 
 [watcher]
-enable_clipboard = true
 enable_primary = false
-enable_secondary = false
+enable_secondary = true
+enable_clipboard = true
 filter_text_min_length = 1
 filter_text_max_length = 20000000
 denied_text_regex_patterns = []
