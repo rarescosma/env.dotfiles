@@ -4,7 +4,7 @@ let mapleader=" "
 " Reload config.
 nmap <silent> <leader>V <Action>(IdeaVim.ReloadVimRc.reload)
 
-set clipboard=autoselect,ideaput
+set clipboard=ideaput
 set surround
 set hlsearch
 set visualbell
