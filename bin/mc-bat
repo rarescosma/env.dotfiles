@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bat --paging=always --style=plain --pager="less -R +g" "$@"
