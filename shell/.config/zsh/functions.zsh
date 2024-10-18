@@ -126,7 +126,7 @@ i() {
 }
 
 # -- Z / Misc ------------------------------------------------------------------
-(( $+commands[pbcopy] )) || alias pbcopy='xsel -b';
+(( $+commands[pbcopy] )) || alias pbcopy='xsel -bi';
 alias t="t -t ${XDG_STATE_HOME}/t"
 alias o='open_command'
 
