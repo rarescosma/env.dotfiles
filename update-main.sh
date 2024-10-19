@@ -4,12 +4,12 @@ set -e
 IMMUS=""
 
 _stash_arch_packs() {
-    git update-index --no-assume-unchanged _arch/package*
+    git update-index --no-assume-unchanged _arch/package* misc/.config/mc/ini
     git stash || true
 }
 
 _unchange_arch_packs() {
-    git update-index --assume-unchanged _arch/package*
+    git update-index --assume-unchanged _arch/package* misc/.config/mc/ini
 }
 
 _restore_immus() {
