@@ -156,6 +156,7 @@ bar {
     font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
     status_command tendril -c c6cbd8 aio -j
     i3bar_command i3bar
+    tray_output primary
 
     output eDP1
     output eDP-1-1
