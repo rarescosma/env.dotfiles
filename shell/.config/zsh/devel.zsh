@@ -45,10 +45,12 @@ fi
 
 # -- Python --------------------------------------------------------------------
 if [[ "$enable_devel" =~ "python" ]]; then
-  export PIPENV_VENV_IN_PROJECT=1
-  export PIPENV_IGNORE_VIRTUALENVS=0
-  export PIPENV_HIDE_EMOJIS=1
-  export PIPENV_NOSPIN=1
+  if command -v pipenv >/dev/null; then
+    export PIPENV_VENV_IN_PROJECT=1
+    export PIPENV_IGNORE_VIRTUALENVS=0
+    export PIPENV_HIDE_EMOJIS=1
+    export PIPENV_NOSPIN=1
+  fi
 
   alias pipu='pip install -U pip'
   alias pyv="python '$_DIRENV/which.py'"
