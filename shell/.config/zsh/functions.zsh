@@ -126,7 +126,7 @@ i() {
 }
 
 # -- Z / Misc ------------------------------------------------------------------
-(( $+commands[pbcopy] )) || alias pbcopy='xargs clipcatctl insert';
+(( $+commands[pbcopy] )) || alias pbcopy="xargs -0 -I% clipcatctl insert -- '%'";
 alias t="t -t ${XDG_STATE_HOME}/t"
 alias o='open_command'
 
