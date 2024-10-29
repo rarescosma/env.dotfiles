@@ -106,7 +106,7 @@ vil() {
       rg_all='.$'
       c_style="--colors=match:none"
     fi
-    r=$(rg --line-number --no-heading --color=always $c_style --smart-case -H $rg_all "$@" \
+    r=$(rg --line-number --no-heading --color=always $c_style --smart-case -H $rg_all "$@" 2>/dev/null \
         | fzf -d ':' -n 2.. --ansi --no-sort --preview-window 'down:80%:+{2}-5' \
           --preview 'bat -f --style=numbers --highlight-line {2} {1}' \
         | tail -n1)
