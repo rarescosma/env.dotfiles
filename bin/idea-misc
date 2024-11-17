@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IDEA_VERSION=${IDEA_VERSION:-"2024.2"}
+IDEA_VERSION=${IDEA_VERSION:-"2024.3"}
 
 backup() {
   output_file=${1:-${HOME}/idea-backup-$(date "+%s").zst}

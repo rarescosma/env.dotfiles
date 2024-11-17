@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SED='sed --in-place --follow-symlinks'
-IDEA_VERSION=${IDEA_VERSION:-"2024.2"}
+IDEA_VERSION=${IDEA_VERSION:-"2024.3"}
 
 #     ____
 #    / __ \___ _   __(_)_______  _____
