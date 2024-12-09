@@ -9,7 +9,7 @@
     word_wrap = yes
     ignore_newline = no
     width = 500
-    height = 250
+    height = (0, 250)
     origin = top-right
     offset = 10x50
     shrink = no
