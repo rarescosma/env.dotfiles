@@ -77,4 +77,3 @@ mkdir -p "$MOUNTPOINT"
 (mount | grep "$MOUNTPOINT") || mount "$PARTITION_PATH" "$MOUNTPOINT" -o uid=$(id -u $USER),gid=$(id -g $USER),umask=002
 "_handle_${DEV_TYPE}"
 sync
-umount "$MOUNTPOINT"
