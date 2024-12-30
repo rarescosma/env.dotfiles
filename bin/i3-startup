@@ -39,6 +39,9 @@ echo towa[$!]: push screenshots to static.getbetter
 towa --upload-to $TOWA_TORRENTS &
 echo towa[$!]: push torrents to seedbox
 
+# apparently this needs to be started manually now
+systemctl --user start dunst.service
+
 # keyboard expansions manager
 find "${HOME}/.config/espanso/match" -name "tomb_*" -xtype l -delete
 command -v espanso >/dev/null 2>&1 && {
