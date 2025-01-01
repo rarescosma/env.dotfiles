@@ -2,7 +2,7 @@
 
 wall="$(find ~/media/wallpapers -maxdepth 1 -type f | shuf | head -1)"
 
-notify-send "new wall: $wall"
+notify-send -h "string:x-dunst-stack-tag:wallpaper-notify" "new wall: $wall"
 clipcatctl insert -- "$wall"
 feh --no-fehbg --bg-fill "$wall"
 
