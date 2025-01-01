@@ -3,10 +3,6 @@ nmap s <Nop>
 xmap s <Nop>
 nmap S <Nop>
 
-" Argument insert/append
-nmap si viaovi <C-h>,<C-h>
-nmap sa viava,<space>
-
 " Search results centered please.
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz

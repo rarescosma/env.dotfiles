@@ -49,6 +49,8 @@ nmap <leader>g <Action>(Replace)
 vmap <leader>g <Action>(Replace)
 nmap <leader>pf <Action>(FindInPath)
 vmap <leader>pf <Action>(FindInPath)
+nmap s <Action>(FindInPath)
+vmap s <Action>(FindInPath)
 nmap <leader>pg <Action>(ReplaceInPath)
 vmap <leader>pg <Action>(ReplaceInPath)
 
