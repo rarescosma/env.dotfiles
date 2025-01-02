@@ -47,7 +47,7 @@ surroundtutor() {
 }
 
 # -- ssh-agent -----------------------------------------------------------------
-[[ -v enable_ssh_agent ]] || enable_ssh_agent=1
+[[ -v enable_ssh_agent ]] || enable_ssh_agent=0
 
 if [[ "$enable_ssh_agent" == "1" ]]; then
   if [ -z "$(pgrep ssh-agent)" ]; then
