@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# nuke saved gpg + ssh keys
+gpg-connect-agent reloadagent /bye
+ssh-add -D
+
 if test -f /tmp/i3/caffeine; then
   echo "had caffeine, will not lock"
   exit 0
