@@ -3,12 +3,8 @@
 _deps=(
   "findmnt"
   "lsblk"
-  "notify-send"
   "rsync"
-  "scp"
   "udevadm"
-  "xsel"
-  "zenity"
 )
 for _dep in "${_deps[@]}"; do
   command -v "${_dep}" >/dev/null || (
@@ -77,38 +73,6 @@ function ,backup() {
     git commit -m "update at $ts"
   fi
   popd >/dev/null
-}
-
-# If there's a valid URL in the clipboard => turn it into a .url file
-# and push the file to the mobilize queue on the server.
-# Otherwise, present a zenity pop-up where an URL can be entered.
-#
-# Relies on a valid KINDLE_MOBILIZE env var to be set.
-# Also relies on TOWA_KEY pointing to a valid ssh key.
-function ,upload_url() {
-  local clip url f_name
-
-  clip="$(xsel -b)"
-  test -z "$KINDLE_MOBILIZE" && return 1
-
-  if [[ "$clip" =~ ^http ]]; then
-    url="$clip"
-  else
-    url="$(zenity --entry --title="Kindle Mobilize" --text="Enter URL: ")"
-  fi
-  url="$(echo $url | tr -d '\n')"
-
-  if test -z "$url" || [[ "$url" != http* ]]; then
-    return 2
-  fi
-
-  f_name="$(date "+%F@%T")_$(hostname -s).url"
-  cat << __EOF__ > /tmp/$f_name
-[InternetShortcut]
-URL=${url}
-__EOF__
-  scp -i $TOWA_KEY /tmp/$f_name "${KINDLE_MOBILIZE}"/in/ && notify-send "Sent ${url} to Mobilize"
-  /sbin/rm /tmp/$f_name
 }
 
 # Pull the generated .mobi files from the mobilize server
