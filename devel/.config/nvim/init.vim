@@ -68,7 +68,8 @@ cnoremap %s/ %sm/
 nnoremap <F12> :set invrelativenumber<CR>:set invnu<CR>
 
 " Toggle paste.
-set pastetoggle=<F5>
+nnoremap <silent> <f5> :set paste!<cr>
+inoremap <silent> <f5> <esc>:set paste!<cr>i
 
 " Sudo make me a sandwich.
 cmap w!! w !sudo tee > /dev/null %
