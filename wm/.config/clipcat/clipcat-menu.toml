@@ -8,7 +8,7 @@ menu_prompt = "📋"
 extra_arguments = [
     "-theme-str",
     """
-    #window {  anchor: southeast; location: southeast; width: 700px; }
+    #window {  anchor: southeast; location: southeast; width: 1200px; }
     #element { children: [element-index, element-text ]; }
     #element-index { color: #5a75eb; padding: 0 5px 0 0; }
     #element-index selected { color: #aaaaaa; }

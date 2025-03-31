@@ -47,7 +47,7 @@ surroundtutor() {
 }
 
 # -- ssh-agent -----------------------------------------------------------------
-[[ -v enable_ssh_agent ]] || enable_ssh_agent=0
+[[ -v enable_ssh_agent ]] || enable_ssh_agent=1
 
 if [[ "$enable_ssh_agent" == "1" ]]; then
   if [ -z "$(pgrep ssh-agent)" ]; then
@@ -55,7 +55,7 @@ if [[ "$enable_ssh_agent" == "1" ]]; then
      eval $(ssh-agent -s) > /dev/null
   else
      export SSH_AGENT_PID=$(pgrep ssh-agent)
-     export SSH_AUTH_SOCK="$(find /run/user/$(id -u)/ssh-* -name "ssh-agent.*" 2>/dev/null)"
+     export SSH_AUTH_SOCK="$(find /tmp/ssh-* -name "agent.*" 2>/dev/null)"
   fi
 fi
 

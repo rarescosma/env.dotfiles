@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
+font "pango:IosevkaRar Nerd Font Propo Semi-Bold 16"
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -16,7 +16,6 @@ for_window [class="Alacritty"] border pixel 1
 assign [class="obsidian"] number 7
 assign [class="Zotero"] number 7
 assign [class="roon.exe"] number 7
-smart_borders on
 
 # apps
 bindsym $mod+Return exec alacritty
@@ -42,6 +41,9 @@ bindsym $mod+v exec --no-startup-id clipcat-menu
 
 # focus on a specific task
 bindsym $mod+backslash exec --no-startup-id $XDG_CONFIG_HOME/i3/focus.sh
+
+# wallpaper
+bindsym $mod+shift+w exec --no-startup-id $HOME/bin/shuffle-wall
 
 # change focus
 bindsym $mod+h focus left
@@ -145,12 +147,12 @@ bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 
 # i3blocks / i3bar
 bar {
-    font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
+    font "pango:IosevkaRar Nerd Font Propo Semi-Bold 16"
     status_command tendril -c c6cbd8 aio -j
     i3bar_command i3bar
-    tray_output primary
+    tray_output all
 
-    output eDP1
+    output eDP-1
     output eDP-1-1
     output eDP-1-2
     output DP-0
