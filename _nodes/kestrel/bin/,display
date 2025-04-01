@@ -1,6 +1,31 @@
 #!/usr/bin/env bash
 
+,fortress() {
+  _update_default fortress
+
+  while ! xrandr \
+    --output eDP-1 --primary --mode 1920x1200 --pos 2298x2360 --rotate normal \
+    --output DP-1 --off \
+    --output DP-2 --off \
+    --output DP-3 --off \
+    --output DP-4 --off \
+    --output DP-1-8 --mode 2560x1440 --pos 0x0 --rotate right \
+    --output DP-1-1 --off \
+    --output DP-1-1-8 --mode 3840x2160 --pos 1440x200 --rotate normal \
+    --output DP-1-1-1 --off; do
+      sleep 1
+  done
+
+  ,wm dpi::terminal 12
+  ,wm dpi::i3 12
+  ,wm dpi::x 144
+  ,wm dpi::rofi 18
+  ,wm dpi::idea 24 24
+}
+
 ,four_k() {
+  _update_default four_k
+
   while ! xrandr \
     --output eDP-1 --primary --mode 1920x1200 --pos 960x2160 --rotate normal \
     --output DP-1 --off \
@@ -10,31 +35,59 @@
   done
 
   ,wm dpi::terminal 12
-  ,wm dpi::i3 10 
+  ,wm dpi::i3 12
   ,wm dpi::x 144
   ,wm dpi::rofi 18
-
-  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
+  ,wm dpi::idea 24 24
 }
 
 ,internal() {
+  _update_default internal
+
   while ! xrandr --auto; do
     sleep 1
   done
 
+  _low_dpi
+}
+
+,blackbird() {
+  _update_default blackbird
+
+  while ! xrandr \
+    --output eDP-1 --primary --mode 1920x1200 --pos 760x1440 --rotate normal \
+    --output DP-1 --off \
+    --output DP-2 --mode 3440x1440 --pos 0x0 --rotate normal \
+    --output DP-3 --off --output DP-4 --off; do
+      sleep 1
+  done
+
+  _low_dpi
+}
+
+_update_default() {
+  local display="${1:-}"
+  test -z "$display" && return
+
+  sed "s/^export DEFAULT_DISPLAY=.*$/export DEFAULT_DISPLAY=\",${display}\"/" -i ~/.local/env
+}
+
+_low_dpi() {
   ,wm dpi::terminal 11
   ,wm dpi::i3 9 
   ,wm dpi::x 110
-  ,wm dpi::rofi 12
-
-  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
+  ,wm dpi::rofi 13
+  ,wm dpi::idea 16 18 # <editor> <ui>
 }
+
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
   test -z "${SYSTEMD_EXEC_PID:-}" && exec 2> >(tee -a /dev/stderr)
-  $@
+  "$@"
+
+  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
 fi
 

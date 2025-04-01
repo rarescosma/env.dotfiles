@@ -2,7 +2,7 @@
 set $mod Mod4
 set $alt Mod1
 
-font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
+font "pango:IosevkaRar Nerd Font Propo Semi-Bold 9"
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -150,7 +150,7 @@ bar {
     i3bar_command i3bar
     tray_output primary
 
-    output eDP1
+    output eDP-1
     output eDP-1-1
     output eDP-1-2
     output DP-0

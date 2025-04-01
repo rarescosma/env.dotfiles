@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REDSHIFT_COORDS="59.32:18.6" # 46.77:23.62 (Cluj)
+REDSHIFT_COORDS="55.7:13.19" # 46.77:23.62 (Cluj) 59.32:18.6 (Sthlm)
 
 picom -b
 echo picom[$(pidof picom)]: boot up le compositor
