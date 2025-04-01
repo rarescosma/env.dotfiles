@@ -82,7 +82,7 @@ function dpi::rofi() {
 
   roficonf="${HOME}/.config/rofi/config.rasi"
 
-  $SED -E "s/iosevka [[:digit:]]+/iosevka $font_size/" $roficonf
+  $SED -E "s/IosevkaRar Nerd Font Propo [[:digit:]]+/IosevkaRar Nerd Font Propo $font_size/" $roficonf
 }
 
 #    _  __
