@@ -20,12 +20,6 @@ echo clipcatd[$!]: clipboard manager
 unclutter &
 echo unclutter[$!]: hide cursor if unused
 
-thunar --daemon &
-echo thunar[$!]: speed up thunar by summoning its daemon
-
-syndaemon -i 1 -t -k &
-echo syndaemon[$!]: inhibit touchboard while keyboard is in use
-
 redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
 echo redshift-gtk[$!]: make things red at sunset
 
@@ -35,9 +29,6 @@ towa -d ${HOME}/media/screenshots -f "^.*\\.png$" \
     --bitly-token $TOWA_BITLY \
     --no-delete-src &
 echo towa[$!]: push screenshots to static.getbetter
-
-towa --upload-to $TOWA_TORRENTS &
-echo towa[$!]: push torrents to seedbox
 
 # apparently this needs to be started manually now
 systemctl --user start dunst.service
