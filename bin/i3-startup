@@ -40,7 +40,7 @@ command -v espanso >/dev/null 2>&1 && {
 }
 
 # display + keyboard + fans
-,display ,default
+,display "$DEFAULT_DISPLAY"
 ,wm ,keyboard::setup
 ofc="${HOME}/var/repos/OpenFreezeCenter"
 test -d $ofc && $ofc/.venv/bin/python3 $ofc/set_fans.py auto

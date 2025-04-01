@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-,default() {
+,four_k() {
   while ! xrandr \
     --output eDP-1 --primary --mode 1920x1200 --pos 960x2160 --rotate normal \
     --output DP-1 --off \
@@ -9,9 +9,9 @@
       sleep 1
   done
 
-  ,wm dpi::terminal 16
-  ,wm dpi::i3 12 
-  ,wm dpi::x 200 
+  ,wm dpi::terminal 12
+  ,wm dpi::i3 10 
+  ,wm dpi::x 144
   ,wm dpi::rofi 18
 
   feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
@@ -23,7 +23,7 @@
   done
 
   ,wm dpi::terminal 11
-  ,wm dpi::i3 12 
+  ,wm dpi::i3 9 
   ,wm dpi::x 110
   ,wm dpi::rofi 12
 
