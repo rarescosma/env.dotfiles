@@ -15,6 +15,9 @@ matches:
   - trigger: "g@@"
     replace: "rares@getbetter.ro"
 
+  - trigger: "e@@"
+    replace: "rares.cosma@elastisys.com"
+
   - trigger: "o@@"
     replace: "oppy.fug@gmail.com"
 
