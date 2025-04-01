@@ -42,7 +42,7 @@ stow::bin() {
   mkdir -p "$HOME/bin"; stow bin bin
 
   host_dir="$dotfiles_dir/_nodes/$(_host)"
-  if test -d "$host_dir"; then
+  if test -d "$host_dir/bin"; then
     echo "========================"
     echo "Stowing node binaries..."
     echo "========================"
