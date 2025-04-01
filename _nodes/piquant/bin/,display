@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+,default() {
+  while ! xrandr \
+    --output eDP-1 --primary --mode 1920x1200 --pos 960x2160 --rotate normal \
+    --output DP-1 --off \
+    --output DP-2 --mode 3840x2160 --pos 0x0 --rotate normal \
+    --output DP-3 --off --output DP-4 --off; do
+      sleep 1
+  done
+
+  ,wm dpi::terminal 16
+  ,wm dpi::i3 12 
+  ,wm dpi::x 200 
+  ,wm dpi::rofi 18
+
+  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
+}
+
+,internal() {
+  while ! xrandr --auto; do
+    sleep 1
+  done
+
+  ,wm dpi::terminal 11
+  ,wm dpi::i3 12 
+  ,wm dpi::x 110
+  ,wm dpi::rofi 12
+
+  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
+}
+
+(return 0 2>/dev/null) && sourced=1 || sourced=0
+
+# don't dispatch if we're being sourced
+if [[ "$sourced" == "0" ]]; then
+  test -z "${SYSTEMD_EXEC_PID:-}" && exec 2> >(tee -a /dev/stderr)
+  $@
+fi
+
