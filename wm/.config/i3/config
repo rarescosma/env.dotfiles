@@ -21,7 +21,7 @@ smart_borders on
 # apps
 bindsym $mod+Return exec alacritty
 bindsym $mod+0x60 exec alacritty -e tmux new-session -A -D -s base
-bindsym $mod+t exec thunar
+bindsym $mod+t exec pcmanfm
 bindsym $mod+slash exec firefox
 bindsym $mod+Shift+slash exec firefox --private-window
 
