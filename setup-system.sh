@@ -26,14 +26,9 @@ setup::etc() {
   echo "=========================="
 
   copy "etc/NetworkManager/conf.d/20-connectivity.conf"
-  copy "etc/asd.conf"
   copy "etc/conf.d/snapper"
   copy "etc/containers/registries.conf"
   copy "etc/default/grub-btrfs/config"
-  copy "etc/depmod.d/00-extra.conf"
-  copy "etc/dns-over-https/doh-client.conf"
-  copy "etc/fonts/conf.d/75-noto-color-emoji.conf"
-  copy "etc/fonts/conf.d/30-font-aliases.conf"
   copy "etc/interception/udevmon.yaml"
   copy "etc/interception/dual-function-keys/modifiers.yaml"
   copy "etc/libvirt/qemu.conf"
@@ -42,14 +37,12 @@ setup::etc() {
   copy "etc/profile.d/jre.sh"
   copy "etc/snap-pac.ini"
   copy "etc/snapper/configs/root"
-  copy "etc/sudoers.d/override"
   copy "etc/sysctl.d/99-sysctl.conf"
   copy "etc/systemd/logind.conf"
   copy "etc/systemd/system/closetomb.service"
   copy "etc/systemd/system/getty@tty1.service.d/override.conf"
   copy "etc/systemd/system/powertop.service"
   copy "etc/locale.nopurge"
-  copy "etc/pacman.conf"
 }
 
 setup::backup() {
@@ -65,7 +58,6 @@ setup::backup() {
   copy "etc/systemd/system/autoborg@root.service"
   copy "etc/systemd/system/autoglacier.timer"
   copy "etc/systemd/system/autoglacier.service"
-  copy "etc/systemd/system/ec_io_wheel.service"
   link "etc/backup/autousb/replicate_backup@.service" "etc/systemd/system/replicate_backup@.service"
   link "etc/backup/autousb/65-replicate_backup.rules" "etc/udev/rules.d/65-replicate_backup.rules"
 }
@@ -74,7 +66,9 @@ setup::_node() {
   local hostname=$(head -1 /etc/hostname)
   export HOSTNAME="$hostname"
 
-  copy_host "etc/environment"
+  if test -f "$dotfiles_dir/_nodes/$hostname/etc/environment"; then
+    copy_host "etc/environment"
+  fi
 
   if [[ $hostname == shrewd ]]; then
     copy_host "etc/modprobe.d/i915.conf"
