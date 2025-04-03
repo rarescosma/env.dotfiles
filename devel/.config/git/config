@@ -58,3 +58,5 @@
     required = true
 [url "ssh://git@github.com/"]
     pushInsteadOf = https://github.com/
+[includeIf "gitdir:~/src/esys/**"]
+    path = ~/.config/git/esys
