@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Resetting keyboard...
+When = PostTransaction
+Exec = /usr/bin/sudo -iu karelian bash -c "cd /home/karelian/bin; ./,wm ,keyboard::setup"
