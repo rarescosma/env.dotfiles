@@ -17,7 +17,7 @@ openvpn() {
   vpn_config="${XDG_DATA_HOME}/openvpn/$(hostname -s)-${to_who}.sec"
   log_path="/tmp/ovpn-${to_who}.log"
 
-  sudo bash -c "openvpn --config <(gpg --decrypt --no-symkey-cache - <'${vpn_config}') --mute-replay-warnings --daemon '${to_who}' --log '${log_path}'"
+  sudo bash -c "openvpn --config /tomb/var/ovpn/${to_who}/ufo.ovpn --mute-replay-warnings --daemon '${to_who}' --log '${log_path}'"
 }
 
 ,vps() {
