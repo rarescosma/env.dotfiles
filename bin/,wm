@@ -10,6 +10,7 @@ IDEA_VERSION=${IDEA_VERSION:-"2024.3"}
 # /_____/\___/|___/_/\___/\___/____/
 
 function ,keyboard::setup() {
+  eval $(x11_env)
   command -v udevadm >/dev/null 2>&1 && udevadm settle
   xset r rate 300 50
   setxkbmap -layout ro
@@ -93,28 +94,28 @@ function dpi::rofi() {
 #                /____/
 
 function ,xorg::freeze() {
-  export DISPLAY=:0
+  eval $(x11_env)
   sleep 2
   xset dpms force off
   pkill -TSTP -f Xorg
 }
 
 function ,xorg::thaw() {
-  export DISPLAY=:0
+  eval $(x11_env)
   pkill -CONT -f Xorg
   sleep 1
   xset -dpms
 }
 
 function ,melatonin() {
-  export DISPLAY=:0
+  eval $(x11_env)
   /sbin/rm -f /tmp/i3/caffeine
   xset +dpms
   xset s default
 }
 
 function ,caffeine() {
-  export DISPLAY=:0
+  eval $(x11_env)
   xset -dpms
   xset s off
   mkdir -p /tmp/i3
@@ -123,6 +124,15 @@ function ,caffeine() {
 
 function ,redshift::toggle() {
   pkill -USR1 redshift-gtk
+}
+
+function x11_env() {
+  local display xauth
+  display="$(cat /proc/$(pidof i3)/environ | tr '\0' '\n' | grep -P '^DISPLAY=')"
+  test -z "$display" || echo "export $display"
+
+  xauth="$(cat /proc/$(pidof i3)/environ | tr '\0' '\n' | grep -P '^XAUTHORITY=')"
+  test -z "$xauth" || echo "export $xauth"
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
