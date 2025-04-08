@@ -16,8 +16,6 @@ if [ -s ~/.config/X11/Xresources ]; then
 fi
 
 dbus-update-activation-environment --systemd DISPLAY
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
-export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID
 
 env | sort > ${XDG_CONFIG_HOME}/systemd/user/xinitrc.env
 
