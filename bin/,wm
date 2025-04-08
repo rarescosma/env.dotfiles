@@ -10,12 +10,12 @@ IDEA_VERSION=${IDEA_VERSION:-"2024.3"}
 # /_____/\___/|___/_/\___/\___/____/
 
 function ,keyboard::setup() {
-  eval $(x11_env)
+  eval "$(x11_env)"
   command -v udevadm >/dev/null 2>&1 && udevadm settle
   xset r rate 300 50
   setxkbmap -layout ro
   if [ -f "$XDG_CONFIG_HOME/keymap.xkb" ]; then
-      xkbcomp "$XDG_CONFIG_HOME/keymap.xkb" $DISPLAY 2>/dev/null
+      xkbcomp "$XDG_CONFIG_HOME/keymap.xkb" "$DISPLAY" 2>/dev/null
   fi
 }
 
@@ -26,7 +26,7 @@ function ,keyboard::setup() {
 # /_____/_/   /___/
 
 function dpi::terminal() {
-  local font_size="${1}"
+  local config font_size="${1}"
 
   config="${HOME}/.config/alacritty/alacritty.toml"
   $SED -E "s/size = [0-9.]+ #fontsize/size = $font_size #fontsize/" "$config"
@@ -37,7 +37,7 @@ function dpi::i3() {
   i3_config="${HOME}/.config/i3/config"
   font_size="${1}"
 
-  $SED -E "s/Iosevka([^0-9]+)[[:digit:]]+/Iosevka\1$font_size/" $i3_config
+  $SED -E "s/Iosevka([^0-9]+)[[:digit:]]+/Iosevka\1$font_size/" "$i3_config"
   i3-msg reload 1>/dev/null
 }
 
@@ -48,8 +48,8 @@ function dpi::gtk() {
   gtkrc2="${HOME}/.gtkrc-2.0"
   gtkrc3="${HOME}/.config/gtk-3.0/settings.ini"
 
-  $SED -E "s/Cantarell [[:digit:]]+/Cantarell $font_size/" $gtkrc2
-  $SED -E "s/Cantarell [[:digit:]]+/Cantarell $font_size/" $gtkrc3
+  $SED -E "s/Cantarell [[:digit:]]+/Cantarell $font_size/" "$gtkrc2"
+  $SED -E "s/Cantarell [[:digit:]]+/Cantarell $font_size/" "$gtkrc3"
 }
 
 function dpi::idea() {
@@ -59,11 +59,11 @@ function dpi::idea() {
   local ui_font_size="${2}"
 
   $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
-  $options_dir/editor-font.xml
+    "$options_dir"/editor-font.xml
   $SED -e "s/\"FONT_SIZE_2D\" value=\"[[:digit:]\.]\+\"/\"FONT_SIZE_2D\" value=\"${editor_font_size}.0\"/g" \
-  $options_dir/editor-font.xml
+    "$options_dir"/editor-font.xml
   $SED -e "s/\"fontSize\" value=\"[[:digit:]\.]\+\"/\"fontSize\" value=\"${ui_font_size}.0\"/g" \
-  $options_dir/other.xml
+    "$options_dir"/other.xml
 }
 
 function dpi::x() {
@@ -73,8 +73,8 @@ function dpi::x() {
   xres="${HOME}/.config/X11/Xresources"
   zshrc="${HOME}/.zshrc"
 
-  $SED -E "s/dpi: [[:digit:]]+/dpi: $font_size/" $xres
-  $SED -E "s/-dpi [[:digit:]]+/-dpi $font_size/" $zshrc
+  $SED -E "s/dpi: [[:digit:]]+/dpi: $font_size/" "$xres"
+  $SED -E "s/-dpi [[:digit:]]+/-dpi $font_size/" "$zshrc"
 }
 
 function dpi::rofi() {
@@ -83,7 +83,7 @@ function dpi::rofi() {
 
   roficonf="${HOME}/.config/rofi/config.rasi"
 
-  $SED -E "s/IosevkaRar Nerd Font Propo [[:digit:]]+/IosevkaRar Nerd Font Propo $font_size/" $roficonf
+  $SED -E "s/IosevkaRar Nerd Font Propo [[:digit:]]+/IosevkaRar Nerd Font Propo $font_size/" "$roficonf"
 }
 
 #    _  __
@@ -94,28 +94,28 @@ function dpi::rofi() {
 #                /____/
 
 function ,xorg::freeze() {
-  eval $(x11_env)
+  eval "$(x11_env)"
   sleep 2
   xset dpms force off
   pkill -TSTP -f Xorg
 }
 
 function ,xorg::thaw() {
-  eval $(x11_env)
+  eval "$(x11_env)"
   pkill -CONT -f Xorg
   sleep 1
   xset -dpms
 }
 
 function ,melatonin() {
-  eval $(x11_env)
+  eval "$(x11_env)"
   /sbin/rm -f /tmp/i3/caffeine
   xset +dpms
   xset s default
 }
 
 function ,caffeine() {
-  eval $(x11_env)
+  eval "$(x11_env)"
   xset -dpms
   xset s off
   mkdir -p /tmp/i3
@@ -128,10 +128,10 @@ function ,redshift::toggle() {
 
 function x11_env() {
   local display xauth
-  display="$(cat /proc/$(pidof i3)/environ | tr '\0' '\n' | grep -P '^DISPLAY=')"
+  display="$(tr '\0' '\n' < /proc/"$(pidof i3)"/environ | grep -P '^DISPLAY=')"
   test -z "$display" || echo "export $display"
 
-  xauth="$(cat /proc/$(pidof i3)/environ | tr '\0' '\n' | grep -P '^XAUTHORITY=')"
+  xauth="$(tr '\0' '\n' < /proc/"$(pidof i3)"/environ | grep -P '^XAUTHORITY=')"
   test -z "$xauth" || echo "export $xauth"
 }
 
@@ -139,5 +139,5 @@ function x11_env() {
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
-  $@
+  "$@"
 fi
