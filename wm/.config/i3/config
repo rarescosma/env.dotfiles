@@ -145,8 +145,8 @@ bindsym $mod+Ctrl+l resize grow width 1 px or 1 ppt
 
 # i3blocks / i3bar
 bar {
-    font "pango:IosevkaRar Nerd Font Propo Semi-Bold 8"
-    status_command tendril -c c6cbd8 aio -j
+    font "pango:IosevkaRar Nerd Font Propo Semi-Bold 9"
+    status_command tendril -i 5000 -c c6cbd8 aio -j
     i3bar_command i3bar
     tray_output primary
 
@@ -156,6 +156,7 @@ bar {
     output DP-0
     output DP-1
     output DP-2
+    output DP-4
     output HDMI2
     output Virtual-1
 
