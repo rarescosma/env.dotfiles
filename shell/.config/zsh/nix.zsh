@@ -1,7 +1,7 @@
 prompt_nix_shell() {
   local prompt=""
-  test -n "$_NIX_PROMPT" && prompt="$_NIX_PROMPT"
-  test -n "$VIRTUAL_ENV" && prompt="$prompt 🐍"
+  test -n "$_NIX_PROMPT" && prompt="$_NIX_PROMPT "
+  test -n "$VIRTUAL_ENV" && prompt="$prompt🐍"
   test -n "$prompt" && echo "$prompt "
 }
 
