@@ -56,7 +56,7 @@ FZF_CTRL_T_COMMAND="fd --type file --follow --hidden --exclude .git"
 FZF_ALT_C_COMMAND="fd --type directory --follow --hidden"
 FZF_DEFAULT_OPTS="--exact --extended --cycle --reverse --bind change:top --bind ctrl-e:accept --expect=enter"
 FZF_TMUX=1
-IDEA_VERSION=2024.3
+IDEA_VERSION=2025.1
 
 # pkm
 VAULT_ROOT="${HOME}/sync/pkm"
