@@ -13,3 +13,13 @@
 # refactor: A code change that neither fixes a bug or adds a feature
 # test: Adding missing tests
 # chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+#
+# Esys Types
+# all: changes to multiple areas
+# bin: changes to management binaries
+# config: changes to configuration
+# deploy: changes to deployments
+# docs: changes to documentation
+# release: release related
+# scripts: changes to scripts
+# tests: changes to tests
