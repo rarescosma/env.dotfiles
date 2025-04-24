@@ -9,15 +9,15 @@
 }
 
 openvpn() {
-  local to_who vpn_config tmp_path log_path
+  local to_who log_path
   test -z "$1" && return 1
   to_who="$1"
 
   ,off
-  vpn_config="${XDG_DATA_HOME}/openvpn/$(hostname -s)-${to_who}.sec"
+  ,tomb ,open || exit 1
   log_path="/tmp/ovpn-${to_who}.log"
 
-  sudo bash -c "openvpn --config /tomb/var/ovpn/${to_who}/ufo.ovpn --mute-replay-warnings --daemon '${to_who}' --log '${log_path}'"
+  sudo bash -c "openvpn --config /tomb/var/ovpn/${to_who}/$(hostname -s).ovpn --mute-replay-warnings --daemon '${to_who}' --log '${log_path}'"
 }
 
 ,vps() {
@@ -26,6 +26,10 @@ openvpn() {
 
 ,seedbox() {
   openvpn seedbox
+}
+
+,brewer() {
+  openvpn brewer
 }
 
 ,off() {
