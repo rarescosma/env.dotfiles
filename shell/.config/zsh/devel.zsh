@@ -53,7 +53,6 @@ if [[ "$enable_devel" =~ "python" ]]; then
   fi
 
   alias pipu='pip install -U pip'
-  alias pyv="python '$_DIRENV/which.py'"
 
   ## create a direnv powered virtualenv
   nvenv() {
