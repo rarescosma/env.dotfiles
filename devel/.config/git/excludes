@@ -5,6 +5,7 @@
 /.env
 .envrc
 /.envrc.*
+/mise.toml
 
 # IntelliJ
 /.idea
