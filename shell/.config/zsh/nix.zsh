@@ -42,10 +42,6 @@ if type direnv >/dev/null; then
   }
 fi
 
-if type mise >/dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
 # create / refresh nix shell
 alias nnix='bash -c "~/src/.direnv/bin/nix-direnv-reload && touch --date=@0 ~/src/.envrc"'
 

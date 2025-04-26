@@ -18,6 +18,7 @@ fi
 source ~/.config/zsh/oh-my-vendor.zsh
 
 [[ -f ~/.config/zsh/nix.zsh ]] && source ~/.config/zsh/nix.zsh
+[[ -f ~/.config/zsh/mise.zsh ]] && source ~/.config/zsh/mise.zsh
 source ~/.config/zsh/fzf.zsh
 
 source ~/.config/zsh/aws.zsh
