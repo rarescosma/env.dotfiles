@@ -6,6 +6,7 @@
 .envrc
 /.envrc.*
 /mise.toml
+*/*.ignore-me
 
 # IntelliJ
 /.idea
