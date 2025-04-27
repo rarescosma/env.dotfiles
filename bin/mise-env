@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import os
-from subprocess import check_output
-import json
 from collections import defaultdict
+import json
+import os
+import shlex
+from subprocess import check_output
 
 HOME = os.getenv("HOME", "")
 
@@ -26,7 +27,7 @@ def main():
             first = False
         print(f"# source: {source.replace(HOME,'~')}")
         for key, val in envs:
-            print(f"export {key}='{val}'")
+            print(f"export {shlex.quote(key)}={shlex.quote(val)}")
 
 
 if __name__ == "__main__":
