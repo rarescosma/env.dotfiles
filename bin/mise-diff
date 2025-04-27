@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+
+"""
+Use it together with mise-env in an enter directory hook:
+
+  ```bash
+  local _diff _old_env _diff
+
+  if test -z "$_mise_env"; then
+    _old_env=""
+  else
+    _old_env="${_mise_env}"
+  fi
+
+  _diff="$(mise-env)"
+  export _mise_env="$(base64 -w0 <<<"${_diff}")"
+
+  diff <(base64 -d <<< "${_old_env}") <(echo "${_diff}") \
+    | grep '^>' | cut -c3- | sed '1{/^$/d}' \
+    | mise-diff \
+    | bat --color=always --paging=never --language=bash
+ ```
+"""
+import re
+import sys
+from typing import Iterable, Generator
+
+
+def is_source(line: str) -> bool:
+    return line.startswith("# source")
+
+
+def is_comment(line: str) -> bool:
+    return line.startswith("# ")
+
+
+def strip_empty_source(lines: list[str]) -> Generator[str, None, None]:
+    for i in range(len(lines)):
+        if lines[i] and not is_source(lines[i]):
+            yield lines[i]
+        if (
+            is_source(lines[i])
+            and i + 1 < len(lines)
+            and lines[i + 1].startswith("export")
+        ):
+            yield re.sub(r"\s\(\d+\)$", "", lines[i])
+
+
+def reinsert_spaces(lines: Iterable[str]) -> Generator[str, None, None]:
+    started = False
+    for _line in lines:
+        if is_comment(_line) and started:
+            yield ""
+        if _line:
+            yield _line
+        started = True
+
+
+if __name__ == "__main__":
+    out = "\n".join(
+        reinsert_spaces(
+            filter(None, strip_empty_source([_.strip() for _ in sys.stdin.readlines()]))
+        )
+    )
+    if out:
+        print(out)
+        print("")

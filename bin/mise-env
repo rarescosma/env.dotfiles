@@ -4,6 +4,7 @@ import json
 import os
 import shlex
 from subprocess import check_output
+import time
 
 HOME = os.getenv("HOME", "")
 
@@ -25,7 +26,7 @@ def main():
             print("")
         else:
             first = False
-        print(f"# source: {source.replace(HOME,'~')}")
+        print(f"# source: {source.replace(HOME,'~')} ({time.time_ns()})")
         for key, val in envs:
             print(f"export {shlex.quote(key)}={shlex.quote(val)}")
 
