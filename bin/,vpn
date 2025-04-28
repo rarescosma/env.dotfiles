@@ -35,12 +35,6 @@ openvpn() {
 ,off() {
   sudo -E pkill -f openvpn
   sudo wg-quick down wg0vps 2>/dev/null || true
-
-  sudo chattr -i /etc/resolv.conf
-  cat << __EOF__ | sudo tee /etc/resolv.conf >/dev/null
-nameserver ${DEFAULT_DNS}
-__EOF__
-  sudo chattr +i /etc/resolv.conf
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
