@@ -17,9 +17,6 @@ XDG_DATA_HOME=$HOME/.local/share
 XDG_STATE_HOME=$HOME/.local/state
 XDG_CACHE_HOME=$HOME/.cache
 
-# ssh
-SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
 # clean home
 AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
@@ -43,6 +40,9 @@ SCREENRC=$XDG_CONFIG_HOME/screen/screenrc
 SKAFFOLD_CONFIG=$XDG_CONFIG_HOME/skaffold
 SKAFFOLD_CACHE_FILE=$XDG_CACHE_HOME/skaffold/cache
 ZSH_EVALCACHE_DIR=$XDG_CACHE_HOME/evalcache
+
+# ssh
+SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # progs
 EDITOR=nvim

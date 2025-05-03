@@ -1,10 +1,3 @@
-if [[ "$TTY" == /dev/tty* ]]; then
-  export GPG_TTY="$TTY"
-  if command -v systemctl &>/dev/null; then
-    systemctl --user import-environment GPG_TTY
-  fi
-fi
-
 if ! test -z "$SSH_CLIENT"; then
   export GPG_TTY=$(tty)
   export DBUS_SESSION_BUS_ADDRESS=/dev/null
