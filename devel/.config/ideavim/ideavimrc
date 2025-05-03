@@ -108,6 +108,10 @@ nmap <leader>x <Action>(Annotate)
 " Swap arguments (argtextobj + exchange = ❤️)
 nmap <leader>S cxccxiaf,wcxia
 
+" GitHub
+nmap <leader>t ^"tyg_<Action>(Code.Review.Editor.New.Comment)
+nmap <leader>tt i```suggestion<cr><cr><esc>k"tp^
+
 " Plugins galore
 let g:highlightedyank_highlight_duration = "650"
 set highlightedyank
