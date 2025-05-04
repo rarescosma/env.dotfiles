@@ -1,4 +1,7 @@
 [settings]
-python.uv_venv_auto = true
-status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = true, truncate_show = false }
-idiomatic_version_file_enable_tools = ["python"]
+experimental = true
+status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = true, truncate = false }
+
+[settings.pipx]
+uvx = true
+
