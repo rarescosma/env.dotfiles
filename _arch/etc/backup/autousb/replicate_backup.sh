@@ -40,8 +40,6 @@ _handle_replica() {
 }
 
 _handle_kindle() {
-  local kindle_cmds
-
   # backup first, then wait for net and pull read queue
   _exec_kindle ",update_id; ,backup"
   _wait_for_net 30
@@ -64,7 +62,7 @@ _wait_for_net() {
   max_tries=${1:-10}
 
   while ! ping -c1 www.google.com &>/dev/null; do
-    if [ $tries -ge $max_tries ]; then
+    if [ $tries -ge "$max_tries" ]; then
       return 1
     fi
     tries=$(( tries + 1 ))
@@ -72,8 +70,8 @@ _wait_for_net() {
   done
 }
 
-# Mount -> dispatch -> paranoia -> unmount
+# Mount -> dispatch -> sync
 mkdir -p "$MOUNTPOINT"
-(mount | grep "$MOUNTPOINT") || mount "$PARTITION_PATH" "$MOUNTPOINT" -o uid=$(id -u $USER),gid=$(id -g $USER),umask=002
 "_handle_${DEV_TYPE}"
+(mount | grep "$MOUNTPOINT") || mount "$PARTITION_PATH" "$MOUNTPOINT" -o uid="$(id -u $USER)",gid="$(id -g $USER)",umask=002
 sync

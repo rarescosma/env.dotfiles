@@ -20,7 +20,7 @@ DEFAULT_MOUNTPOINT=/mnt/kindle
 # Relies on KINDLE_ID being present in the environment and correct.
 # See ,update_id() for an idea on how to update the KINDLE_ID.
 function ,on() {
-  test -z "$KINDLE_ID" || _attach_usb $KINDLE_ID
+  test -z "$KINDLE_ID" || _attach_usb "$KINDLE_ID"
 }
 
 # Turn the USB connection to the Kindle off.
@@ -35,8 +35,8 @@ function ,off() {
       >&2 echo "Kindle seems busy, I am not turning it off."
       return 1
     fi
-    test -z "$KINDLE_ID" || _detach_usb $KINDLE_ID
   fi
+  test -z "$KINDLE_ID" || _detach_usb "$KINDLE_ID"
 }
 
 # Update the 'export KINDLE_ID=...' stanza in ~/.local/env with the correct ID.
@@ -44,7 +44,7 @@ function ,update_id() {
   local usb_id
   usb_id="$(_get_usb_id)"
   test -n "$usb_id" && (
-    echo $usb_id
+    echo "$usb_id"
     _update_env "${HOME}/.local/env" KINDLE_ID "$usb_id"
   )
 }
@@ -63,16 +63,16 @@ function ,backup() {
 
   echo "Grabbing kindle notes at ${ts}"
   mkdir -p "$backup_dir" "$git_dir"
-  cat "${mountpoint}/documents/My Clippings.txt" |
-    tee "${backup_dir}/notes-${ts}.txt" \
+  tee "${backup_dir}/notes-${ts}.txt" \
+    < "${mountpoint}/documents/My Clippings.txt" \
     > "${git_dir}/notes.txt"
 
-  pushd "$git_dir" >/dev/null
+  pushd "$git_dir" >/dev/null || return 1
   if test -n "$(git diff)" ; then 
     git add .
     git commit -m "update at $ts"
   fi
-  popd >/dev/null
+  popd >/dev/null || return
 }
 
 # Pull the generated .mobi files from the mobilize server
@@ -80,7 +80,7 @@ function ,backup() {
 # Relies on a valid KINDLE_MOBILIZE env var to be set.
 # Also relies on TOWA_KEY pointing to a valid ssh key.
 function ,pull_queue() {
-  local mountpoint kindle_dev exclude_str
+  local mountpoint exclude_str
 
   mountpoint="$(_get_mountpoint)"
   test -z "${mountpoint}" && return 1
@@ -93,27 +93,27 @@ function ,pull_queue() {
       | awk 'NF{print $0".mobi"}')"
 
   rsync -rvP --checksum -e "ssh -i ${TOWA_KEY}" \
-    --exclude-from=<(printf %s\\n $exclude_str) \
+    --exclude-from=<(printf %s\\n "$exclude_str") \
     "${KINDLE_MOBILIZE}"/out/mobi/ \
     "${mountpoint}/documents/_Queue/"
 }
 
 # Attempt get the mountpoint - if empty, attempt mounting, then try again.
 function _get_mountpoint() {
+  local kindle_dev mountpoint
   kindle_dev="$(_get_dev)"
   test -z "${kindle_dev}" && return
 
-  mountpoint="$(findmnt -n -o target $kindle_dev)"
+  mountpoint="$(findmnt -n -o target "$kindle_dev")"
   if test -z "${mountpoint}"; then
     # got a device id, but not a mount point, let's attempt mounting
     sudo mount "${kindle_dev}" $DEFAULT_MOUNTPOINT \
-      -o uid=$(id -u $USER),gid=$(id -g $USER),umask=002 \
+      -o uid="$(id -u "$USER")",gid="$(id -g "$USER")",umask=002 \
       && echo $DEFAULT_MOUNTPOINT
   else
     echo "${mountpoint}"
   fi
 }
-
 
 # Display the /dev/{...} device of a connected Kindle.
 function _get_dev() {
@@ -131,7 +131,7 @@ function _get_usb_id() {
   usb_id="$(udevadm info -q path -n $kindle_dev | awk '{split($0, arr, "/host"); print arr[1]}' | awk -F'/' '{print $NF}' | cut -d":" -f1)"
   test -z "$usb_id" && (echo -e "could not find kindle usb id; aborting..."; exit 1)
 
-  echo $usb_id
+  echo "$usb_id"
 }
 
 function _detach_usb() {
@@ -146,7 +146,7 @@ function _update_env() {
   local f var val
   f="${1}"; shift
   var="${1}"; shift
-  val="${@}"
+  val="${*}"
   if grep -qs "export $var" "$f" ; then
     sed -i "s|^export $var=.*$|export $var=\"${val}\"|" "$f"
   else
@@ -158,5 +158,5 @@ function _update_env() {
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
-  $@
+  "${@}"
 fi
