@@ -30,3 +30,9 @@ __pycache__
 /var
 /.out
 /reports
+
+# Esys
+/helmfile.d/tmp
+/node_modules
+/package-lock.json
+/package.json

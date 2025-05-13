@@ -75,3 +75,7 @@ matches:
         type: "shell"
         params:
           cmd: "uuidgen"
+
+  # Esys
+  - trigger: "@88"
+    replace: "$CK8S_CONFIG_PATH"

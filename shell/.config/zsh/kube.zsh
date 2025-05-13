@@ -6,6 +6,10 @@ _join_by() {
 
 alias k='kubectl'
 
+if command -v kubectl >/dev/null 2>&1; then
+  eval "$(kubectl completion zsh)"
+fi
+
 ksn() {
   local ns
   ns=$(kubectl get namespaces --no-headers | sort | fzf_cmd --query "$*" | tr -s ' ' | cut -d' ' -f1)
@@ -22,9 +26,12 @@ ksc() {
 
   if ! test -f "${kube_dir}/${config}"; then
     configs=($(find "$kube_dir" -maxdepth 1 ! -type d | grep -v "/config$" | grep -v "cache"))
+    if test -n "$CK8S_CONFIG_PATH"; then
+        configs+=($(find "$CK8S_CONFIG_PATH/.state" -maxdepth 1 ! -type d | grep "kube_config"))
+    fi
 
     for ((i=1; i <= ${#configs}; i++)); do
-      configs[i]="${configs[i]/$kube_dir\/}"
+      configs[i]="${configs[i]/#${HOME}/~}"
     done
 
     config="$(_join_by $'\n' "${configs[@]}" \
@@ -34,7 +41,7 @@ ksc() {
 
   test -z "$config" && return
 
-  export KUBECONFIG="${kube_dir}/${config}"
+  export KUBECONFIG="${config/#\~/$HOME}"
   touch "$kube_dir"
   export CLUSTER="${config}"
   export KUBE_PS1_ENABLED=on
