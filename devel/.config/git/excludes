@@ -36,3 +36,6 @@ __pycache__
 /node_modules
 /package-lock.json
 /package.json
+/tests/end-to-end/.bin
+/tests/end-to-end/.run
+

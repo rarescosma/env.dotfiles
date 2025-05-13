@@ -37,6 +37,10 @@ echo "towa[$!]: push torrents to seedbox"
 socat-static unix-listen:"${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock,fork system:'xargs xdg-open' &
 echo "socat[$!]: open browser socket"
 
+/sbin/rm -rf ${XDG_RUNTIME_DIR}/ck8s-open-browser.sock
+socat-static unix-listen:${XDG_RUNTIME_DIR}/ck8s-open-browser.sock,fork system:'xargs xdg-open' &
+echo socat[$!]: open browser socket
+
 # apparently this needs to be started manually now
 systemctl --user start dunst.service
 

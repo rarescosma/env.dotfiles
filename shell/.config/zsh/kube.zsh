@@ -7,7 +7,7 @@ _join_by() {
 alias k='kubectl'
 
 if command -v kubectl >/dev/null 2>&1; then
-  eval "$(kubectl completion zsh)"
+  _evalcache kubectl completion zsh
 fi
 
 ksn() {
