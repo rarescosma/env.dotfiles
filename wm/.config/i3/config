@@ -18,6 +18,11 @@ assign [class="Zotero"] number 7
 assign [class="roon.exe"] number 7
 smart_borders on
 
+assign [class="Cypress"] number 2
+no_focus [class="Cypress"]
+mouse_warping none
+for_window [class="Cypress"] focus_on_window_activation none
+
 # apps
 bindsym $mod+Return exec alacritty
 bindsym $mod+0x60 exec alacritty -e tmux new-session -A -D -s base
