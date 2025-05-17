@@ -3,7 +3,7 @@
 REDSHIFT_COORDS="59.32:18.6" # 46.77:23.62 (Cluj)
 
 picom -b
-echo picom[$(pidof picom)]: boot up le compositor
+echo "picom[$(pidof picom)]: boot up le compositor"
 
 i3wsr &
 echo i3wsr[$!]: rename workspaces based on content
@@ -23,15 +23,15 @@ echo unclutter[$!]: hide cursor if unused
 redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
 echo redshift-gtk[$!]: make things red at sunset
 
-towa -d ${HOME}/media/screenshots -f "^.*\\.png$" \
+towa -d "${HOME}"/media/screenshots -f "^.*\\.png$" \
     --base-url    https://static.getbetter.ro/screenshots \
-    --upload-to   $TOWA_SCREENSHOTS \
-    --bitly-token $TOWA_BITLY \
+    --upload-to   "${TOWA_SCREENSHOTS}" \
+    --bitly-token "${TOWA_BITLY}" \
     --no-delete-src &
 echo towa[$!]: push screenshots to static.getbetter
 
-/sbin/rm -rf ${XDG_RUNTIME_DIR}/ck8s-open-browser.sock
-socat-static unix-listen:${XDG_RUNTIME_DIR}/ck8s-open-browser.sock,fork system:'xargs xdg-open' &
+/sbin/rm -rf "${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock
+socat-static unix-listen:"${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock,fork system:'xargs xdg-open' &
 echo socat[$!]: open browser socket
 
 # apparently this needs to be started manually now
@@ -47,6 +47,6 @@ command -v espanso >/dev/null 2>&1 && {
 ,display "$DEFAULT_DISPLAY"
 ,wm ,keyboard::setup
 ofc="${HOME}/var/repos/OpenFreezeCenter"
-test -d $ofc && $ofc/.venv/bin/python3 $ofc/set_fans.py auto
+test -d "$ofc" && "$ofc"/.venv/bin/python3 "$ofc"/set_fans.py auto
 
 wait
