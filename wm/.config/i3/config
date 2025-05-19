@@ -193,7 +193,7 @@ exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 new_window pixel 1
 
 # quick lock
-bindsym XF86Tools exec --no-startup-id $Locker
+bindsym XF86Tools exec --no-startup-id $Locker --clear-keys
 
 # brightness controls
 bindsym XF86MonBrightnessUp exec ~/bin/loglux up
@@ -222,8 +222,9 @@ bindsym Shift+0xff61 exec "~/bin/screenshot-obsidian"
 bindsym Shift+XF86LaunchA exec "~/bin/screenshot-obsidian"
 
 # system menu
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (k) lock + clear-keys, (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
+    bindsym k exec --no-startup-id $Locker --clear-keys, mode "default"
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id systemctl --user stop i3-startup.service && i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"

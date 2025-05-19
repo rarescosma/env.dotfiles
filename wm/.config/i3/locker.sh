@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
 # nuke saved gpg + ssh keys
-gpg-connect-agent reloadagent /bye
-ssh-add -D
+if [[ "$1" == "--clear-keys" ]]; then
+  shift
+  gpg-connect-agent reloadagent /bye
+  ssh-add -D
+fi
 
 if test -f /tmp/i3/caffeine; then
   echo "had caffeine, will not lock"
