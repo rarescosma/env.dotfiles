@@ -13,12 +13,12 @@ if test -f /tmp/i3/caffeine; then
 fi
 
 if [[ "$1" == "--start" ]]; then
-  i3lock -i "${XDG_CONFIG_HOME}/i3/leafy_green.png" --tiling
+  i3lock -c 000000 --pass-media-keys
   exit 0
 fi
 
 if [[ -z "$(pidof i3lock)" ]]; then
-  i3lock -i "${XDG_CONFIG_HOME}/i3/leafy_green.png" --tiling && sleep 1
+  i3lock -c 000000 --pass-media-keys && sleep 1
 else
   echo "i3lock is already running"
 fi
