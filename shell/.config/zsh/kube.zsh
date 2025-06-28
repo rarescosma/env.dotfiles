@@ -47,3 +47,41 @@ ksc() {
   export KUBE_PS1_ENABLED=on
 }
 
+kse() {
+  local ck8s_dir configs config kubeconfig
+  ck8s_dir="${HOME}/.ck8s"
+  config="$1"
+
+  if ! test -f "${ck8s_dir}/${config}"; then
+    configs=($(find "$ck8s_dir" -mindepth 1 -maxdepth 1 -type d | grep -vE ".ck8s/_|\.idea"))
+
+    for ((i=1; i <= ${#configs}; i++)); do
+      configs[i]="${configs[i]/#${HOME}/~}"
+    done
+
+    config="$(_join_by $'\n' "${configs[@]}" \
+    | sort | uniq \
+    | fzf_cmd --query "$*")"
+  fi
+
+  test -z "$config" && return
+
+  export CK8S_CONFIG_PATH="${config/#\~/$HOME}"
+
+  if test -f "${CK8S_CONFIG_PATH}/.state/kube_config_mc.yaml"; then
+      kubeconfig="${CK8S_CONFIG_PATH}/.state/kube_config_mc.yaml"
+  elif test -f "${CK8S_CONFIG_PATH}/.state/kube_config_sc.yaml"; then
+      kubeconfig="${CK8S_CONFIG_PATH}/.state/kube_config_sc.yaml"
+  fi
+
+  test -z "$kubeconfig" && {
+      unset KUBECONFIG
+      return
+  }
+
+  export KUBECONFIG="${kubeconfig}"
+
+  touch "${HOME}/.kube"
+  export KUBE_PS1_ENABLED=on
+}
+
