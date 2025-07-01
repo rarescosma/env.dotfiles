@@ -6,6 +6,8 @@
 }
 
 ,external() {
+  _update_default external
+
   xrandr --auto --output eDP-1-2 --off --output eDP-1-1 --off
 
   ,wm dpi::terminal 11
@@ -17,7 +19,9 @@
 }
 
 ,internal() {
-  xrandr --output eDP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
+  _update_default internal
+
+  xrandr --output DP-2 --primary --mode 2560x1440 --rate 59.95 --pos 0x0 --rotate normal \
     --output VIRTUAL1 --off  \
     --output DP1 --off \
     --output HDMI2 --off \
@@ -25,18 +29,27 @@
     --output DP2 --off \
     --output DP-0 --off
 
-  ,wm dpi::terminal 12
-  ,wm dpi::i3 9
-  ,wm dpi::gtk 10
-  ,wm dpi::idea 16 12
+  ,wm dpi::terminal 11
+  ,wm dpi::i3 9 
+  ,wm dpi::gtk 12
+  ,wm dpi::idea 20 22
   ,wm dpi::x 144
   ,wm dpi::rofi 18
+}
+
+_update_default() {
+  local display="${1:-}"
+  test -z "$display" && return
+
+  sed "s/^export DEFAULT_DISPLAY=.*$/export DEFAULT_DISPLAY=\",${display}\"/" -i ~/.local/env
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
 
 # don't dispatch if we're being sourced
 if [[ "$sourced" == "0" ]]; then
-  exec 2> >(tee -a /dev/stderr)
-  $@
+  test -z "${SYSTEMD_EXEC_PID:-}" && exec 2> >(tee -a /dev/stderr)
+  "$@"
+
+  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
 fi
