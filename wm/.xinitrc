@@ -19,4 +19,6 @@ dbus-update-activation-environment --systemd DISPLAY
 
 env | sort > ${XDG_CONFIG_HOME}/systemd/user/xinitrc.env
 
+xhost +local:
+
 exec i3
