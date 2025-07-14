@@ -130,6 +130,9 @@ i() {
 alias t="t -t ${XDG_STATE_HOME}/t"
 alias o='open_command'
 
+## apply a named stash
+alias gsz='git stash apply $(git stash list | fzf_cmd | cut -d" " -f1 | grep -oP "[0-9]+")'
+
 ## kill and restart process
 kick() {
   local process="${@}"
