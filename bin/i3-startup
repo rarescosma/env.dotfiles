@@ -6,36 +6,36 @@ picom -b
 echo "picom[$(pidof picom)]: boot up le compositor"
 
 i3wsr &
-echo i3wsr[$!]: rename workspaces based on content
+echo "i3wsr[$!]: rename workspaces based on content"
 
 volctl &
-echo volctl[$!]: Volume control widget
+echo "volctl[$!]: Volume control widget"
 
 nm-applet &
-echo nm-applet[$!]: NetworkManager applet
+echo "nm-applet[$!]: NetworkManager applet"
 
 clipcatd -r
-echo clipcatd[$!]: clipboard manager
+echo "clipcatd[$!]: clipboard manager"
 
 unclutter &
-echo unclutter[$!]: hide cursor if unused
+echo "unclutter[$!]: hide cursor if unused"
 
 redshift-gtk -t 5500:4800 -l $REDSHIFT_COORDS &
-echo redshift-gtk[$!]: make things red at sunset
+echo "redshift-gtk[$!]: make things red at sunset"
 
 towa -d "${HOME}"/media/screenshots -f "^.*\\.png$" \
     --base-url    https://static.getbetter.ro/screenshots \
     --upload-to   "${TOWA_SCREENSHOTS}" \
     --bitly-token "${TOWA_BITLY}" \
     --no-delete-src &
-echo towa[$!]: push screenshots to static.getbetter
+echo "towa[$!]: push screenshots to static.getbetter"
 
 towa --upload-to "${TOWA_TORRENTS}" &
-echo towa[$!]: push torrents to seedbox
+echo "towa[$!]: push torrents to seedbox"
 
 /sbin/rm -rf "${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock
 socat-static unix-listen:"${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock,fork system:'xargs xdg-open' &
-echo socat[$!]: open browser socket
+echo "socat[$!]: open browser socket"
 
 # apparently this needs to be started manually now
 systemctl --user start dunst.service
