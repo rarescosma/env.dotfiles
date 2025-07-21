@@ -53,8 +53,8 @@ set undofile
 set undodir=$XDG_DATA_HOME/vim/files/undo/
 set viminfo='100,n$XDG_DATA_HOME/vim/files/info/viminfo
 
-" Misc
-set gdefault                " Edits are global by default.
+" Edits are global by default.
+set gdefault
 
 let mapleader = "\<Space>"
 nnoremap <silent> <leader><leader> :source $MYVIMRC<cr>
