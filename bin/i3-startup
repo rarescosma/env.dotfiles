@@ -49,7 +49,9 @@ command -v espanso >/dev/null 2>&1 && {
 # keyboard + display + fans
 ,wm ,keyboard::setup
 ,display "$DEFAULT_DISPLAY"
-ofc="${HOME}/var/repos/OpenFreezeCenter"
-test -d "$ofc" && "$ofc"/.venv/bin/python3 "$ofc"/set_fans.py auto
+if [[ "${SET_FANS:-0}" == "1" ]]; then
+  ofc="${HOME}/var/repos/OpenFreezeCenter"
+  test -d "$ofc" && "$ofc"/.venv/bin/python3 "$ofc"/set_fans.py auto
+fi
 
 wait
