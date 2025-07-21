@@ -171,12 +171,14 @@ bar {
         separator  #ffffff
 
         # Type             border  background font
-        focused_workspace  #008fff #007fff #ffffff
+        focused_workspace  #3E9BB1 #29414F #ffffff
         active_workspace   #333333 #5f676a #ffffff
         inactive_workspace #333333 #000000 #888888
         urgent_workspace   #aa0000 #990000 #ffffff
     }
 }
+
+client.focused #3E9BB1 #29414F #ffffff
 
 # locker
 set $Locker $XDG_CONFIG_HOME/i3/locker.sh

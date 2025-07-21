@@ -48,7 +48,7 @@ SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 EDITOR=nvim
 VISUAL=nvim
 
-BAT_THEME=gruvbox-dark
+BAT_THEME=TwoDark
 DIFFPROG=meld
 DOCKER_BUILDKIT=1
 FZ_CMD=j

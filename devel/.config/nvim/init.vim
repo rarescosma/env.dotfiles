@@ -37,10 +37,17 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•,eol:¶   " Show those dam
 set scrolloff=3             " Display a couple of lines of context.
 set nolinebreak
 set termguicolors
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection = '0'
-let g:gruvbox_italic = '1'
-colorscheme gruvbox
+
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
+
+" Let the terminal theme shine through.
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi Visual guifg=reverse guibg=#1b4866
 
 " File handling.
 set autoread                " Reread files changed outside of vim.

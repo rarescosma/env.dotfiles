@@ -15,7 +15,6 @@ zstyle ":completion:*:commands" rehash 1  # always rehash
 autoload -Uz compinit
 
 # -- Midnight Commander --------------------------------------------------------
-export MC_SKIN=$HOME/.config/mc/solarized.ini
 export VIEWER=$HOME/bin/mc-bat
 
 # -- Z -------------------------------------------------------------------------

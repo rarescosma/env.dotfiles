@@ -1,5 +1,5 @@
 configuration {
-    font: "IosevkaRar Nerd Font Propo 12";
+    font: "IosevkaRar Nerd Font Propo 17";
     combi-modi: "xrun:~/bin/xrun,rfh:~/bin/rfh,window,ssh,drun";
     ssh-command: "tmux new-window -n '@{host}' 'ssh {host}'";
     sorting-method: "fzf";
@@ -31,4 +31,4 @@ configuration {
     kb-select-9: "Alt+9";
 }
 
-@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
+@theme "~/.config/rofi/themes/glue_pro_ocean.rasi"

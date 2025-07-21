@@ -85,7 +85,8 @@ mcview_eof=
 filepos_max_saved_entries=1024
 
 safe_overwrite=false
-shadows=true
+shadows=false
+skin=modarin256-defbg-thin
 
 [Layout]
 message_visible=true

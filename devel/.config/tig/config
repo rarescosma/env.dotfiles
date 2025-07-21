@@ -44,7 +44,9 @@ set mouse = no
 set mouse-scroll = 3
 set mouse-wheel-cursor = no
 
-color cursor blue default standout
+color cursor color6 default standout
+color title-focus black color6
+color title-blur black color6
 
 # Push/pull
 bind main L !git pull --tags -f
