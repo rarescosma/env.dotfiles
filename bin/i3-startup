@@ -30,6 +30,9 @@ towa -d "${HOME}"/media/screenshots -f "^.*\\.png$" \
     --no-delete-src &
 echo towa[$!]: push screenshots to static.getbetter
 
+towa --upload-to "${TOWA_TORRENTS}" &
+echo towa[$!]: push torrents to seedbox
+
 /sbin/rm -rf "${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock
 socat-static unix-listen:"${XDG_RUNTIME_DIR}"/ck8s-open-browser.sock,fork system:'xargs xdg-open' &
 echo socat[$!]: open browser socket
