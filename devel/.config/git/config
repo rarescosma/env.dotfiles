@@ -23,6 +23,26 @@
 [commit]
     gpgsign = true
     template = ~/.config/git-template/commit
+
+[diff "sopsdiffer"]
+    textconv = sops -d
+
+[delta]
+    features = hyperlinks
+    file-added-label = [+]
+    file-copied-label = [C]
+    file-modified-label = [M]
+    file-removed-label = [-]
+    file-renamed-label = [R]
+    file-style = yellow bold
+    file-decoration-style = yellow ul
+    hunk-header-decoration-style = omit
+    minus-emph-style = syntax bold "#780000"
+    minus-style = syntax "#400000"
+    plus-emph-style = syntax bold "#007801"
+    plus-style = syntax "#004000"
+    width = 1
+
 [init]
     defaultBranch = main
 [interactive]
