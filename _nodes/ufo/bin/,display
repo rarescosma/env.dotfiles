@@ -18,6 +18,28 @@
   ,wm dpi::rofi 12
 }
 
+,blackbird() {
+  _update_default blackbird
+
+  local attempt_num=0
+  local max_attempts=5
+
+  while ! xrandr \
+    --output DP-0 --primary --mode 3440x1440 --rate 165.0 --pos 2560x0 --rotate normal \
+    --output DP-2 --mode 2560x1440 --rate 239.97 --pos 0x0 --rotate normal \
+    --output DP-1 --off --output HDMI-0 --off \
+    --output DP-3 --off --output DP-4 --off && [ $attempt_num -lt $max_attempts ]; do
+      sleep 1
+      attempt_num=$(( attempt_num + 1 ))
+  done
+
+  ,wm dpi::terminal 7
+  ,wm dpi::i3 7
+  ,wm dpi::x 144
+  ,wm dpi::rofi 11
+  ,wm dpi::idea 14 17
+}
+
 ,internal() {
   _update_default internal
 
@@ -51,5 +73,5 @@ if [[ "$sourced" == "0" ]]; then
   test -z "${SYSTEMD_EXEC_PID:-}" && exec 2> >(tee -a /dev/stderr)
   "$@"
 
-  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
+  feh --no-fehbg --bg-fill ~/media/wallpapers/dark-forest.jpg
 fi
