@@ -89,13 +89,15 @@ alias yt-dlpl="yt-dlp --format 'bestvideo[height<=?1080][vcodec!^=vp]+bestaudio'
 # -- switch current vault ------------------------------------------------------
 scv() {
   local vault
-  vault="$(fd -t d --base-directory "$VAULT_ROOT" --exact-depth 1 \
+  vault="$({fd -t d --base-directory "$VAULT_ROOT" --exact-depth 1; echo "NONE"} \
     | fzf_cmd --query "$*" | sed 's/\/$//g')"
   test -z "$vault" && return
 
-  echo "Switching to the $vault vault"
-
-  rm -f $VAULT_ROOT/current && ln -sf $VAULT_ROOT/$vault $VAULT_ROOT/current
+  rm -f $VAULT_ROOT/current
+  if [[ "${vault}" != "NONE" ]]; then
+    echo "Switching to the $vault vault"
+    ln -sf $VAULT_ROOT/$vault $VAULT_ROOT/current
+  fi
 }
 
 # -- the good parts of pkgtools ------------------------------------------------
