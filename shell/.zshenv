@@ -52,6 +52,8 @@ SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # progs
 EDITOR=nvim
 VISUAL=nvim
+MANPAGER="nvim +Man!"
+MANWIDTH=100
 
 BAT_THEME=TwoDark
 DIFFPROG=meld
