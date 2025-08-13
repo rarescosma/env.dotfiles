@@ -36,7 +36,7 @@
   ,wm dpi::terminal 7
   ,wm dpi::i3 7
   ,wm dpi::x 144
-  ,wm dpi::rofi 11
+  ,wm dpi::rofi 13
   ,wm dpi::idea 14 17 1.3
 }
 
