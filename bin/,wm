@@ -57,6 +57,7 @@ function dpi::idea() {
   options_dir="${HOME}/.config/JetBrains/IntelliJIdea${IDEA_VERSION}/options"
   local editor_font_size="${1}"
   local ui_font_size="${2}"
+  local jvm_scale="${3:-}"
 
   $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
     "$options_dir"/editor-font.xml
@@ -64,6 +65,11 @@ function dpi::idea() {
     "$options_dir"/editor-font.xml
   $SED -e "s/\"fontSize\" value=\"[[:digit:]\.]\+\"/\"fontSize\" value=\"${ui_font_size}.0\"/g" \
     "$options_dir"/other.xml
+
+  if [[ -n "${jvm_scale}" ]]; then
+    $SED -e "s/-Dide\.ui\.scale=[[:digit:]\.]\+/-Dide\.ui\.scale=${jvm_scale}/g" \
+      "${options_dir}/../idea64.vmoptions"
+  fi
 }
 
 function dpi::x() {

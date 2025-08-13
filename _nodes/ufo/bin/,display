@@ -37,7 +37,7 @@
   ,wm dpi::i3 7
   ,wm dpi::x 144
   ,wm dpi::rofi 11
-  ,wm dpi::idea 14 17
+  ,wm dpi::idea 14 17 1.3
 }
 
 ,internal() {
@@ -54,7 +54,7 @@
   ,wm dpi::terminal 11
   ,wm dpi::i3 9 
   ,wm dpi::gtk 12
-  ,wm dpi::idea 20 22
+  ,wm dpi::idea 20 22 1.7
   ,wm dpi::x 144
   ,wm dpi::rofi 18
 }
