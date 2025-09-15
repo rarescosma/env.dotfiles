@@ -14,6 +14,11 @@ echo "volctl[$!]: Volume control widget"
 nm-applet &
 echo "nm-applet[$!]: NetworkManager applet"
 
+if command -v blueman-applet >/dev/null; then
+    blueman-applet &
+    echo "blueman-applet[$!]: Bluetooth manager applet"
+fi
+
 clipcatd -r
 echo "clipcatd[$!]: clipboard manager"
 
