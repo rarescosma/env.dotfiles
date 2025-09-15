@@ -165,6 +165,7 @@ bar {
     output DP-0.8
     output DP-0.1.8
     output HDMI2
+    output HDMI-0
     output Virtual-1
 
     bindsym button4 nop

@@ -49,7 +49,9 @@
     --output HDMI2 --off \
     --output HDMI1 --off \
     --output DP2 --off \
-    --output DP-0 --off
+    --output DP-0 --off \
+    --output DP-0.8 --off \
+    --output DP-0.1.8 --off
 
   ,wm dpi::terminal 11
   ,wm dpi::i3 9 
