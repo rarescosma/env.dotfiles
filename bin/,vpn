@@ -32,6 +32,10 @@ openvpn() {
   openvpn brewer
 }
 
+,brewer-b() {
+  openvpn brewer-b
+}
+
 ,off() {
   sudo -E pkill -f openvpn
   sudo wg-quick down wg0vps 2>/dev/null || true
