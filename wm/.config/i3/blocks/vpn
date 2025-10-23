@@ -7,8 +7,18 @@ VPN_TYPE=""
 OVPN_PATH="/proc/sys/net/ipv4/conf/tun0"
 if [[ -e "${OVPN_PATH}" ]]; then
   VPN_CONFIG=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2)
-  VPN_TYPE=" (ovpn)"
-  echo "VPN: ${VPN_CONFIG}${VPN_TYPE}"
+  if [[ -n "${VPN_CONFIG}" ]]; then
+    VPN_TYPE=" (ovpn)"
+  else
+    VPN_CONFIG=$(pgrep -a openconnect | grep -oP 'https://\K[^\s]+')
+    if [[ -n "${VPN_CONFIG}" ]]; then
+      VPN_TYPE=" (openconnect)"
+    fi
+  fi
+
+  if [[ -n "${VPN_CONFIG}" ]]; then
+    echo "VPN: ${VPN_CONFIG}${VPN_TYPE}"
+  fi
   exit 0
 fi
 

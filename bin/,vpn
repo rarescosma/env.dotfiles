@@ -37,7 +37,8 @@ openvpn() {
 }
 
 ,off() {
-  sudo -E pkill -f openvpn
+  sudo -E pkill -f openvpn || true
+  sudo -E pkill -f openconnect || true
   sudo wg-quick down wg0vps 2>/dev/null || true
 }
 
