@@ -108,3 +108,6 @@ whoneeds() {
   echo "Packages that depend on [$1]"
   comm -12 <(pactree -ru $1|sort) <(pacman -Qqe|sort) | grep -v ^$1$ | sed 's/^/  /'
 }
+
+# -- bells & whistles ----------------------------------------------------------
+alias bell="echo -e '\a'"
