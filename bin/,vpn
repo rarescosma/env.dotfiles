@@ -36,6 +36,13 @@ openvpn() {
   openvpn brewer-b
 }
 
+,pulsen() {
+  local -r tok=$(zenity --entry --hide-text --title="RSA Token" --text="Enter RSA token:")
+  if [[ -n "$tok" ]]; then
+    echo -n $tok | sudo openconnect https://elastisysvpn.pulsen.se --protocol=anyconnect --user=ext-elraco --passwd-on-stdin --background
+  fi
+}
+
 ,off() {
   sudo -E pkill -f openvpn || true
   sudo -E pkill -f openconnect || true
