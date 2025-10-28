@@ -1,7 +1,15 @@
 [settings]
 experimental = true
 status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = true, truncate = false }
+idiomatic_version_file_enable_tools = []
 
 [settings.pipx]
 uvx = true
 
+[tools]
+helm = "3.18.4"
+kubectl = "1.32.8"
+kubelogin = "latest"
+pipx = "latest"
+sops = "3.9.4"
+usage = "latest"
