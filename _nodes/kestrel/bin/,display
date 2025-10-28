@@ -7,15 +7,15 @@
   local max_attempts=5
 
   while ! xrandr \
-    --output eDP-1 --primary --mode 1920x1200 --pos 2298x2360 --rotate normal \
+    --output eDP-1 --primary --mode 1920x1200 --pos 2012x2160 --rotate normal \
     --output DP-1 --off \
     --output DP-2 --off \
     --output DP-3 --off \
     --output DP-4 --off \
-    --output DP-1-8 --mode 2560x1440 --pos 0x0 --rotate right \
-    --output DP-1-1 --off \
-    --output DP-1-1-8 --mode 3840x2160 --pos 1440x200 --rotate normal \
-    --output DP-1-1-1 --off && [ $attempt_num -lt $max_attempts ]; do
+    --output DP-4-8 --mode 3840x2160 --pos 1440x0 --rotate normal \
+    --output DP-4-1 --off \
+    --output DP-4-1-8 --mode 2560x1440 --pos 0x0 --rotate right --rate 120.00 \
+    --output DP-4-1-1 --off && [ $attempt_num -lt $max_attempts ]; do
       sleep 1
       attempt_num=$(( attempt_num + 1 ))
   done
@@ -100,6 +100,6 @@ if [[ "$sourced" == "0" ]]; then
   test -z "${SYSTEMD_EXEC_PID:-}" && exec 2> >(tee -a /dev/stderr)
   "$@"
 
-  feh --no-fehbg --bg-fill ~/media/wallpapers/r273_by_kuroihikari-d9a8qrl.jpg
+  feh --no-fehbg --bg-fill ~/media/wallpapers/dark-forest.jpg
 fi
 
