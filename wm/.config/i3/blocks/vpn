@@ -6,18 +6,25 @@ VPN_TYPE=""
 # check openvpn
 OVPN_PATH="/proc/sys/net/ipv4/conf/tun0"
 if [[ -e "${OVPN_PATH}" ]]; then
-  VPN_CONFIG=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2)
-  if [[ -n "${VPN_CONFIG}" ]]; then
-    VPN_TYPE=" (ovpn)"
-  else
-    VPN_CONFIG=$(pgrep -a openconnect | grep -oP 'https://\K[^\s]+')
-    if [[ -n "${VPN_CONFIG}" ]]; then
-      VPN_TYPE=" (openconnect)"
-    fi
+  vpn_configs=()
+  vpn_types=()
+
+  has_openvpn=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2)
+  if [[ -n "${has_openvpn}" ]]; then
+    vpn_configs+=("${has_openvpn}")
+    vpn_types+=("ovpn")
   fi
 
-  if [[ -n "${VPN_CONFIG}" ]]; then
-    echo "VPN: ${VPN_CONFIG}${VPN_TYPE}"
+  has_oc=$(pgrep -a openconnect | grep -oP 'https://\K[^\s]+')
+  if [[ -n "${has_oc}" ]]; then
+    vpn_configs+=("${has_oc}")
+    vpn_types+=("oc")
+  fi
+
+  if [ ${#vpn_types[@]} -gt 0 ]; then
+    configs=$(printf "%s + " "${vpn_configs[@]}"); configs=${configs%' + '}
+    types=$(printf "%s + " "${vpn_types[@]}"); types=${types%' + '}
+    echo "VPN: ${configs} (${types})"
   fi
   exit 0
 fi
