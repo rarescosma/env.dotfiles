@@ -19,6 +19,11 @@ if command -v blueman-applet >/dev/null; then
     echo "blueman-applet[$!]: Bluetooth manager applet"
 fi
 
+if command -v solaar >/dev/null; then
+    solaar -w hide --restart-on-wake-up &
+    echo "solaar[$!]: Logitech device manager"
+fi
+
 clipcatd -r
 echo "clipcatd[$!]: clipboard manager"
 
