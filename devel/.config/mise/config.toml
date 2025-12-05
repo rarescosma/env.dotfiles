@@ -7,7 +7,10 @@ idiomatic_version_file_enable_tools = []
 uvx = true
 
 [tools]
+golangci-lint = "2.5.0"
+clusterctl = "1.10.7"
 helm = "3.18.4"
+helmfile = "1.1.2"
 kubectl = "1.32.8"
 kubelogin = "latest"
 pipx = "latest"
