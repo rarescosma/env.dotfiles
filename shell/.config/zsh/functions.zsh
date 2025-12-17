@@ -131,7 +131,11 @@ alias t="t -t ${XDG_STATE_HOME}/t"
 alias o='open_command'
 
 ## apply a named stash
-alias gsz='git stash apply $(git stash list | fzf_cmd | cut -d" " -f1 | grep -oP "[0-9]+")'
+gsz() {
+  local -r stash_name="$(git stash list | fzf_cmd | cut -d" " -f1 | grep -oP "[0-9]+")"
+  test -n "${stash_name}" || return 0
+  git stash apply "${stash_name}"
+}
 
 ## kill and restart process
 kick() {
