@@ -1,1 +1,6 @@
 --glob=!.git
+--glob=!*.svg
+--glob=!*.png
+--smart-case
+--hidden
+--follow
