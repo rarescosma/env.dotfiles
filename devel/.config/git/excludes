@@ -39,3 +39,5 @@ __pycache__
 /tests/end-to-end/.bin
 /tests/end-to-end/.run
 
+# CK
+.ck
