@@ -43,16 +43,14 @@ nmap gu <Action>(GotToSuperMethod)
 nmap gt <Action>(GotoTest)
 
 " IDE search & replace.
+nmap s <Action>(FindInPath)
+vmap s <Action>(FindInPath)
+nmap S <Action>(ReplaceInPath)
+vmap S <Action>(ReplaceInPath)
 nmap <leader>f <Action>(Find)
 vmap <leader>f <Action>(Find)
 nmap <leader>g <Action>(Replace)
 vmap <leader>g <Action>(Replace)
-nmap <leader>pf <Action>(FindInPath)
-vmap <leader>pf <Action>(FindInPath)
-nmap s <Action>(FindInPath)
-vmap s <Action>(FindInPath)
-nmap <leader>pg <Action>(ReplaceInPath)
-vmap <leader>pg <Action>(ReplaceInPath)
 
 " IDE refactor.
 nmap <leader>n <Action>(Inline)
