@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 ,vps-wg() {
-  ,off
   ,tomb ,open || exit 1
   sudo rm -f /etc/wireguard/wg0vps.conf
   sudo ln -sf /tomb/wireguard/$(hostname -s).conf /etc/wireguard/wg0vps.conf
@@ -13,7 +12,6 @@ openvpn() {
   test -z "$1" && return 1
   to_who="$1"
 
-  ,off
   ,tomb ,open || exit 1
   log_path="/tmp/ovpn-${to_who}.log"
 

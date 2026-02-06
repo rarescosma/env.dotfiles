@@ -9,7 +9,7 @@ if [[ -e "${OVPN_PATH}" ]]; then
   vpn_configs=()
   vpn_types=()
 
-  has_openvpn=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2)
+  has_openvpn=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2 | sed ':a;N;$!ba;s/\n/ + /g')
   if [[ -n "${has_openvpn}" ]]; then
     vpn_configs+=("${has_openvpn}")
     vpn_types+=("ovpn")
