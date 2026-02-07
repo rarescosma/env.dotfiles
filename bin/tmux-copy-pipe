@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+clear_it() {
+    python3 -c 'import sys; print(sys.stdin.read().strip(), end="")'
+}
+
+cleared="$(cat | clear_it)"
+
+get_last_id() {
+    clipcatctl | head -1 | cut -d":" -f1
+}
+
+get_last() {
+    local -r cid="$1"
+    printf '%b\n' "$(clipcatctl get $cid)" | clear_it
+}
+
+for x in $(seq 1 5); do
+    cid="$(get_last_id)"
+    last="$(get_last "$cid")"
+    if [[ "$cleared" == "$last" ]]; then
+        clipcatctl remove "$cid"
+        break
+    else
+        sleep 0.03
+    fi
+done
+
+clipcatctl insert -- "$cleared"
+
