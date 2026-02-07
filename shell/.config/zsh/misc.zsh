@@ -81,6 +81,17 @@ bindkey '^Z' very-fancy-ctrl-z
 # -- vim cmd edit --------------------------------------------------------------
 autoload edit-command-line; zle -N edit-command-line
 bindkey "^[v" edit-command-line
+open-file-from-line() {
+    local file
+    # Extract the first thing that looks like a file path
+    file=$(echo $BUFFER | grep -oE '([~./])?[[:alnum:]._/-]+' | head -1)
+    if [[ -n $file && -e ${~file} ]]; then
+        ${EDITOR:-vim} ${~file}
+        zle reset-prompt
+    fi
+}
+zle -N open-file-from-line
+bindkey "^[s" open-file-from-line
 WORDCHARS=${WORDCHARS/\/}
 
 # -- no history for you! -------------------------------------------------------
