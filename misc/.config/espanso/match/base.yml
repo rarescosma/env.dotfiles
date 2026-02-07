@@ -15,9 +15,6 @@ matches:
   - trigger: "g@@"
     replace: "rares@getbetter.ro"
 
-  - trigger: "e@@"
-    replace: "rares.cosma@elastisys.com"
-
   - trigger: "o@@"
     replace: "oppy.fug@gmail.com"
 
@@ -79,3 +76,6 @@ matches:
   # Esys
   - trigger: "@88"
     replace: "$CK8S_CONFIG_PATH"
+
+  - trigger: "e@@"
+    replace: "rares.cosma@elastisys.com"
