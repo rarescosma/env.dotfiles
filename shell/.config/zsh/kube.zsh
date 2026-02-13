@@ -53,7 +53,7 @@ kse() {
   config="$1"
 
   if ! test -f "${ck8s_dir}/${config}"; then
-    configs=($(find "$ck8s_dir" -mindepth 1 -maxdepth 1 -type d | grep -vE ".ck8s/_|\.idea"))
+    configs=($(find "$ck8s_dir" -mindepth 1 -maxdepth 1 -type d | grep -vE ".ck8s/_|\.idea|\.down$"))
 
     for ((i=1; i <= ${#configs}; i++)); do
       configs[i]="${configs[i]/#${HOME}/~}"
