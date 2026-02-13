@@ -26,7 +26,7 @@ alias lc="ls --created -s=created"   # Sorted by created date
 # last modified file in dir
 function lmf() {
     local dir="${1:-.}"
-    find "$dir" -type f -printf "%T@ %p\n" | sort -n | cut -d' ' -f 2- | tail -n 1
+    find "$dir" -type f -printf "%T@ %p\n" | sort -n | tail -n 1 | cut -d' ' -f 2-
 }
 
 ## own all files/directories passed as arguments
