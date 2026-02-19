@@ -38,6 +38,8 @@ __pycache__
 /package.json
 /tests/end-to-end/.bin
 /tests/end-to-end/.run
+/e2e.sh
+/cherry-picks.txt
 
 # CK
 .ck
