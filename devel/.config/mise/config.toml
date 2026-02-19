@@ -7,16 +7,49 @@ idiomatic_version_file_enable_tools = []
 uvx = true
 
 [tools]
-golangci-lint = "2.5.0"
+aws = "2.33.15"
+azure-cli = "latest"
+bats = "latest"
+bun = "latest"
+cilium-cli = "0.19.0"
 clusterctl = "1.10.7"
+crossplane = "latest"
+gcloud = "467.0.0"
+go = "latest"
+golangci-lint = "2.5.0"
+gomplate = "latest"
 helm = "3.18.4"
 helmfile = "1.1.2"
-kubectl = "1.33.6"
+kind = "latest"
+krew = "latest"
+kubebuilder = "latest"
 kubecolor = "0.5.3"
+kubeconform = "v0.6.7"
+kubectl = "1.33.6"
 kubelogin = "latest"
 pipx = "latest"
-sops = "3.9.4"
+python = "3.10.11"
+ruby = "latest"
+sops = "3.10.1"
+tekton = "latest"
+terraform = "latest"
 usage = "latest"
-crossplane = "latest"
-kubebuilder = "latest"
-go = "latest"
+velero = "1.13.0"
+yq = "4.45.1"
+
+
+"go:github.com/neilpa/yajsv" = "v1.4.1"
+"go:github.com/ueokande/kubectl-evict" = "latest"
+"pipx:cels" = "latest"
+"pipx:s3cmd" = "2.4.0"
+"pipx:python-openstackclient" = { version = "latest", uvx_args = "--with python-octaviaclient --with gnureadline" }
+"pipx:pycln" = "latest"
+
+[env]
+GIT_TEST_VERIFY = "prek run -s HEAD~1 -o HEAD"
+PYTHONWARNINGS = "ignore::SyntaxWarning,ignore::FutureWarning"
+_.path = ["{{env.HOME}}/.krew/bin"]
+
+[hooks.enter]
+shell = "zsh"
+script = "source <(cilium completion zsh)"
