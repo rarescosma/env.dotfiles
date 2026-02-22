@@ -32,6 +32,10 @@ if [[ "$sourced" == "1" ]]; then
     }
     complete -F _ra ra
 else
+    if [[ $# -eq 0 ]]; then
+        echo "fatal: nothing to ra, exiting" >&2
+        exit 1
+    fi
     test -f $HOME/.local/env && source $HOME/.local/env
     rsync -avP -e "ssh -i ${TOWA_KEY}" "$_host:$_prefix/${@}" $_dest
 fi
