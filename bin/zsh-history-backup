@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+git_dir="${1:?Usage: zsh-history-backup.sh <backup-dir>}"
+ts="$(date "+%F@%T")"
+
+mkdir -p "${git_dir}"
+git -C "${git_dir}" init -q
+
+cp -f "${HOME}/.zsh_history" "${git_dir}/zsh_history"
+
+if ! git -C "${git_dir}" diff --quiet 2>/dev/null || ! git -C "${git_dir}" log -1 &>/dev/null; then
+  git -C "${git_dir}" add zsh_history
+  git -C "${git_dir}" commit --no-verify --no-gpg-sign -q -m "update at ${ts}"
+fi

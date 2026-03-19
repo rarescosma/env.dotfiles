@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup zsh history to local git repo
+
+[Service]
+Type=oneshot
+ExecStart=%h/bin/zsh-history-backup %h/backup/zsh-history-git

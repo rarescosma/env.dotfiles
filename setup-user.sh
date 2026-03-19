@@ -76,6 +76,8 @@ setup::services() {
   systemctl_enable_start "mpDris2.service" || true
   systemctl_enable_start "ssh-agent.service"
   systemctl_enable_start "i3-startup.service"
+  systemctl_enable_start "zsh-history-backup.service"
+  systemctl --user enable --now zsh-history-backup.timer
 }
 
 main() {
