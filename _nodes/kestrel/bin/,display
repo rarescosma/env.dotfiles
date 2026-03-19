@@ -34,7 +34,7 @@
     sleep 1
   done
 
-  xrandr --output DP-4-8 -off --output DP-4-1-8 --off
+  xrandr --output DP-4-8 --off --output DP-4-1-8 --off --output DP-4 --off
 
   _low_dpi
 }
@@ -55,6 +55,8 @@
   done
 
   _low_dpi
+  ,wm dpi::terminal 9.2
+  ,wm dpi::idea 14 16 # <editor> <ui>
 }
 
 _update_default() {
