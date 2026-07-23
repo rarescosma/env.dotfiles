@@ -59,7 +59,7 @@ function dpi::idea() {
   local ui_font_size="${2}"
   local jvm_scale="${3:-}"
 
-  $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"$editor_font_size\"/g" \
+  $SED -e "s/\"FONT_SIZE\" value=\"[[:digit:]]\+\"/\"FONT_SIZE\" value=\"${editor_font_size}\"/g" \
     "$options_dir"/editor-font.xml
   $SED -e "s/\"FONT_SIZE_2D\" value=\"[[:digit:]\.]\+\"/\"FONT_SIZE_2D\" value=\"${editor_font_size}.0\"/g" \
     "$options_dir"/editor-font.xml
