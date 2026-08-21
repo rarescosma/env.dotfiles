@@ -1,0 +1,50 @@
+#!/bin/sh
+set -eu
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LC_ALL=C
+export PATH LC_ALL
+
+case "${1-}" in
+    /devices/*) devpath=$1 ;;
+    *) exit 2 ;;
+esac
+
+p="/sys$devpath"
+[ -e "$p" ] || exit 1
+
+while [ "$p" != /sys ] && [ "$p" != / ]; do
+    if [ -r "$p/uevent" ] &&
+       grep -qx 'DEVTYPE=usb_device' "$p/uevent"; then
+
+        # This will normally be present. The other fields also make the
+        # identifier robust if the udev database entry is temporarily absent.
+        usec=$(
+            udevadm info --query=property --path="$p" 2>/dev/null |
+                awk -F= '
+                    $1 == "USEC_INITIALIZED" {
+                        print $2
+                        exit
+                    }
+                '
+        )
+
+        bus=$(cat "$p/busnum" 2>/dev/null || printf 0)
+        dev=$(cat "$p/devnum" 2>/dev/null || printf 0)
+        ino=$(stat -c '%i' "$p" 2>/dev/null || printf 0)
+
+        printf '%s__%s-%s-%s-%s\n' \
+            "${p##*/}" \
+            "${usec:-0}" \
+            "${bus:-0}" \
+            "${dev:-0}" \
+            "${ino:-0}"
+
+        exit 0
+    fi
+
+    p=${p%/*}
+done
+
+# No physical USB-device ancestor: ignore this input device.
+exit 1
