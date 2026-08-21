@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+vendor=$(cat "$KBDPLUG_SYSFS/idVendor" 2>/dev/null || printf unknown)
+product=$(cat "$KBDPLUG_SYSFS/idProduct" 2>/dev/null || printf unknown)
+
+printf \
+    'USB keyboard connected: usb=%s vid=%s pid=%s id=%s\n' \
+    "$KBDPLUG_USB_SYSNAME" \
+    "$vendor" \
+    "$product" \
+    "$KBDPLUG_ID"
+
+sleep 1
+sudo -u karelian /home/karelian/bin/,wm ,keyboard::setup

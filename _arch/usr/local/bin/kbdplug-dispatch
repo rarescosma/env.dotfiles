@@ -1,0 +1,52 @@
+#!/bin/bash
+set -euo pipefail
+
+id=${1:-}
+
+case "$id" in
+    ''|*[!A-Za-z0-9_.-]*)
+        echo "Invalid keyboard connection ID: $id" >&2
+        exit 2
+        ;;
+esac
+
+case "$id" in
+    *__*) ;;
+    *)
+        echo "Malformed keyboard connection ID: $id" >&2
+        exit 2
+        ;;
+esac
+
+hook=/usr/local/bin/on-keyboard-plugged
+
+if [[ ! -x "$hook" ]]; then
+    echo "Keyboard hook is missing or not executable: $hook" >&2
+    exit 127
+fi
+
+usb=${id%%__*}
+state=/run/kbdplug/fired
+
+umask 077
+mkdir -p "$state"
+
+# Atomic test-and-set. Only one invocation for this USB enumeration wins.
+if ! mkdir "$state/$id" 2>/dev/null; then
+    exit 0
+fi
+
+export KBDPLUG_ID="$id"
+export KBDPLUG_USB_SYSNAME="$usb"
+export KBDPLUG_SYSFS="/sys/bus/usb/devices/$usb"
+
+case "$(systemctl is-system-running 2>/dev/null || true)" in
+    running|degraded)
+        ;;
+    *)
+        # Also ignores a keyboard physically inserted during early boot.
+        exit 0
+        ;;
+esac
+
+exec "$hook"

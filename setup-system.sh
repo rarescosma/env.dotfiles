@@ -62,6 +62,19 @@ setup::backup() {
   link "etc/backup/autousb/65-replicate_backup.rules" "etc/udev/rules.d/65-replicate_backup.rules"
 }
 
+setup::kbdplug() {
+  echo ""
+  echo "====================="
+  echo "Setting up kbdplug..."
+  echo "====================="
+
+  copy "etc/udev/rules.d/90-kbdplug.rules"
+  copy "etc/systemd/system/kbdplug@.service"
+  copy "usr/local/bin/kbdplug-dispatch"
+  copy "usr/local/bin/kbdplug-id"
+  copy "usr/local/bin/on-keyboard-plugged"
+}
+
 setup::_node() {
   local hostname=$(head -1 /etc/hostname)
   export HOSTNAME="$hostname"
@@ -160,6 +173,7 @@ setup::var() {
 main() {
   setup::etc
   setup::backup
+  setup::kbdplug
   setup::_node
   (("$reverse")) && exit 0
   setup::services

@@ -1,0 +1,10 @@
+[Unit]
+Description=USB keyboard connection handler (%i)
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStartSec=0
+SyslogIdentifier=kbdplug
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/usr/local/bin/kbdplug-dispatch %i

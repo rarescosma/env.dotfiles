@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_KEYBOARD}=="1", PROGRAM="/usr/local/bin/kbdplug-id %p", TAG+="systemd", ENV{SYSTEMD_WANTS}+="kbdplug@%c.service"
