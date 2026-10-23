@@ -40,6 +40,7 @@ __pycache__
 /tests/end-to-end/.run
 /e2e.sh
 /cherry-picks.txt
+/regular-commits.txt
 
 # CK
 .ck
