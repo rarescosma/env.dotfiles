@@ -8,10 +8,10 @@ Chromium = ""
 Alacritty = ""
 jetbrains-idea = ""
 mpv = ""
-obsidian =""
+"md.obsidian.Obsidian" =""
 tidal-hifi = "󰝚"
 cantata = "󰝚"
-Signal = ""
+signal = ""
 
 [options]
 remove_duplicates = true
