@@ -127,6 +127,3 @@ set NERDTree
 
 " Experimental: prefer IDE undo. (meh)
 " sethandler U a:ide
-
-" Sweep AI Tab completion mapping
-map <Tab> :action dev.sweep.assistant.autocomplete.edit.AcceptEditCompletionAction<CR>
