@@ -34,7 +34,8 @@
     sleep 1
   done
 
-  xrandr --output DP-4-8 --off --output DP-4-1-8 --off --output DP-4 --off
+  xrandr --output DP-4-8 --off --output DP-4-1-8 --off --output DP-4 --off \
+    --output eDP-1 --primary --mode 1920x1200
 
   _low_dpi
 }
