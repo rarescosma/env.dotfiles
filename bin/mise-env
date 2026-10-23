@@ -22,13 +22,14 @@ def main():
 
     first = True
     for source, envs in by_source.items():
+        redact = "-secrets" in source
         if not first:
             print("")
         else:
             first = False
         print(f"# source: {source.replace(HOME,'~')} ({time.time_ns()})")
         for key, val in envs:
-            print(f"export {shlex.quote(key)}={shlex.quote(val)}")
+            print(f"export {shlex.quote(key)}={shlex.quote(val) if not redact else '\'<redacted>\''}")
 
 
 if __name__ == "__main__":
