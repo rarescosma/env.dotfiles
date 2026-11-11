@@ -1,47 +1,54 @@
 #!/usr/bin/env bash
+# i3blocks VPN indicator. Collects every active VPN and prints one line:
+#   VPN: work (ovpn) + tail1234 via exit-box (ts)
 
-VPN_CONFIG=""
-VPN_TYPE=""
+vpns=()
 
-# check openvpn
-OVPN_PATH="/proc/sys/net/ipv4/conf/tun0"
-if [[ -e "${OVPN_PATH}" ]]; then
-  vpn_configs=()
-  vpn_types=()
+# add <name> [type]
+add() {
+  if [[ -n "$2" ]]; then vpns+=("$1 ($2)"); else vpns+=("$1"); fi
+}
 
+# check openvpn / openconnect
+if [[ -e /proc/sys/net/ipv4/conf/tun0 ]]; then
   has_openvpn=$(pgrep -a openvpn | grep -oh -E 'daemon ([^ ]+)' | cut -d" " -f2 | sed ':a;N;$!ba;s/\n/ + /g')
-  if [[ -n "${has_openvpn}" ]]; then
-    vpn_configs+=("${has_openvpn}")
-    vpn_types+=("ovpn")
-  fi
+  [[ -n "${has_openvpn}" ]] && add "${has_openvpn}" ovpn
 
   has_oc=$(pgrep -a openconnect | grep -oP 'https://\K[^\s]+')
-  if [[ -n "${has_oc}" ]]; then
-    vpn_configs+=("${has_oc}")
-    vpn_types+=("oc")
-  fi
-
-  if [ ${#vpn_types[@]} -gt 0 ]; then
-    configs=$(printf "%s + " "${vpn_configs[@]}"); configs=${configs%' + '}
-    types=$(printf "%s + " "${vpn_types[@]}"); types=${types%' + '}
-    echo "VPN: ${configs} (${types})"
-  fi
-  exit 0
+  [[ -n "${has_oc}" ]] && add "${has_oc}" oc
 fi
 
 # check wireguard
 WG_DEV="$(find /proc/sys/net/ipv4/conf/wg0* 2>/dev/null)"
-if ! test -z "$WG_DEV"; then
-  VPN_CONFIG="$(printf $WG_DEV | awk -F"/wg0" '{$0=$2}1')"
-  VPN_TYPE=" (wg)"
-  echo "VPN: ${VPN_CONFIG}${VPN_TYPE}"
-  exit 0
+if [[ -n "${WG_DEV}" ]]; then
+  add "$(printf "%s" "${WG_DEV}" | awk -F"/wg0" '{$0=$2}1')" wg
 fi
 
 # check proton
 PT_DEV="$(find /proc/sys/net/ipv4/conf/proton* 2>/dev/null)"
-if ! test -z "$PT_DEV"; then
-  VPN_CONFIG="proton"
-  echo "VPN: ${VPN_CONFIG}"
-  exit 0
+if [[ -n "${PT_DEV}" ]]; then
+  add proton
 fi
+
+# check tailscale
+# tailscale0 exists whenever tailscaled runs, even after `tailscale down`,
+# so the interface only gates the cheap path; BackendState decides.
+if [[ -e /proc/sys/net/ipv4/conf/tailscale0 ]] && command -v tailscale >/dev/null; then
+  ts_json=$(timeout 2 tailscale status --json --peers=false 2>/dev/null)
+  if grep -q '"BackendState": "Running"' <<<"${ts_json}"; then
+    ts_name=$(sed -n 's/^ *"MagicDNSSuffix": "\([^"]*\)".*/\1/p' <<<"${ts_json}" | head -n1)
+    ts_name=${ts_name%.ts.net}
+    # ExitNodeStatus is only present while an exit node is selected
+    if grep -q '"ExitNodeStatus"' <<<"${ts_json}"; then
+      ts_exit=$(timeout 2 tailscale status 2>/dev/null | awk '/(active|idle); exit node/ {print $2; exit}')
+      [[ -n "${ts_exit}" ]] && ts_name+=" via ${ts_exit}"
+    fi
+    add "${ts_name:-tailscale}" ts
+  fi
+fi
+
+if (( ${#vpns[@]} )); then
+  out=$(printf "%s + " "${vpns[@]}")
+  echo "VPN: ${out% + }"
+fi
+

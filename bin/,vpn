@@ -34,6 +34,11 @@ openvpn() {
   openvpn brewer-b
 }
 
+,tailscale() {
+  sudo systemctl start tailscaled
+  sudo tailscale up
+}
+
 ,pulsen() {
   local -r tok=$(zenity --entry --hide-text --title="RSA Token" --text="Enter RSA token:")
   if [[ -n "$tok" ]]; then
@@ -45,6 +50,8 @@ openvpn() {
   sudo -E pkill -f openvpn || true
   sudo -E pkill -f openconnect || true
   sudo wg-quick down wg0vps 2>/dev/null || true
+  sudo tailscale down 2>/dev/null || true
+  sudo systemctl stop tailscaled 2>/dev/null || true
 }
 
 (return 0 2>/dev/null) && sourced=1 || sourced=0
