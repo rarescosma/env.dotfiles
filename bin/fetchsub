@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+video=$1
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+
+base=${video%.*}
+out="$base.en.srt"
+# read-only media dir? fall back to cache
+[[ -w $(dirname "$video") ]] || { mkdir -p ~/.cache/subs; out=~/.cache/subs/"$(basename "$base")".en.srt; }
+
+subliminal download -l en -s -d "$tmp" "$video" >&2
+raw=$(find "$tmp" -name '*.srt' -print -quit)
+[[ -n $raw ]] || exit 1
+
+alass "$video" "$raw" "$out" >&2 || ffsubsync "$video" -i "$raw" -o "$out" >&2
+printf '%s\n' "$out"
